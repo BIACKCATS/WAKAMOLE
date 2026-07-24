@@ -53,6 +53,7 @@ namespace Wakamole.Lyeon.Entity
             
             if (mole.Hp <= 0)
             {
+                PlayerManager.Current.Score++;
                 targetPosition = initPosition;
                 active = false;
             }

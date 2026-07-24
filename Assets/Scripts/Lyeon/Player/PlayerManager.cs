@@ -9,6 +9,10 @@ namespace Wakamole.Lyeon.Player
         public static PlayerManager Current { get; private set; }
 
         [Header("Components")]
+        [Tooltip("현재 점수를 표시할 ScoreBoard 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private ScoreBoard scoreBoard;
+        [Tooltip("게임 제한 시간을 표시할 Timer 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private Timer timer;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
 
@@ -20,9 +24,35 @@ namespace Wakamole.Lyeon.Player
         [Tooltip("차지 공격 시 데미지 배율입니다.")]
         [SerializeField] private float chargeRatio = 1.5f;
 
+        [Header("Preferences")]
+        [Tooltip("게임 목표 점수입니다.")]
+        [SerializeField] private int goalScore = 10;
+        [Tooltip("게임 제한 시간(초)입니다.")]
+        [SerializeField] private float playDuration = 60.0f;
+
+        private bool activeGame = false;
+        private int score = 0;
+
         private bool activeCharge = false;
         private float chargedCount = 0;
 
+        /// <summary>
+        /// 게임의 활성 상태입니다.
+        /// </summary>
+        public bool Active { get => activeGame; set => activeGame = value; }
+        /// <summary>
+        /// 플레이어가 획득한 점수입니다.
+        /// </summary>
+        public int Score
+        {
+            get => score;
+            set
+            {
+                score = value;
+                scoreBoard.Current = score;
+                if (score >= goalScore) activeGame = false;
+            }
+        }
         /// <summary>
         /// 플레이어의 공격력입니다.
         /// </summary>
@@ -39,6 +69,9 @@ namespace Wakamole.Lyeon.Player
                 else chargedCount = 0;
             }
         }
+        /// <summary>
+        /// 차지 공격으로 입히는 데미지의 배율입니다.
+        /// </summary>
         public float ChargeRatio { get => chargeRatio; set => chargeRatio = value; }
 
         private void Awake()
@@ -51,6 +84,14 @@ namespace Wakamole.Lyeon.Player
 
             Current = this;
             DontDestroyOnLoad(gameObject);
+
+            // 개발용
+            activeGame = true;
+
+            timer.Duration = playDuration;
+            timer.Active = true;
+
+            scoreBoard.Goal = goalScore;
         }
 
         private void Update()

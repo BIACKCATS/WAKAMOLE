@@ -2,6 +2,7 @@ using UnityEngine;
 using Wakamole.Core.Utils;
 using System.Collections;
 using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.Manager
 {
@@ -16,7 +17,7 @@ namespace Wakamole.Lyeon.Manager
 
         private ObjectPool objectPool;
 
-        private void Awake()
+        private void Start()
         {
             objectPool = new(molePrefab.gameObject, 10);
             StartCoroutine(RandomMole());
@@ -24,7 +25,8 @@ namespace Wakamole.Lyeon.Manager
 
         IEnumerator RandomMole()
         {
-            while (true)
+            // 테스트용
+            while (PlayerManager.Current.Active)
             {
                 yield return _waitForSecondsRealtime;
                 GameObject obj = objectPool.Get();
