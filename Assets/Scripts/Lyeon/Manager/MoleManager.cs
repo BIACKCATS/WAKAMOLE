@@ -7,7 +7,11 @@ namespace Wakamole.Lyeon.Manager
 {
     public class MoleManager : MonoBehaviour
     {
-        private static WaitForSecondsRealtime _waitForSecondsRealtime = new WaitForSecondsRealtime(1.0f);
+        // 개발용, 추후 삭제
+        private WaitForSecondsRealtime _waitForSecondsRealtime = new(1.0f);
+
+        [Header("Components")]
+        [Tooltip("게임에 생성할 두더지 Prefab입니다.")]
         [SerializeField] private Mole molePrefab;
 
         private ObjectPool objectPool;

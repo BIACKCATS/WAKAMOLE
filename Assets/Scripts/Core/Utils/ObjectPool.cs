@@ -6,8 +6,11 @@ namespace Wakamole.Core.Utils
     public class ObjectPool
     {
         private GameObject prefab;
-        private Queue<GameObject> objects = new(); // 오브젝트 풀 구현을 위한 스택
+        private Queue<GameObject> objects = new(); // 오브젝트 풀 구현을 위한 큐
 
+        /// <summary>
+        /// ObjectPool에 저장된 GameObject의 수입니다.
+        /// </summary>
         public int Count => objects.Count;
 
         /// <summary>
@@ -27,16 +30,24 @@ namespace Wakamole.Core.Utils
             }
         }
         
+        /// <summary>
+        /// GameObject를 ObjectPool에 반환합니다.
+        /// </summary>
+        /// <param name="obj">ObjectPool에 반환할 GameObject입니다.</param>
         public void Return(GameObject obj)
         { 
             obj.SetActive(false);
             objects.Enqueue(obj); 
         }
 
+        /// <summary>
+        /// GameObject를 ObjectPool에서 가져옵니다.
+        /// </summary>
+        /// <returns>ObjectPool에 저장된 GameObject를 반환합니다.</returns>
         public GameObject Get() { 
             GameObject obj;
             if (objects.Count > 0) obj = objects.Dequeue();
-            else obj = UnityEngine.Object.Instantiate(prefab);
+            else obj = Object.Instantiate(prefab);
             obj.SetActive(true);
             return obj;
         }
