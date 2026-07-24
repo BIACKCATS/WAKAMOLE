@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.UI
 {
@@ -47,6 +48,7 @@ namespace Wakamole.Lyeon.UI
             if (current <= 0)
             {
                 active = false;
+                PlayerManager.Current.Active = false;
                 return;
             }
             
