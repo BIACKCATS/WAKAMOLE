@@ -100,7 +100,10 @@ namespace Wakamole.Lyeon.Player
             else if (Mouse.current.rightButton.wasReleasedThisFrame) activeCharge = false;
 
             if (activeCharge && chargedCount < chargeTime) chargedCount += Time.deltaTime;
+            else if (chargedCount < chargeTime && chargedCount > 0) chargedCount -= Time.deltaTime / 2;
+
             if (chargedCount > chargeTime) chargedCount = chargeTime;
+            else if (chargedCount < 0) chargedCount = 0;
 
             progressBar.Value = chargedCount / chargeTime;
         }
