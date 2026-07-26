@@ -231,7 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ProgressBar
   image: {fileID: 1175474581}
-  finishColor: {r: 1, g: 0.4166667, b: 0.3, a: 1}
 --- !u!114 &754755292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 797701138}
+  - component: {fileID: 797701140}
   - component: {fileID: 797701137}
   - component: {fileID: 797701136}
   - component: {fileID: 797701139}
@@ -453,6 +453,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &797701140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797701135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1096a55d820454c94a05ccbbefded66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.GameCamera.CameraController
 --- !u!1 &1078650316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1403,7 @@ GameObject:
   - component: {fileID: 2127433534}
   - component: {fileID: 2127433533}
   - component: {fileID: 2127433532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1499,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
