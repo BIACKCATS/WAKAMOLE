@@ -9,23 +9,13 @@ namespace Wakamole.Lyeon.Entity.Component
         [Tooltip("두더지를 관리하는 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private Mole mole;
 
-        [Header("Information")]
-        [Tooltip("두더지가 올라오는 시간입니다.")]
-        [SerializeField] private float showTime = 3.0f;
-        [Tooltip("두더지가 올라오고 내려가는 속도입니다.")]
-        [SerializeField] private float moveSpeed = 8.0f;
-
         private bool active = false;
         private Vector3 initPosition = Vector3.zero;
         private Vector3 movePosition = new(0, 0.1f, 0);
         private Vector3 targetPosition = Vector3.zero;
 
+        private float showTime = 0, moveSpeed = 0;
         private float showedTime = 0;
-
-        /// <summary>
-        /// 두더지가 올라오는 시간입니다.
-        /// </summary>
-        public float ShowTime { get => showTime; set => showTime = value; }
 
         /// <summary>
         /// 두더지가 활성화된 상태입니다.
@@ -53,6 +43,8 @@ namespace Wakamole.Lyeon.Entity.Component
         private void OnEnable()
         {
             Active = true;
+            showTime = mole.ShowTime;
+            moveSpeed = mole.MoveSpeed;
         }
 
         private void Update()
@@ -86,7 +78,7 @@ namespace Wakamole.Lyeon.Entity.Component
             
             if (mole.Hp <= 0)
             {
-                PlayerManager.Current.Score++;
+                PlayerManager.Current.Score += mole.Score;
                 targetPosition = initPosition;
                 active = false;
             }

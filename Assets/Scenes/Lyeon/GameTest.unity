@@ -796,8 +796,8 @@ MonoBehaviour:
   atk: 1
   chargeTime: 2
   chargeRatio: 2
-  goalScore: 10
-  playDuration: 70
+  goalScore: 100
+  playDuration: 100
 --- !u!4 &1288248567
 Transform:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 360, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648598824
 MonoBehaviour:
@@ -1249,6 +1249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Manager.MoleManager
   molePrefab: {fileID: 3865965599339676293, guid: 4dd1de44d5dbf43a9b5b955b23a4ec42, type: 3}
+  moleDatas:
+  - {fileID: 11400000, guid: 18c67939c04964c5cb7711b2504b0002, type: 2}
+  - {fileID: 11400000, guid: 26117ce26418a48c880990ef9ff33052, type: 2}
+  - {fileID: 11400000, guid: 83c68b69dceeb40b0a6a80ee4db9b3d2, type: 2}
 --- !u!4 &1973914332
 Transform:
   m_ObjectHideFlags: 0

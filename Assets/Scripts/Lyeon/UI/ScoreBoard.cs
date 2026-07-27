@@ -16,7 +16,14 @@ namespace Wakamole.Lyeon.UI
         /// <summary>
         /// 목표 점수입니다.
         /// </summary>
-        public int Goal { set => target = value; }
+        public int Goal
+        {
+            set
+            {
+                target = value;
+                UpdateBoard();
+            }
+        }
         /// <summary>
         /// 현재 점수입니다.
         /// </summary>
@@ -25,8 +32,13 @@ namespace Wakamole.Lyeon.UI
             set
             {
                 current = value;
-                scoreText.text = string.Format("{0} / {1}", current, target);
+                UpdateBoard();
             }
+        }
+
+        private void UpdateBoard()
+        {
+            scoreText.text = string.Format("{0} / {1}", current, target);
         }
     }
 }
