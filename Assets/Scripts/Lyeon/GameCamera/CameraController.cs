@@ -40,17 +40,13 @@ namespace Wakamole.Lyeon.GameCamera
 
         private void LateUpdate()
         {
-            if (mousePosition.x > mouseMaxDistance.x) targetPosition.x = initPosition.x - mouseMaxDistance.x + mousePosition.x;
-            else if (mousePosition.x < mouseMinDistance.x) targetPosition.x = initPosition.x - mouseMinDistance.x + mousePosition.x;
+            if (mousePosition.x > mouseMaxDistance.x) targetPosition.x = moveMaxLimit.x;
+            else if (mousePosition.x < mouseMinDistance.x) targetPosition.x = moveMinLimit.x;
             else targetPosition.x = initPosition.x;
-            if (mousePosition.z > mouseMaxDistance.y) targetPosition.z = initPosition.z - mouseMaxDistance.y + mousePosition.z;
-            else if (mousePosition.z < mouseMinDistance.y) targetPosition.z = initPosition.z - mouseMinDistance.y + mousePosition.z;
-            else targetPosition.z = initPosition.z;
 
-            if (targetPosition.x > moveMaxLimit.x) targetPosition.x = moveMaxLimit.x;
-            else if (targetPosition.x < moveMinLimit.x) targetPosition.x = moveMinLimit.x;
-            if (targetPosition.z > moveMaxLimit.y) targetPosition.z = moveMaxLimit.y;
-            else if (targetPosition.z < moveMinLimit.y) targetPosition.z = moveMinLimit.y;
+            if (mousePosition.z > mouseMaxDistance.y) targetPosition.z = moveMaxLimit.y;
+            else if (mousePosition.z < mouseMinDistance.y) targetPosition.z = moveMinLimit.y;
+            else targetPosition.z = initPosition.z;
 
             transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }

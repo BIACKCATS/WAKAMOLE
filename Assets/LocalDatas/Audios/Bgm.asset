@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Bgm
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.AudioData
   audios:
-  - {fileID: 8300000, guid: d9be667382b5947dd8dc13b17b4d50f8, type: 3}
+  - {fileID: 8300000, guid: 5ef6a675b45904a41a7dcd181010827f, type: 3}
