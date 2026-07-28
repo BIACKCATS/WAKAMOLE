@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.Manager;
 
 namespace Wakamole.Lyeon.Entity
 {
@@ -46,12 +46,12 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지를 잡을 경우 획득 가능한 점수입니다.")]
         [SerializeField] protected int score = 5;
 
-        private ObjectPool pool;
+        private MoleManager manager = null;
 
         /// <summary>
-        /// 두더지 오브젝트 반환을 위한 ObjectPool입니다.
+        /// 두더지 오브젝트를 관리하는 MoleManager입니다.
         /// </summary>
-        public ObjectPool Pool { set => pool = value; }
+        public MoleManager Manager { set => manager = value; }
 
         /// <summary>
         /// 두더지의 현재 체력입니다. 만일 Hp Bar가 Inspector에 지정되지 않은 경우 오류가 발생할 수 있습니다.
@@ -61,7 +61,14 @@ namespace Wakamole.Lyeon.Entity
             get => currentHp;
             set {
                 currentHp = value;
+                if (currentHp < 0) currentHp = 0;
+
                 hpBar.Value = (float)currentHp / maxHp;
+                if (currentHp <= 0 && (keyword & MoleKeyword.SPLIT) != 0)
+                {
+                    manager.ShowMole(MoleKeyword.DEFAULT);
+                    manager.ShowMole(MoleKeyword.DEFAULT);
+                }
             }
         }
 
@@ -108,7 +115,7 @@ namespace Wakamole.Lyeon.Entity
 
         private void OnDisable()
         {
-            pool?.Return(gameObject);
+            if (manager != null) manager.ObjectPool.Return(gameObject);
         }
 
         private void OnEnable()

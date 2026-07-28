@@ -23,6 +23,8 @@ namespace Wakamole.Lyeon.Manager
         private ObjectPool objectPool;
         private Dictionary<MoleKeyword, MoleProfile> moles = new();
 
+        public ObjectPool ObjectPool => objectPool;
+
         private void Awake()
         {
             MoleProfile preset;
@@ -44,21 +46,42 @@ namespace Wakamole.Lyeon.Manager
             StartCoroutine(RandomMole());
         }
 
-        private void ShowMole()
+        /// <summary>
+        /// 랜덤한 키워드의 두더지를 생성합니다.
+        /// </summary>
+        public void ShowMole()
         {
             GameObject obj = objectPool.Get();
-            MoleKeyword keyword = moles.Keys.ToList()[Random.Range(0, moles.Count - 1)]; // 테스트용
+            List<MoleKeyword> keywords = moles.Keys.ToList();
+            MoleKeyword keyword = keywords[Random.Range(0, keywords.Count - 1)]; // 테스트용
             if (obj.TryGetComponent(out Mole mole))
             {
                 mole.SetProfile(keyword, moles[keyword]);
-                mole.Pool = objectPool;
+                mole.Manager = this;
 
                 obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
                 obj.SetActive(true);
             }
         }
 
-        IEnumerator RandomMole()
+        /// <summary>
+        /// 지정된 키워드를 가진 두더지를 생성합니다.
+        /// </summary>
+        /// <param name="keyword">두더지에게 할당될 키워드입니다.</param>
+        public void ShowMole(MoleKeyword keyword)
+        {
+            GameObject obj = objectPool.Get();
+            if (obj.TryGetComponent(out Mole mole))
+            {
+                mole.SetProfile(keyword, moles[keyword]);
+                mole.Manager = this;
+
+                obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
+                obj.SetActive(true);
+            }
+        }
+
+        private IEnumerator RandomMole()
         {
             // 테스트용
             while (PlayerManager.Current.Active)
