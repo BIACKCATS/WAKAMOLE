@@ -465,6 +465,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1096a55d820454c94a05ccbbefded66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.GameCamera.CameraController
+  moveSpeed: 4
+  mouseMaxDistance: {x: 6, y: 4.5}
+  mouseMinDistance: {x: -6, y: -4.5}
+  moveMaxLimit: {x: 1, y: -4.5}
+  moveMinLimit: {x: -1, y: -5.5}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1078650316
 GameObject:
   m_ObjectHideFlags: 0
