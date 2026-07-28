@@ -50,7 +50,11 @@ namespace Wakamole.Lyeon.Player
             {
                 score = value;
                 scoreBoard.Current = score;
-                if (score >= goalScore) activeGame = false;
+                if (score >= goalScore)
+                {
+                    activeGame = false;
+                    
+                }
             }
         }
         /// <summary>

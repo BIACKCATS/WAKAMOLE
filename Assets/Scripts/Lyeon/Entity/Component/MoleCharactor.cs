@@ -68,7 +68,7 @@ namespace Wakamole.Lyeon.Entity.Component
 
         private void OnMouseDown()
         {
-            if (!active) return;
+            if (!active || PlayerManager.Current.Active) return;
             if (PlayerManager.Current.Charged)
             {
                 mole.Hp -= PlayerManager.Current.Atk * (int)PlayerManager.Current.ChargeRatio;
@@ -79,8 +79,7 @@ namespace Wakamole.Lyeon.Entity.Component
             if (mole.Hp <= 0)
             {
                 PlayerManager.Current.Score += mole.Score;
-                targetPosition = initPosition;
-                active = false;
+                Active = false;
             }
         }
     }

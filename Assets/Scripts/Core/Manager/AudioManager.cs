@@ -36,6 +36,7 @@ namespace Wakamole.Core.Manager
         public void PlayBgm(int id)
         {
             audioPlayer.clip = bgmData.audios[id];
+            audioPlayer.loop = true;
             audioPlayer.Play();
         }
 
