@@ -47,6 +47,7 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] protected int score = 5;
 
         private ObjectPool pool;
+
         /// <summary>
         /// 두더지 오브젝트 반환을 위한 ObjectPool입니다.
         /// </summary>
@@ -63,6 +64,7 @@ namespace Wakamole.Lyeon.Entity
                 hpBar.Value = (float)currentHp / maxHp;
             }
         }
+
         /// <summary>
         /// 두더지의 최대 체력입니다. 만일 현재 체력보다 작은 경우 현재 체력이 강제로 최대 체력만큼 설정됩니다.
         /// </summary>
@@ -75,6 +77,7 @@ namespace Wakamole.Lyeon.Entity
                 maxHp = value;
             }
         }
+
         /// <summary>
         /// 두더지를 잡을 경우 획득 가능한 점수입니다.
         /// </summary>
@@ -84,6 +87,7 @@ namespace Wakamole.Lyeon.Entity
         /// 두더지가 등장하는 시간입니다.
         /// </summary>
         public float ShowTime => showTime;
+
         /// <summary>
         /// 두더지가 움직이는 속도입니다.
         /// </summary>
@@ -99,8 +103,7 @@ namespace Wakamole.Lyeon.Entity
             this.keyword = keyword;
             showTime = moleProfile.showTime;
             score = moleProfile.score;
-            MaxHp = moleProfile.hp;
-            Hp = moleProfile.hp;
+            maxHp = moleProfile.hp;
         }
 
         private void OnDisable()
