@@ -468,8 +468,8 @@ MonoBehaviour:
   moveSpeed: 8
   mouseMaxDistance: {x: 6, y: 4}
   mouseMinDistance: {x: -6, y: -4}
-  moveMaxLimit: {x: 1, y: -4}
-  moveMinLimit: {x: -1, y: -5.5}
+  moveMaxLimit: {x: 2, y: -3.5}
+  moveMinLimit: {x: -2, y: -5.5}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
