@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager;
@@ -24,6 +25,16 @@ namespace Wakamole.Lyeon.Entity
         public int score, hp;
     }
 
+    /// <summary>
+    /// 두더지의 장식을 정의하기 위한 구조체입니다.
+    /// </summary>
+    [Serializable]
+    public struct MoleDeco
+    {
+        public MoleKeyword keyword;
+        public GameObject decorate;
+    }
+
     public class Mole : MonoBehaviour
     {
         [Header("Components")]
@@ -45,6 +56,10 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] protected int currentHp = 10;
         [Tooltip("두더지를 잡을 경우 획득 가능한 점수입니다.")]
         [SerializeField] protected int score = 5;
+
+        [Header("Decorations")]
+        [Tooltip("두더지에 추가될 장식 입니다.")]
+        [SerializeField] protected List<MoleDeco> decorations = new();
 
         private MoleManager manager = null;
 
@@ -108,14 +123,23 @@ namespace Wakamole.Lyeon.Entity
         public void SetProfile(MoleKeyword keyword, MoleProfile moleProfile)
         {
             this.keyword = keyword;
+            foreach (MoleDeco deco in decorations)
+            {
+                if ((keyword & deco.keyword) != 0 && deco.decorate != null)
+                    deco.decorate.SetActive(true);
+            }
+
             showTime = moleProfile.showTime;
             score = moleProfile.score;
             maxHp = moleProfile.hp;
+            Hp = moleProfile.hp;
         }
 
         private void OnDisable()
         {
             if (manager != null) manager.ObjectPool.Return(gameObject);
+            foreach (MoleDeco deco in decorations)
+                deco.decorate.SetActive(false);
         }
 
         private void OnEnable()

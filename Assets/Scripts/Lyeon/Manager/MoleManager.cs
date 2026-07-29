@@ -51,17 +51,8 @@ namespace Wakamole.Lyeon.Manager
         /// </summary>
         public void ShowMole()
         {
-            GameObject obj = objectPool.Get();
             List<MoleKeyword> keywords = moles.Keys.ToList();
-            MoleKeyword keyword = keywords[Random.Range(0, keywords.Count - 1)]; // 테스트용
-            if (obj.TryGetComponent(out Mole mole))
-            {
-                mole.SetProfile(keyword, moles[keyword]);
-                mole.Manager = this;
-
-                obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
-                obj.SetActive(true);
-            }
+            ShowMole(keywords[Random.Range(0, keywords.Count - 1)]);
         }
 
         /// <summary>
