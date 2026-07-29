@@ -116,11 +116,22 @@ namespace Wakamole.Lyeon.Entity
         public float MoveSpeed => moveSpeed;
 
         /// <summary>
+        /// 두더지의 데이터를 초기화합니다.
+        /// </summary>
+        public void Init(int defaultHp, int defaultScore, float defaultTime)
+        {
+            showTime = defaultTime;
+            score = defaultScore;
+            maxHp = defaultHp;
+            Hp = defaultHp;
+        }
+
+        /// <summary>
         /// 두더지의 정보를 초기화합니다.
         /// </summary>
         /// <param name="keyword">두더지의 특성입니다.</param>
         /// <param name="moleProfile">두더지의 정보입니다.</param>
-        public void SetProfile(MoleKeyword keyword, MoleProfile moleProfile)
+        public void AddKeyword(MoleKeyword keyword, MoleProfile moleProfile)
         {
             this.keyword = keyword;
             foreach (MoleDeco deco in decorations)
@@ -129,10 +140,10 @@ namespace Wakamole.Lyeon.Entity
                     deco.decorate.SetActive(true);
             }
 
-            showTime = moleProfile.showTime;
-            score = moleProfile.score;
-            maxHp = moleProfile.hp;
-            Hp = moleProfile.hp;
+            showTime += moleProfile.showTime;
+            score += moleProfile.score;
+            maxHp += moleProfile.hp;
+            Hp += moleProfile.hp;
         }
 
         private void OnDisable()

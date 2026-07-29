@@ -9,10 +9,10 @@ namespace Wakamole.Core.LocalData
         [Tooltip("해당 설정을 적용할 특성입니다.")]
         [SerializeField] public MoleKeyword keyword;
 
-        [Tooltip("두더지의 체력입니다.")]
+        [Tooltip("해당 키워드의 체력 증감값입니다..")]
         [SerializeField] public int hp;
 
-        [Tooltip("두더지의 등장 시간입니다.")]
+        [Tooltip("해당 키워드의 등장 시간 증감값입니다.")]
         [SerializeField] public float showTime;
 
         [Tooltip("두더지의 획득 가능한 점수입니다.")]

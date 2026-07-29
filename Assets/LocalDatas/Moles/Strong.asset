@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Strong
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.MoleData
   keyword: 4
-  hp: 5
-  showTime: 5
-  score: 5
+  hp: 3
+  showTime: 2
+  score: 2

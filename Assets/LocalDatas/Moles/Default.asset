@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.MoleData
   keyword: 0
-  hp: 2
-  showTime: 3
-  score: 5
+  hp: 0
+  showTime: 0
+  score: 0

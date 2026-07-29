@@ -2,7 +2,6 @@ using UnityEngine;
 using Wakamole.Core.Utils;
 using System.Collections;
 using Wakamole.Lyeon.Entity;
-using Wakamole.Lyeon.Player;
 using System.Collections.Generic;
 using Wakamole.Core.LocalData;
 using System.Linq;
@@ -20,8 +19,17 @@ namespace Wakamole.Lyeon.Player
         [Tooltip("생성할 두더지의 특성입니다.")]
         [SerializeField] private List<MoleData> moleDatas;
 
+        [Header("Information")]
+        [Tooltip("두더지의 기본 체력입니다.")]
+        [SerializeField] private int defaultHp = 10;
+        [Tooltip("두더지의 기본 등장 시간입니다.")]
+        [SerializeField] private int defaultShowTime = 3;
+        [Tooltip("두더지의 기본 점수입니다.")]
+        [SerializeField] private int defaultScore = 1;
+
         private ObjectPool objectPool;
         private Dictionary<MoleKeyword, MoleProfile> moles = new();
+        private List<MoleKeyword> keywords = new();
 
         public ObjectPool ObjectPool => objectPool;
 
@@ -37,6 +45,7 @@ namespace Wakamole.Lyeon.Player
                     hp = moleData.hp
                 };
                 moles.Add(moleData.keyword, preset);
+                keywords.Add(moleData.keyword);
             }
         }
 
@@ -51,7 +60,6 @@ namespace Wakamole.Lyeon.Player
         /// </summary>
         public void ShowMole()
         {
-            List<MoleKeyword> keywords = moles.Keys.ToList();
             ShowMole(keywords[Random.Range(0, keywords.Count - 1)]);
         }
 
@@ -64,7 +72,12 @@ namespace Wakamole.Lyeon.Player
             GameObject obj = objectPool.Get();
             if (obj.TryGetComponent(out Mole mole))
             {
-                mole.SetProfile(keyword, moles[keyword]);
+                mole.Init(defaultHp, defaultScore, defaultShowTime);
+                foreach (MoleKeyword moleKeyword in keywords)
+                {
+                    if ((moleKeyword & keyword) != 0)
+                        mole.AddKeyword(keyword, moles[keyword]);
+                }
                 mole.Manager = this;
 
                 obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
