@@ -42,7 +42,7 @@ namespace Wakamole.Lyeon.UI
         /// <summary>
         /// 타이머의 현재 시간입니다.
         /// </summary>
-        public float Current { get => current; set => current = value; }
+        public float Remained { get => current; set => current = value; }
 
         private void Update()
         {
