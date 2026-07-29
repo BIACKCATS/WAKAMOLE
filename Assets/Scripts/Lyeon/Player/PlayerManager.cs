@@ -9,6 +9,8 @@ namespace Wakamole.Lyeon.Player
         public static PlayerManager Current { get; private set; }
 
         [Header("Components")]
+        [Tooltip("클리어 시 게임 결과를 표시할 ClearBoard 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private ClearBoard clearBoard;
         [Tooltip("현재 점수를 표시할 ScoreBoard 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ScoreBoard scoreBoard;
         [Tooltip("게임 제한 시간을 표시할 Timer 스크립트를 포함한 GameObject입니다.")]
@@ -31,7 +33,9 @@ namespace Wakamole.Lyeon.Player
         [SerializeField] private float playDuration = 60.0f;
 
         private bool activeGame = false;
+        private int coin = 0;
         private int score = 0;
+        private int moleCount = 0;
 
         private bool activeCharge = false;
         private float chargedCount = 0;
@@ -53,9 +57,17 @@ namespace Wakamole.Lyeon.Player
                 if (score >= goalScore)
                 {
                     activeGame = false;
-                    
+                    clearBoard.gameObject.SetActive(true);
+                    clearBoard.Coin = coin;
+                    clearBoard.Mole = moleCount;
+                    clearBoard.Score = score;
                 }
             }
+        }
+        public int Count
+        {
+            get => moleCount;
+            set => moleCount = value;
         }
         /// <summary>
         /// 플레이어의 공격력입니다.

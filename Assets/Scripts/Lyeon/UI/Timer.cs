@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.UI
@@ -7,6 +8,8 @@ namespace Wakamole.Lyeon.UI
     public class Timer : MonoBehaviour
     {
         [Header("Components")]
+        [Tooltip("타이머를 표시할 이미지입니다. Filled로 설정되어야 합니다.")]
+        [SerializeField] private Image timerImage;
         [Tooltip("타이머를 표시할 텍스트입니다.")]
         [SerializeField] private TMP_Text timerText;
 
@@ -52,6 +55,7 @@ namespace Wakamole.Lyeon.UI
             }
             
             current -= Time.deltaTime;
+            timerImage.fillAmount = Mathf.Lerp(timerImage.fillAmount, current / duration, 15.0f * Time.deltaTime);
             DisplayTime();
         }
 

@@ -75,6 +75,7 @@ namespace Wakamole.Lyeon.Entity.Component
                 PlayerManager.Current.Charged = false;
             }
             else mole.Hp -= PlayerManager.Current.Atk;
+            PlayerManager.Current.Count++;
             
             if (mole.Hp <= 0)
             {

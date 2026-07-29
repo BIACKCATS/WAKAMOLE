@@ -6,8 +6,10 @@ namespace Wakamole.Lyeon.UI
     public class ScoreBoard : MonoBehaviour
     {
         [Header("Components")]
-        [Tooltip("점수를 표시할 텍스트입니다.")]
+        [Tooltip("현재 점수를 표시할 텍스트입니다.")]
         [SerializeField] private TMP_Text scoreText;
+        [Tooltip("목표 점수를 표시할 텍스트입니다.")]
+        [SerializeField] private TMP_Text goalText;
 
         private int target = 10;
         private int current = 0;
@@ -20,7 +22,7 @@ namespace Wakamole.Lyeon.UI
             set
             {
                 target = value;
-                UpdateBoard();
+                goalText.text = target.ToString();
             }
         }
         /// <summary>
@@ -31,13 +33,8 @@ namespace Wakamole.Lyeon.UI
             set
             {
                 current = value;
-                UpdateBoard();
+                scoreText.text = current.ToString();
             }
-        }
-
-        private void UpdateBoard()
-        {
-            scoreText.text = string.Format("{0} / {1}", current, target);
         }
     }
 }
