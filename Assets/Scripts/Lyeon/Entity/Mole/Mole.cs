@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Lyeon.Entity.Component;
-using Wakamole.Lyeon.Manager;
+using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.Entity
 {

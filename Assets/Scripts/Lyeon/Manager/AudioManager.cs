@@ -1,7 +1,7 @@
 using UnityEngine;
 using Wakamole.Core.LocalData;
 
-namespace Wakamole.Core.Manager
+namespace Wakamole.Lyeon.Manager
 {
     public class AudioManager : MonoBehaviour
     {
@@ -16,17 +16,7 @@ namespace Wakamole.Core.Manager
         [SerializeField] private AudioData bgmData;
         [Tooltip("SFX 정보가 저장된 AudioData를 사용하는 ScriptableObject입니다.")]
         [SerializeField] private AudioData sfxData;
-
-        private void Awake()
-        {
-            if (Current != null) Destroy(gameObject);
-            else
-            {
-                Current = this;
-                DontDestroyOnLoad(gameObject);
-            }
-        }
-
+        
         private void Start()
         {
             // 테스트용

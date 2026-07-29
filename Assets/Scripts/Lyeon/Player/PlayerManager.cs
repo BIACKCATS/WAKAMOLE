@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Wakamole.Lyeon.Manager;
 using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Player
@@ -62,6 +63,7 @@ namespace Wakamole.Lyeon.Player
                     timer.Active = false;
                     coin += (int)(timer.Remained / 10);
 
+                    GameManager.Current.Coin += coin;
                     clearBoard.Coin = coin;
                     clearBoard.Mole = moleCount;
                     clearBoard.Score = score;
@@ -96,11 +98,7 @@ namespace Wakamole.Lyeon.Player
 
         private void Awake()
         {
-            if (Current != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
+            if (Current != null) Destroy(Current);
 
             Current = this;
             DontDestroyOnLoad(gameObject);

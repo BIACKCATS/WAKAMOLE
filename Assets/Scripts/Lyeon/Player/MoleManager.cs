@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Wakamole.Core.LocalData;
 using System.Linq;
 
-namespace Wakamole.Lyeon.Manager
+namespace Wakamole.Lyeon.Player
 {
     public class MoleManager : MonoBehaviour
     {
