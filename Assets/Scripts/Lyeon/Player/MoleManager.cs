@@ -4,7 +4,6 @@ using System.Collections;
 using Wakamole.Lyeon.Entity;
 using System.Collections.Generic;
 using Wakamole.Core.LocalData;
-using System.Linq;
 
 namespace Wakamole.Lyeon.Player
 {
@@ -28,23 +27,16 @@ namespace Wakamole.Lyeon.Player
         [SerializeField] private int defaultScore = 1;
 
         private ObjectPool objectPool;
-        private Dictionary<MoleKeyword, MoleProfile> moles = new();
+        private Dictionary<MoleKeyword, MoleData> moles = new();
         private List<MoleKeyword> keywords = new();
 
         public ObjectPool ObjectPool => objectPool;
 
         private void Awake()
         {
-            MoleProfile preset;
             foreach (MoleData moleData in moleDatas)
             {
-                preset = new()
-                {
-                    showTime = moleData.showTime,
-                    score = moleData.score,
-                    hp = moleData.hp
-                };
-                moles.Add(moleData.keyword, preset);
+                moles.Add(moleData.keyword, moleData);
                 keywords.Add(moleData.keyword);
             }
         }

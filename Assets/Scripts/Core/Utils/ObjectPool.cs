@@ -24,7 +24,7 @@ namespace Wakamole.Core.Utils
             // 오브젝트 풀에 미리 오브젝트를 저장함
             for (int i = 0; i < count; i++)
             {
-                GameObject obj = UnityEngine.Object.Instantiate(this.prefab);
+                GameObject obj = Object.Instantiate(this.prefab);
                 obj.SetActive(false);
                 objects.Enqueue(obj);
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Player;
 
@@ -57,6 +58,8 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지를 잡을 경우 획득 가능한 점수입니다.")]
         [SerializeField] protected int score = 5;
 
+        protected bool fixedHp = false, fixedTime = false, fixedScore = false;
+
         [Header("Decorations")]
         [Tooltip("두더지에 추가될 장식 입니다.")]
         [SerializeField] protected List<MoleDeco> decorations = new();
@@ -79,6 +82,7 @@ namespace Wakamole.Lyeon.Entity
                 if (currentHp < 0) currentHp = 0;
 
                 hpBar.Value = (float)currentHp / maxHp;
+                if (!PlayerManager.Current.Active) return;
                 if (currentHp <= 0 && (keyword & MoleKeyword.SPLIT) != 0)
                 {
                     manager.ShowMole(MoleKeyword.DEFAULT);
@@ -120,6 +124,7 @@ namespace Wakamole.Lyeon.Entity
         /// </summary>
         public void Init(int defaultHp, int defaultScore, float defaultTime)
         {
+            fixedHp = fixedScore = fixedTime = false;
             showTime = defaultTime;
             score = defaultScore;
             maxHp = defaultHp;
@@ -130,20 +135,46 @@ namespace Wakamole.Lyeon.Entity
         /// 두더지의 정보를 초기화합니다.
         /// </summary>
         /// <param name="keyword">두더지의 특성입니다.</param>
-        /// <param name="moleProfile">두더지의 정보입니다.</param>
-        public void AddKeyword(MoleKeyword keyword, MoleProfile moleProfile)
+        /// <param name="moleData">두더지의 정보입니다.</param>
+        public void AddKeyword(MoleKeyword keyword, MoleData moleData)
         {
             this.keyword = keyword;
+            Debug.Log(keyword);
+
             foreach (MoleDeco deco in decorations)
             {
                 if ((keyword & deco.keyword) != 0 && deco.decorate != null)
                     deco.decorate.SetActive(true);
             }
 
-            showTime += moleProfile.showTime;
-            score += moleProfile.score;
-            maxHp += moleProfile.hp;
-            Hp += moleProfile.hp;
+            if (!fixedTime)
+            {
+                fixedTime = moleData.isFixedTime;
+                if (fixedTime) showTime = moleData.showTime;
+                else showTime += moleData.showTime;
+            }
+
+            if (!fixedScore)
+            {
+                fixedScore = moleData.isFixedScore;
+                if (fixedScore) score = moleData.score;
+                else score += moleData.score;
+            }
+
+            if (!fixedHp)
+            {
+                fixedHp = moleData.isFixedHp;
+                if (fixedHp)
+                {
+                    maxHp = moleData.hp;
+                    Hp = moleData.hp;
+                }
+                else
+                {
+                    maxHp += moleData.hp;
+                    Hp += moleData.hp;
+                }
+            }
         }
 
         private void OnDisable()
@@ -151,11 +182,6 @@ namespace Wakamole.Lyeon.Entity
             if (manager != null) manager.ObjectPool.Return(gameObject);
             foreach (MoleDeco deco in decorations)
                 deco.decorate.SetActive(false);
-        }
-
-        private void OnEnable()
-        {
-            Hp = maxHp;
         }
     }
 }
