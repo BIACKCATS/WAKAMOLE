@@ -120,6 +120,11 @@ namespace Wakamole.Lyeon.Entity
         public float MoveSpeed => moveSpeed;
 
         /// <summary>
+        /// 두더지의 키워드입니다.
+        /// </summary>
+        public MoleKeyword Keyword => keyword;
+
+        /// <summary>
         /// 두더지의 데이터를 초기화합니다.
         /// </summary>
         public void Init(int defaultHp, int defaultScore, float defaultTime)
@@ -182,6 +187,7 @@ namespace Wakamole.Lyeon.Entity
             if (manager != null) manager.ObjectPool.Return(gameObject);
             foreach (MoleDeco deco in decorations)
                 deco.decorate.SetActive(false);
+            keyword = MoleKeyword.DEFAULT;
         }
     }
 }

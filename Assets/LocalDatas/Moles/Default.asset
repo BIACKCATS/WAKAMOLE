@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.MoleData
   keyword: 0
   hp: 0
+  isFixedHp: 0
   showTime: 0
+  isFixedTime: 0
   score: 0
+  isFixedScore: 0

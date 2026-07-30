@@ -2534,8 +2534,8 @@ MonoBehaviour:
   molePrefab: {fileID: 3865965599339676293, guid: 4dd1de44d5dbf43a9b5b955b23a4ec42, type: 3}
   moleDatas:
   - {fileID: 11400000, guid: 18c67939c04964c5cb7711b2504b0002, type: 2}
-  - {fileID: 11400000, guid: 4aa1cd6709eab4ff280816c70b7e1bc7, type: 2}
   - {fileID: 11400000, guid: 26117ce26418a48c880990ef9ff33052, type: 2}
+  - {fileID: 11400000, guid: 4aa1cd6709eab4ff280816c70b7e1bc7, type: 2}
   - {fileID: 11400000, guid: 83c68b69dceeb40b0a6a80ee4db9b3d2, type: 2}
   defaultHp: 2
   defaultShowTime: 3
