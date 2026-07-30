@@ -52,7 +52,11 @@ namespace Wakamole.Lyeon.Player
         /// </summary>
         public void ShowMole()
         {
-            ShowMole(keywords[Random.Range(0, keywords.Count - 1)]);
+            MoleKeyword keyword = keywords[Random.Range(0, keywords.Count - 1)];
+            while ((keyword & MoleKeyword.REVIVED) != 0) 
+                keyword = keywords[Random.Range(0, keywords.Count - 1)];
+
+            ShowMole(keyword);
         }
 
         /// <summary>

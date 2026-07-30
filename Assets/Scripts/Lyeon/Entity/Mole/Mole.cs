@@ -13,7 +13,14 @@ namespace Wakamole.Lyeon.Entity
     [Flags]
     public enum MoleKeyword
     {
-        DEFAULT = 0, FAST = 1, REVIVE = 1 << 1, STRONG = 1 << 2, SPLIT = 1 << 3
+        DEFAULT = 0,
+        FAST = 1,
+        STRONG = 1 << 2,
+        SPLIT = 1 << 3,
+        REVIVE = 1 << 4,
+
+        // 시스템 구분용
+        REVIVED = 1 << 31
     }
 
     /// <summary>
@@ -83,10 +90,17 @@ namespace Wakamole.Lyeon.Entity
 
                 hpBar.Value = (float)currentHp / maxHp;
                 if (!PlayerManager.Current.Active) return;
-                if (currentHp <= 0 && (keyword & MoleKeyword.SPLIT) != 0)
+                if (currentHp <= 0)
                 {
-                    manager.ShowMole(MoleKeyword.DEFAULT);
-                    manager.ShowMole(MoleKeyword.DEFAULT);
+                    if ((keyword & MoleKeyword.SPLIT) != 0)
+                    {
+                        manager.ShowMole(MoleKeyword.DEFAULT);
+                        manager.ShowMole(MoleKeyword.DEFAULT);
+                    }
+                    else if ((keyword & MoleKeyword.REVIVE) != 0)
+                    {
+                        manager.ShowMole(MoleKeyword.REVIVED);
+                    }
                 }
             }
         }
