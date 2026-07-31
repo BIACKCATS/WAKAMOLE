@@ -75,8 +75,7 @@ namespace Wakamole.Lyeon.Player
                         mole.AddKeyword(keyword, moles[keyword]);
                 }
 
-                if ((keyword & MoleKeyword.DEFAULT) != 0)
-                    mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
+                mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
                 mole.Manager = this;
 
                 obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6205219705161473084}
   - component: {fileID: 8370111016995080881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5338463729927116529}
   - component: {fileID: 2828071011923246754}
   - component: {fileID: 3865965599339676293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7be9ab81b77449adb66546a4ebe3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Entity.Mole
+  charactor: {fileID: 6902900551066524706}
   hpBar: {fileID: 1501697763186106155}
   showTime: 3
   moveSpeed: 8
@@ -203,6 +204,9 @@ MonoBehaviour:
   maxHp: 2
   currentHp: 2
   score: 5
+  shieldCount: 3
+  popluarMin: 1
+  popluarMax: 2
   decorations:
   - keyword: 1
     decorate: {fileID: 1775015973302689758}
@@ -218,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8079221101406048612}
   - component: {fileID: 5436795243856257511}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +314,7 @@ GameObject:
   - component: {fileID: 1197332471090829381}
   - component: {fileID: 3172336220746504750}
   - component: {fileID: 1501697763186106155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +419,7 @@ GameObject:
   - component: {fileID: 1929489036076860581}
   - component: {fileID: 6902900551066524706}
   - component: {fileID: 2211310863293581921}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoleCharactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732d479eb4965475981e6bd9387dfd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Entity.MoleCharactor
-  mole: {fileID: 3865965599339676293}
 --- !u!136 &2211310863293581921
 CapsuleCollider:
   m_ObjectHideFlags: 0

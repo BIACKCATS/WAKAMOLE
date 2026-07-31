@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager;
 using Wakamole.Lyeon.UI;
 
@@ -16,10 +18,14 @@ namespace Wakamole.Lyeon.Player
         [SerializeField] private ScoreBoard scoreBoard;
         [Tooltip("게임 제한 시간을 표시할 Timer 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private Timer timer;
+        [Tooltip("현재 콤보 수를 표시할 Combo 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private Combo combo;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
 
         [Header("Information")]
+        [Tooltip("클릭을 감지할 레이어입니다. 두더지, 바닥이 해당됩니다.")]
+        [SerializeField] private LayerMask layerMask;
         [Tooltip("플레이어의 공격력입니다.")]
         [SerializeField] private int atk = 1;
         [Tooltip("차지 공격에 필요한 준비 시간입니다.")]
@@ -37,9 +43,14 @@ namespace Wakamole.Lyeon.Player
         private int coin = 0;
         private int score = 0;
         private int moleCount = 0;
+        private int maxCombo = 0;
+        private int comboCount = 0;
 
         private bool activeCharge = false;
         private float chargedCount = 0;
+
+        private Vector2 mousePosition;
+        private Ray click;
 
         /// <summary>
         /// 게임의 활성 상태입니다.
@@ -103,10 +114,22 @@ namespace Wakamole.Lyeon.Player
                 else chargedCount = 0;
             }
         }
+
         /// <summary>
         /// 차지 공격으로 입히는 데미지의 배율입니다.
         /// </summary>
         public float ChargeRatio { get => chargeRatio; set => chargeRatio = value; }
+
+        public int Combo
+        {
+            get => comboCount;
+            set
+            {
+                comboCount = value;
+                if (comboCount > maxCombo) maxCombo = comboCount;
+                combo.Count = comboCount;
+            }
+        }
 
         private void Awake()
         {
@@ -126,6 +149,7 @@ namespace Wakamole.Lyeon.Player
 
         private void Update()
         {
+            // 1. 차지 공격
             if (Mouse.current.rightButton.wasPressedThisFrame) activeCharge = true;
             else if (Mouse.current.rightButton.wasReleasedThisFrame) activeCharge = false;
 
@@ -136,6 +160,39 @@ namespace Wakamole.Lyeon.Player
             else if (chargedCount < 0) chargedCount = 0;
 
             progressBar.Value = chargedCount / chargeTime;
+
+            // 2. 일반 공격
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                mousePosition = Mouse.current.position.ReadValue();
+                click = Camera.main.ScreenPointToRay(mousePosition);
+
+                if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
+                {
+                    if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
+                    {
+                        GameObject parent = charactor.transform.parent.gameObject;
+                        if (parent.TryGetComponent(out Mole mole))
+                        {
+                            if (Charged)
+                            {
+                                mole.Hp -= atk * (int)chargeRatio;
+                                Charged = false;
+                            }
+                            else mole.Hp--;
+                            Combo++;
+
+                            if (mole.Hp <= 0)
+                            {
+                                Score += mole.Score;
+                                Count++;
+                                mole.Active = false;
+                            }
+                        }
+                        else Combo = 0;
+                    }
+                }
+            }
         }
     }
 }

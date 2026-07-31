@@ -49,6 +49,8 @@ namespace Wakamole.Lyeon.Entity
     public class Mole : MonoBehaviour
     {
         [Header("Components")]
+        [Tooltip("두더지를 표시하는 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private MoleCharactor charactor;
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private HpBar hpBar;
 
@@ -85,6 +87,8 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] protected List<MoleDeco> decorations = new();
 
         private MoleManager manager = null;
+
+        public bool Active { get => charactor.Active; set => charactor.Active = false; }
 
         /// <summary>
         /// 두더지 오브젝트를 관리하는 MoleManager입니다.
@@ -213,6 +217,10 @@ namespace Wakamole.Lyeon.Entity
                     Hp += moleData.hp;
                 }
             }
+
+            charactor.ShowTime = showTime;
+            charactor.MoveSpeed = moveSpeed;
+            charactor.Active = true;
         }
 
         private void OnEnable()
