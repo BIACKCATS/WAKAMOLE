@@ -18,6 +18,9 @@ namespace Wakamole.Lyeon.Entity
         STRONG = 1 << 2,
         SPLIT = 1 << 3,
         REVIVE = 1 << 4,
+        RICH = 1 << 5,
+        POPULAR = 1 << 6,
+        SHIELD = 1 << 7,
 
         // 시스템 구분용
         REVIVED = 1 << 31
@@ -65,6 +68,16 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지를 잡을 경우 획득 가능한 점수입니다.")]
         [SerializeField] protected int score = 5;
 
+        [Header("Shield Mole")]
+        [Tooltip("방패 특성을 가진 두더지가 가지는 방패의 개수입니다.")]
+        [SerializeField] protected int shieldCount = 3;
+
+        [Header("Popular Mole")]
+        [Tooltip("인싸 특성을 가진 두더지가 동시에 등장하는 두더지의 최소 수입니다.")]
+        [SerializeField] protected int popluarMin = 1;
+        [Tooltip("인싸 특성을 가진 두더지가 동시에 등장하는 두더지의 최대 수입니다.")]
+        [SerializeField] protected int popluarMax = 2;
+
         protected bool fixedHp = false, fixedTime = false, fixedScore = false;
 
         [Header("Decorations")]
@@ -85,6 +98,12 @@ namespace Wakamole.Lyeon.Entity
         {
             get => currentHp;
             set {
+                if (currentHp > value && (keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
+                {
+                    shieldCount--;
+                    return;
+                }
+                        
                 currentHp = value;
                 if (currentHp < 0) currentHp = 0;
 
@@ -97,10 +116,10 @@ namespace Wakamole.Lyeon.Entity
                         manager.ShowMole(MoleKeyword.DEFAULT);
                         manager.ShowMole(MoleKeyword.DEFAULT);
                     }
-                    else if ((keyword & MoleKeyword.REVIVE) != 0)
-                    {
+                    if ((keyword & MoleKeyword.REVIVE) != 0)
                         manager.ShowMole(MoleKeyword.REVIVED);
-                    }
+                    if ((keyword & MoleKeyword.RICH) != 0)
+                        PlayerManager.Current.Coin++;
                 }
             }
         }
@@ -193,6 +212,16 @@ namespace Wakamole.Lyeon.Entity
                     maxHp += moleData.hp;
                     Hp += moleData.hp;
                 }
+            }
+        }
+
+        private void OnEnable()
+        {
+            if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
+            if ((keyword & MoleKeyword.POPULAR) != 0)
+            {
+                int rand = UnityEngine.Random.Range(popluarMin, popluarMax + 1);
+                for (int i = 0; i < rand; i++) manager.ShowMole(MoleKeyword.DEFAULT);
             }
         }
 

@@ -2539,6 +2539,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83c68b69dceeb40b0a6a80ee4db9b3d2, type: 2}
   - {fileID: 11400000, guid: c26ed4cba1d3344efb585790560e2b5d, type: 2}
   - {fileID: 11400000, guid: 1d7ee3b1cdc474c9ebdb3fa810cae082, type: 2}
+  - {fileID: 11400000, guid: 7f9b2c8ce8e174223bef1fddee1f4d37, type: 2}
+  - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
+  - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5

@@ -45,6 +45,7 @@ namespace Wakamole.Lyeon.Player
         /// 게임의 활성 상태입니다.
         /// </summary>
         public bool Active { get => activeGame; set => activeGame = value; }
+
         /// <summary>
         /// 플레이어가 획득한 점수입니다.
         /// </summary>
@@ -61,7 +62,7 @@ namespace Wakamole.Lyeon.Player
                     clearBoard.gameObject.SetActive(true);
 
                     timer.Active = false;
-                    coin += (int)(timer.Remained / 10);
+                    coin += (int)(timer.Remained / 10.0f);
 
                     GameManager.Current.Coin += coin;
                     clearBoard.Coin = coin;
@@ -70,15 +71,26 @@ namespace Wakamole.Lyeon.Player
                 }
             }
         }
+
+        /// <summary>
+        /// 스테이지에서 획득한 코인입니다.
+        /// </summary>
+        public int Coin { get => coin; set => coin = value; }
+
+        /// <summary>
+        /// 잡은 두더지의 수입니다.
+        /// </summary>
         public int Count
         {
             get => moleCount;
             set => moleCount = value;
         }
+
         /// <summary>
         /// 플레이어의 공격력입니다.
         /// </summary>
         public int Atk { get => atk; set => atk = value; }
+
         /// <summary>
         /// 차지 공격 활성화 여부입니다.
         /// </summary>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7891ed4945a5434d803c8c5e7c0e22f, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.MoleData
+  keyword: 128
+  hp: 0
+  isFixedHp: 0
+  showTime: 0
+  isFixedTime: 0
+  score: 2
+  isFixedScore: 0
