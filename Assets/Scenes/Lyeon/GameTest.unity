@@ -1196,6 +1196,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798163086}
   m_CullTransparentMesh: 1
+--- !u!1 &999577132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999577134}
+  - component: {fileID: 999577133}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &999577133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999577132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf742e8c67d743cabd412108903ca93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.StageManager
+  clearBoard: {fileID: 1018493271}
+  scoreBoard: {fileID: 315852998}
+  clock: {fileID: 499170693}
+  combo: {fileID: 1037152416}
+  goalScore: 10
+  timeLimit: 0
+--- !u!4 &999577134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999577132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.32118, y: 0, z: -11.4639}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1018493271 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7585752764619849041, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
@@ -1974,7 +2024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1288248567}
-  - component: {fileID: 1288248566}
+  - component: {fileID: 1288248568}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -1982,31 +2032,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1288248566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288248565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab6a31968bba4badbe79192ea70190e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.PlayerManager
-  clearBoard: {fileID: 1018493271}
-  scoreBoard: {fileID: 315852998}
-  timer: {fileID: 499170693}
-  combo: {fileID: 1037152416}
-  progressBar: {fileID: 754755291}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 72
-  atk: 1
-  chargeTime: 2
-  chargeRatio: 2
-  goalScore: 100
-  playDuration: 100
 --- !u!4 &1288248567
 Transform:
   m_ObjectHideFlags: 0
@@ -2022,6 +2047,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288248568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288248565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e79d856b2cd4482087451e155fd2562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
+  progressBar: {fileID: 754755291}
+  chargeTime: 2
+  chargeRatio: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 72
 --- !u!1 &1489919559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3182,7 @@ SceneRoots:
   - {fileID: 501717760}
   - {fileID: 1973914332}
   - {fileID: 1288248567}
+  - {fileID: 999577134}
   - {fileID: 2127433535}
   - {fileID: 140449410}
   - {fileID: 754755295}

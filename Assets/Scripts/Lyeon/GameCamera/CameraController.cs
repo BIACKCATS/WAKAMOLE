@@ -19,6 +19,10 @@ namespace Wakamole.Lyeon.GameCamera
         [Tooltip("바닥으로 감지할 Layer입니다.")]
         [SerializeField] private LayerMask groundLayer;
 
+        private bool expandMove = false;
+
+        public bool ExpandMove { get => expandMove; set => expandMove = value; }
+
         private Ray mouseRay;
         private Vector2 currentMouse = Vector2.zero; // 화면 상의 마우스 위치
         private Vector3 mousePosition = Vector3.zero, initPosition = Vector3.zero, targetPosition = Vector3.zero;
@@ -30,7 +34,7 @@ namespace Wakamole.Lyeon.GameCamera
 
         private void Update()
         {
-            if (Mouse.current == null) return;
+            if (Mouse.current == null || !expandMove) return;
             currentMouse = Mouse.current.position.ReadValue();
             mouseRay = Camera.main.ScreenPointToRay(currentMouse);
 
@@ -40,6 +44,7 @@ namespace Wakamole.Lyeon.GameCamera
 
         private void LateUpdate()
         {
+            if (!expandMove) return;
             if (mousePosition.x > mouseMaxDistance.x) targetPosition.x = moveMaxLimit.x;
             else if (mousePosition.x < mouseMinDistance.x) targetPosition.x = moveMinLimit.x;
             else targetPosition.x = initPosition.x;

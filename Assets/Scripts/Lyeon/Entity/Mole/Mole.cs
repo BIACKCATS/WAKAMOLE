@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Entity.Component;
-using Wakamole.Lyeon.Player;
+using Wakamole.Lyeon.Manager.Play;
 
 namespace Wakamole.Lyeon.Entity
 {
@@ -112,7 +112,6 @@ namespace Wakamole.Lyeon.Entity
                 if (currentHp < 0) currentHp = 0;
 
                 hpBar.Value = (float)currentHp / maxHp;
-                if (!PlayerManager.Current.Active) return;
                 if (currentHp <= 0)
                 {
                     if ((keyword & MoleKeyword.SPLIT) != 0)
@@ -123,7 +122,7 @@ namespace Wakamole.Lyeon.Entity
                     if ((keyword & MoleKeyword.REVIVE) != 0)
                         manager.ShowMole(MoleKeyword.REVIVED);
                     if ((keyword & MoleKeyword.RICH) != 0)
-                        PlayerManager.Current.Coin++;
+                        StageManager.Current.Coin++;
                 }
             }
         }

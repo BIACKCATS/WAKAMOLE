@@ -5,7 +5,7 @@ using Wakamole.Lyeon.Entity;
 using System.Collections.Generic;
 using Wakamole.Core.LocalData;
 
-namespace Wakamole.Lyeon.Player
+namespace Wakamole.Lyeon.Manager.Play
 {
     public class MoleManager : MonoBehaviour
     {
@@ -86,7 +86,7 @@ namespace Wakamole.Lyeon.Player
         private IEnumerator RandomMole()
         {
             // 테스트용
-            while (PlayerManager.Current.Active)
+            while (StageManager.Current.Active)
             {
                 yield return _waitForSecondsRealtime;
                 ShowMole();
