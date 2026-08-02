@@ -191,24 +191,21 @@ namespace Wakamole.Lyeon.Entity
             if (!fixedTime)
             {
                 fixedTime = moleData.isFixedTime;
-
-                if (fixedTime || showTime < moleData.showTime) showTime = moleData.showTime;
+                if (fixedTime) showTime = moleData.showTime;
                 else showTime += moleData.showTime;
             }
 
             if (!fixedScore)
             {
                 fixedScore = moleData.isFixedScore;
-
-                if (fixedScore || score < moleData.score) score = moleData.score;
+                if (fixedScore) score = moleData.score;
                 else score += moleData.score;
             }
 
             if (!fixedHp)
             {
                 fixedHp = moleData.isFixedHp;
-
-                if (fixedHp || maxHp < moleData.hp)
+                if (fixedHp)
                 {
                     maxHp = moleData.hp;
                     Hp = moleData.hp;
