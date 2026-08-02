@@ -13,6 +13,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private ProgressBar progressBar;
         
         [Header("Informations")]
+        [Tooltip("플레이어의 공격력입니다.")]
+        [SerializeField] private int atk = 1;
         [Tooltip("차지 공격에 필요한 시간입니다.")]
         [SerializeField] private float chargeTime = 2.0f;
         [Tooltip("차지 공격의 데미지 배율입니다.")]
@@ -21,11 +23,10 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private LayerMask layerMask;
 
         private float chargingTime = 0;
-        private bool charged = false;
+        private bool charging = false;
 
         private int coin = 0;
-        private int atk = 0;
-
+        
         private StageManager stageManager = null;
         private Vector2 mousePosition;
         private Ray click;
@@ -35,10 +36,11 @@ namespace Wakamole.Lyeon.Manager.Play
 
         public bool Charged
         {
-            get => charged;
+            get => chargingTime >= chargeTime;
             set
             {
-                charged = true;
+                if (value) chargingTime = chargeTime;
+                else chargingTime = 0;
             }
         }
         
@@ -54,10 +56,10 @@ namespace Wakamole.Lyeon.Manager.Play
         private void Update()
         {
             // 1. 차지 공격
-            if (Mouse.current.rightButton.wasPressedThisFrame) charged = true;
-            else if (Mouse.current.rightButton.wasReleasedThisFrame) charged = false;
+            if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;
+            else if (Mouse.current.rightButton.wasReleasedThisFrame) charging = false;
 
-            if (charged && chargingTime < chargeTime) chargingTime += Time.deltaTime;
+            if (charging && chargingTime < chargeTime) chargingTime += Time.deltaTime;
             else if (chargingTime < chargeTime && chargingTime > 0) chargingTime -= Time.deltaTime / 2;
 
             if (chargingTime > chargeTime) chargingTime = chargeTime;
@@ -83,7 +85,7 @@ namespace Wakamole.Lyeon.Manager.Play
                                 mole.Hp -= atk * (int)chargeRatio;
                                 Charged = false;
                             }
-                            else mole.Hp--;
+                            else mole.Hp -= atk;
                             stageManager.Combo++;
 
                             if (mole.Hp <= 0)

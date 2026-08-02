@@ -1229,7 +1229,7 @@ MonoBehaviour:
   scoreBoard: {fileID: 315852998}
   clock: {fileID: 499170693}
   combo: {fileID: 1037152416}
-  goalScore: 10
+  goalScore: 0
   timeLimit: 0
 --- !u!4 &999577134
 Transform:
@@ -2060,6 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
   progressBar: {fileID: 754755291}
+  atk: 1
   chargeTime: 2
   chargeRatio: 2
   layerMask:
@@ -3180,12 +3181,12 @@ SceneRoots:
   - {fileID: 797701138}
   - {fileID: 2039778458}
   - {fileID: 501717760}
-  - {fileID: 1973914332}
-  - {fileID: 1288248567}
-  - {fileID: 999577134}
   - {fileID: 2127433535}
   - {fileID: 140449410}
   - {fileID: 754755295}
   - {fileID: 1489919564}
   - {fileID: 1726170808}
   - {fileID: 120210326}
+  - {fileID: 1973914332}
+  - {fileID: 1288248567}
+  - {fileID: 999577134}

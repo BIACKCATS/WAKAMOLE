@@ -62,7 +62,8 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     active = false;
                     clearBoard.gameObject.SetActive(true);
-
+                    
+                    currentCoin += (int)(timer.Current / 10);
                     clearBoard.Coin = currentCoin;
                     clearBoard.Mole = moleCount;
                     clearBoard.Score = currentScore;
