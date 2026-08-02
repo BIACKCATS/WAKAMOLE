@@ -89,6 +89,8 @@ namespace Wakamole.Lyeon.Entity
         private MoleManager manager = null;
 
         public bool Active { get => charactor.Active; set => charactor.Active = false; }
+        public bool Moving => charactor.Moving;
+        public bool Interactable => charactor.Interactable;
 
         /// <summary>
         /// 두더지 오브젝트를 관리하는 MoleManager입니다.

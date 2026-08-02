@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.GameCamera;
 using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Manager.Play
@@ -90,6 +91,7 @@ namespace Wakamole.Lyeon.Manager.Play
 
                             if (mole.Hp <= 0)
                             {
+                                stageManager.AttackedMole = mole;
                                 stageManager.Score += mole.Score;
                                 stageManager.Count++;
                                 mole.Active = false;

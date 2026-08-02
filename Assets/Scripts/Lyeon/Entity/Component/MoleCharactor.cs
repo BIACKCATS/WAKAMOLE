@@ -35,6 +35,11 @@ namespace Wakamole.Lyeon.Entity.Component
         public bool Moving => moving;
 
         /// <summary>
+        /// 두더지의 상호작용 가능 여부입니다.
+        /// </summary>
+        public bool Interactable => active && moving;
+
+        /// <summary>
         /// 두더지를 때릴 수 있는 시간입니다.
         /// </summary>
         public float ShowTime { set => showTime = value; }

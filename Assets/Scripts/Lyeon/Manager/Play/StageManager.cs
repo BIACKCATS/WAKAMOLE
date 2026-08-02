@@ -1,5 +1,8 @@
 using UnityEngine;
 using Wakamole.Core.Utils;
+using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.GameCamera;
+using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Manager.Play
@@ -17,6 +20,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private Clock clock;
         [Tooltip("현재 콤보 수를 표시할 Combo 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private Combo combo;
+        [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
+        [SerializeField] private StageFinish stageFinish;
 
         [Header("Informations")]
         [Tooltip("목표 점수입니다.")]
@@ -32,6 +37,7 @@ namespace Wakamole.Lyeon.Manager.Play
         private int currentCombo = 0;
 
         private Timer timer = new();
+        private Mole attackedMole = null;
 
         public bool Active { get => active; set => active = value; }
 
@@ -49,24 +55,25 @@ namespace Wakamole.Lyeon.Manager.Play
         }
 
         /// <summary>
+        /// 공격당한 두더지입니다.
+        /// </summary>
+        public Mole AttackedMole { set => attackedMole = value; }
+
+        /// <summary>
         /// 스테이지의 현재 점수입니다.
         /// </summary>
         public int Score
         {
             get => currentScore;
-            set 
+            set
             {
                 currentScore = value;
                 scoreBoard.Current = currentScore;
                 if (currentScore >= goalScore)
                 {
                     active = false;
-                    clearBoard.gameObject.SetActive(true);
-                    
-                    currentCoin += (int)(timer.Current / 10);
-                    clearBoard.Coin = currentCoin;
-                    clearBoard.Mole = moleCount;
-                    clearBoard.Score = currentScore;
+                    //stageFinish.FinishEffect(attackedMole, CameraController.Current, Finish);
+                    Finish();
                 }
             }
         }
@@ -153,6 +160,16 @@ namespace Wakamole.Lyeon.Manager.Play
             scoreBoard.Goal = goalScore;
             clock.Duration = timeLimit;
             active = true;
+        }
+
+        private void Finish()
+        {
+            clearBoard.gameObject.SetActive(true);
+
+            currentCoin += (int)(timer.Current / 10);
+            clearBoard.Coin = currentCoin;
+            clearBoard.Mole = moleCount;
+            clearBoard.Score = currentScore;
         }
 
         private void OnDisable()
