@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Wakamole.Lyeon.Manager
+namespace Wakamole.Lyeon.Manager.Game
 {
     public class GameManager : MonoBehaviour
     {
@@ -11,10 +11,6 @@ namespace Wakamole.Lyeon.Manager
         [SerializeField] private AudioManager audioManager;
 
         public AudioManager Audio => audioManager;
-
-        private int coin = 0;
-
-        public int Coin { get => coin; set => coin = value; }
 
         private void Awake()
         {

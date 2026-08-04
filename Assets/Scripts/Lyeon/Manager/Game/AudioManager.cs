@@ -1,7 +1,7 @@
 using UnityEngine;
 using Wakamole.Core.LocalData;
 
-namespace Wakamole.Lyeon.Manager
+namespace Wakamole.Lyeon.Manager.Game
 {
     public class AudioManager : MonoBehaviour
     {
