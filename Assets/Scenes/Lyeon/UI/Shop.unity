@@ -255,6 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275039350}
+  - component: {fileID: 275039351}
   - component: {fileID: 275039349}
   - component: {fileID: 275039348}
   - component: {fileID: 275039347}
@@ -351,6 +352,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &275039351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275039346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44921efef97284c73ae1ffab3bfa4a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.ShopManager
+  tooltip: {fileID: 1570301880}
 --- !u!1 &384874780
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570301875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -922,7 +936,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -320, y: 120}
-  m_SizeDelta: {x: 640, y: 0}
+  m_SizeDelta: {x: 640, y: 340.61}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1570301876
 MonoBehaviour:
@@ -1047,10 +1061,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1570301875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 320, y: -170.305}
+  m_SizeDelta: {x: 600, y: 300.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803652039
 MonoBehaviour:
