@@ -1,15 +1,13 @@
 using TMPro;
 using UnityEngine;
 
-namespace Wakamole.Lyeon.UI
+namespace Wakamole.Lyeon.UI.Play
 {
     public class ScoreBoard : MonoBehaviour
     {
         [Header("Components")]
-        [Tooltip("현재 점수를 표시할 텍스트입니다.")]
+        [Tooltip("점수를 표시할 텍스트입니다.")]
         [SerializeField] private TMP_Text scoreText;
-        [Tooltip("목표 점수를 표시할 텍스트입니다.")]
-        [SerializeField] private TMP_Text goalText;
 
         private int target = 10;
         private int current = 0;
@@ -22,7 +20,7 @@ namespace Wakamole.Lyeon.UI
             set
             {
                 target = value;
-                goalText.text = target.ToString();
+                UpdateScore();
             }
         }
         /// <summary>
@@ -33,8 +31,13 @@ namespace Wakamole.Lyeon.UI
             set
             {
                 current = value;
-                scoreText.text = current.ToString();
+                UpdateScore();
             }
+        }
+
+        private void UpdateScore()
+        {
+            scoreText.text = $"<color=red>{current}</color>/<color=red>{target}</color>";
         }
     }
 }

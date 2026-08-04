@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Wakamole.Lyeon.UI
+namespace Wakamole.Lyeon.UI.Play
 {
     public class ClearBoard : MonoBehaviour
     {

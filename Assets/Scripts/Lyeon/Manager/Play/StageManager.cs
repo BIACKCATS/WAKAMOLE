@@ -1,9 +1,8 @@
 using UnityEngine;
 using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity;
-using Wakamole.Lyeon.GameCamera;
 using Wakamole.Lyeon.Manager.Component;
-using Wakamole.Lyeon.UI;
+using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Manager.Play
 {
@@ -20,6 +19,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private Clock clock;
         [Tooltip("현재 콤보 수를 표시할 Combo 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private Combo combo;
+        [Tooltip("현재 획득한 코인을 표시할 CoinText 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private CoinText coinText;
         [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
         [SerializeField] private StageFinish stageFinish;
 
@@ -112,7 +113,14 @@ namespace Wakamole.Lyeon.Manager.Play
         /// <summary>
         /// 획득한 코인의 수입니다.
         /// </summary>
-        public int Coin { get => currentCoin; set => currentCoin = value; }
+        public int Coin
+        {
+            get => currentCoin;
+            set {
+                currentCoin = value;
+                coinText.Coin = currentCoin;
+            }
+        }
 
         /// <summary>
         /// 스테이지 내 콤보 수입니다.
@@ -157,6 +165,7 @@ namespace Wakamole.Lyeon.Manager.Play
         public void StartStage()
         {
             timer = new(timeLimit);
+            Coin = 0;
             scoreBoard.Goal = goalScore;
             clock.Duration = timeLimit;
             active = true;

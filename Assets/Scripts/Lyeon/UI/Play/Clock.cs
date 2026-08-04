@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Wakamole.Lyeon.UI
+namespace Wakamole.Lyeon.UI.Play
 {
     public class Clock : MonoBehaviour
     {
@@ -58,7 +58,7 @@ namespace Wakamole.Lyeon.UI
         {
             minute = (int)(current / 60.0f);
             second = (int)(current - (minute * 60.0f));
-            timerText.text = string.Format("{0:D2}:{1:D2}", minute, second);
+            if (timerText != null) timerText.text = string.Format("{0:D2}:{1:D2}", minute, second);
         }
     }
 }
