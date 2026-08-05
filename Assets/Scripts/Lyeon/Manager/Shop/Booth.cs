@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Wakamole.Core.Utils;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Shop;
 
@@ -13,18 +14,16 @@ namespace Wakamole.Lyeon.Manager.Shop
         [Tooltip("아이템을 표시하는 Prefab입니다.")]
         [SerializeField] private ItemDisplay itemDisplay;
 
-        private Canvas shopCanvas;
+        private ItemPool objectPool;
 
-        protected void Start()
+        private void Start()
         {
             Canvas.ForceUpdateCanvases();
-
-            if (shopManager.TryGetComponent(out Canvas canvas)) shopCanvas = canvas;
-            else return;
+            objectPool = new(itemDisplay.gameObject, shopManager.gameObject, 8);
 
             foreach (ItemSlot slot in itemSlots)
             {
-                GameObject obj = Instantiate(itemDisplay.gameObject, shopCanvas.transform);
+                GameObject obj = objectPool.Get();
                 if (obj.TryGetComponent(out ItemDisplay component) &&
                     obj.TryGetComponent(out RectTransform rect) &&
                     slot.TryGetComponent(out RectTransform slotRect))

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
+  m_Name: 03_Geometric
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
+  itemId: 2
+  itemCost: 10
+  itemName: "\uAE30\uD558\uD559\uC801 \uB3C4\uD615"
+  itemDesc: "\uB2F9\uC2E0\uC740 \uC0AC\uAC01\uD615\uACFC \uC0BC\uAC01\uD615\uC758
+    \uB3C4\uD615\uC744 \uBCF4\uACE0 \uBE68\uAC04 \uBB34\uC5B8\uAC00\uB97C \uC0DD\uAC01\uD588\uB2E4.
+    \uD578\uB4DC\uD3F0\uC744 \uC5B4\uB514\uB2E4 \uB480\uB354\uB77C?"
+  itemFunc: "\uB450\uB354\uC9C0 \uB098\uC624\uACE0 \uB0B4\uB824\uAC00\uB294 \uC18D\uB3C4
+    x 1.5\uBC30, \uCD5C\uC885 \uCF64\uBCF4 \uC810\uC218 1.5\uBC30"

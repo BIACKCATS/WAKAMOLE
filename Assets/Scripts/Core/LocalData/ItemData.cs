@@ -9,5 +9,6 @@ namespace Wakamole.Core.LocalData
         [SerializeField] public int itemCost;
         [SerializeField] public string itemName;
         [SerializeField, TextArea] public string itemDesc;
+        [SerializeField, TextArea] public string itemFunc;
     }
 }

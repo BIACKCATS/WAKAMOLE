@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9266234627e3947e5b2491920d5b9122, type: 3}
+  m_Name: 00_ItemList
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemDataList
+  itemDatas:
+  - {fileID: 11400000, guid: 271b4a282ba6945d78afe3d55a513c78, type: 2}
+  - {fileID: 11400000, guid: fd2fd0668a3d4464ab78c29afb675aef, type: 2}
+  - {fileID: 11400000, guid: d12102db578214b02a155da0772250ec, type: 2}
