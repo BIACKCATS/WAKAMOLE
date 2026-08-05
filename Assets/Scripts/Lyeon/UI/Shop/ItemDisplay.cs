@@ -3,18 +3,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Wakamole.Lyeon.Item;
-using Wakamole.Lyeon.Manager;
+using Wakamole.Lyeon.Manager.Shop;
 
 namespace Wakamole.Lyeon.UI.Shop
 {
     public class ItemDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
-        IPointerDownHandler, IPointerUpHandler
+        IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
+        [SerializeField] private RectTransform rect;
+
         private bool activeHover = false;
         private bool activeDrag = false;
 
-        private Vector2 offset;
-        private Vector2 initPosition, targetPosition;
+        private Vector2 initPosition, targetPosition, offset;
 
         private IItem item;
 
@@ -23,12 +24,8 @@ namespace Wakamole.Lyeon.UI.Shop
         private ShopManager shop = null;
 
         public ShopManager Shop { set => shop = value; }
+        public IItem Item { get => item; set => item = value; }
         public Vector3 TargetPosition { get => targetPosition; set => targetPosition = value; }
-
-        private void Awake()
-        {
-            targetPosition = initPosition = transform.position;
-        }
 
         private void Start()
         {
@@ -37,8 +34,7 @@ namespace Wakamole.Lyeon.UI.Shop
 
         private void Update()
         {
-            if (activeDrag) targetPosition = Mouse.current.position.ReadValue() + offset;
-            transform.position = Vector2.Lerp(transform.position, targetPosition, 50.0f * Time.deltaTime);
+            rect.position = Vector2.Lerp(rect.position, targetPosition, 50.0f * Time.deltaTime);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -58,7 +54,12 @@ namespace Wakamole.Lyeon.UI.Shop
         public void OnPointerDown(PointerEventData eventData)
         {
             activeDrag = true;
-            offset = (Vector2)transform.position - Mouse.current.position.ReadValue();
+            offset = (Vector2)rect.position - Mouse.current.position.ReadValue();
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            targetPosition = Mouse.current.position.ReadValue() + offset;
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -67,10 +68,11 @@ namespace Wakamole.Lyeon.UI.Shop
             EventSystem.current.RaycastAll(eventData, results);
             foreach (RaycastResult result in results)
             {
-                if (result.gameObject.TryGetComponent(out ItemSlot slot))
+                if (result.gameObject.TryGetComponent(out ItemSlot slot) &&
+                    slot.TryGetComponent(out RectTransform slotRect))
                 {
                     slot.Item = item;
-                    targetPosition = slot.gameObject.transform.position;
+                    targetPosition = slotRect.position;
                     return;
                 }
             }

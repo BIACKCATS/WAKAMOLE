@@ -1,7 +1,7 @@
 using UnityEngine;
 using Wakamole.Lyeon.UI.Shop;
 
-namespace Wakamole.Lyeon.Manager
+namespace Wakamole.Lyeon.Manager.Shop
 {
     public class ShopManager : MonoBehaviour
     {

@@ -5,9 +5,11 @@ namespace Wakamole.Lyeon.UI
 {
     public class ItemSlotList : MonoBehaviour
     {
-        [SerializeField] private List<ItemSlot> itemSlots = new();
+        [SerializeField] protected List<ItemSlot> itemSlots = new();
 
-        private void Awake()
+        public List<ItemSlot> Slots => itemSlots;
+
+        protected virtual void Awake()
         {
             for (int i = 0; i < itemSlots.Count; i++)
             {
