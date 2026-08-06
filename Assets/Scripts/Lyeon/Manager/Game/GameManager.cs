@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Wakamole.Lyeon.Item;
 
 namespace Wakamole.Lyeon.Manager.Game
 {
@@ -6,11 +8,11 @@ namespace Wakamole.Lyeon.Manager.Game
     {
         public static GameManager Current { get; private set; }
 
-        [Header("Components")]
-        [Tooltip("게임 전체의 오디오를 관리하는 AudioManager입니다.")]
-        [SerializeField] private AudioManager audioManager;
+        private int coin = 0;
+        private Dictionary<int, IItem> inventory = new();
 
-        public AudioManager Audio => audioManager;
+        public int Coin { get => coin; set => coin = value; }
+        public Dictionary<int, IItem> Inventory => inventory;
 
         private void Awake()
         {

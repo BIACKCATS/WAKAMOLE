@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Wakamole.Lyeon.Manager
+namespace Wakamole.Lyeon.Manager.Game
 {
     public class LoadingManager : MonoBehaviour
     {
