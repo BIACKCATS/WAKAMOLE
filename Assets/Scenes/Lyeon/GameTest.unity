@@ -1257,6 +1257,7 @@ GameObject:
   - component: {fileID: 1078650320}
   - component: {fileID: 1078650319}
   - component: {fileID: 1078650318}
+  - component: {fileID: 1078650321}
   m_Layer: 5
   m_Name: ChargeBar
   m_TagString: Untagged
@@ -1331,10 +1332,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1078650316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2175e7baa4a4e1a88aa1a8c1dab755, type: 3}
+  m_Script: {fileID: 11500000, guid: 37790daf8571d421dbafd5c8dcb3346c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ProgressBar
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ChargeBar
   image: {fileID: 1175474581}
+  canvasGroup: {fileID: 1078650321}
+--- !u!225 &1078650321
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078650316}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1118663996
 GameObject:
   m_ObjectHideFlags: 0

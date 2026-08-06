@@ -1308,7 +1308,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0, y: 0, z: -0, w: -1}
   m_Size:
-    m_Target: 1081.7585
+    m_Target: 984.96313
     speed: 2
     m_Value: 1081.7585
   m_Ortho:
@@ -1455,12 +1455,12 @@ MonoBehaviour:
       m_Data: 64918
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 52364
-    - m_Data: 52366
-    - m_Data: 52368
-    - m_Data: 52370
-    - m_Data: 52372
-    - m_Data: 52374
+    - m_Data: 52574
+    - m_Data: 52576
+    - m_Data: 52578
+    - m_Data: 52580
+    - m_Data: 52582
+    - m_Data: 52584
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1494,12 +1494,12 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 52364
-    - m_Data: 52366
-    - m_Data: 52368
-    - m_Data: 52370
-    - m_Data: 52372
-    - m_Data: 52374
+    - m_Data: 52574
+    - m_Data: 52576
+    - m_Data: 52578
+    - m_Data: 52580
+    - m_Data: 52582
+    - m_Data: 52584
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

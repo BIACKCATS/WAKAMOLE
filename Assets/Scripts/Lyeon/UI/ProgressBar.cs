@@ -7,8 +7,8 @@ namespace Wakamole.Lyeon.UI
     {
         [Header("Components")]
         [Tooltip("진행도를 표시할 Image입니다. Filled로 설정되어야 합니다.")]
-        [SerializeField] private Image image;
-        private float value = 0;
+        [SerializeField] protected Image image;
+        protected float value = 0;
 
         /// <summary>
         /// ProgressBar의 값입니다. 0 ~ 1 사이의 float값을 가집니다.
@@ -23,7 +23,7 @@ namespace Wakamole.Lyeon.UI
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             image.fillAmount = Mathf.Lerp(image.fillAmount, value, 15.0f * Time.deltaTime);
         }

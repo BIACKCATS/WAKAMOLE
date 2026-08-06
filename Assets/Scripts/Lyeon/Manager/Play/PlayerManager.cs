@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
-using Wakamole.Lyeon.GameCamera;
 using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Manager.Play
