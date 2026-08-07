@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Wakamole.Core.LocalData;
 using Wakamole.Core.Utils;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Shop;
@@ -13,6 +14,7 @@ namespace Wakamole.Lyeon.Manager.Shop
         [SerializeField] private ShopManager shopManager;
         [Tooltip("아이템을 표시하는 Prefab입니다.")]
         [SerializeField] private ItemDisplay itemDisplay;
+        [SerializeField] private ItemDataList itemDataList;
 
         private ItemPool objectPool;
 
@@ -28,6 +30,8 @@ namespace Wakamole.Lyeon.Manager.Shop
                     obj.TryGetComponent(out RectTransform rect) &&
                     slot.TryGetComponent(out RectTransform slotRect))
                 {
+                    component.CurrentSlot = slot;
+                    component.Item = itemDataList.itemDatas[Random.Range(0, itemDataList.itemDatas.Count)];
                     component.TargetPosition = slotRect.position;
                     rect.position = slotRect.position;
                 }

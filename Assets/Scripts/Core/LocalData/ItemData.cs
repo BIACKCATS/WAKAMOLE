@@ -5,6 +5,7 @@ namespace Wakamole.Core.LocalData
     [CreateAssetMenu(fileName = "ItemData", menuName = "LocalDatas/ItemData")]
     public class ItemData : ScriptableObject
     {
+        [SerializeField] public Sprite itemSprite;
         [SerializeField] public int itemId;
         [SerializeField] public int itemCost;
         [SerializeField] public string itemName;

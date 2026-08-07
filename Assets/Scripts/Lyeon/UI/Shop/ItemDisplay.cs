@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using Wakamole.Lyeon.Item;
+using UnityEngine.UI;
+using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Manager.Shop;
 
 namespace Wakamole.Lyeon.UI.Shop
@@ -10,21 +11,31 @@ namespace Wakamole.Lyeon.UI.Shop
     public class ItemDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
+        [SerializeField] private Image image;
         [SerializeField] private RectTransform rect;
 
         private bool activeHover = false;
         private bool activeDrag = false;
 
         private Vector2 initPosition, targetPosition, offset;
-
-        private IItem item;
+        private ItemData itemData;
+        private ItemSlot itemSlot;
 
         private List<RaycastResult> results = new();
 
         private ShopManager shop = null;
 
         public ShopManager Shop { set => shop = value; }
-        public IItem Item { get => item; set => item = value; }
+        public ItemData Item
+        {
+            get => itemData;
+            set
+            {
+                itemData = value;
+                image.sprite = itemData.itemSprite;
+            }
+        }
+        public ItemSlot CurrentSlot { get => itemSlot; set => itemSlot = value; }
         public Vector3 TargetPosition { get => targetPosition; set => targetPosition = value; }
 
         private void Start()
@@ -41,6 +52,7 @@ namespace Wakamole.Lyeon.UI.Shop
         {
             if (shop == null) return;
             shop.Tooltip.Active = true;
+            shop.Tooltip.Item = itemData;
             activeHover = true;
         }
 
@@ -54,6 +66,7 @@ namespace Wakamole.Lyeon.UI.Shop
         public void OnPointerDown(PointerEventData eventData)
         {
             activeDrag = true;
+            initPosition = rect.position;
             offset = (Vector2)rect.position - Mouse.current.position.ReadValue();
         }
 
@@ -71,9 +84,22 @@ namespace Wakamole.Lyeon.UI.Shop
                 if (result.gameObject.TryGetComponent(out ItemSlot slot) &&
                     slot.TryGetComponent(out RectTransform slotRect))
                 {
-                    slot.Item = item;
-                    targetPosition = slotRect.position;
+                    if (slot.Item != null)
+                    {
+                        targetPosition = initPosition;
+                    }
+                    else
+                    {
+                        itemSlot.Item = null;
+                        itemSlot = slot;
+                        slot.Item = itemData;
+                        targetPosition = slotRect.position;
+                    }
                     return;
+                }
+                else
+                {
+                    targetPosition = initPosition;
                 }
             }
         }

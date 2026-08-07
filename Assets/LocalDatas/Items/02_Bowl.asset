@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
   m_Name: 02_Bowl
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
+  itemSprite: {fileID: 21300000, guid: ad3370feeded646e09cabaa7dc94975a, type: 3}
   itemId: 1
   itemCost: 10
   itemName: "\uC124\uAC70\uC9C0 \uADF8\uB987"

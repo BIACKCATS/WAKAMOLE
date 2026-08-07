@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Wakamole.Core.LocalData;
 
 namespace Wakamole.Lyeon.UI.Shop
 {
@@ -11,7 +12,10 @@ namespace Wakamole.Lyeon.UI.Shop
         private Vector2 targetPosition;
 
         public bool Active { get => gameObject.activeSelf; set => gameObject.SetActive(value); }
-        public string ItemDesc { get; set; }
+        public ItemData Item
+        {
+            set => text.text = $"{value.itemName}\n\n{value.itemFunc}\n\n<i><color=\"grey\"><size=28>{value.itemDesc}</size></color></i>";
+        }
 
         private void Awake()
         {
