@@ -549,6 +549,7 @@ MonoBehaviour:
   sprite: {fileID: 212982561}
   boxCollider: {fileID: 212982563}
   data: {fileID: 11400000, guid: 93a2177af775c4e0790738d341632e1f, type: 2}
+  vibrateCount: 4
 --- !u!65 &212982563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -678,6 +679,7 @@ MonoBehaviour:
   sprite: {fileID: 221571948}
   boxCollider: {fileID: 221571950}
   data: {fileID: 11400000, guid: d91dd89b6205547319a015a6c9c4d1bd, type: 2}
+  vibrateCount: 4
 --- !u!65 &221571950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1086,6 +1088,7 @@ MonoBehaviour:
   sprite: {fileID: 653532762}
   boxCollider: {fileID: 653532764}
   data: {fileID: 11400000, guid: 4d930c6e3b2be4e6fa42e04c61feb8b7, type: 2}
+  vibrateCount: 4
 --- !u!65 &653532764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1215,6 +1218,7 @@ MonoBehaviour:
   sprite: {fileID: 655982163}
   boxCollider: {fileID: 655982165}
   data: {fileID: 11400000, guid: 92fe65142f6644790b97685c689fd945, type: 2}
+  vibrateCount: 4
 --- !u!65 &655982165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1344,6 +1348,7 @@ MonoBehaviour:
   sprite: {fileID: 664922874}
   boxCollider: {fileID: 664922876}
   data: {fileID: 11400000, guid: 84f7be433bfa449aa87d0163e9269ed0, type: 2}
+  vibrateCount: 4
 --- !u!65 &664922876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1781,6 +1786,7 @@ MonoBehaviour:
   sprite: {fileID: 996807250}
   boxCollider: {fileID: 996807252}
   data: {fileID: 11400000, guid: 92fe65142f6644790b97685c689fd945, type: 2}
+  vibrateCount: 4
 --- !u!65 &996807252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3004,6 +3010,7 @@ MonoBehaviour:
   sprite: {fileID: 1616802449}
   boxCollider: {fileID: 1616802451}
   data: {fileID: 11400000, guid: 93a2177af775c4e0790738d341632e1f, type: 2}
+  vibrateCount: 4
 --- !u!65 &1616802451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3270,6 +3277,7 @@ MonoBehaviour:
   sprite: {fileID: 1668700969}
   boxCollider: {fileID: 1668700971}
   data: {fileID: 11400000, guid: 84f7be433bfa449aa87d0163e9269ed0, type: 2}
+  vibrateCount: 4
 --- !u!65 &1668700971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3575,6 +3583,7 @@ MonoBehaviour:
   sprite: {fileID: 1837009831}
   boxCollider: {fileID: 1837009833}
   data: {fileID: 11400000, guid: 4d930c6e3b2be4e6fa42e04c61feb8b7, type: 2}
+  vibrateCount: 4
 --- !u!65 &1837009833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3899,6 +3908,7 @@ MonoBehaviour:
   sprite: {fileID: 1994893048}
   boxCollider: {fileID: 1994893050}
   data: {fileID: 11400000, guid: 92fe65142f6644790b97685c689fd945, type: 2}
+  vibrateCount: 4
 --- !u!65 &1994893050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4155,6 +4165,7 @@ MonoBehaviour:
   sprite: {fileID: 2060244090}
   boxCollider: {fileID: 2060244092}
   data: {fileID: 11400000, guid: 84f7be433bfa449aa87d0163e9269ed0, type: 2}
+  vibrateCount: 4
 --- !u!65 &2060244092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4284,6 +4295,7 @@ MonoBehaviour:
   sprite: {fileID: 2093745001}
   boxCollider: {fileID: 2093745003}
   data: {fileID: 11400000, guid: 84f7be433bfa449aa87d0163e9269ed0, type: 2}
+  vibrateCount: 4
 --- !u!65 &2093745003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4413,6 +4425,7 @@ MonoBehaviour:
   sprite: {fileID: 2105989349}
   boxCollider: {fileID: 2105989351}
   data: {fileID: 11400000, guid: d91dd89b6205547319a015a6c9c4d1bd, type: 2}
+  vibrateCount: 4
 --- !u!65 &2105989351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4542,6 +4555,7 @@ MonoBehaviour:
   sprite: {fileID: 2124891793}
   boxCollider: {fileID: 2124891795}
   data: {fileID: 11400000, guid: 4d930c6e3b2be4e6fa42e04c61feb8b7, type: 2}
+  vibrateCount: 4
 --- !u!65 &2124891795
 BoxCollider:
   m_ObjectHideFlags: 0
