@@ -182,7 +182,6 @@ namespace Wakamole.Lyeon.Entity
         public void AddKeyword(MoleKeyword keyword, MoleData moleData)
         {
             this.keyword = keyword;
-            Debug.Log(keyword);
 
             foreach (MoleDeco deco in decorations)
             {

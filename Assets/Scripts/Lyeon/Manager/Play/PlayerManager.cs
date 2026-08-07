@@ -75,7 +75,8 @@ namespace Wakamole.Lyeon.Manager.Play
 
                 if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
+                    if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop)) backdrop.Hit();
+                    else if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
                     {
                         GameObject parent = charactor.transform.parent.gameObject;
                         if (parent.TryGetComponent(out Mole mole))
@@ -96,8 +97,9 @@ namespace Wakamole.Lyeon.Manager.Play
                                 mole.Active = false;
                             }
                         }
+                        return;
                     }
-                    else stageManager.Combo = 0;
+                    stageManager.Combo = 0;
                 }
             }
         }

@@ -249,17 +249,21 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs:
-      - m_Data: 51944
+      - m_Data: 55074
       m_LastClickedID:
-        m_Data: 51944
+        m_Data: 55074
       m_ExpandedIDs:
-      - m_Data: -1746
-      - m_Data: 51944
-      - m_Data: 51986
+      - m_Data: -9426
+      - m_Data: -9144
+      - m_Data: -8556
+      - m_Data: -7448
+      - m_Data: -7172
+      - m_Data: -1660
+      - m_Data: 51892
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: StageManager
+        m_OriginalName: StageManager
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -267,13 +271,13 @@ MonoBehaviour:
           width: 0
           height: 0
         m_UserData:
-          m_Data: 0
+          m_Data: 54220
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 5}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootEntityId:
@@ -958,7 +962,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -967,14 +971,14 @@ MonoBehaviour:
     y: 512
     width: 1126
     height: 353
-  m_MinSize: {x: 231, y: 276}
-  m_MaxSize: {x: 10001, y: 10026}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 101, y: 126}
+  m_MaxSize: {x: 4001, y: 4026}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1024,7 +1028,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Lyeon/UI
+    - Assets/Scenes/Lyeon/UI
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1034,27 +1038,28 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Lyeon/UI
+  - Assets/Scenes/Lyeon/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/kyeoh/Unity/WAKAMOLE
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 151.00012}
+    scrollPos: {x: 0, y: 87.9975}
     m_SelectedIDs:
-    - m_Data: 52768
+    - m_Data: 52524
     m_LastClickedID:
-      m_Data: 52768
+      m_Data: 52524
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 52574
-    - m_Data: 52576
-    - m_Data: 52578
-    - m_Data: 52580
-    - m_Data: 52582
-    - m_Data: 52584
-    - m_Data: 52688
+    - m_Data: 52406
+    - m_Data: 52408
+    - m_Data: 52410
+    - m_Data: 52412
+    - m_Data: 52414
+    - m_Data: 52416
+    - m_Data: 52418
+    - m_Data: 52420
     - m_Data: 1000000000
     - m_Data: 2147483647
     m_RenameOverlay:
@@ -1090,12 +1095,14 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 52574
-    - m_Data: 52576
-    - m_Data: 52578
-    - m_Data: 52580
-    - m_Data: 52582
-    - m_Data: 52584
+    - m_Data: 52406
+    - m_Data: 52408
+    - m_Data: 52410
+    - m_Data: 52412
+    - m_Data: 52414
+    - m_Data: 52416
+    - m_Data: 52418
+    - m_Data: 52420
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1124,10 +1131,10 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 51944
+    - m_Data: 55074
     m_LastClickedEntityId:
-      m_Data: 51944
-    m_HadKeyboardFocusLastEvent: 0
+      m_Data: 55074
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: -12100
     m_RenameOverlay:

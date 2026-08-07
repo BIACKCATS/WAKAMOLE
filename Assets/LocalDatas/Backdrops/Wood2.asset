@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0a92d5c07174c0d8765b77abdb5056, type: 3}
+  m_Name: Wood2
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.BackdropData
+  objectFrame:
+  - {fileID: 21300000, guid: b8551865ca39f4b49b270bc276018ea3, type: 3}
+  - {fileID: 21300000, guid: dc557efbf70a7413bb381dfa7be0e117, type: 3}
+  - {fileID: 21300000, guid: d9acf84b39a674c319640f22280017cb, type: 3}
+  - {fileID: 21300000, guid: a43fb7eec73474abe84891c790c1500b, type: 3}
