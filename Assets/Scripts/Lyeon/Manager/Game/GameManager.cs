@@ -14,7 +14,7 @@ namespace Wakamole.Lyeon.Manager.Game
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
 
-        private Dictionary<int, ItemData> inventory = new();
+        private Dictionary<int, ItemData> inventory = new(5);
         private GameData<StatusData> statusData;
 
         public int Coin { get => status.Coin; set => status.Coin = value; }

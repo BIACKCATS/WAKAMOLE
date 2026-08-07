@@ -149,7 +149,7 @@ namespace Wakamole.Lyeon.Manager.Play
             Current = this;
             for (int i = 0; i < GameManager.Current.Inventory.Count; i++)
             {
-                if (GameManager.Current.Inventory[i] == null) continue;
+                Debug.Log(GameManager.Current.Inventory[i]);
                 itemSlots[i].Item = GameManager.Current.Inventory[i];
             }
 

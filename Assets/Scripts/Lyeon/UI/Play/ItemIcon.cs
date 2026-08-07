@@ -10,6 +10,8 @@ namespace Wakamole.Lyeon.UI.Play
         [SerializeField] private Image image;
         [SerializeField] private ItemTooltip tooltip;
 
+        [SerializeField] private Sprite defaultSprite;
+
         private ItemData itemData;
 
         public ItemData Item
@@ -18,7 +20,8 @@ namespace Wakamole.Lyeon.UI.Play
             set
             {
                 itemData = value;
-                image.sprite = itemData.itemSprite;
+                if (itemData == null) image.sprite = defaultSprite;
+                else image.sprite = itemData.itemSprite;
             }
         }
 
@@ -29,6 +32,7 @@ namespace Wakamole.Lyeon.UI.Play
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (itemData == null) return;
             tooltip.Active = true;
             tooltip.Item = itemData;
         }
