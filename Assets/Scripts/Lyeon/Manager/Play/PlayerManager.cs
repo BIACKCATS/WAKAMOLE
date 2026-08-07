@@ -99,7 +99,7 @@ namespace Wakamole.Lyeon.Manager.Play
                         }
                         return;
                     }
-                    stageManager.Combo = 0;
+                    else stageManager.Combo = 0;
                 }
             }
         }
