@@ -1,5 +1,5 @@
 using UnityEngine;
-using Wakamole.Lyeon.UI.Shop;
+using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Manager.Shop
 {

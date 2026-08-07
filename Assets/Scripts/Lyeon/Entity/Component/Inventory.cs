@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Wakamole.Lyeon.Item;
+using Wakamole.Core.LocalData;
 
 namespace Wakamole.Lyeon.Entity.Component
 {
     public class Inventory : MonoBehaviour
     {
-        private Dictionary<int, IItem> items = new();
+        private Dictionary<int, ItemData> items = new();
 
-        public Dictionary<int, IItem> Items => items;
+        public Dictionary<int, ItemData> Items => items;
     }
 }

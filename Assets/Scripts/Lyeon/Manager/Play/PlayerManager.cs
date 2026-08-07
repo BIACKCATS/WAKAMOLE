@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
 
 namespace Wakamole.Lyeon.Manager.Play
@@ -75,7 +76,12 @@ namespace Wakamole.Lyeon.Manager.Play
 
                 if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop)) backdrop.Hit();
+                    if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
+                    {
+                        if (GameManager.Current.Preference.ActiveBackdropScore)
+                            stageManager.Score += GameManager.Current.Preference.BackdropScore;
+                        backdrop.Hit();
+                    }
                     else if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
                     {
                         GameObject parent = charactor.transform.parent.gameObject;

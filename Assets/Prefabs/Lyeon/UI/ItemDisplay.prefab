@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Shop.ItemDisplay
   image: {fileID: 6315507123543873099}
+  costText: {fileID: 7892625361543730711}
   rect: {fileID: 4474924178424699004}
 --- !u!1 &5790390897875881910
 GameObject:

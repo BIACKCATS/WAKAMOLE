@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Manager.Component;
+using Wakamole.Lyeon.Manager.Game;
+using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Manager.Play
@@ -21,6 +24,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private Combo combo;
         [Tooltip("현재 획득한 코인을 표시할 CoinText 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private CoinText coinText;
+        [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
+        [SerializeField] private List<ItemIcon> itemSlots;
         [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
         [SerializeField] private StageFinish stageFinish;
 
@@ -142,6 +147,11 @@ namespace Wakamole.Lyeon.Manager.Play
             if (timeLimit <= 0) timeLimit = 100;
 
             Current = this;
+            for (int i = 0; i < GameManager.Current.Inventory.Count; i++)
+            {
+                if (GameManager.Current.Inventory[i] == null) continue;
+                itemSlots[i].Item = GameManager.Current.Inventory[i];
+            }
 
             // for test
             StartStage();

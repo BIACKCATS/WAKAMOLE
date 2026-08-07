@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Imaginary.Core.Data;
 using UnityEngine;
-using Wakamole.Lyeon.Item;
+using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.Manager.Game
@@ -11,13 +11,15 @@ namespace Wakamole.Lyeon.Manager.Game
         public static GameManager Current { get; private set; }
 
         [SerializeField] private Status status;
+        [SerializeField] private Preference preference;
+        [SerializeField] private ItemDataList itemDataList;
 
-        private int coin = 0;
-        private Dictionary<int, IItem> inventory = new();
+        private Dictionary<int, ItemData> inventory = new();
         private GameData<StatusData> statusData;
 
-        public int Coin { get => coin; set => coin = value; }
-        public Dictionary<int, IItem> Inventory => inventory;
+        public int Coin { get => status.Coin; set => status.Coin = value; }
+        public Preference Preference => preference;
+        public Dictionary<int, ItemData> Inventory => inventory;
 
         private void Awake()
         {
@@ -45,6 +47,18 @@ namespace Wakamole.Lyeon.Manager.Game
 
                 status.Import(data);
                 statusData.Write(data);
+            }
+        }
+
+        public void UseItem(int inventoryIndex)
+        {
+            if (inventory[inventoryIndex] == null) return;
+
+            int itemId = inventory[inventoryIndex].itemId;
+            switch (itemId)
+            {
+                case 0:
+                    break;
             }
         }
     }

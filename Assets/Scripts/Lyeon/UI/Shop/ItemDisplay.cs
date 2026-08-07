@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Shop;
 
 namespace Wakamole.Lyeon.UI.Shop
@@ -12,6 +14,7 @@ namespace Wakamole.Lyeon.UI.Shop
         IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [SerializeField] private Image image;
+        [SerializeField] private TMP_Text costText;
         [SerializeField] private RectTransform rect;
 
         private bool activeHover = false;
@@ -33,6 +36,7 @@ namespace Wakamole.Lyeon.UI.Shop
             {
                 itemData = value;
                 image.sprite = itemData.itemSprite;
+                costText.text = $"코인: {itemData.itemCost}";
             }
         }
         public ItemSlot CurrentSlot { get => itemSlot; set => itemSlot = value; }
@@ -84,23 +88,29 @@ namespace Wakamole.Lyeon.UI.Shop
                 if (result.gameObject.TryGetComponent(out ItemSlot slot) &&
                     slot.TryGetComponent(out RectTransform slotRect))
                 {
-                    if (slot.Item != null)
+                    // buy
+                    if (slot.SlotType.Equals(ItemSlotType.INVENTORY) && itemSlot.SlotType.Equals(ItemSlotType.BOOTH))
                     {
-                        targetPosition = initPosition;
+                        if (slot.Item == null && GameManager.Current.Coin >= itemData.itemCost)
+                            GameManager.Current.Coin -= itemData.itemCost;
+                        else
+                        {
+                            targetPosition = initPosition;
+                            return;
+                        }
                     }
-                    else
+                    // sell
+                    else if (slot.SlotType.Equals(ItemSlotType.BOOTH) && itemSlot.SlotType.Equals(ItemSlotType.INVENTORY))
                     {
-                        itemSlot.Item = null;
-                        itemSlot = slot;
-                        slot.Item = itemData;
-                        targetPosition = slotRect.position;
+                        GameManager.Current.Coin += itemData.itemCost;
                     }
+                    itemSlot.Item = null;
+                    itemSlot = slot;
+                    slot.Item = itemData;
+                    targetPosition = slotRect.position;
                     return;
                 }
-                else
-                {
-                    targetPosition = initPosition;
-                }
+                else targetPosition = initPosition;
             }
         }
     }

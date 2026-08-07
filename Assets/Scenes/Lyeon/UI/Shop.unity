@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 0
 --- !u!1 &20997682
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 1
 --- !u!222 &20997686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -383,6 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 0
 --- !u!1 &147406865
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 1
 --- !u!222 &208761198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1064,6 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 0
 --- !u!1 &379215484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 1
 --- !u!222 &1048231165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2099,6 +2111,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230340770}
   m_CullTransparentMesh: 1
+--- !u!1 &1538936580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538936581}
+  - component: {fileID: 1538936584}
+  - component: {fileID: 1538936583}
+  - component: {fileID: 1538936582}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1538936581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538936580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1920, y: 1080, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538936582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538936580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787b0382b311f439099276f823294750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Preference
+--- !u!114 &1538936583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538936580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539575394d2e04f79aece8701062844f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Status
+  coin: 0
+  atk: 0
+  chargeTime: 0
+  chargeRatio: 0
+--- !u!114 &1538936584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538936580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a17c199db5b24727a9239247883ec32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Game.GameManager
+  status: {fileID: 1538936583}
+  preference: {fileID: 1538936582}
+  itemDataList: {fileID: 11400000, guid: 0cfcf090a7f324309bb7fd5cd311a8ba, type: 2}
 --- !u!1 &1570301874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 0
 --- !u!1 &1875517586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,6 +2731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 0
 --- !u!1 &1995463963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddc04e454c0e477a988edb562b084dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.ItemSlot
+  slotId: 0
+  slotType: 1
 --- !u!222 &1995463967
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2841,3 +2936,4 @@ SceneRoots:
   - {fileID: 147406867}
   - {fileID: 275039350}
   - {fileID: 846121784}
+  - {fileID: 1538936581}

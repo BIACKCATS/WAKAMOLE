@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Wakamole.Core.LocalData;
 
-namespace Wakamole.Lyeon.UI.Shop
+namespace Wakamole.Lyeon.UI
 {
     public class ItemTooltip : MonoBehaviour
     {
