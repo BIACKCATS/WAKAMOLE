@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
   m_Name: 09_Mosquito
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
-  itemSprite: {fileID: 21300000, guid: 53973a285df3a4352805c125b7114fc4, type: 3}
-  itemId: 7
+  itemSprite: {fileID: 21300000, guid: 139c8344e860a4e5886f9ad9b7fc2513, type: 3}
+  itemId: 8
   itemCost: 10
   itemName: "\uBAA8\uAE30"
   itemDesc: "\uACF5\uBD80\uD558\uAE30 \uC804\uC5D0 \uCE58\uC6CC\uBC84\uB824\uC57C

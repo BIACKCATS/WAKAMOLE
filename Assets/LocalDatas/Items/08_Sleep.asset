@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
   m_Name: 08_Sleep
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
-  itemSprite: {fileID: 21300000, guid: e87c96377a44c419093f3d04af2a6182, type: 3}
-  itemId: 9
+  itemSprite: {fileID: 21300000, guid: 53973a285df3a4352805c125b7114fc4, type: 3}
+  itemId: 7
   itemCost: 10
-  itemName: "\uBE68\uB798 \uB354\uBBF8"
-  itemDesc: "\uC637\uC5D0\uC11C \uCFF0\uCFF0\uD55C \uB0C4\uC0C8\uAC00 \uB098\uB294
-    \uAE30\uBD84\uC774 \uB4E0\uB2E4."
-  itemFunc: "\uB450\uB354\uC9C0\uB97C \uD55C \uBC88 \uB54C\uB9B4 \uB54C\uB9C8\uB2E4
-    \uCD94\uAC00 \uC810\uC218 +1"
+  itemName: "\uBA85\uC608\uB85C\uC6B4 \uB0AE\uC7A0"
+  itemDesc: "\uB208\uAC70\uD480\uC774 \uBB34\uAC81\uACE0, \uB530\uB73B\uD55C \uAE30\uBD84\uC774
+    \uB4E0\uB2E4. \uD734\uC2DD\uB3C4 \uB098\uB984 \uACF5\uBD80\uB2E4."
+  itemFunc: "\uB450\uB354\uC9C0\uB97C \uB193\uCCE4\uC744 \uB54C \uD3EC\uC778\uD2B8\uB97C
+    20% \uD68D\uB4DD\uD55C\uB2E4."

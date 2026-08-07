@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 9169
+  controlID: 9865
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 9170
+  controlID: 9866
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 9171
+  controlID: 9867
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -200,8 +200,8 @@ MonoBehaviour:
     y: 0
     width: 270
     height: 511
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -249,10 +249,13 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs:
-      - m_Data: 51402
+      - m_Data: 58426
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -55218
+      - m_Data: -55090
+      - m_Data: -53670
       - m_Data: -24336
       - m_Data: -24058
       - m_Data: -23204
@@ -309,8 +312,8 @@ MonoBehaviour:
     y: 0
     width: 856
     height: 511
-  m_MinSize: {x: 202, y: 226}
-  m_MaxSize: {x: 4002, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 8}
@@ -1032,7 +1035,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/LocalDatas/Items
+    - Assets/Scenes/Lyeon/UI
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1042,18 +1045,18 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/LocalDatas/Items
+  - Assets/Scenes/Lyeon/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/kyeoh/Unity/WAKAMOLE
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 11.001282}
+    scrollPos: {x: 0, y: 146.00067}
     m_SelectedIDs:
-    - m_Data: 58306
+    - m_Data: 58318
     m_LastClickedID:
-      m_Data: 58306
+      m_Data: 58318
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 52848
@@ -1137,10 +1140,10 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 51402
+    - m_Data: 58426
     m_LastClickedEntityId:
-      m_Data: 51402
-    m_HadKeyboardFocusLastEvent: 0
+      m_Data: 58426
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: -12100
     m_RenameOverlay:
@@ -1230,8 +1233,8 @@ MonoBehaviour:
     y: 0
     width: 386
     height: 865
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
