@@ -293,6 +293,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 394208011}
   - {fileID: 397065858}
   - {fileID: 2058421985}
   - {fileID: 1589126503}
@@ -336,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c4f94a632e6474d9540303b287b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ItemIcon
+  slotId: 4
   image: {fileID: 1144518101}
   tooltip: {fileID: 729050727}
   defaultSprite: {fileID: 21300000, guid: 5f3823cac2d0a4c9d9980c2613dbdcc3, type: 3}
@@ -733,19 +735,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394208010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 729050728}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 140449410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394208012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,12 +777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -899,6 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c4f94a632e6474d9540303b287b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ItemIcon
+  slotId: 0
   image: {fileID: 1103254619}
   tooltip: {fileID: 729050727}
   defaultSprite: {fileID: 21300000, guid: 5f3823cac2d0a4c9d9980c2613dbdcc3, type: 3}
@@ -1004,6 +1007,7 @@ GameObject:
   - component: {fileID: 501717760}
   - component: {fileID: 501717759}
   - component: {fileID: 501717761}
+  - component: {fileID: 501717762}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1024,8 +1028,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.GameManager
   status: {fileID: 501717761}
-  preference: {fileID: 0}
-  itemDataList: {fileID: 0}
+  preference: {fileID: 501717762}
+  itemDataList: {fileID: 11400000, guid: 0cfcf090a7f324309bb7fd5cd311a8ba, type: 2}
 --- !u!4 &501717760
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,6 +1061,18 @@ MonoBehaviour:
   atk: 0
   chargeTime: 0
   chargeRatio: 0
+--- !u!114 &501717762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501717758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787b0382b311f439099276f823294750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Preference
 --- !u!1 &626715980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Shop.Tooltip
   text: {fileID: 1623271970}
+  mouseOffset: {x: 60, y: 0}
 --- !u!224 &729050728
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1573,9 +1590,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -320, y: 120}
+  m_AnchoredPosition: {x: -320, y: -220.60999}
   m_SizeDelta: {x: 640, y: 340.61}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &729050729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,6 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c4f94a632e6474d9540303b287b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ItemIcon
+  slotId: 3
   image: {fileID: 1143737162}
   tooltip: {fileID: 729050727}
   defaultSprite: {fileID: 21300000, guid: 5f3823cac2d0a4c9d9980c2613dbdcc3, type: 3}
@@ -2226,7 +2244,7 @@ MonoBehaviour:
   - {fileID: 768975314}
   - {fileID: 141796472}
   stageFinish: {fileID: 999577135}
-  goalScore: 1000
+  goalScore: 100
   timeLimit: 0
 --- !u!4 &999577134
 Transform:
@@ -3344,6 +3362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c4f94a632e6474d9540303b287b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ItemIcon
+  slotId: 2
   image: {fileID: 626715982}
   tooltip: {fileID: 729050727}
   defaultSprite: {fileID: 21300000, guid: 5f3823cac2d0a4c9d9980c2613dbdcc3, type: 3}
@@ -4869,6 +4888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c4f94a632e6474d9540303b287b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ItemIcon
+  slotId: 1
   image: {fileID: 2053772212}
   tooltip: {fileID: 729050727}
   defaultSprite: {fileID: 21300000, guid: 5f3823cac2d0a4c9d9980c2613dbdcc3, type: 3}
@@ -5513,7 +5533,6 @@ SceneRoots:
   - {fileID: 2039778458}
   - {fileID: 2127433535}
   - {fileID: 140449410}
-  - {fileID: 394208011}
   - {fileID: 1519726492}
   - {fileID: 1489919564}
   - {fileID: 1726170808}

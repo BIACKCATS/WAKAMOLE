@@ -14,12 +14,6 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private ProgressBar progressBar;
         
         [Header("Informations")]
-        [Tooltip("플레이어의 공격력입니다.")]
-        [SerializeField] private int atk = 1;
-        [Tooltip("차지 공격에 필요한 시간입니다.")]
-        [SerializeField] private float chargeTime = 2.0f;
-        [Tooltip("차지 공격의 데미지 배율입니다.")]
-        [SerializeField] private float chargeRatio = 2.0f;
         [Tooltip("공격을 감지할 Layer입니다.")]
         [SerializeField] private LayerMask layerMask;
 
@@ -33,20 +27,17 @@ namespace Wakamole.Lyeon.Manager.Play
         private Ray click;
         
         public int Coin { get => coin; set => coin = value; }
-        public int Atk { get => atk; set => atk = value; }
 
         public bool Charged
         {
-            get => chargingTime >= chargeTime;
+            get => chargingTime >= GameManager.Current.Status.ChargeTime;
             set
             {
-                if (value) chargingTime = chargeTime;
+                if (value) chargingTime = GameManager.Current.Status.ChargeTime;
                 else chargingTime = 0;
             }
         }
         
-        public float ChargeTime { get => chargeTime; set => chargeTime = value; }
-
         public StageManager Stage { set => stageManager = value; }
 
         private void Start()
@@ -56,17 +47,19 @@ namespace Wakamole.Lyeon.Manager.Play
 
         private void Update()
         {
+            if (!stageManager.Active) return;
+
             // 1. 차지 공격
             if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;
             else if (Mouse.current.rightButton.wasReleasedThisFrame) charging = false;
 
-            if (charging && chargingTime < chargeTime) chargingTime += Time.deltaTime;
-            else if (chargingTime < chargeTime && chargingTime > 0) chargingTime -= Time.deltaTime / 2;
+            if (charging && chargingTime < GameManager.Current.Status.ChargeTime) chargingTime += Time.deltaTime;
+            else if (chargingTime < GameManager.Current.Status.ChargeTime && chargingTime > 0) chargingTime -= Time.deltaTime / 2;
 
-            if (chargingTime > chargeTime) chargingTime = chargeTime;
+            if (chargingTime > GameManager.Current.Status.ChargeTime) chargingTime = GameManager.Current.Status.ChargeTime;
             else if (chargingTime < 0) chargingTime = 0;
 
-            progressBar.Value = chargingTime / chargeTime;
+            progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
 
             // 2. 일반 공격
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
@@ -78,8 +71,8 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
-                        if (GameManager.Current.Preference.ActiveBackdropScore)
-                            stageManager.Score += GameManager.Current.Preference.BackdropScore;
+                        // 1번 아이템에 의한 점수 추가 (자동 계산)
+                        stageManager.Score += GameManager.Current.Preference.BackdropScore;
                         backdrop.Hit();
                     }
                     else if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
@@ -87,13 +80,22 @@ namespace Wakamole.Lyeon.Manager.Play
                         GameObject parent = charactor.transform.parent.gameObject;
                         if (parent.TryGetComponent(out Mole mole))
                         {
+                            int beforeHp = mole.Hp;
+                            // 2번 아이템에 의한 점수 추가
                             if (Charged)
                             {
-                                mole.Hp -= atk * (int)chargeRatio;
+                                mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
                                 Charged = false;
                             }
-                            else mole.Hp -= atk;
-                            stageManager.Combo++;
+                            else mole.Hp -= GameManager.Current.Status.Atk;
+                            
+                            if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
+                            
+                            // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
+                            stageManager.Score += ((++stageManager.Combo) % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
+
+                            // 4번 아이템에 의한 콤보점수 추가
+                            if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;
 
                             if (mole.Hp <= 0)
                             {
@@ -101,6 +103,12 @@ namespace Wakamole.Lyeon.Manager.Play
                                 stageManager.Score += mole.Score;
                                 stageManager.Count++;
                                 mole.Active = false;
+
+                                // 6번 아이템에 의한 보너스 시간 추가
+                                if (stageManager.Count % 3 == 0 && GameManager.Current.Preference.ActiveBonusTime)
+                                {
+                                    stageManager.TimeLimit += 2.0f;
+                                }
                             }
                         }
                         return;

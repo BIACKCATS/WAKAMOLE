@@ -1,4 +1,5 @@
 using UnityEngine;
+using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.Entity.Component
 {
@@ -42,12 +43,12 @@ namespace Wakamole.Lyeon.Entity.Component
         /// <summary>
         /// 두더지를 때릴 수 있는 시간입니다.
         /// </summary>
-        public float ShowTime { set => showTime = value; }
+        public float ShowTime { set => showTime = value * GameManager.Current.Preference.MolePower + GameManager.Current.Preference.MoleBonusTime; }
 
         /// <summary>
         /// 두더지가 움직이는 속도입니다.
         /// </summary>
-        public float MoveSpeed { set => moveSpeed = value; }
+        public float MoveSpeed { set => moveSpeed = value * GameManager.Current.Preference.MolePower; }
 
         private void Awake()
         {

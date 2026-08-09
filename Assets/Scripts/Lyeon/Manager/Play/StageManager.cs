@@ -92,7 +92,7 @@ namespace Wakamole.Lyeon.Manager.Play
             get => timeLimit;
             set
             {
-                if (timer.Active) Debug.LogWarning("게임이 진행 중인 경우 제한 시간을 변경할 수 없습니다.");
+                if (value < timeLimit) CurrentTime = value;
                 else timeLimit = value;
             }
         }
@@ -105,7 +105,7 @@ namespace Wakamole.Lyeon.Manager.Play
             get => timer.Current;
             set
             {
-                if (timer.Duration > value) timer.Current = timer.Duration;
+                if (timer.Duration >= value) timer.Current = timer.Duration;
                 else timer.Current = value;
             }
         }
@@ -147,9 +147,9 @@ namespace Wakamole.Lyeon.Manager.Play
             if (timeLimit <= 0) timeLimit = 100;
 
             Current = this;
-            for (int i = 0; i < GameManager.Current.Inventory.Count; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Debug.Log(GameManager.Current.Inventory[i]);
+                if (!GameManager.Current.Inventory.ContainsKey(i)) continue;
                 itemSlots[i].Item = GameManager.Current.Inventory[i];
             }
 
@@ -165,6 +165,7 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 Debug.Log("타임 오버");
                 active = false;
+                Finish();
                 return;
             }
 
