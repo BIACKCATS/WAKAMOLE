@@ -25,6 +25,11 @@ namespace Wakamole.Lyeon.UI.Play
             }
         }
 
+        private void OnEnable()
+        {
+            if (itemData == null) image.sprite = defaultSprite;
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             // Use Item

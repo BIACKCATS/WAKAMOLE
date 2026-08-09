@@ -14,9 +14,11 @@ namespace Wakamole.Lyeon.Manager.Game
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
 
+        private int stageId = 0;
         private Dictionary<int, ItemData> inventory = new(5);
         private GameData<StatusData> statusData;
 
+        public int StageId { get => stageId; set => stageId = value; }
         public int Coin { get => status.Coin; set => status.Coin = value; }
         public Preference Preference => preference;
         public Dictionary<int, ItemData> Inventory => inventory;
@@ -33,21 +35,14 @@ namespace Wakamole.Lyeon.Manager.Game
             DontDestroyOnLoad(gameObject);
 
             // check data
-            statusData = new("data0");
-            if (statusData.Exists()) status.Import(statusData.Read());
-            else
+            StatusData data = new()
             {
-                StatusData data = new()
-                {
-                    coin = 0,
-                    atk = 1,
-                    chargeTime = 2.0f,
-                    chargeRatio = 2.0f
-                };
-
-                status.Import(data);
-                statusData.Write(data);
-            }
+                coin = Coin,
+                atk = 1,
+                chargeTime = 2.0f,
+                chargeRatio = 2.0f
+            };
+            status.Import(data);
         }
 
         public void UseItem(int inventoryIndex)
