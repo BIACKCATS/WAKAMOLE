@@ -1,0 +1,204 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Eye
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: d836065fc03bc1f48bb942d4f0014895, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 7fd089504107fed49a281841fde18eb7: 21300000
+    - 68d3aec09978fa5468f840c654a88d27: 21300000
+    - 289c3d41b8bb7a24fb42df4ecd23ece7: 21300000
+    - b7d4e361451504a4f82cf09188fe8c16: 21300000
+    - 74db6c81e62ae954fa00d35a451c22c2: 21300000
+    - 8ddda091d9a21c047bcd177f644828ce: 21300000
+    - 048a990248d625847b4f3fbfad280688: 21300000
+    - 980d45723118b8a4695c1ca577f3e17b: 21300000
+    - a1815ca2b32eb4449989af5dda010c59: 21300000
+    - 42c2b2d2fcbb7714e9aa4c27567950a1: 21300000
+    - ea9ad6f337021654b94ce6b006dd3fc4: 21300000
+    - 85c0216424d134649bed8303697c4476: 21300000
+    - 57162a849ab0848459269a22f6f3c9c6: 21300000
+    - a3e93305b01b0d34880898ed82932cd9: 21300000
+    - d0e2eb057fd9d6c44a08ec9d2602a20b: 21300000
+    - 1eb4b676f9465c1488d1fd3efdee40e9: 21300000
+    - 0bbb71a6399a19c4b800cf7a27a52068: 21300000
+    - 1298ff37e134bce419be71c2046620a0: 21300000
+    - 251793d7dce0789459a179b8e6578349: 21300000
+    - db3b5b3851b7dd54abcfca4b994f5bad: 21300000
+    - 27da6c68948eed04eb448f37160c76d3: 21300000
+    - 35a7e6c80fcc84944bb8ebffa861f9da: 21300000
+    - b4ae0b0934c93b440a40afbf7b387834: 21300000
+    - 7fa1b2191fa756549ae227c5cb98ace6: 21300000
+    - 1de90c49b8f5e774c9252ce77eab2242: 21300000
+    - d05c3359bf26b6f45a371b187c6b7310: 21300000
+    - e011e079fbb6fd748823a7b1245f5d69: 21300000
+    - 9849bca92778af14697950596fb542ff: 21300000
+    - 4f5922b95c648df4e94645c8e3ec7bba: 21300000
+    - fbb2bfe9f8b837a499c1d55972eb64ce: 21300000
+    - 01d06af9c7a17c54aa281548bd2bf740: 21300000
+    - 4f06122a3c39684418168a9174c2e720: 21300000
+    - c740e72a7c6c0884fbe8c099ffe19d3b: 21300000
+    - 1079264a9ddf87f499925573283ddb1c: 21300000
+    - 6d1ac05bd8a94e04caca20dd8e9719e9: 21300000
+    - bfa7c35c20342d547b4f246e3ab1e322: 21300000
+    - 9547c26cf4d1e8346b9b3386e4b1d911: 21300000
+    - 5331987ce2f163e4580b1a84cf896abb: 21300000
+    - 9210988c3efc93c4ab0c944f5b32a4e7: 21300000
+    - 669742acef98a544a99b95f6d2846dfd: 21300000
+    - bc1699dccfe080142be7aedfd060efbf: 21300000
+    - 0697450d481c85e4fa2028b0defd2a0a: 21300000
+    - d878f90ded25f16479e6de70703110a8: 21300000
+    - 9a3a571d272bfa54ebe5bc82d1037ff0: 21300000
+    - df72226d71cbd1149a19fb94d9644ecb: 21300000
+    - 823a72bd7b85b164983885d35a383709: 21300000
+    - 7c101d8e13b53cb4fa3f249ca8a0313c: 21300000
+    - 0460f09e81a1e204f81e85c1f9438163: 21300000
+    - ec7abadedfc25c94084c7362f3afb688: 21300000
+    - 442305ee63ee1654a842c2430ec9b37c: 21300000
+    - f1d6854fde7bf944393d81d374500db5: 21300000
+    - 2ca3de7f78dec454c9299768450e4c77: 21300000
+    - d90ba39f7713ba64e9e63186650f5aed: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7fd089504107fed49a281841fde18eb7, type: 3}
+  - {fileID: 21300000, guid: 68d3aec09978fa5468f840c654a88d27, type: 3}
+  - {fileID: 21300000, guid: 289c3d41b8bb7a24fb42df4ecd23ece7, type: 3}
+  - {fileID: 21300000, guid: b7d4e361451504a4f82cf09188fe8c16, type: 3}
+  - {fileID: 21300000, guid: 74db6c81e62ae954fa00d35a451c22c2, type: 3}
+  - {fileID: 21300000, guid: 8ddda091d9a21c047bcd177f644828ce, type: 3}
+  - {fileID: 21300000, guid: 048a990248d625847b4f3fbfad280688, type: 3}
+  - {fileID: 21300000, guid: 980d45723118b8a4695c1ca577f3e17b, type: 3}
+  - {fileID: 21300000, guid: a1815ca2b32eb4449989af5dda010c59, type: 3}
+  - {fileID: 21300000, guid: 42c2b2d2fcbb7714e9aa4c27567950a1, type: 3}
+  - {fileID: 21300000, guid: ea9ad6f337021654b94ce6b006dd3fc4, type: 3}
+  - {fileID: 21300000, guid: 85c0216424d134649bed8303697c4476, type: 3}
+  - {fileID: 21300000, guid: 57162a849ab0848459269a22f6f3c9c6, type: 3}
+  - {fileID: 21300000, guid: a3e93305b01b0d34880898ed82932cd9, type: 3}
+  - {fileID: 21300000, guid: d0e2eb057fd9d6c44a08ec9d2602a20b, type: 3}
+  - {fileID: 21300000, guid: 1eb4b676f9465c1488d1fd3efdee40e9, type: 3}
+  - {fileID: 21300000, guid: 0bbb71a6399a19c4b800cf7a27a52068, type: 3}
+  - {fileID: 21300000, guid: 1298ff37e134bce419be71c2046620a0, type: 3}
+  - {fileID: 21300000, guid: 251793d7dce0789459a179b8e6578349, type: 3}
+  - {fileID: 21300000, guid: db3b5b3851b7dd54abcfca4b994f5bad, type: 3}
+  - {fileID: 21300000, guid: 27da6c68948eed04eb448f37160c76d3, type: 3}
+  - {fileID: 21300000, guid: 35a7e6c80fcc84944bb8ebffa861f9da, type: 3}
+  - {fileID: 21300000, guid: b4ae0b0934c93b440a40afbf7b387834, type: 3}
+  - {fileID: 21300000, guid: 7fa1b2191fa756549ae227c5cb98ace6, type: 3}
+  - {fileID: 21300000, guid: 1de90c49b8f5e774c9252ce77eab2242, type: 3}
+  - {fileID: 21300000, guid: d05c3359bf26b6f45a371b187c6b7310, type: 3}
+  - {fileID: 21300000, guid: e011e079fbb6fd748823a7b1245f5d69, type: 3}
+  - {fileID: 21300000, guid: 9849bca92778af14697950596fb542ff, type: 3}
+  - {fileID: 21300000, guid: 4f5922b95c648df4e94645c8e3ec7bba, type: 3}
+  - {fileID: 21300000, guid: fbb2bfe9f8b837a499c1d55972eb64ce, type: 3}
+  - {fileID: 21300000, guid: 01d06af9c7a17c54aa281548bd2bf740, type: 3}
+  - {fileID: 21300000, guid: 4f06122a3c39684418168a9174c2e720, type: 3}
+  - {fileID: 21300000, guid: c740e72a7c6c0884fbe8c099ffe19d3b, type: 3}
+  - {fileID: 21300000, guid: 1079264a9ddf87f499925573283ddb1c, type: 3}
+  - {fileID: 21300000, guid: 6d1ac05bd8a94e04caca20dd8e9719e9, type: 3}
+  - {fileID: 21300000, guid: bfa7c35c20342d547b4f246e3ab1e322, type: 3}
+  - {fileID: 21300000, guid: 9547c26cf4d1e8346b9b3386e4b1d911, type: 3}
+  - {fileID: 21300000, guid: 5331987ce2f163e4580b1a84cf896abb, type: 3}
+  - {fileID: 21300000, guid: 9210988c3efc93c4ab0c944f5b32a4e7, type: 3}
+  - {fileID: 21300000, guid: 669742acef98a544a99b95f6d2846dfd, type: 3}
+  - {fileID: 21300000, guid: bc1699dccfe080142be7aedfd060efbf, type: 3}
+  - {fileID: 21300000, guid: 0697450d481c85e4fa2028b0defd2a0a, type: 3}
+  - {fileID: 21300000, guid: d878f90ded25f16479e6de70703110a8, type: 3}
+  - {fileID: 21300000, guid: 9a3a571d272bfa54ebe5bc82d1037ff0, type: 3}
+  - {fileID: 21300000, guid: df72226d71cbd1149a19fb94d9644ecb, type: 3}
+  - {fileID: 21300000, guid: 823a72bd7b85b164983885d35a383709, type: 3}
+  - {fileID: 21300000, guid: 7c101d8e13b53cb4fa3f249ca8a0313c, type: 3}
+  - {fileID: 21300000, guid: 0460f09e81a1e204f81e85c1f9438163, type: 3}
+  - {fileID: 21300000, guid: ec7abadedfc25c94084c7362f3afb688, type: 3}
+  - {fileID: 21300000, guid: 442305ee63ee1654a842c2430ec9b37c, type: 3}
+  - {fileID: 21300000, guid: f1d6854fde7bf944393d81d374500db5, type: 3}
+  - {fileID: 21300000, guid: 2ca3de7f78dec454c9299768450e4c77, type: 3}
+  - {fileID: 21300000, guid: d90ba39f7713ba64e9e63186650f5aed, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Eye (18)
+  - Eye (42)
+  - Eye (13)
+  - Eye (43)
+  - Eye (50)
+  - Eye (45)
+  - Eye (10)
+  - Eye (47)
+  - Eye (5)
+  - Eye (34)
+  - Eye (7)
+  - Eye (15)
+  - Eye (35)
+  - Eye (17)
+  - Eye (32)
+  - Eye (44)
+  - Eye (52)
+  - Eye (3)
+  - Eye (24)
+  - Eye (16)
+  - Eye (23)
+  - Eye (25)
+  - Eye (37)
+  - Eye (36)
+  - Eye (29)
+  - Eye (40)
+  - Eye (49)
+  - Eye (6)
+  - Eye (19)
+  - Eye (2)
+  - Eye (9)
+  - Eye (8)
+  - Eye (26)
+  - Eye (30)
+  - Eye (1)
+  - Eye (39)
+  - Eye (22)
+  - Eye (11)
+  - Eye (38)
+  - Eye (14)
+  - Eye (21)
+  - Eye (20)
+  - Eye (33)
+  - Eye (12)
+  - Eye (46)
+  - Eye (28)
+  - Eye (48)
+  - Eye (53)
+  - Eye (31)
+  - Eye (41)
+  - Eye (51)
+  - Eye (4)
+  - Eye (27)
+  m_RenderDataMap: {}
+  m_Tag: Eye
+  m_IsVariant: 0

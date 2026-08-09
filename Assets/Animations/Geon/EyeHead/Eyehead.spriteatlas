@@ -1,0 +1,204 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Eyehead
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: bc413eb6f20d26444a051c439c4f8707, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - bb8502003b77d534092a086dc74d7286: 21300000
+    - 8231982066fe9e84faa509f9965bffaf: 21300000
+    - 90150f20d82192a41b544a3973010883: 21300000
+    - 2156be5081dfd474f8f7a19d363d1149: 21300000
+    - 08aca990d2fcc9b4bbaa42798e875df8: 21300000
+    - ed9d75517fa79dc4798c8554645c5cd2: 21300000
+    - 3dcf34a1511ad7c4e86359fad4f26f16: 21300000
+    - 4b3540b147ab66746b1b88f6f3184d89: 21300000
+    - b76beb52fa9cd3847ade11cd1f283cfc: 21300000
+    - 22c2d81309ecf2e428f879f3d7734334: 21300000
+    - 0e6a4db3a95d947429fcc9b0de6b662e: 21300000
+    - 9d459ff389288e74f9985d4e55ce5c82: 21300000
+    - 2df540049e9c6984ea052249fe4c4068: 21300000
+    - ce124d04c55facd41a26f7cefe18f5f6: 21300000
+    - 5ce33214de103b94eab56b138f514377: 21300000
+    - f1f0a624cba1f9f4d837f8d5969d1824: 21300000
+    - 6cfcb6345b870074a9925d6c045e9e31: 21300000
+    - c281245450b487547923c70a692648ee: 21300000
+    - 8697e594015c60449b632cfdb7241505: 21300000
+    - 5c2f5e9499ba35d4c877780a90723a77: 21300000
+    - 4a4882a4bac8a1f40a0f265876156482: 21300000
+    - 048cca154007e984795e80ab992a583a: 21300000
+    - b8294055ca15ab9418007df903d4a389: 21300000
+    - d13c2de558e130d488910d860f8a146d: 21300000
+    - 0813ef7654fe70f438887947f1c023c1: 21300000
+    - 2b6f28b6cf4692441925316617ad63e4: 21300000
+    - 68160de6a1be3a14aa4f8c8a74cb2526: 21300000
+    - bea083c73030bcf419efb825bdf6ebf1: 21300000
+    - 040d77f793dbb3a47b30ce8eb6e06ac4: 21300000
+    - f8e56108af85a1c47b65ba0885a12a22: 21300000
+    - 16dd620856f21244da426b170bfacdc9: 21300000
+    - af07941808df591479c10466afb5d6b7: 21300000
+    - 15a6ee5886fecab428731597a6766386: 21300000
+    - e82082d8513c4eb49bab2c5a2a37564e: 21300000
+    - 2b1d2e8954b3fcd4491f8cf173563fed: 21300000
+    - ab73224abe3222647b3d6b7d3ebdc0bc: 21300000
+    - 705e138a5f8e46a49b10ad0ed2ee8b1f: 21300000
+    - 17a557caba8d2bb4d8898b949cd24457: 21300000
+    - 33d8fbea0289a1e4583f472b09061fc8: 21300000
+    - 7c0f904bda736304a834df228f23dc20: 21300000
+    - 21fa846b96f5d2d40ad7c810ae751081: 21300000
+    - 8ab65fab3383e7b4e8592c34246a73a9: 21300000
+    - cc96a11c1a35e914cbd7f4e5fd972c13: 21300000
+    - 5302d11c56f1f2c4e9bab7c5cb70d609: 21300000
+    - a778f45c89d66c645bdd569feebc1529: 21300000
+    - 37ce8dbcbc993b34295018a9a33ebc95: 21300000
+    - bb42bf0da9ef8994686a0e42dd95bd5c: 21300000
+    - c122a64dde5f84b428f3008f82ffb4bb: 21300000
+    - 0dd6262e658953a4b8e3f76cac60afc4: 21300000
+    - a64eacbe3e9554a40b4395ffffec5551: 21300000
+    - 6073ed8f1aec5c44283814c95fe5d214: 21300000
+    - 505c15cfd3c3fbd4e84d95d99761be5f: 21300000
+    - 097faadfcbd244e44b2e70c4480a5343: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: bb8502003b77d534092a086dc74d7286, type: 3}
+  - {fileID: 21300000, guid: 8231982066fe9e84faa509f9965bffaf, type: 3}
+  - {fileID: 21300000, guid: 90150f20d82192a41b544a3973010883, type: 3}
+  - {fileID: 21300000, guid: 2156be5081dfd474f8f7a19d363d1149, type: 3}
+  - {fileID: 21300000, guid: 08aca990d2fcc9b4bbaa42798e875df8, type: 3}
+  - {fileID: 21300000, guid: ed9d75517fa79dc4798c8554645c5cd2, type: 3}
+  - {fileID: 21300000, guid: 3dcf34a1511ad7c4e86359fad4f26f16, type: 3}
+  - {fileID: 21300000, guid: 4b3540b147ab66746b1b88f6f3184d89, type: 3}
+  - {fileID: 21300000, guid: b76beb52fa9cd3847ade11cd1f283cfc, type: 3}
+  - {fileID: 21300000, guid: 22c2d81309ecf2e428f879f3d7734334, type: 3}
+  - {fileID: 21300000, guid: 0e6a4db3a95d947429fcc9b0de6b662e, type: 3}
+  - {fileID: 21300000, guid: 9d459ff389288e74f9985d4e55ce5c82, type: 3}
+  - {fileID: 21300000, guid: 2df540049e9c6984ea052249fe4c4068, type: 3}
+  - {fileID: 21300000, guid: ce124d04c55facd41a26f7cefe18f5f6, type: 3}
+  - {fileID: 21300000, guid: 5ce33214de103b94eab56b138f514377, type: 3}
+  - {fileID: 21300000, guid: f1f0a624cba1f9f4d837f8d5969d1824, type: 3}
+  - {fileID: 21300000, guid: 6cfcb6345b870074a9925d6c045e9e31, type: 3}
+  - {fileID: 21300000, guid: c281245450b487547923c70a692648ee, type: 3}
+  - {fileID: 21300000, guid: 8697e594015c60449b632cfdb7241505, type: 3}
+  - {fileID: 21300000, guid: 5c2f5e9499ba35d4c877780a90723a77, type: 3}
+  - {fileID: 21300000, guid: 4a4882a4bac8a1f40a0f265876156482, type: 3}
+  - {fileID: 21300000, guid: 048cca154007e984795e80ab992a583a, type: 3}
+  - {fileID: 21300000, guid: b8294055ca15ab9418007df903d4a389, type: 3}
+  - {fileID: 21300000, guid: d13c2de558e130d488910d860f8a146d, type: 3}
+  - {fileID: 21300000, guid: 0813ef7654fe70f438887947f1c023c1, type: 3}
+  - {fileID: 21300000, guid: 2b6f28b6cf4692441925316617ad63e4, type: 3}
+  - {fileID: 21300000, guid: 68160de6a1be3a14aa4f8c8a74cb2526, type: 3}
+  - {fileID: 21300000, guid: bea083c73030bcf419efb825bdf6ebf1, type: 3}
+  - {fileID: 21300000, guid: 040d77f793dbb3a47b30ce8eb6e06ac4, type: 3}
+  - {fileID: 21300000, guid: f8e56108af85a1c47b65ba0885a12a22, type: 3}
+  - {fileID: 21300000, guid: 16dd620856f21244da426b170bfacdc9, type: 3}
+  - {fileID: 21300000, guid: af07941808df591479c10466afb5d6b7, type: 3}
+  - {fileID: 21300000, guid: 15a6ee5886fecab428731597a6766386, type: 3}
+  - {fileID: 21300000, guid: e82082d8513c4eb49bab2c5a2a37564e, type: 3}
+  - {fileID: 21300000, guid: 2b1d2e8954b3fcd4491f8cf173563fed, type: 3}
+  - {fileID: 21300000, guid: ab73224abe3222647b3d6b7d3ebdc0bc, type: 3}
+  - {fileID: 21300000, guid: 705e138a5f8e46a49b10ad0ed2ee8b1f, type: 3}
+  - {fileID: 21300000, guid: 17a557caba8d2bb4d8898b949cd24457, type: 3}
+  - {fileID: 21300000, guid: 33d8fbea0289a1e4583f472b09061fc8, type: 3}
+  - {fileID: 21300000, guid: 7c0f904bda736304a834df228f23dc20, type: 3}
+  - {fileID: 21300000, guid: 21fa846b96f5d2d40ad7c810ae751081, type: 3}
+  - {fileID: 21300000, guid: 8ab65fab3383e7b4e8592c34246a73a9, type: 3}
+  - {fileID: 21300000, guid: cc96a11c1a35e914cbd7f4e5fd972c13, type: 3}
+  - {fileID: 21300000, guid: 5302d11c56f1f2c4e9bab7c5cb70d609, type: 3}
+  - {fileID: 21300000, guid: a778f45c89d66c645bdd569feebc1529, type: 3}
+  - {fileID: 21300000, guid: 37ce8dbcbc993b34295018a9a33ebc95, type: 3}
+  - {fileID: 21300000, guid: bb42bf0da9ef8994686a0e42dd95bd5c, type: 3}
+  - {fileID: 21300000, guid: c122a64dde5f84b428f3008f82ffb4bb, type: 3}
+  - {fileID: 21300000, guid: 0dd6262e658953a4b8e3f76cac60afc4, type: 3}
+  - {fileID: 21300000, guid: a64eacbe3e9554a40b4395ffffec5551, type: 3}
+  - {fileID: 21300000, guid: 6073ed8f1aec5c44283814c95fe5d214, type: 3}
+  - {fileID: 21300000, guid: 505c15cfd3c3fbd4e84d95d99761be5f, type: 3}
+  - {fileID: 21300000, guid: 097faadfcbd244e44b2e70c4480a5343, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - EyeHead (50)
+  - EyeHead (23)
+  - EyeHead (13)
+  - EyeHead (1)
+  - EyeHead (25)
+  - EyeHead (24)
+  - EyeHead (51)
+  - EyeHead (6)
+  - EyeHead (39)
+  - EyeHead (5)
+  - EyeHead (49)
+  - EyeHead (53)
+  - EyeHead (14)
+  - EyeHead (38)
+  - EyeHead (31)
+  - EyeHead (43)
+  - EyeHead (26)
+  - EyeHead (28)
+  - EyeHead (41)
+  - EyeHead (18)
+  - EyeHead (45)
+  - EyeHead (19)
+  - EyeHead (3)
+  - EyeHead (10)
+  - EyeHead (52)
+  - EyeHead (20)
+  - EyeHead (32)
+  - EyeHead (37)
+  - EyeHead (15)
+  - EyeHead (9)
+  - EyeHead (11)
+  - EyeHead (21)
+  - EyeHead (46)
+  - EyeHead (4)
+  - EyeHead (2)
+  - EyeHead (12)
+  - EyeHead (42)
+  - EyeHead (8)
+  - EyeHead (40)
+  - EyeHead (48)
+  - EyeHead (17)
+  - EyeHead (44)
+  - EyeHead (22)
+  - EyeHead (34)
+  - EyeHead (36)
+  - EyeHead (27)
+  - EyeHead (35)
+  - EyeHead (30)
+  - EyeHead (16)
+  - EyeHead (33)
+  - EyeHead (47)
+  - EyeHead (29)
+  - EyeHead (7)
+  m_RenderDataMap: {}
+  m_Tag: Eyehead
+  m_IsVariant: 0
