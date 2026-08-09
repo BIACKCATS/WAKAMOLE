@@ -53,8 +53,8 @@ namespace Wakamole.Lyeon.Manager.Play
             if (!stageManager.Active) return;
 
             // 5번 아이템에 의한 알림 계산
-            if (GameManager.Current.Preference.ActiveAlert && (int)stageManager.CurrentTime % 5 == 0 && !alert.Active)
-                alert.Show();
+            //if (GameManager.Current.Preference.ActiveAlert && (int)stageManager.CurrentTime % 5 == 0 && !alert.Active)
+            //    alert.Show();
 
             // 1. 차지 공격
             if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;
