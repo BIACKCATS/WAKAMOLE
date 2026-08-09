@@ -92,7 +92,7 @@ namespace Wakamole.Lyeon.Manager.Play
             get => timeLimit;
             set
             {
-                if (timer.Active) Debug.LogWarning("게임이 진행 중인 경우 제한 시간을 변경할 수 없습니다.");
+                if (value < timeLimit) CurrentTime = value;
                 else timeLimit = value;
             }
         }
@@ -105,7 +105,7 @@ namespace Wakamole.Lyeon.Manager.Play
             get => timer.Current;
             set
             {
-                if (timer.Duration > value) timer.Current = timer.Duration;
+                if (timer.Duration >= value) timer.Current = timer.Duration;
                 else timer.Current = value;
             }
         }

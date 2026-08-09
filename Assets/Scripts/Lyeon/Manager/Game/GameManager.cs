@@ -40,7 +40,8 @@ namespace Wakamole.Lyeon.Manager.Game
                 coin = Coin,
                 atk = 1,
                 chargeTime = 2.0f,
-                chargeRatio = 2.0f
+                chargeRatio = 2.0f,
+                moleSpeedPower = 1.0f
             };
             status.Import(data);
         }
@@ -53,6 +54,13 @@ namespace Wakamole.Lyeon.Manager.Game
             switch (itemId)
             {
                 case 0:
+                    preference.ActiveBackdropScore = true;
+                    break;
+                case 1:
+                    preference.ActiveHitScore = true;
+                    break;
+                case 2:
+                    preference.ActiveMolePower = true;
                     break;
             }
         }

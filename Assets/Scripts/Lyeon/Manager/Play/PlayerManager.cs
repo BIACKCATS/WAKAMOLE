@@ -71,6 +71,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
+                        // 1번 아이템에 의한 점수 추가 (자동 계산)
                         stageManager.Score += GameManager.Current.Preference.BackdropScore;
                         backdrop.Hit();
                     }
@@ -79,13 +80,22 @@ namespace Wakamole.Lyeon.Manager.Play
                         GameObject parent = charactor.transform.parent.gameObject;
                         if (parent.TryGetComponent(out Mole mole))
                         {
+                            int beforeHp = mole.Hp;
+                            // 2번 아이템에 의한 점수 추가
                             if (Charged)
                             {
                                 mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
                                 Charged = false;
                             }
                             else mole.Hp -= GameManager.Current.Status.Atk;
-                            stageManager.Combo++;
+                            
+                            if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
+                            
+                            // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
+                            stageManager.Score += ((++stageManager.Combo) % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
+
+                            // 4번 아이템에 의한 콤보점수 추가
+                            if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;
 
                             if (mole.Hp <= 0)
                             {
@@ -93,6 +103,12 @@ namespace Wakamole.Lyeon.Manager.Play
                                 stageManager.Score += mole.Score;
                                 stageManager.Count++;
                                 mole.Active = false;
+
+                                // 6번 아이템에 의한 보너스 시간 추가
+                                if (stageManager.Count % 3 == 0 && GameManager.Current.Preference.ActiveBonusTime)
+                                {
+                                    stageManager.TimeLimit += 2.0f;
+                                }
                             }
                         }
                         return;
