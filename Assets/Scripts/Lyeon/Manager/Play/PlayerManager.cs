@@ -4,6 +4,7 @@ using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
+using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Manager.Play
 {
@@ -12,6 +13,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [Header("Components")]
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
+        [Tooltip("아이템 효과로 표시할 Alert 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private Alert alert;
         
         [Header("Informations")]
         [Tooltip("공격을 감지할 Layer입니다.")]
@@ -48,6 +51,10 @@ namespace Wakamole.Lyeon.Manager.Play
         private void Update()
         {
             if (!stageManager.Active) return;
+
+            // 5번 아이템에 의한 알림 계산
+            if (GameManager.Current.Preference.ActiveAlert && (int)stageManager.CurrentTime % 5 == 0 && !alert.Active)
+                alert.Show();
 
             // 1. 차지 공격
             if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;

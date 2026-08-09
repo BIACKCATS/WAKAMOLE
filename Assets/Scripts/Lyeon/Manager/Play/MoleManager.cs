@@ -29,8 +29,9 @@ namespace Wakamole.Lyeon.Manager.Play
         private ObjectPool objectPool;
         private Dictionary<MoleKeyword, MoleData> moles = new();
         private List<MoleKeyword> keywords = new();
+        private List<Mole> activatedMoles = new();
 
-        public ObjectPool ObjectPool => objectPool;
+        public List<Mole> ActivatedMoles => activatedMoles;
 
         private void Awake()
         {
@@ -80,7 +81,14 @@ namespace Wakamole.Lyeon.Manager.Play
 
                 obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
                 obj.SetActive(true);
+                activatedMoles.Add(mole);
             }
+        }
+
+        public void HideMole(Mole mole)
+        {
+            activatedMoles.Remove(mole);
+            objectPool.Return(mole.gameObject);
         }
 
         private IEnumerator RandomMole()

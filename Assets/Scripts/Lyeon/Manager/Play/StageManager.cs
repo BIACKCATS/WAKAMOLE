@@ -4,7 +4,6 @@ using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.Manager.Game;
-using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Manager.Play
@@ -14,6 +13,8 @@ namespace Wakamole.Lyeon.Manager.Play
         public static StageManager Current { get; private set; }
 
         [Header("Components")]
+        [Tooltip("두더지를 관리하는 MoleManager 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private MoleManager moleManager;
         [Tooltip("클리어 시 게임 결과를 표시할 ClearBoard 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ClearBoard clearBoard;
         [Tooltip("현재 점수를 표시할 ScoreBoard 스크립트를 포함한 GameObject입니다.")]
@@ -46,6 +47,7 @@ namespace Wakamole.Lyeon.Manager.Play
         private Mole attackedMole = null;
 
         public bool Active { get => active; set => active = value; }
+        public MoleManager MoleManager => moleManager;
 
         /// <summary>
         /// 스테이지의 목표 점수입니다.
