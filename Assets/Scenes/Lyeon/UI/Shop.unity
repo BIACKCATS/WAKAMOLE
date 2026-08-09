@@ -2458,6 +2458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Shop.Tooltip
   text: {fileID: 1803652039}
+  mouseOffset: {x: 120, y: -120}
 --- !u!1 &1788622740
 GameObject:
   m_ObjectHideFlags: 0

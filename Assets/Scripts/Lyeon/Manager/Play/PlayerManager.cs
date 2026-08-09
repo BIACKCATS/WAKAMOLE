@@ -56,6 +56,8 @@ namespace Wakamole.Lyeon.Manager.Play
 
         private void Update()
         {
+            if (!stageManager.Active) return;
+            
             // 1. 차지 공격
             if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;
             else if (Mouse.current.rightButton.wasReleasedThisFrame) charging = false;

@@ -8,6 +8,7 @@ namespace Wakamole.Lyeon.UI
     public class ItemTooltip : MonoBehaviour
     {
         [SerializeField] private TMP_Text text;
+        [SerializeField] private Vector2 mouseOffset = new(60.0f, 60.0f);
 
         private Vector2 targetPosition;
 
@@ -38,8 +39,7 @@ namespace Wakamole.Lyeon.UI
         private void SetTargetPosition()
         {
             targetPosition = Mouse.current.position.ReadValue();
-            targetPosition.x += 60.0f;
-            targetPosition.y -= 60.0f;
+            targetPosition += mouseOffset;
         }
     }
 }

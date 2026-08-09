@@ -147,9 +147,9 @@ namespace Wakamole.Lyeon.Manager.Play
             if (timeLimit <= 0) timeLimit = 100;
 
             Current = this;
-            for (int i = 0; i < GameManager.Current.Inventory.Count; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Debug.Log(GameManager.Current.Inventory[i]);
+                if (!GameManager.Current.Inventory.ContainsKey(i)) continue;
                 itemSlots[i].Item = GameManager.Current.Inventory[i];
             }
 
@@ -165,6 +165,7 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 Debug.Log("타임 오버");
                 active = false;
+                Finish();
                 return;
             }
 

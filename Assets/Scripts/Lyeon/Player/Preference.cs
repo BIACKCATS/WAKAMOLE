@@ -6,7 +6,7 @@ namespace Wakamole.Lyeon.Player
     {
         public int Stage { get; set; }
 
-        public bool ActiveBackdropScore { get; set; }
+        public bool ActiveBackdropScore { get; set; } = false;
         public int BackdropScore
         {
             get
