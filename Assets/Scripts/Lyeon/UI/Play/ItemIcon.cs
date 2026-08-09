@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.UI.Play
 {
     public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
+        [SerializeField] private int slotId;
         [SerializeField] private Image image;
         [SerializeField] private ItemTooltip tooltip;
 
@@ -33,6 +35,8 @@ namespace Wakamole.Lyeon.UI.Play
         public void OnPointerDown(PointerEventData eventData)
         {
             // Use Item
+            GameManager.Current.UseItem(slotId);
+            Item = null;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

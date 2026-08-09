@@ -16,11 +16,11 @@ namespace Wakamole.Lyeon.Manager.Game
 
         private int stageId = 0;
         private Dictionary<int, ItemData> inventory = new(5);
-        private GameData<StatusData> statusData;
 
         public int StageId { get => stageId; set => stageId = value; }
         public int Coin { get => status.Coin; set => status.Coin = value; }
         public Preference Preference => preference;
+        public Status Status => status;
         public Dictionary<int, ItemData> Inventory => inventory;
 
         private void Awake()
@@ -47,7 +47,7 @@ namespace Wakamole.Lyeon.Manager.Game
 
         public void UseItem(int inventoryIndex)
         {
-            if (inventory[inventoryIndex] == null) return;
+            if (!inventory.ContainsKey(inventoryIndex) || inventory[inventoryIndex] == null) return;
 
             int itemId = inventory[inventoryIndex].itemId;
             switch (itemId)

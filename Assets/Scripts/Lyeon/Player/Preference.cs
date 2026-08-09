@@ -14,8 +14,6 @@ namespace Wakamole.Lyeon.Player
                 if (!ActiveBackdropScore) return 0;
                 return 10 * Stage;
             }
-        }
-
-        
+        }        
     }
 }
