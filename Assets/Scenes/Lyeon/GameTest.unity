@@ -2481,13 +2481,14 @@ MonoBehaviour:
   clock: {fileID: 499170693}
   combo: {fileID: 1037152416}
   coinText: {fileID: 1073757704}
+  alert: {fileID: 274962536}
+  stageFinish: {fileID: 999577135}
   itemSlots:
   - {fileID: 397065861}
   - {fileID: 2058421988}
   - {fileID: 1589126506}
   - {fileID: 768975314}
   - {fileID: 141796472}
-  stageFinish: {fileID: 999577135}
   goalScore: 100
   timeLimit: 0
 --- !u!4 &999577134
@@ -3331,7 +3332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
   progressBar: {fileID: 1078650320}
-  alert: {fileID: 274962536}
   layerMask:
     serializedVersion: 2
     m_Bits: 200

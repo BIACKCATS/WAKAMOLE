@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.Utils;
@@ -25,10 +26,12 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private Combo combo;
         [Tooltip("현재 획득한 코인을 표시할 CoinText 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private CoinText coinText;
-        [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
-        [SerializeField] private List<ItemIcon> itemSlots;
+        [Tooltip("아이템 효과로 표시할 Alert 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private Alert alert;
         [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
         [SerializeField] private StageFinish stageFinish;
+        [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
+        [SerializeField] private List<ItemIcon> itemSlots;
 
         [Header("Informations")]
         [Tooltip("목표 점수입니다.")]
@@ -140,6 +143,21 @@ namespace Wakamole.Lyeon.Manager.Play
                 currentCombo = value;
                 combo.Count = currentCombo;
                 if (currentCombo > maxCombo) maxCombo = value;
+            }
+        }
+
+        public void StartAlert()
+        {
+            StartCoroutine(Alert());
+        }
+
+        private IEnumerator Alert()
+        {
+            WaitForSeconds wait = new(5.0f);
+            while (GameManager.Current.Preference.ActiveAlert)
+            {
+                alert.Show();
+                yield return wait;
             }
         }
 

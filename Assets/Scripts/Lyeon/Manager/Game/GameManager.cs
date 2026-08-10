@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Imaginary.Core.Data;
 using UnityEngine;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Play;
 using Wakamole.Lyeon.Player;
 
 namespace Wakamole.Lyeon.Manager.Game
@@ -67,6 +68,7 @@ namespace Wakamole.Lyeon.Manager.Game
                     break;
                 case 4:
                     preference.ActiveAlert = true;
+                    if (StageManager.Current != null) StageManager.Current.StartAlert();
                     break;
                 case 5:
                     preference.ActiveDiscordSound = true;
