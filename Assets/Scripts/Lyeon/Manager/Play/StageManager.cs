@@ -11,6 +11,8 @@ namespace Wakamole.Lyeon.Manager.Play
 {
     public class StageManager : MonoBehaviour
     {
+        private static WaitForSeconds _waitForSeconds10_0 = new WaitForSeconds(10.0f);
+
         public static StageManager Current { get; private set; }
 
         [Header("Components")]
@@ -28,6 +30,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private CoinText coinText;
         [Tooltip("아이템 효과로 표시할 Alert 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private Alert alert;
+        [Tooltip("아이템 효과로 표시할 Mosquito 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private Mosquito mosquito;
         [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
         [SerializeField] private StageFinish stageFinish;
         [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
@@ -38,6 +42,10 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private int goalScore = 0;
         [Tooltip("스테이지의 제한 시간(초)입니다.")]
         [SerializeField] private float timeLimit = 0;
+        [Tooltip("알림창이 뜨는 간격입니다.")]
+        [SerializeField] private float alertTime = 5.0f;
+        [Tooltip("모기가 나타나는 간격입니다.")]
+        [SerializeField] private float mosquitoTime = 8.0f;
 
         private bool active = false;
         private int moleCount = 0;
@@ -48,6 +56,8 @@ namespace Wakamole.Lyeon.Manager.Play
 
         private Timer timer = new();
         private Mole attackedMole = null;
+
+        private MosquitoPool mosquitoPool;
 
         public bool Active { get => active; set => active = value; }
         public MoleManager MoleManager => moleManager;
@@ -146,6 +156,40 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        private bool activeDoubleScore = false;
+        private Coroutine doubleScore = null;
+        /// <summary>
+        /// 9번 아이템에 의한 점수 2배 적용
+        /// </summary>
+        public bool ActiveDoubleScore
+        {
+            get => activeDoubleScore;
+            set
+            {
+                if (value)
+                {
+                    if (doubleScore != null) StopCoroutine(doubleScore);
+                    doubleScore = StartCoroutine(DoubleTime());
+                }
+                else if (doubleScore != null)
+                {
+                    StopCoroutine(DoubleTime());
+                    doubleScore = null;
+                }
+                activeDoubleScore = value;
+            }
+        }
+
+        private IEnumerator DoubleTime()
+        {
+            yield return _waitForSeconds10_0;
+            doubleScore = null;
+            ActiveDoubleScore = false;
+        }
+
+        /// <summary>
+        /// 5번 아이템에 의한 알림창 생성
+        /// </summary>
         public void StartAlert()
         {
             StartCoroutine(Alert());
@@ -153,10 +197,29 @@ namespace Wakamole.Lyeon.Manager.Play
 
         private IEnumerator Alert()
         {
-            WaitForSeconds wait = new(5.0f);
-            while (GameManager.Current.Preference.ActiveAlert)
+            WaitForSeconds wait = new(alertTime);
+            while (GameManager.Current.Preference.ActiveAlert && active)
             {
                 alert.Show();
+                yield return wait;
+            }
+        }
+
+        /// <summary>
+        /// 9번 아이템에 의한 모기 생성
+        /// </summary>
+        public void StartMosquito()
+        {
+            mosquitoPool = new(mosquito.gameObject, 10);
+            StartCoroutine(Mosquito());
+        }
+
+        private IEnumerator Mosquito()
+        {
+            WaitForSeconds wait = new(mosquitoTime);
+            while (GameManager.Current.Preference.ActiveMosquito && active)
+            {
+                mosquitoPool.Get().Active = true;
                 yield return wait;
             }
         }

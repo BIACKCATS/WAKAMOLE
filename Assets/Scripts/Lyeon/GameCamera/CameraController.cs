@@ -21,7 +21,7 @@ namespace Wakamole.Lyeon.GameCamera
         [Tooltip("바닥으로 감지할 Layer입니다.")]
         [SerializeField] private LayerMask groundLayer;
 
-        private bool expandMove = false;
+        private bool expandMove = true;
 
         private Ray mouseRay;
         private Vector2 currentMouse = Vector2.zero; // 화면 상의 마우스 위치

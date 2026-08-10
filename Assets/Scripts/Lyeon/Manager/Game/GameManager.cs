@@ -81,6 +81,7 @@ namespace Wakamole.Lyeon.Manager.Game
                     break;
                 case 8:
                     preference.ActiveMosquito = true;
+                    if (StageManager.Current != null) StageManager.Current.StartMosquito();
                     break;
                 case 9:
                     preference.ActiveBonusScore = true;

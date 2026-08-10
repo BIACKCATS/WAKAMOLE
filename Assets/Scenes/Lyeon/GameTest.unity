@@ -2482,6 +2482,7 @@ MonoBehaviour:
   combo: {fileID: 1037152416}
   coinText: {fileID: 1073757704}
   alert: {fileID: 274962536}
+  mosquito: {fileID: 839314634290899848, guid: 3224a01de841b4cb2b504cf18cf894e3, type: 3}
   stageFinish: {fileID: 999577135}
   itemSlots:
   - {fileID: 397065861}
@@ -3334,7 +3335,7 @@ MonoBehaviour:
   progressBar: {fileID: 1078650320}
   layerMask:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 456
 --- !u!1 &1489919559
 GameObject:
   m_ObjectHideFlags: 0
