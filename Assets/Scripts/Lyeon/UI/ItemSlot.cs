@@ -1,6 +1,7 @@
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Manager.Game;
+using Wakamole.Lyeon.UI.Shop;
 
 namespace Wakamole.Lyeon.UI
 {
@@ -11,17 +12,17 @@ namespace Wakamole.Lyeon.UI
         [SerializeField] private int slotId;
         [SerializeField] private ItemSlotType slotType;
 
-        private ItemData data;
+        private ItemDisplay data;
 
         public int Id { get; set; }
-        public ItemData Item
+        public ItemDisplay Item
         {
             get => data;
             set
             {
                 data = value;
                 if (slotType.Equals(ItemSlotType.INVENTORY))
-                    GameManager.Current.Inventory[slotId] = value;
+                    GameManager.Current.Inventory[slotId] = value.Item;
             }
         }
         public ItemSlotType SlotType => slotType;

@@ -24,7 +24,11 @@ namespace Wakamole.Lyeon.Manager.Shop
         {
             Canvas.ForceUpdateCanvases();
             objectPool = new(itemDisplay.gameObject, shopManager.gameObject, 8);
+            Reroll();
+        }
 
+        public void Reroll()
+        {
             List<ItemData> tempData = new();
             ItemData selectedItem = null;
             int index = 0;
@@ -32,6 +36,12 @@ namespace Wakamole.Lyeon.Manager.Shop
 
             foreach (ItemSlot slot in itemSlots)
             {
+                if (slot.Item != null)
+                {
+                    objectPool.Return(slot.Item.gameObject);
+                    slot.Item = null;
+                }
+
                 GameObject obj = objectPool.Get();
                 if (obj.TryGetComponent(out ItemDisplay component) &&
                     obj.TryGetComponent(out RectTransform rect) &&
@@ -39,16 +49,17 @@ namespace Wakamole.Lyeon.Manager.Shop
                 {
                     do
                     {
-                        index = Random.Range(0, itemDataList.itemDatas.Count);
+                        index = Random.Range(0, tempData.Count);
                         selectedItem = tempData[index];
                         if (!GameManager.Current.Inventory.ContainsValue(selectedItem)) break;
                     }
                     while (!GameManager.Current.Inventory.ContainsValue(selectedItem));
-                    
+
                     component.CurrentSlot = slot;
                     component.Item = selectedItem;
                     component.TargetPosition = slotRect.position;
                     rect.position = slotRect.position;
+                    slot.Item = component;
                     tempData.RemoveAt(index);
                 }
             }

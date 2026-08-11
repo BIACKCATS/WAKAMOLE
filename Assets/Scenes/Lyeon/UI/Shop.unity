@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 204541338}
   - component: {fileID: 204541337}
   - component: {fileID: 204541336}
+  - component: {fileID: 204541339}
   m_Layer: 5
   m_Name: Reroll
   m_TagString: Untagged
@@ -598,7 +599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204541337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204541339}
+        m_TargetAssemblyTypeName: Wakamole.Lyeon.UI.Shop.Reroll, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &204541337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +650,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204541334}
   m_CullTransparentMesh: 1
+--- !u!114 &204541339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204541334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2378307642617472eaa7bf04043c7180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Shop.Reroll
+  rerollText: {fileID: 261227367}
+  rerollCost: 160
+  booth: {fileID: 384874785}
 --- !u!1 &208761194
 GameObject:
   m_ObjectHideFlags: 0
