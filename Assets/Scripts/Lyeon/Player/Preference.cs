@@ -1,11 +1,10 @@
 using UnityEngine;
-using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.Player
 {
     public class Preference : MonoBehaviour
     {
-        public int Stage { get; set; }
+        public int Stage { get; set; } = 1;
 
         // Item 0
         public bool ActiveBackdropScore { get; set; } = false;
