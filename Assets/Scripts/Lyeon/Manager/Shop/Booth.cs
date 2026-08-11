@@ -50,8 +50,12 @@ namespace Wakamole.Lyeon.Manager.Shop
                     do
                     {
                         index = Random.Range(0, tempData.Count);
-                        selectedItem = tempData[index];
-                        if (!GameManager.Current.Inventory.ContainsValue(selectedItem)) break;
+                        if (!GameManager.Current.Inventory.ContainsValue(tempData[index]))
+                        {
+                            selectedItem = tempData[index];
+                            break;
+                        }
+                        else continue;
                     }
                     while (!GameManager.Current.Inventory.ContainsValue(selectedItem));
 
