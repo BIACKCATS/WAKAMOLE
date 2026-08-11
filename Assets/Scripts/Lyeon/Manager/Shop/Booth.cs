@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Wakamole.Core.LocalData;
 using Wakamole.Core.Utils;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Shop;
 
@@ -23,6 +25,11 @@ namespace Wakamole.Lyeon.Manager.Shop
             Canvas.ForceUpdateCanvases();
             objectPool = new(itemDisplay.gameObject, shopManager.gameObject, 8);
 
+            List<ItemData> tempData = new();
+            ItemData selectedItem = null;
+            int index = 0;
+            tempData.AddRange(itemDataList.itemDatas);
+
             foreach (ItemSlot slot in itemSlots)
             {
                 GameObject obj = objectPool.Get();
@@ -30,10 +37,19 @@ namespace Wakamole.Lyeon.Manager.Shop
                     obj.TryGetComponent(out RectTransform rect) &&
                     slot.TryGetComponent(out RectTransform slotRect))
                 {
+                    do
+                    {
+                        index = Random.Range(0, itemDataList.itemDatas.Count);
+                        selectedItem = tempData[index];
+                        if (!GameManager.Current.Inventory.ContainsValue(selectedItem)) break;
+                    }
+                    while (!GameManager.Current.Inventory.ContainsValue(selectedItem));
+                    
                     component.CurrentSlot = slot;
-                    component.Item = itemDataList.itemDatas[Random.Range(0, itemDataList.itemDatas.Count)];
+                    component.Item = selectedItem;
                     component.TargetPosition = slotRect.position;
                     rect.position = slotRect.position;
+                    tempData.RemoveAt(index);
                 }
             }
         }
