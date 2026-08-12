@@ -235,7 +235,7 @@ namespace Wakamole.Lyeon.Entity
 
         private void OnDisable()
         {
-            if (manager != null) manager.ObjectPool.Return(gameObject);
+            if (manager != null) manager.HideMole(this);
             foreach (MoleDeco deco in decorations)
                 deco.decorate.SetActive(false);
             keyword = MoleKeyword.DEFAULT;

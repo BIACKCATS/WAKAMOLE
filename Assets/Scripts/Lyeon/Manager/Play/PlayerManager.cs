@@ -4,6 +4,7 @@ using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
+using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Manager.Play
 {
@@ -38,8 +39,6 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
         
-        public StageManager Stage { set => stageManager = value; }
-
         private void Start()
         {
             stageManager = StageManager.Current;
@@ -69,6 +68,11 @@ namespace Wakamole.Lyeon.Manager.Play
 
                 if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
+                    if (hit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
+                    {
+                        // 9번 아이템에 의한 모기 퇴치
+                        mosquito.DestroyMosquito();
+                    }
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
                         // 1번 아이템에 의한 점수 추가 (자동 계산)
@@ -100,7 +104,7 @@ namespace Wakamole.Lyeon.Manager.Play
                             if (mole.Hp <= 0)
                             {
                                 stageManager.AttackedMole = mole;
-                                stageManager.Score += mole.Score;
+                                stageManager.Score += stageManager.ActiveDoubleScore ? mole.Score * 2 : mole.Score;
                                 stageManager.Count++;
                                 mole.Active = false;
 

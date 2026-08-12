@@ -106,7 +106,7 @@ namespace Wakamole.Lyeon.UI.Shop
                     }
                     itemSlot.Item = null;
                     itemSlot = slot;
-                    slot.Item = itemData;
+                    slot.Item = this;
                     targetPosition = slotRect.position;
                     return;
                 }

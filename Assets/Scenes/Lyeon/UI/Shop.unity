@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 204541338}
   - component: {fileID: 204541337}
   - component: {fileID: 204541336}
+  - component: {fileID: 204541339}
   m_Layer: 5
   m_Name: Reroll
   m_TagString: Untagged
@@ -598,7 +599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204541337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 204541339}
+        m_TargetAssemblyTypeName: Wakamole.Lyeon.UI.Shop.Reroll, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &204541337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +650,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204541334}
   m_CullTransparentMesh: 1
+--- !u!114 &204541339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204541334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2378307642617472eaa7bf04043c7180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Shop.Reroll
+  rerollText: {fileID: 261227367}
+  rerollCost: 160
+  booth: {fileID: 384874785}
 --- !u!1 &208761194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,8 +1219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 0, y: -780}
+  m_AnchoredPosition: {x: -480, y: -90}
+  m_SizeDelta: {x: -960, y: -540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &384874782
 MonoBehaviour:
@@ -1249,13 +1277,13 @@ MonoBehaviour:
     m_Right: 60
     m_Top: 40
     m_Bottom: 40
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 160, y: 160}
   m_Spacing: {x: 60, y: 60}
-  m_Constraint: 0
-  m_ConstraintCount: 3
+  m_Constraint: 1
+  m_ConstraintCount: 2
 --- !u!114 &384874785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,8 +1345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -240}
-  m_SizeDelta: {x: 0, y: -840}
+  m_AnchoredPosition: {x: 480, y: -90}
+  m_SizeDelta: {x: -960, y: -540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &434874457
 MonoBehaviour:
@@ -1375,13 +1403,13 @@ MonoBehaviour:
     m_Right: 60
     m_Top: 60
     m_Bottom: 60
-  m_ChildAlignment: 7
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 160, y: 160}
   m_Spacing: {x: 60, y: 60}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!114 &434874460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,10 +1642,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1230340771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 80.000015}
-  m_SizeDelta: {x: 0, y: -159.99997}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -179.99998}
+  m_SizeDelta: {x: 720, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857143273
 MonoBehaviour:
@@ -1648,8 +1676,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1917,10 +1945,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1230340771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 0, y: -200}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 690, y: -30}
+  m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205204372
 MonoBehaviour:
@@ -1942,7 +1970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "160 \uCF54\uC778"
+  m_text: 99999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f82c31e057dc410da2b312d670414d4, type: 2}
   m_sharedMaterial: {fileID: 453441138367890149, guid: 7f82c31e057dc410da2b312d670414d4, type: 2}
@@ -1951,8 +1979,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1969,8 +1997,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2311,6 +2339,7 @@ MonoBehaviour:
   atk: 0
   chargeTime: 0
   chargeRatio: 0
+  moleSpeedPower: 1
 --- !u!114 &1538936584
 MonoBehaviour:
   m_ObjectHideFlags: 0
