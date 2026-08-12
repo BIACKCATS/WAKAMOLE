@@ -87,7 +87,6 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] protected List<MoleDeco> decorations = new();
 
         private MoleManager manager = null;
-
         public bool Active { get => charactor.Active; set => charactor.Active = false; }
         public bool Moving => charactor.Moving;
         public bool Interactable => charactor.Interactable;
