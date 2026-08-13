@@ -2239,6 +2239,7 @@ MonoBehaviour:
   alert: {fileID: 274962536}
   mosquito: {fileID: 839314634290899848, guid: 3224a01de841b4cb2b504cf18cf894e3, type: 3}
   stageFinish: {fileID: 999577135}
+  backdropPreset: {fileID: 11400000, guid: 14074edc0edd94e5b8ab1febc29ce15c, type: 2}
   itemSlots:
   - {fileID: 397065861}
   - {fileID: 2058421988}
@@ -3318,7 +3319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1584815790
 Transform:
   m_ObjectHideFlags: 0
