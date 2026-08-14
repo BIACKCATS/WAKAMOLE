@@ -241,7 +241,7 @@ namespace Wakamole.Lyeon.Entity
                 deco.decorate.SetActive(false);
             keyword = MoleKeyword.DEFAULT;
 
-            if (currentHp > 0 && GameManager.Current.Preference.ActiveFailScore)
+            if (currentHp > 0 && StageManager.Current.Active && GameManager.Current.Preference.ActiveFailScore)
                 StageManager.Current.Score += (int)(score * GameManager.Current.Preference.FailScore);
         }
     }
