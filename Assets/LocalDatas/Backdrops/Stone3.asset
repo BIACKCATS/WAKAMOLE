@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0a92d5c07174c0d8765b77abdb5056, type: 3}
+  m_Name: Stone3
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.BackdropData
+  objectFrame:
+  - {fileID: 21300000, guid: bd13ae04133f440e888f2ba1b43e56cf, type: 3}
+  - {fileID: 21300000, guid: 0716921cca0294c46b5156d08446cab3, type: 3}
+  - {fileID: 21300000, guid: cb0e2fcb640e0467798deea5271f4ae8, type: 3}
+  - {fileID: 21300000, guid: 5637a7f434d6745f99a29f3efd8482c6, type: 3}
+  - {fileID: 21300000, guid: 51a6305abe6644702ad8c015a9f6eae9, type: 3}
+  - {fileID: 21300000, guid: cd30658cac5bc4a9c85f824868ffbb1f, type: 3}
+  - {fileID: 21300000, guid: f0b8374d677eb4d53a45389add1edbb0, type: 3}
+  - {fileID: 21300000, guid: ac73db088d204474db4d495a9a57c1e0, type: 3}

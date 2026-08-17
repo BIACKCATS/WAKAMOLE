@@ -1,7 +1,7 @@
 using System.Text;
 using UnityEngine;
 
-namespace Imaginary.Core.Data
+namespace Wakamole.Core.Data
 {
     public class GameData<T> where T : struct
     {

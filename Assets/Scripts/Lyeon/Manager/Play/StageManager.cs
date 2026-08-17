@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wakamole.Core.LocalData;
 using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Manager.Component;
@@ -34,6 +35,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private Mosquito mosquito;
         [Tooltip("게임 클리어 효과를 실행할 StageFinish 스크립트입니다.")]
         [SerializeField] private StageFinish stageFinish;
+        [Tooltip("아이템 생성 규칙을 지정할 BackdropPreset SO입니다.")]
+        [SerializeField] private BackdropPreset backdropPreset;
         [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
         [SerializeField] private List<ItemIcon> itemSlots;
 
@@ -224,6 +227,24 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        private IEnumerator CreateBackdrops()
+        {
+            WaitForFixedUpdate wait = new();
+            for (int i = 0; i < backdropPreset.backdropCount; i++)
+            {
+                yield return wait;
+                GameObject obj = Instantiate(backdropPreset.backdropPrefabs[Random.Range(0, backdropPreset.backdropPrefabs.Count)]);
+                obj.SetActive(false);
+                Vector3 position = new(Random.Range(backdropPreset.minPoint.x, backdropPreset.maxPoint.x), obj.transform.position.y, Random.Range(backdropPreset.minPoint.z, backdropPreset.maxPoint.z));
+                if (obj.TryGetComponent(out Backdrop component))
+                {
+                    component.InitPosition = position;
+                    obj.transform.position = position;
+                    obj.SetActive(true);
+                }
+            }
+        }
+
         private void Awake()
         {
             if (goalScore <= 0) goalScore = 100;
@@ -263,6 +284,7 @@ namespace Wakamole.Lyeon.Manager.Play
             scoreBoard.Goal = goalScore;
             clock.Duration = timeLimit;
             active = true;
+            StartCoroutine(CreateBackdrops());
         }
 
         private void Finish()

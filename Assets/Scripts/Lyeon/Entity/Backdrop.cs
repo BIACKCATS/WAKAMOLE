@@ -17,9 +17,11 @@ namespace Wakamole.Lyeon.Entity
         private int currentVibrate = 0;
         private Vector3 initPosition = Vector3.zero, targetPosition = Vector3.zero;
 
-        private void Awake()
+        public Vector3 InitPosition { set => initPosition = value; }
+
+        private void OnEnable()
         {
-            targetPosition = initPosition = transform.position;
+            targetPosition = initPosition;
         }
 
         private void Update()

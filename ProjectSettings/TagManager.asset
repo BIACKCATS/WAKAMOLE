@@ -44,6 +44,12 @@ TagManager:
   - name: UI
     uniqueID: 3934929035
     locked: 0
+  - name: Backdrop
+    uniqueID: 1868592729
+    locked: 0
+  - name: Mosquito
+    uniqueID: 221806743
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

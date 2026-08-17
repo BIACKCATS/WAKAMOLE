@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcc48a18f3f44b97a72680db14f71d7, type: 3}
+  m_Name: Backdrops
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.BackdropPreset
+  backdropPrefabs:
+  - {fileID: 7375804713857928337, guid: fd3f0c41946544b6ba40bef4e0ea9fe7, type: 3}
+  - {fileID: 7746327424210692696, guid: d9cbf147bd9554be0a7a18e4f7a5d1d7, type: 3}
+  - {fileID: 5150732906526562808, guid: a57d0a340d8e140aaa851952a8aca83d, type: 3}
+  - {fileID: 6305006210305895110, guid: 27a5b4be8ae1b4d19b96dcf8bba8c43a, type: 3}
+  - {fileID: 5200024459256901256, guid: a7ccb072c60834eeaac3780c2f549aab, type: 3}
+  - {fileID: 6842811060441317996, guid: 19225142523c04e33985bc0754ce3ae6, type: 3}
+  - {fileID: 6407242740408703924, guid: 2bc596fb8e13b4dc1b845f4eed72dd9a, type: 3}
+  - {fileID: 7215118045698770272, guid: 0391249f0abae459583c44cb15bcc97b, type: 3}
+  - {fileID: 4358471374677002173, guid: 808d7f04234e844d693ac61b5ff3e7f8, type: 3}
+  - {fileID: 2887016821108223319, guid: 61df91da6e88444efbadd4c0d5ff5e56, type: 3}
+  - {fileID: 8274234367864471504, guid: af848af9376814aa384690b28229a966, type: 3}
+  - {fileID: 4738120486128513780, guid: e8ab61dae6c24485cad220039f0bf554, type: 3}
+  - {fileID: 8415473323224113717, guid: 90dad4677c296483d8ef990e0abc1aa9, type: 3}
+  backdropCount: 25
+  minPoint: {x: -9, y: 0, z: 3}
+  maxPoint: {x: 9, y: 0, z: 5}

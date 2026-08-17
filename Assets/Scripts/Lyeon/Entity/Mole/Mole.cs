@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Play;
 
 namespace Wakamole.Lyeon.Entity
@@ -238,6 +239,9 @@ namespace Wakamole.Lyeon.Entity
             foreach (MoleDeco deco in decorations)
                 deco.decorate.SetActive(false);
             keyword = MoleKeyword.DEFAULT;
+
+            if (currentHp > 0 && StageManager.Current.Active && GameManager.Current.Preference.ActiveFailScore)
+                StageManager.Current.Score += (int)(score * GameManager.Current.Preference.FailScore);
         }
     }
 }
