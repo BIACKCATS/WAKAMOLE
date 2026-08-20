@@ -26,7 +26,7 @@ namespace Wakamole.Lyeon.Entity.Component
 
         private void OnEnable()
         {
-            scale = new Vector3(1, 0.1f, 1);
+            scale = Vector3.one;
             transform.localScale = scale;
         }
 
