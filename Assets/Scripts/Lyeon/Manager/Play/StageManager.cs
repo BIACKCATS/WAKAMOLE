@@ -4,6 +4,7 @@ using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.GameCamera;
 using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI.Play;
@@ -290,6 +291,8 @@ namespace Wakamole.Lyeon.Manager.Play
         private void Finish()
         {
             clearBoard.gameObject.SetActive(true);
+            CameraController.Current.ExpandMove = false;
+            CameraController.Current.TargetPosition = CameraController.Current.InitPosition;
 
             currentCoin += (int)(timer.Current / 10);
             clearBoard.Coin = currentCoin;
