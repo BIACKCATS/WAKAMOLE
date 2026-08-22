@@ -11,7 +11,7 @@ namespace Wakamole.Lyeon.Manager.Shop
 
         public ItemTooltip Tooltip => tooltip;
 
-        private void Awake()
+        private void OnEnable()
         {
             Current = this;
         }

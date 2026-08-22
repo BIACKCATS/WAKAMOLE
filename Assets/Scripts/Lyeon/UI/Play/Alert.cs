@@ -55,6 +55,7 @@ namespace Wakamole.Lyeon.UI.Play
 
         public void Show()
         {
+            if (active) return;
             active = true;
             int pos = UnityEngine.Random.Range(0, datas.Count);
             targetPosition = showPosition;

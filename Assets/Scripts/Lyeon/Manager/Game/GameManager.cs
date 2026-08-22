@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Imaginary.Core.Data;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Manager.Play;

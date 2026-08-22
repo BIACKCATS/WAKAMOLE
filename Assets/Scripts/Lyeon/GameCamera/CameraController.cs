@@ -29,13 +29,13 @@ namespace Wakamole.Lyeon.GameCamera
 
         public float MoveSpeed => moveSpeed;
         public bool ExpandMove { get => expandMove; set => expandMove = value; }
+        public Vector3 InitPosition => initPosition;
         public Vector3 TargetPosition
         {
             get => targetPosition;
             set
             {
                 if (expandMove) targetPosition = value;
-                else Debug.LogWarning("마우스 보정이 켜져있는 동안에는 ");
             }
         }
 
