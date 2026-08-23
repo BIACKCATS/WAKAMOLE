@@ -34,7 +34,7 @@ namespace Wakamole.Lyeon.UI.Play
         {
             targetPosition = initPosition;
             alertTransform.anchoredPosition3D = initPosition;
-            timer = new(1.0f);
+            timer = new(2.0f);
             timer.Stop();
         }
 
@@ -45,7 +45,7 @@ namespace Wakamole.Lyeon.UI.Play
                 if (timer.Active) timer.Tick(Time.deltaTime);
                 else
                 {
-                    targetPosition = showPosition;
+                    targetPosition = initPosition;
                     active = false;
                     timer.Stop();
                 }
