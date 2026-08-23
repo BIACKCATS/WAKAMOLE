@@ -19,3 +19,4 @@ MonoBehaviour:
   isFixedTime: 0
   score: 0
   isFixedScore: 0
+  animClips: []
