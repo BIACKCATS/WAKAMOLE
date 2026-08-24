@@ -4,8 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class MoleAnim : MonoBehaviour
 {
-    [Header("1. 등장 동작")]
+    [Header("1. 등장 및 상태 설정")]
     [SerializeField] private string spawnStateName = "Spawn";
+    [SerializeField] private string breakStateName = "Break";
+    [SerializeField] private string idleStateName = "Idle";
 
     [Header("2. 시간마다 자동 재생할 랜덤 동작들")]
     [Tooltip("Idle, Head, Eye 등 자동 루프를 돌릴 State 목록")]
@@ -68,7 +70,7 @@ public class MoleAnim : MonoBehaviour
     }
 
     // 초기화 및 아이템 속도/오버라이드 적용
-    private void InitAnimatorSetting()
+    public void InitAnimatorSetting()
     {
         if (animator == null) animator = GetComponent<Animator>();
 
@@ -115,7 +117,7 @@ public class MoleAnim : MonoBehaviour
     }
 
     /// <summary>
-    /// [외부 호출용] Hit, Dead 등 외부 이벤트 발생 시 사용
+    /// [외부 호출용] Hit, Dead, Break 등 외부 이벤트 발생 시 사용
     /// </summary>
     /// <param name="stateName">재생할 State 이름</param>
     /// <param name="stopRandomLoop">사망처럼 더 이상 랜덤 루프를 돌리지 않아야 할 경우 true</param>
@@ -127,7 +129,43 @@ public class MoleAnim : MonoBehaviour
             randomAnimCoroutine = null;
         }
 
+        // Break 상태가 입력되었고, Exclusive 아이템이 켜져 있다면 파괴 코루틴 실행
+        if (stateName == breakStateName)
+        {
+            ItemAnim exclusiveItem = GetExclusiveItem();
+            if (exclusiveItem != null && exclusiveItem.gameObject.activeSelf)
+            {
+                StartCoroutine(Co_ExclusiveBreakRoutine(exclusiveItem.gameObject, stateName));
+                return;
+            }
+        }
+
         PlayStateInternal(stateName);
+    }
+
+    /// <summary>
+    /// Exclusive 아이템 파괴 애니메이션 재생 후 Disable 및 원복 처리
+    /// </summary>
+    private IEnumerator Co_ExclusiveBreakRoutine(GameObject exclusiveObject, string stateName)
+    {
+        // 1. 깨지는 애니메이션 재생
+        PlayStateInternal(stateName);
+
+        // State 전환 반영을 위한 1프레임 대기
+        yield return null;
+
+        // 2. 해당 애니메이션의 실제 재생 시간만큼 대기
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        // 3. 아이템 오브젝트 Disable
+        exclusiveObject.SetActive(false);
+
+        // 4. 기본 캐릭터 컨트롤러 및 속도로 원복
+        InitAnimatorSetting();
+
+        // 5. 기본 캐릭터의 Idle 모션으로 복귀
+        PlayStateInternal(idleStateName);
     }
 
     private void PlayStateInternal(string stateName)
