@@ -118,6 +118,7 @@ namespace Wakamole.Lyeon.Entity
                 hpBar.Value = (float)currentHp / maxHp;
                 if (currentHp <= 0)
                 {
+                    anim.PlayExternalState("Dead");
                     if ((keyword & MoleKeyword.SPLIT) != 0)
                     {
                         manager.ShowMole(MoleKeyword.DEFAULT);
