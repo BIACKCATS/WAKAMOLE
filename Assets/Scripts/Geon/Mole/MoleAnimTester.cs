@@ -1,102 +1,37 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class TestClip
-{
-    public string clipName = "New Clip";
-    public Sprite[] frames;
-
-    [Range(1f, 60f)]
-    public float fps = 12f;
-    public bool isLoop = true;
-
-    [Tooltip("이 키를 누르면 해당 애니메이션이 재생됩니다.")]
-    public KeyCode triggerKey = KeyCode.None;
-}
-
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(MoleAnim))]
 public class MoleAnimTester : MonoBehaviour
 {
-    [Header("Clips Setup")]
-    public List<TestClip> clips = new List<TestClip>();
+    [System.Serializable]
+    public struct TestKeyMapping
+    {
+        public KeyCode key;          // 눌러볼 키 (예: KeyCode.Alpha1)
+        public string stateName;     // 실행할 State 이름 (예: "Hit")
+        public bool stopRandomLoop;  // 사망 등 루프 정지 여부
+    }
 
-    [Header("Current Status (Read Only)")]
-    public string currentClipName;
-    public int currentFrameIndex;
+    [Header("테스트할 키와 State 연결")]
+    [SerializeField] private TestKeyMapping[] keyMappings;
 
-    private SpriteRenderer spriteRenderer;
-    private TestClip currentClip;
-    private float frameTimer;
-    private bool isPlaying;
+    private MoleAnim moleAnim;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void Start()
-    {
-        // 시작 시 첫 번째 클립 자동 재생
-        if (clips != null && clips.Count > 0)
-        {
-            PlayClip(0);
-        }
+        moleAnim = GetComponent<MoleAnim>();
     }
 
     private void Update()
     {
-        // 1. 단축키 입력 감지
-        for (int i = 0; i < clips.Count; i++)
+        if (keyMappings == null || keyMappings.Length == 0) return;
+
+        foreach (var mapping in keyMappings)
         {
-            if (clips[i].triggerKey != KeyCode.None && Input.GetKeyDown(clips[i].triggerKey))
+            if (Input.GetKeyDown(mapping.key))
             {
-                PlayClip(i);
-                break;
+                moleAnim.PlayExternalState(mapping.stateName, mapping.stopRandomLoop);
+                Debug.Log($"[AnimTest] key pressed: {mapping.key} ➔ State: {mapping.stateName}");
             }
-        }
-
-        // 2. 프레임 애니메이션 재생 로직
-        if (!isPlaying || currentClip == null || currentClip.frames == null || currentClip.frames.Length == 0) return;
-
-        frameTimer += Time.deltaTime;
-        float frameInterval = 1f / currentClip.fps;
-
-        if (frameTimer >= frameInterval)
-        {
-            frameTimer -= frameInterval;
-            currentFrameIndex++;
-
-            if (currentFrameIndex >= currentClip.frames.Length)
-            {
-                if (currentClip.isLoop)
-                {
-                    currentFrameIndex = 0;
-                }
-                else
-                {
-                    currentFrameIndex = currentClip.frames.Length - 1; // 마지막 프레임 고정
-                    isPlaying = false;
-                }
-            }
-
-            spriteRenderer.sprite = currentClip.frames[currentFrameIndex];
-        }
-    }
-
-    public void PlayClip(int index)
-    {
-        if (index < 0 || index >= clips.Count) return;
-
-        currentClip = clips[index];
-        currentClipName = currentClip.clipName;
-        currentFrameIndex = 0;
-        frameTimer = 0f;
-        isPlaying = true;
-
-        if (currentClip.frames != null && currentClip.frames.Length > 0)
-        {
-            spriteRenderer.sprite = currentClip.frames[0];
         }
     }
 }
