@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Wakamole.Lyeon.Entity;
@@ -13,6 +14,7 @@ namespace Wakamole.Lyeon.Manager.Play
         [Header("Components")]
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
+        [SerializeField] private List<ChargeFire> fires;
         
         [Header("Informations")]
         [Tooltip("공격을 감지할 Layer입니다.")]
@@ -36,6 +38,7 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 if (value) chargingTime = GameManager.Current.Status.ChargeTime;
                 else chargingTime = 0;
+                foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
             }
         }
         
@@ -59,6 +62,9 @@ namespace Wakamole.Lyeon.Manager.Play
             else if (chargingTime < 0) chargingTime = 0;
 
             progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
+            if (progressBar.Value > 0.3f) fires[0].gameObject.SetActive(true);
+            if (progressBar.Value > 0.6f) fires[1].gameObject.SetActive(true);
+            if (Charged) fires[2].gameObject.SetActive(true);
 
             // 2. 일반 공격
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
