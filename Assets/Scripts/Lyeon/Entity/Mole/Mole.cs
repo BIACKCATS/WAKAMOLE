@@ -54,6 +54,7 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] private MoleCharactor charactor;
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private HpBar hpBar;
+        [SerializeField] private MoleAnim anim;
 
         [Header("Preferences")]
         [Tooltip("두더지가 올라오는 시간입니다.")]
@@ -104,6 +105,7 @@ namespace Wakamole.Lyeon.Entity
         {
             get => currentHp;
             set {
+                anim.PlayExternalState("Hit");
                 if (currentHp > value && (keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
                 {
                     shieldCount--;
@@ -116,6 +118,7 @@ namespace Wakamole.Lyeon.Entity
                 hpBar.Value = (float)currentHp / maxHp;
                 if (currentHp <= 0)
                 {
+                    anim.PlayExternalState("Dead");
                     if ((keyword & MoleKeyword.SPLIT) != 0)
                     {
                         manager.ShowMole(MoleKeyword.DEFAULT);

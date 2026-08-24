@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
@@ -11,8 +14,10 @@ namespace Wakamole.Lyeon.Manager.Play
     public class PlayerManager : MonoBehaviour
     {
         [Header("Components")]
-        [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
+        [SerializeField] private Image handImage, attackImage;
+        [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private List<ChargeFire> fires;
         
         [Header("Informations")]
         [Tooltip("공격을 감지할 Layer입니다.")]
@@ -26,6 +31,9 @@ namespace Wakamole.Lyeon.Manager.Play
         private StageManager stageManager = null;
         private Vector2 mousePosition;
         private Ray click;
+        private RectTransform attackRect;
+        private WaitForSeconds wait = new(0.1f);
+        private Coroutine handAnim;
         
         public int Coin { get => coin; set => coin = value; }
 
@@ -36,12 +44,15 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 if (value) chargingTime = GameManager.Current.Status.ChargeTime;
                 else chargingTime = 0;
+                foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
             }
         }
         
         private void Start()
         {
             stageManager = StageManager.Current;
+            attackImage.gameObject.SetActive(false);
+            if (attackImage.TryGetComponent(out RectTransform rect)) attackRect = rect;
         }
 
         private void Update()
@@ -59,6 +70,12 @@ namespace Wakamole.Lyeon.Manager.Play
             else if (chargingTime < 0) chargingTime = 0;
 
             progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
+            if (progressBar.Value > 0.3f) fires[0].gameObject.SetActive(true);
+            else fires[0].gameObject.SetActive(false);
+            if (progressBar.Value > 0.6f) fires[1].gameObject.SetActive(true);
+            else fires[1].gameObject.SetActive(false);
+            if (Charged) fires[2].gameObject.SetActive(true);
+            else fires[2].gameObject.SetActive(false);
 
             // 2. 일반 공격
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
@@ -81,6 +98,8 @@ namespace Wakamole.Lyeon.Manager.Play
                     }
                     else if (hit.collider.gameObject.TryGetComponent(out MoleCharactor charactor))
                     {
+                        if (handAnim != null) StopCoroutine(handAnim);
+                        handAnim = StartCoroutine(HandAnim());
                         GameObject parent = charactor.transform.parent.gameObject;
                         if (parent.TryGetComponent(out Mole mole))
                         {
@@ -120,6 +139,20 @@ namespace Wakamole.Lyeon.Manager.Play
                     else stageManager.Combo = 0;
                 }
             }
+        }
+
+        private IEnumerator HandAnim()
+        {
+            attackRect.position = mousePosition;
+            if (!attackImage.gameObject.activeSelf)
+            {
+                handImage.gameObject.SetActive(false);
+                attackImage.gameObject.SetActive(true);
+            }
+            yield return wait;
+            handImage.gameObject.SetActive(true);
+            attackImage.gameObject.SetActive(false);
+            handAnim = null;
         }
     }
 }

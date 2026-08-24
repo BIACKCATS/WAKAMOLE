@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lyeon/UI/Shop.unity
-    guid: ce4ea23f7f37e4e19b43cae9f6fe624a
+    path: Assets/Scenes/SJM/Start Scene.unity
+    guid: d64eb383dad7d854fbeb10d65f195dea
   - enabled: 1
     path: Assets/Scenes/Lyeon/GameTest.unity
     guid: a96fb7e218fb3460392b1630b822c45e
+  - enabled: 1
+    path: Assets/Scenes/Lyeon/UI/Shop.unity
+    guid: ce4ea23f7f37e4e19b43cae9f6fe624a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -298,6 +298,7 @@ namespace Wakamole.Lyeon.Manager.Play
             clearBoard.Coin = currentCoin;
             clearBoard.Mole = moleCount;
             clearBoard.Score = currentScore;
+            GameManager.Current.Coin += currentCoin;
         }
 
         private void OnDisable()

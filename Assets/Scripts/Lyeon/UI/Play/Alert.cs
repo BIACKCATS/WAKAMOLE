@@ -72,7 +72,7 @@ namespace Wakamole.Lyeon.UI.Play
             moles.AddRange(StageManager.Current.MoleManager.ActivatedMoles);
             foreach (Mole mole in moles)
             {
-                if (mole != null && mole.Active)
+                if (mole != null && mole.Active && mole.gameObject.activeSelf)
                 {
                     mole.Hp--;
                     if (mole.Hp <= 0)
