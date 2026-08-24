@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3111747743205818572
 Transform:
   m_ObjectHideFlags: 0
@@ -275,9 +275,19 @@ MonoBehaviour:
   popluarMax: 2
   decorations:
   - keyword: 1
-    decorate: {fileID: 4287142033544765431}
+    decorate: {fileID: 143314578038382214}
   - keyword: 8
-    decorate: {fileID: 5021969602365767688}
+    decorate: {fileID: 532290377627318621}
+  - keyword: 4
+    decorate: {fileID: 6133213059510674298}
+  - keyword: 16
+    decorate: {fileID: 3956179523675033036}
+  - keyword: 32
+    decorate: {fileID: 4679079313765621751}
+  - keyword: 64
+    decorate: {fileID: 5477932515209730320}
+  - keyword: 128
+    decorate: {fileID: 6367979151511416815}
 --- !u!1 &1585806563686363063
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +600,7 @@ SpriteRenderer:
   m_Size: {x: 3.975, y: 2.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &8926197541499338822
 Animator:
@@ -939,7 +949,7 @@ SpriteRenderer:
   m_Size: {x: 3.975, y: 2.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &2822351480378829466
 Animator:
@@ -1192,7 +1202,7 @@ SpriteRenderer:
   m_Size: {x: 3.975, y: 2.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &2292130178547197197
 Animator:
@@ -1246,7 +1256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7703590242158630675
 Transform:
   m_ObjectHideFlags: 0
@@ -1473,7 +1483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5311113060118276170
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,7 +1785,7 @@ SpriteRenderer:
   m_Size: {x: 3.975, y: 2.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &4081009765699071181
 Animator:
@@ -1905,7 +1915,7 @@ SpriteRenderer:
   m_Size: {x: 7.95, y: 5.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!95 &2770447793860585731
 Animator:
