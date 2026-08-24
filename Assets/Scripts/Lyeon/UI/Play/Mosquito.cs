@@ -26,7 +26,7 @@ namespace Wakamole.Lyeon.UI.Play
         {
             if (!Active) return;
 
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, 5.0f * Time.deltaTime);
             if (Vector3.Distance(transform.position, targetPosition) < 0.01f) Active = true;
         }
 
