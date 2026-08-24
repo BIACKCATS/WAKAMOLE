@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
@@ -12,6 +13,7 @@ namespace Wakamole.Lyeon.Manager.Play
     public class PlayerManager : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private Image handImage, attackImage;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ProgressBar progressBar;
         [SerializeField] private List<ChargeFire> fires;
@@ -45,6 +47,7 @@ namespace Wakamole.Lyeon.Manager.Play
         private void Start()
         {
             stageManager = StageManager.Current;
+            attackImage.gameObject.SetActive(false);
         }
 
         private void Update()
