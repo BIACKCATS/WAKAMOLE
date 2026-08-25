@@ -29,7 +29,6 @@ namespace Wakamole.Lyeon.Manager.Component
                 transform.position = Vector3.Lerp(transform.position, targetPostion, cam.MoveSpeed * Time.deltaTime);
             else
             {
-                if (mole.Moving) return;
                 if (mole.Active)
                 {
                     transform.position = targetPostion;

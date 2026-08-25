@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
@@ -50,8 +51,6 @@ namespace Wakamole.Lyeon.Entity
     public class Mole : MonoBehaviour
     {
         [Header("Components")]
-        [Tooltip("두더지를 표시하는 스크립트를 포함한 GameObject입니다.")]
-        [SerializeField] private MoleCharactor charactor;
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private HpBar hpBar;
         [SerializeField] private MoleAnim anim;
@@ -88,10 +87,25 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지에 추가될 장식 입니다.")]
         [SerializeField] protected List<MoleDeco> decorations = new();
 
+        private bool active = false;
+        private float showedTime = 0;
+        private Coroutine finishing = null;
+
         private MoleManager manager = null;
-        public bool Active { get => charactor.Active; set => charactor.Active = false; }
-        public bool Moving => charactor.Moving;
-        public bool Interactable => charactor.Interactable;
+
+        public bool Active
+        {
+            get => active;
+            set
+            {
+                active = value;
+                if (!active)
+                {
+                    anim.PlayExternalState("Dead");
+                    finishing = StartCoroutine(FinishTime());
+                }
+            }
+        }
 
         /// <summary>
         /// 두더지 오브젝트를 관리하는 MoleManager입니다.
@@ -118,7 +132,6 @@ namespace Wakamole.Lyeon.Entity
                 hpBar.Value = (float)currentHp / maxHp;
                 if (currentHp <= 0)
                 {
-                    anim.PlayExternalState("Dead");
                     if ((keyword & MoleKeyword.SPLIT) != 0)
                     {
                         manager.ShowMole(MoleKeyword.DEFAULT);
@@ -128,6 +141,7 @@ namespace Wakamole.Lyeon.Entity
                         manager.ShowMole(MoleKeyword.REVIVED);
                     if ((keyword & MoleKeyword.RICH) != 0)
                         StageManager.Current.Coin++;
+                    Active = false;
                 }
             }
         }
@@ -221,19 +235,31 @@ namespace Wakamole.Lyeon.Entity
                 }
             }
 
-            charactor.ShowTime = showTime;
-            charactor.MoveSpeed = moveSpeed;
-            charactor.Active = true;
+            active = true;
         }
 
         private void OnEnable()
         {
+            if (finishing != null)
+            {
+                StopCoroutine(finishing);
+                finishing = null;
+            }
+
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {
                 int rand = UnityEngine.Random.Range(popluarMin, popluarMax + 1);
                 for (int i = 0; i < rand; i++) manager.ShowMole(MoleKeyword.DEFAULT);
             }
+        }
+
+        private void Update()
+        {
+            if (!active) return;
+
+            showedTime += Time.deltaTime;
+            if (showedTime >= showTime) Active = false;
         }
 
         private void OnDisable()
@@ -249,6 +275,13 @@ namespace Wakamole.Lyeon.Entity
                     StageManager.Current.Score += (int)(score * GameManager.Current.Preference.FailScore);
                 StageManager.Current.Combo = 0;
             }
+        }
+
+        private IEnumerator FinishTime()
+        {
+            yield return new WaitForSeconds(0.5f);
+            gameObject.SetActive(false);
+            finishing = null;
         }
     }
 }
