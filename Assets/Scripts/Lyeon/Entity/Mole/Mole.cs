@@ -58,8 +58,6 @@ namespace Wakamole.Lyeon.Entity
         [Header("Preferences")]
         [Tooltip("두더지가 올라오는 시간입니다.")]
         [SerializeField] protected float showTime = 3.0f;
-        [Tooltip("두더지가 올라오고 내려가는 속도입니다.")]
-        [SerializeField] protected float moveSpeed = 8.0f;
 
         [Header("Information")]
         [Tooltip("두더지의 키워드(특성) 입니다.")]
@@ -101,7 +99,7 @@ namespace Wakamole.Lyeon.Entity
                 active = value;
                 if (!active)
                 {
-                    anim.PlayExternalState("Dead");
+                    anim.PlayExternalState("Dead", true);
                     finishing = StartCoroutine(FinishTime());
                 }
             }
@@ -163,16 +161,6 @@ namespace Wakamole.Lyeon.Entity
         /// 두더지를 잡을 경우 획득 가능한 점수입니다.
         /// </summary>
         public int Score => score;
-
-        /// <summary>
-        /// 두더지가 등장하는 시간입니다.
-        /// </summary>
-        public float ShowTime => showTime;
-
-        /// <summary>
-        /// 두더지가 움직이는 속도입니다.
-        /// </summary>
-        public float MoveSpeed => moveSpeed;
 
         /// <summary>
         /// 두더지의 키워드입니다.
@@ -240,12 +228,7 @@ namespace Wakamole.Lyeon.Entity
 
         private void OnEnable()
         {
-            if (finishing != null)
-            {
-                StopCoroutine(finishing);
-                finishing = null;
-            }
-
+            showedTime = 0;          
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {
