@@ -113,56 +113,56 @@ namespace Wakamole.Lyeon.Entity
         /// <summary>
         /// 두더지의 현재 체력입니다. 만일 Hp Bar가 Inspector에 지정되지 않은 경우 오류가 발생할 수 있습니다.
         /// </summary>
-        public int Hp
-        {
-            get => currentHp;
-            set
+            public int Hp
             {
-                if (currentHp > value)
+                get => currentHp;
+                set
                 {
-                    anim.PlayExternalState("Hit");
-                    if ((keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
-                    {
-                        shieldCount--;
-                        return;
-                    }
-                }
-                
-                currentHp = value;
-                if (currentHp < 0) currentHp = 0;
+                    // [핵심 추가] 두더지가 이미 죽는 중이거나 비활성화 상태(active가 false)라면
+                    // 더 이상 피격 연산이나 체력 감소, 분열 소환을 하지 않고 즉시 코드를 종료합니다.
+                    if (!active) return;
 
-                hpBar.Value = (float)currentHp / maxHp;
-                if (currentHp <= 0)
-                {
-                    if ((keyword & MoleKeyword.SPLIT) != 0)
+                    if (currentHp > value)
                     {
-                        manager.ShowMole(MoleKeyword.DEFAULT);
-                        manager.ShowMole(MoleKeyword.DEFAULT);
+                        anim.PlayExternalState("Hit");
+                        if ((keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
+                        {
+                            shieldCount--;
+                            return;
+                        }
                     }
-                    if ((keyword & MoleKeyword.REVIVE) != 0)
-                        manager.ShowMole(MoleKeyword.REVIVED);
-                    if ((keyword & MoleKeyword.RICH) != 0)
-                        StageManager.Current.Coin++;
-
-                    // -------------------------------------------------------------
-                    // [여기서부터 수정된 내용!]
-                    // -------------------------------------------------------------
                     
-                    // 1. 애니메이터 컴포넌트를 가져와서 우리가 방금 만든 "Die" 트리거 신호를 보낼게요. 더 이상은 우리팀 프로그래머분들이 고통받지 않았으면 하니까.
-                    // (MoleAnim 스크립트가 붙어있는 오브젝트에서 Animator를 직접 찌르는 방식으로 해서, 일단 잡아뒀어. 두더지들이 Hit 당할때 피가 0되니까 바로 dead로 넘어가더라구요.
-                    Animator targetAnimator = anim.GetComponent<Animator>();
-                    if (targetAnimator != null)
+                    currentHp = value;
+                    if (currentHp < 0) currentHp = 0;
+
+                    hpBar.Value = (float)currentHp / maxHp;
+                    
+                    if (currentHp <= 0)
                     {
-                        targetAnimator.SetTrigger("Die");
+                        // 💡 중요: 체력이 0이 되는 '최초의 순간'에 active를 false로 만들어 
+                        // 연타를 하더라도 이 if문 안으로 두 번 다시 들어오지 못하게 잠가버립니다.
+                        active = false;
+
+                        if ((keyword & MoleKeyword.SPLIT) != 0)
+                        {
+                            manager.ShowMole(MoleKeyword.DEFAULT);
+                            manager.ShowMole(MoleKeyword.DEFAULT);
+                        }
+                        if ((keyword & MoleKeyword.REVIVE) != 0)
+                            manager.ShowMole(MoleKeyword.REVIVED);
+                        if ((keyword & MoleKeyword.RICH) != 0)
+                            StageManager.Current.Coin++;
+
+                        Animator targetAnimator = anim.GetComponent<Animator>();
+                        if (targetAnimator != null)
+                        {
+                            targetAnimator.SetTrigger("Die");
+                        }
+
+                        StartCoroutine(Co_DisableAfterAnimation());
                     }
-
-                    // 2. 기존의 Active = false; 를 지우고, 대신 코루틴을 실행하게 할게요.
-                    // Hit 애니메이션과 Dead 애니메이션이 끝날 때까지 기다렸다가 오브젝트를 꺼줄거에요. 아마도.
-                    StartCoroutine(Co_DisableAfterAnimation());
                 }
-
             }
-        }
 
         /// <summary>
         /// 두더지의 최대 체력입니다. 만일 현재 체력보다 작은 경우 현재 체력이 강제로 최대 체력만큼 설정됩니다.
@@ -308,10 +308,10 @@ namespace Wakamole.Lyeon.Entity
                 yield break;
             }
 
-            // 1. 애니메이터가 "Hit"에서 "Dead" 상태로 확실히 꺾일 때까지 1프레임 대기시킬겁니다. 일단. 버그 걸린다고 하더라구요
+            // 1. 애니메이터가 "Hit"에서 "Dead" 상태로 확실히 꺾일 때까지 1프레임 대기. 일단. 버그 걸린다고 하더라
             yield return null;
 
-            // 2. 현재 애니메이터가 'Dead' 애니메이션 상태로 무사히 들어왔는지 확인해야하구요
+            // 2. 현재 애니메이터가 'Dead' 애니메이션 상태로 무사히 들어왔는지 확인해야하구
             // 만약 애니메이터 상의 상태 이름이 "Dead"가 아니라면 그 이름을 적어주셔야 합니다.
             int loopCount = 0;
             while (!targetAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dead") && loopCount < 10)
@@ -320,13 +320,13 @@ namespace Wakamole.Lyeon.Entity
                 loopCount++;
             }
 
-            // 3. 이제 진짜 'Dead' 애니메이션의 실제 재생 시간(초)을 가져오고요.
+            // 3. 이제 진짜 'Dead' 애니메이션의 실제 재생 시간(초)을 가져오기
             float deadAnimLength = targetAnimator.GetCurrentAnimatorStateInfo(0).length;
 
-            // 4. 두더지가 쓰러지는 연출 시간만큼 자로 잰 듯 정확하게 대기할거에요.
+            // 4. 두더지가 쓰러지는 연출 시간만큼 자로 잰 듯 정확하게 대기.
             yield return new WaitForSeconds(deadAnimLength);
 
-            // 5. 연출이 완벽히 끝났으므로 안전하게 오브젝트를 비활성화할게요.
+            // 5. 연출이 완벽히 끝났으므로 안전하게 오브젝트를 비활성화.
             gameObject.SetActive(false);
         }
     }
