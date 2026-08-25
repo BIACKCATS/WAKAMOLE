@@ -6721,6 +6721,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1566755578}
   - component: {fileID: 1566755579}
+  - component: {fileID: 1566755581}
+  - component: {fileID: 1566755582}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -6737,7 +6739,7 @@ Transform:
   m_GameObject: {fileID: 1566755576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.71942, y: 0, z: 0.99949}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6764,7 +6766,7 @@ MonoBehaviour:
       Data4: -1430275161
     Path: event:/New Event 2
   Event: 
-  EventPlayTrigger: 1
+  EventPlayTrigger: 0
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -6772,7 +6774,7 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params:
   - Name: BackgroundMusicVolume
-    Value: 1
+    Value: 0.4
   - Name: Combo
     Value: 0
   - Name: ShopEnter
@@ -6782,6 +6784,49 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1566755581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566755576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a5e0a0eee74d94ba37d69d290cd2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+--- !u!114 &1566755582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566755576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9837d5b4b0c37a4b9a0fa0fc4bd1512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundTest
+  testSound:
+    Guid:
+      Data1: 1477105843
+      Data2: 1136129317
+      Data3: -1601249619
+      Data4: -1430275161
+    Path: event:/New Event 2
+  triggerKey: 122
+  parameters:
+  - name: Combo
+    value: 100
+  - name: Volume
+    value: 1
+  - name: BackgroundMusicVolume
+    value: 1
+  - name: ShopEnter
+    value: 100
+  - name: VFXVolume
+    value: 1
 --- !u!1 &1584815789
 GameObject:
   m_ObjectHideFlags: 0

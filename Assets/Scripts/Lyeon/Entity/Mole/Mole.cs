@@ -175,10 +175,7 @@ namespace Wakamole.Lyeon.Entity
         /// 두더지의 데이터를 초기화합니다.
         /// </summary>
         public void Init(int defaultHp, int defaultScore, float defaultTime)
-        {
-            if (!initialize) anim.ResetToSpawn();
-            else initialize = true;
-            
+        {   
             fixedHp = fixedScore = fixedTime = false;
             showTime = defaultTime;
             score = defaultScore;
@@ -235,6 +232,9 @@ namespace Wakamole.Lyeon.Entity
 
         private void OnEnable()
         {
+            if (!initialize) initialize = true;
+            else anim.ResetToSpawn();
+            
             showedTime = 0;
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)

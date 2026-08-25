@@ -1,12 +1,32 @@
+using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 namespace Wakamole.Core.LocalData
 {
-    [CreateAssetMenu(fileName = "AudioData", menuName = "LocalDatas/AudioData")]
-    public class AudioData : ScriptableObject
+    [Serializable]
+    public struct SoundData
     {
-        [Tooltip("오디오 목록입니다. index가 id의 역할을 합니다.")]
-        [SerializeField] public List<AudioClip> audios;
+        public EventReference soundRef;
+        public string soundName;
+    }
+
+    [CreateAssetMenu(fileName = "AudioData", menuName = "LocalDatas/AudioData")]
+    public class AudioData : ScriptableObject, ISerializationCallbackReceiver
+    {
+        [SerializeField] private List<SoundData> sounds = new();
+
+        public Dictionary<string, EventReference> Sounds { get; private set; }
+
+        public void OnAfterDeserialize() {}
+
+        public void OnBeforeSerialize()
+        {
+            Sounds = new();
+            if (sounds == null || sounds.Count == 0) return;
+            for (int i = 0; i < sounds.Count; i++)
+                Sounds.Add(sounds[i].soundName, sounds[i].soundRef);
+        }
     }
 }
