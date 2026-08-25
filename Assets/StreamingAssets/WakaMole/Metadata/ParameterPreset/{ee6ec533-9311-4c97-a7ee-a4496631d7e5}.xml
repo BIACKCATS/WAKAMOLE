@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{ee6ec533-9311-4c97-a7ee-a4496631d7e5}">
+		<property name="name">
+			<value>DiscordAlert</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4b1e459a-52ef-40bd-84ea-416ac3631ad1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{5a10dd3b-c5a0-42c3-b16b-8f598affb495}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{5a10dd3b-c5a0-42c3-b16b-8f598affb495}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

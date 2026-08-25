@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{74b4bab8-d282-4b7a-89c6-af1088202a51}">
+		<property name="assetPath">
+			<value>SFX_Powerup_Crystal_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5add5d1-3993-48da-9643-d365520df7b8}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1678,7 +1678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437416198}
   - component: {fileID: 437416197}
-  - component: {fileID: 437416196}
+  - component: {fileID: 437416199}
   m_Layer: 0
   m_Name: AudioManager2
   m_TagString: Untagged
@@ -1686,20 +1686,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &437416196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437416195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92818115b85425a49a0e13cd67ad1965, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioManager2
-  Muffle: 0
-  bgmEmitter: {fileID: 437416197}
 --- !u!114 &437416197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,6 +1732,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437416199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437416195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a5e0a0eee74d94ba37d69d290cd2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
 --- !u!1 &459560051
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,7 +3363,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
   nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 2107277365}
+--- !u!1 &822698466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1072125046331268439, guid: 8fa554b1b310ca54e8d913cc3bb7f9d8, type: 3}
+  m_PrefabInstance: {fileID: 8011203019713865751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &822698470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822698466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9837d5b4b0c37a4b9a0fa0fc4bd1512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundTest
+  testSound:
+    Guid:
+      Data1: -2098017046
+      Data2: 1239465099
+      Data3: 2095436458
+      Data4: -325969131
+    Path: event:/Pop
+  triggerKey: 32
+  parameters:
+  - name: Volume
+    value: 1
+  - name: VFXVolume
+    value: 1
+  - name: Hz
+    value: 0
 --- !u!1001 &859346500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5230,6 +5260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
   progressBar: {fileID: 1078650320}
+  handImage: {fileID: 0}
+  attackImage: {fileID: 0}
+  fires: []
   layerMask:
     serializedVersion: 2
     m_Bits: 200
@@ -8010,6 +8043,90 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2107277365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107277367}
+  - component: {fileID: 2107277368}
+  - component: {fileID: 2107277369}
+  m_Layer: 0
+  m_Name: SoundTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107277367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107277365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26856, y: -0, z: 0.60871}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107277368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107277365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1477105843
+      Data2: 1136129317
+      Data3: -1601249619
+      Data4: -1430275161
+    Path: event:/New Event 2
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params:
+  - Name: Volume
+    Value: 0.5
+  - Name: BackgroundMusicVolume
+    Value: 0.5
+  - Name: ShopEnter
+    Value: 0
+  - Name: Combo
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2107277369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107277365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a5e0a0eee74d94ba37d69d290cd2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
 --- !u!1 &2120998901
 GameObject:
   m_ObjectHideFlags: 0
@@ -8340,7 +8457,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1072125046331268439, guid: 8fa554b1b310ca54e8d913cc3bb7f9d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822698470}
   m_SourcePrefab: {fileID: 100100000, guid: 8fa554b1b310ca54e8d913cc3bb7f9d8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -8367,3 +8487,4 @@ SceneRoots:
   - {fileID: 8011203019713865751}
   - {fileID: 1861739474}
   - {fileID: 238303502}
+  - {fileID: 2107277367}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodingSetting" id="{7558c707-c757-4c65-ac2a-a09502fa0084}">
+		<property name="encodingFormat">
+			<value>3</value>
+		</property>
+		<property name="quality">
+			<value>37</value>
+		</property>
+		<relationship name="platform">
+			<destination>{bf34a7a7-bcc1-473d-a45c-9ed3e4cbbed0}</destination>
+		</relationship>
+		<relationship name="encodable">
+			<destination>{bf34a7a7-bcc1-473d-a45c-9ed3e4cbbed0}</destination>
+		</relationship>
+	</object>
+</objects>
