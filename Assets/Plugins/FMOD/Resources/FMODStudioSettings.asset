@@ -609,8 +609,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: "../../Downloads/\uC640\uCE74\uBAB0 (2)/\uC640\uCE74\uBAB0/\uC640\uCE74\uBAB0.fspro"
-  sourceBankPath: "../../Downloads/\uC640\uCE74\uBAB0 (2)/\uC640\uCE74\uBAB0/Build"
+  sourceProjectPath: "../../Downloads/Wakamole/WakaMole/\uC640\uCE74\uBAB0.fspro"
+  sourceBankPath: ../../Downloads/Wakamole/WakaMole/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -632,8 +632,10 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - basic
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

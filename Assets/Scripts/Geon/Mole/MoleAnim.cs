@@ -74,6 +74,9 @@ public class MoleAnim : MonoBehaviour
     {
         if (animator == null) animator = GetComponent<Animator>();
 
+        // 1. 애니메이터 상태 및 파라미터 완전 초기화 (핵심)
+        animator.Rebind();
+
         // 장착된 아이템 중 가장 높은 속도 배율을 가져와 최종 속도 계산
         float itemSpeed = GetEquippedItemSpeed();
         finalAnimSpeed = animSpeed * itemSpeed;
@@ -96,9 +99,6 @@ public class MoleAnim : MonoBehaviour
     /// </summary>
     private IEnumerator Co_SpawnAndRandomLoop()
     {
-        // 컨트롤러 교체 및 애니메이터 초기화 1프레임 대기
-        yield return null;
-
         // 1. 등장 모션 실행
         PlayStateInternal(spawnStateName);
 
@@ -199,5 +199,22 @@ public class MoleAnim : MonoBehaviour
             if (item.isExclusiveCombined) return item;
         }
         return null;
+    }
+
+    // 외부(Mole)에서 재스폰 시 강제로 애니메이션을 리셋하기 위한 함수
+    public void ResetToSpawn()
+    {
+        // 1. 기존 running 중인 코루틴 정지
+        if (randomAnimCoroutine != null)
+        {
+            StopCoroutine(randomAnimCoroutine);
+            randomAnimCoroutine = null;
+        }
+
+        // 2. 애니메이터 Rebind 및 컨트롤러/속도 재설정
+        InitAnimatorSetting();
+
+        // 3. Spawn 및 Idle 루프 재시작
+        randomAnimCoroutine = StartCoroutine(Co_SpawnAndRandomLoop());
     }
 }
