@@ -85,7 +85,7 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지에 추가될 장식 입니다.")]
         [SerializeField] protected List<MoleDeco> decorations = new();
 
-        private bool active = false;
+        private bool initialize = false, active = false;
         private float showedTime = 0;
         private Coroutine finishing = null;
 
@@ -116,14 +116,18 @@ namespace Wakamole.Lyeon.Entity
         public int Hp
         {
             get => currentHp;
-            set {
-                anim.PlayExternalState("Hit");
-                if (currentHp > value && (keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
+            set
+            {
+                if (currentHp > value)
                 {
-                    shieldCount--;
-                    return;
+                    anim.PlayExternalState("Hit");
+                    if ((keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
+                    {
+                        shieldCount--;
+                        return;
+                    }
                 }
-                        
+                
                 currentHp = value;
                 if (currentHp < 0) currentHp = 0;
 
@@ -172,6 +176,9 @@ namespace Wakamole.Lyeon.Entity
         /// </summary>
         public void Init(int defaultHp, int defaultScore, float defaultTime)
         {
+            if (!initialize) anim.ResetToSpawn();
+            else initialize = true;
+            
             fixedHp = fixedScore = fixedTime = false;
             showTime = defaultTime;
             score = defaultScore;
@@ -228,7 +235,7 @@ namespace Wakamole.Lyeon.Entity
 
         private void OnEnable()
         {
-            showedTime = 0;          
+            showedTime = 0;
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {
