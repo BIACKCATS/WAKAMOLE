@@ -176,7 +176,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639232778806768173
+  lastModified: 639232740101340878
   FileSizes:
   - Name: Desktop
     Value: 1205376
@@ -268,7 +268,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639232778806770266
+  lastModified: 639232740101377426
   FileSizes:
   - Name: Desktop
     Value: 1616
@@ -757,7 +757,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -6497283144908647834}
   cacheVersion: 131860
-  cacheTime: 639232778806782648
+  cacheTime: 639232740101377426
   SerializableEventsDict:
   - key: event:/New Event 2
     index: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/basic.bank
   Name: basic
   StudioPath: bank:/basic
-  lastModified: 639232778806782648
+  lastModified: 639232740094226824
   FileSizes:
   - Name: Desktop
     Value: 2393184
