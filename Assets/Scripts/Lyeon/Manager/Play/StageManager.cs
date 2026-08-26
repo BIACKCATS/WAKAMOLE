@@ -146,6 +146,8 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        private SoundParam comboParam = new();
+
         /// <summary>
         /// 스테이지 내 콤보 수입니다.
         /// </summary>
@@ -156,6 +158,24 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 currentCombo = value;
                 combo.Count = currentCombo;
+                comboParam.name = "Hz";
+
+                if (currentCombo < 10)
+                {
+                    comboParam.value = 0;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                }
+                else if (currentCombo < 20)
+                {
+                    comboParam.value = 0.51f;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                }
+                else if (currentCombo >= 20)
+                {
+                    comboParam.value = 0.91f;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                }
+
                 if (currentCombo > maxCombo) maxCombo = value;
             }
         }

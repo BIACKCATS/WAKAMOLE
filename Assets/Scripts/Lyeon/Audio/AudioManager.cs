@@ -78,6 +78,11 @@ namespace Wakamole.Lyeon.Audio
 
         public void PlaySfx(string name)
         {
+            PlaySfx(name, null);
+        }
+
+        public void PlaySfx(string name, params SoundParam[] parameters)
+        {
             if (!audioData.Sounds.ContainsKey(name))
             {
                 Debug.LogWarning($"{name} 이름을 가진 SFX를 재생할 수 없습니다.");
@@ -95,6 +100,14 @@ namespace Wakamole.Lyeon.Audio
                 foreach (SoundParam soundParam in param)
                 {
                     instance.setParameterByName(soundParam.name, soundParam.value);
+                }
+            }
+
+            if (parameters != null)
+            {
+                foreach (SoundParam param in parameters)
+                {
+                    instance.setParameterByName(param.name, param.value);
                 }
             }
 
