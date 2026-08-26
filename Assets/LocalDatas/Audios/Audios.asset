@@ -23,9 +23,81 @@ MonoBehaviour:
     soundName: BGM
   - soundRef:
       Guid:
+        Data1: -394748675
+        Data2: 1100364074
+        Data3: 546813091
+        Data4: -1206450662
+      Path: event:/UI_Btn_Sounds
+    soundName: Button
+  - soundRef:
+      Guid:
         Data1: -1325535173
         Data2: 1075473553
         Data3: -974483832
         Data4: -921199234
       Path: event:/Combo
     soundName: Combo
+  - soundRef:
+      Guid:
+        Data1: 636158377
+        Data2: 1115863888
+        Data3: 944057482
+        Data4: -1136556827
+      Path: event:/Mosquitto
+    soundName: Mosquitto
+  - soundRef:
+      Guid:
+        Data1: -1034503014
+        Data2: 1313587876
+        Data3: -1391130975
+        Data4: 492416759
+      Path: event:/Mosquitto_Hit
+    soundName: Mosquitto_Hit
+  - soundRef:
+      Guid:
+        Data1: 722630827
+        Data2: 1116075071
+        Data3: 1368533181
+        Data4: 797085670
+      Path: event:/Mole_Appear
+    soundName: Mole_Appear
+  - soundRef:
+      Guid:
+        Data1: -177496285
+        Data2: 1274505443
+        Data3: -1557482578
+        Data4: 145385058
+      Path: event:/Mole_Sounds
+    soundName: Mole_Sounds
+  - soundRef:
+      Guid:
+        Data1: -1481988403
+        Data2: 1146988708
+        Data3: 574392747
+        Data4: 27580539
+      Path: event:/Weapon_Swing
+    soundName: Swing
+  - soundRef:
+      Guid:
+        Data1: -916921856
+        Data2: 1167259612
+        Data3: 1427089313
+        Data4: 257129424
+      Path: event:/Shop
+    soundName: Shop
+  - soundRef:
+      Guid:
+        Data1: 53773783
+        Data2: 1225579999
+        Data3: 903479738
+        Data4: 309510869
+      Path: event:/Bubble_Pop
+    soundName: Bubble
+  - soundRef:
+      Guid:
+        Data1: -2098017046
+        Data2: 1239465099
+        Data3: 2095436458
+        Data4: -325969131
+      Path: event:/Pop
+    soundName: Pop
