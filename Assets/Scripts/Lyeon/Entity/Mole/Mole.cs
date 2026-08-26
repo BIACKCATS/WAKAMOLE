@@ -305,7 +305,7 @@ namespace Wakamole.Lyeon.Entity
                 }
 
                 // 3. 이제 진짜 'Dead' 애니메이션의 실제 재생 시간(초)을 가져오기
-                float deadAnimLength = targetAnimator.GetCurrentAnimatorStateInfo(0).length - 0.9f;
+                float deadAnimLength = targetAnimator.GetCurrentAnimatorStateInfo(0).length;
 
                 // 4. 두더지가 쓰러지는 연출 시간만큼 자로 잰 듯 정확하게 대기.
                 yield return new WaitForSeconds(deadAnimLength);
