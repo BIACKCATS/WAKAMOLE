@@ -67,7 +67,7 @@ namespace Wakamole.Lyeon.Audio
             bgmPlayer.EventInstance.start();
         }
 
-        public void SetParameter(string name, float value) => bgmPlayer.EventInstance.setParameterByName(name, value);
+        public void SetBgmParameter(string name, float value) => bgmPlayer.EventInstance.setParameterByName(name, value);
 
         public void PlaySfx(string name)
         {
