@@ -6834,7 +6834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566755578}
   - component: {fileID: 1566755579}
-  - component: {fileID: 1566755581}
+  - component: {fileID: 1566755580}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -6896,7 +6896,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &1566755581
+--- !u!114 &1566755580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6905,9 +6905,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566755576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a5e0a0eee74d94ba37d69d290cd2f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 969ca625ca55742779a2c7d0c652a4b1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Audio.AudioManager
+  bgmPlayer: {fileID: 1566755579}
+  audioData: {fileID: 11400000, guid: 9945bd7fffee04e549e6cf671650aaea, type: 2}
+  paramData: {fileID: 11400000, guid: 6257ad08896dc4fa0a5a1cb6109fb64f, type: 2}
 --- !u!1 &1584815789
 GameObject:
   m_ObjectHideFlags: 0
