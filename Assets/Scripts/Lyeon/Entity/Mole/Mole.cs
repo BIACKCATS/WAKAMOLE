@@ -283,23 +283,19 @@ namespace Wakamole.Lyeon.Entity
             }
         }
 
-        private IEnumerator FinishTime()
+private IEnumerator FinishTime()
         {
             // 0.5초 동안 죽는 애니메이션이 나오기를 기다리게 할거고..
             yield return new WaitForSeconds(0.5f);
             
-            // [추가] 오브젝트를 끄기 직전에 애니메이터를 리셋하여 
-            // 다음 스폰 때 DEAD 잔상이 남는 것을 완전 차단시킬게. 유니티 자체 버그라더라.
-            if (anim != null)
-            {
-                anim.InitAnimatorSetting(); 
-            }
+            // [원인 제거] 여기에 있던 anim.InitAnimatorSetting(); 을 삭제했습니다!
+            // 유니티 버그 원인: 끄기 직전에 Rebind를 하면 풀링 시 상태가 꼬여서 깨어납니다.
 
             gameObject.SetActive(false);
             finishing = null;
         }
-        
-        private IEnumerator Co_DisableAfterAnimation()
+
+private IEnumerator Co_DisableAfterAnimation()
         {
             Animator targetAnimator = anim.GetComponent<Animator>();
             if (targetAnimator == null)
@@ -312,7 +308,6 @@ namespace Wakamole.Lyeon.Entity
             yield return null;
 
             // 2. 현재 애니메이터가 'Dead' 애니메이션 상태로 무사히 들어왔는지 확인해야하구
-            // 만약 애니메이터 상의 상태 이름이 "Dead"가 아니라면 그 이름을 적어주셔야 합니다.
             int loopCount = 0;
             while (!targetAnimator.GetCurrentAnimatorStateInfo(0).IsName("Dead") && loopCount < 10)
             {
@@ -325,6 +320,9 @@ namespace Wakamole.Lyeon.Entity
 
             // 4. 두더지가 쓰러지는 연출 시간만큼 자로 잰 듯 정확하게 대기.
             yield return new WaitForSeconds(deadAnimLength);
+
+            // [원인 제거] 제가 이전에 추가하라고 했던 초기화 코드를 삭제했습니다.
+            // 그냥 죽은 상태 그대로 편안하게 오브젝트를 꺼야 합니다.
 
             // 5. 연출이 완벽히 끝났으므로 안전하게 오브젝트를 비활성화.
             gameObject.SetActive(false);
