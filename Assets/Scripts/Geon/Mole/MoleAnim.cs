@@ -35,7 +35,7 @@ public class MoleAnim : MonoBehaviour
 
     private void OnEnable()
     {
-        InitAnimatorSetting();
+        // [기존] InitAnimatorSetting(); <- 이 줄을 지우거나 주석 처리 하세요!
 
         if (randomAnimCoroutine != null)
             StopCoroutine(randomAnimCoroutine);
@@ -76,6 +76,7 @@ public class MoleAnim : MonoBehaviour
 
         // 1. 애니메이터 상태 및 파라미터 완전 초기화 (핵심)
         animator.Rebind();
+        animator.Update(0f);
 
         // 장착된 아이템 중 가장 높은 속도 배율을 가져와 최종 속도 계산
         float itemSpeed = GetEquippedItemSpeed();
@@ -99,21 +100,15 @@ public class MoleAnim : MonoBehaviour
     /// </summary>
     private IEnumerator Co_SpawnAndRandomLoop()
     {
+        // [순서 변경] 애니메이터 초기화를 1프레임 대기하기 '전'에 먼저 실행합니다.
+        InitAnimatorSetting();
+        
+        // [핵심 추가] 유니티 내부 버퍼가 완전히 정비될 때까지 딱 1프레임 대기합니다.
+        yield return null; 
         // 1. 등장 모션 실행
         PlayStateInternal(spawnStateName);
 
-        if (randomStateNames == null || randomStateNames.Length == 0)
-            yield break;
-
-        // 2. 지정된 시간 간격 무한 루프
-        while (true)
-        {
-            float waitTime = Random.Range(minRandomInterval, maxRandomInterval);
-            yield return new WaitForSeconds(waitTime);
-
-            int randomIndex = Random.Range(0, randomStateNames.Length);
-            PlayStateInternal(randomStateNames[randomIndex]);
-        }
+        // ... (이후 기존 코드 동일)
     }
 
     /// <summary>
