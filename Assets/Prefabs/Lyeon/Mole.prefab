@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8372055060879392539}
   - component: {fileID: 6001277563103734235}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9169487276731617787}
   - component: {fileID: 558635654364349682}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HpBar_background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,6 +673,7 @@ GameObject:
   - component: {fileID: 7517217547555447583}
   - component: {fileID: 5776934628662259056}
   - component: {fileID: 906217754615294569}
+  - component: {fileID: 4460074638159384559}
   m_Layer: 6
   m_Name: MoleCharactor
   m_TagString: Untagged
@@ -818,6 +819,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoleAnimTester
   keyMappings: []
+--- !u!114 &4460074638159384559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928572757361204535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd7801b480da6848b8686728876a7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SyncShadowSprite
+  shadowMaterial: {fileID: 2100000, guid: 2b517ecde6bfe414696ed82850650b30, type: 2}
 --- !u!1 &3357677978262796622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1167,7 @@ GameObject:
   - component: {fileID: 590829905841759047}
   - component: {fileID: 6025414231135089949}
   - component: {fileID: 2856936990536533158}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HpBarMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
