@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8372055060879392539
 Transform:
   m_ObjectHideFlags: 0
@@ -261,11 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7be9ab81b77449adb66546a4ebe3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Entity.Mole
-  charactor: {fileID: 4031554701646113913}
   hpBar: {fileID: 2856936990536533158}
   anim: {fileID: 5776934628662259056}
   showTime: 3
-  moveSpeed: 8
   keyword: 0
   maxHp: 2
   currentHp: 2
@@ -304,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9169487276731617787
 Transform:
   m_ObjectHideFlags: 0
@@ -649,7 +647,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8041836672547123865}
   - component: {fileID: 3118154282225588150}
-  - component: {fileID: 4031554701646113913}
   - component: {fileID: 1777695589319640828}
   - component: {fileID: 7517217547555447583}
   - component: {fileID: 5776934628662259056}
@@ -746,18 +743,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &4031554701646113913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2928572757361204535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732d479eb4965475981e6bd9387dfd44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Entity.MoleCharactor
 --- !u!136 &1777695589319640828
 CapsuleCollider:
   m_ObjectHideFlags: 0

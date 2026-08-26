@@ -2,7 +2,6 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-// 인스펙터 및 코드에서 파라미터 이름-값 쌍을 저장할 구조체
 [System.Serializable]
 public struct SoundParam
 {
@@ -26,7 +25,7 @@ public class SoundManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    // params 키워드로 0개~N개의 파라미터를 유연하게 수용
+    // 1. 단발성 효과음 재생 (기존 코드 그대로 유지)
     public void PlaySFX(EventReference soundRef, Vector3 position, params SoundParam[] parameters)
     {
         if (soundRef.IsNull) return;
@@ -34,7 +33,6 @@ public class SoundManager : MonoBehaviour
         EventInstance instance = RuntimeManager.CreateInstance(soundRef);
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
 
-        // 전달된 파라미터가 있다면 모두 루프를 돌며 적용
         if (parameters != null && parameters.Length > 0)
         {
             for (int i = 0; i < parameters.Length; i++)
@@ -48,5 +46,11 @@ public class SoundManager : MonoBehaviour
 
         instance.start();
         instance.release();
+    }
+
+    // 2. 외부 조작용 글로벌 파라미터 변경 (볼륨, BGM 상태 등 FMOD 프로젝트 전역 변수)
+    public void SetGlobalParameter(string paramName, float value)
+    {
+        RuntimeManager.StudioSystem.setParameterByName(paramName, value);
     }
 }

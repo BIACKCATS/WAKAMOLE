@@ -1746,7 +1746,15 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params: []
+  Params:
+  - Name: Volume
+    Value: 1
+  - Name: BackgroundMusicVolume
+    Value: 1
+  - Name: Combo
+    Value: 0
+  - Name: ShopEnter
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -3396,7 +3404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
   nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 2107277365}
+  attenuationObject: {fileID: 0}
 --- !u!1 &822698466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1072125046331268439, guid: 8fa554b1b310ca54e8d913cc3bb7f9d8, type: 3}
@@ -3429,6 +3437,11 @@ MonoBehaviour:
     value: 1
   - name: Hz
     value: 0
+  autoApplyGlobal: 1
+  applyGlobalKey: 103
+  globalParameters:
+  - name: Volume
+    value: 1
 --- !u!1001 &859346500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3738,63 +3751,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957840118}
   m_CullTransparentMesh: 1
---- !u!1001 &964576387
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7375804713857928337, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_Name
-      value: Backdrop_grass1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8660254
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386809286713708561, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0bc7fa1f1f637134b809f82e2090511c, type: 3}
 --- !u!1 &968203996
 GameObject:
   m_ObjectHideFlags: 0
@@ -8162,90 +8118,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!1 &2107277365
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2107277367}
-  - component: {fileID: 2107277368}
-  - component: {fileID: 2107277369}
-  m_Layer: 0
-  m_Name: SoundTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2107277367
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107277365}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26856, y: -0, z: 0.60871}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2107277368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107277365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1477105843
-      Data2: 1136129317
-      Data3: -1601249619
-      Data4: -1430275161
-    Path: event:/New Event 2
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params:
-  - Name: Volume
-    Value: 0.5
-  - Name: BackgroundMusicVolume
-    Value: 0.5
-  - Name: ShopEnter
-    Value: 0
-  - Name: Combo
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &2107277369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107277365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a5e0a0eee74d94ba37d69d290cd2f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
 --- !u!1 &2120998901
 GameObject:
   m_ObjectHideFlags: 0
@@ -8388,6 +8260,7 @@ GameObject:
   - component: {fileID: 2127433534}
   - component: {fileID: 2127433533}
   - component: {fileID: 2127433532}
+  - component: {fileID: 2127433536}
   m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
@@ -8489,6 +8362,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2127433536
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127433531}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39a7143746e0dd64f983126dff11e1f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2144114449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8637,23 +8532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc005968ab7a6547879f75e85698284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ITISKIRUHERE.AdvancedOutline
-  _outlineMaskShader: {fileID: 4800000, guid: c2f5089722420f44ea03b3dbb08dca7e, type: 3}
-  _outlineFillShader: {fileID: 4800000, guid: 6cdd088550bc7e6478ae291e0e83fabb, type: 3}
-  _outlineMode: 1
-  _outlineColor: {r: 0.9245283, g: 0.62016785, b: 0, a: 1}
-  _outlineWidth: 4
-  _pulseWidth: 0
-  _pulseSpeed: 2
-  _pulseMinWidth: 1.5
-  _pulseMaxWidth: 5
-  _rainbowColor: 0
-  _rainbowSpeed: 0.5
-  _dashedPattern: 0
-  _dashScale: 0.03
-  _dashSpeed: 15
-  _precomputeOutline: 0
-  _bakeKeys: []
-  _bakeValues: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8679,5 +8557,3 @@ SceneRoots:
   - {fileID: 8011203019713865751}
   - {fileID: 1861739474}
   - {fileID: 238303502}
-  - {fileID: 2107277367}
-  - {fileID: 964576387}
