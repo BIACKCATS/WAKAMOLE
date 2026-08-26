@@ -1265,7 +1265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -100}
+  m_AnchoredPosition: {x: -320, y: -100}
   m_SizeDelta: {x: 480, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237444660
@@ -1514,9 +1514,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446, y: -288}
-  m_SizeDelta: {x: 1018, y: 857}
-  m_Pivot: {x: 0.15, y: 0.6}
+  m_AnchoredPosition: {x: 453, y: -301}
+  m_SizeDelta: {x: 1500, y: 1751}
+  m_Pivot: {x: 0.1, y: 0.8}
 --- !u!114 &278376560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,6 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a17c199db5b24727a9239247883ec32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.GameManager
+  audioManager: {fileID: 1566755580}
   status: {fileID: 501717761}
   preference: {fileID: 501717762}
   itemDataList: {fileID: 11400000, guid: 0cfcf090a7f324309bb7fd5cd311a8ba, type: 2}
@@ -2398,7 +2399,8 @@ Transform:
   m_LocalPosition: {x: 1920, y: 1080, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1566755578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &501717761
@@ -2570,7 +2572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 280, y: 440}
+  m_AnchoredPosition: {x: 320, y: 440}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529304073
@@ -6833,10 +6835,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1566755578}
-  - component: {fileID: 1566755579}
   - component: {fileID: 1566755580}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6850,52 +6851,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566755576}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1920, y: -1080, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 501717760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1566755579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566755576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1477105843
-      Data2: 1136129317
-      Data3: -1601249619
-      Data4: -1430275161
-    Path: event:/New Event 2
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params:
-  - Name: BackgroundMusicVolume
-    Value: 0.4
-  - Name: Combo
-    Value: 0
-  - Name: ShopEnter
-    Value: 0
-  - Name: Volume
-    Value: 1
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &1566755580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6908,9 +6870,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969ca625ca55742779a2c7d0c652a4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Audio.AudioManager
-  bgmPlayer: {fileID: 1566755579}
   audioData: {fileID: 11400000, guid: 9945bd7fffee04e549e6cf671650aaea, type: 2}
   paramData: {fileID: 11400000, guid: 6257ad08896dc4fa0a5a1cb6109fb64f, type: 2}
+  bgm:
+    Guid:
+      Data1: 1477105843
+      Data2: 1136129317
+      Data3: -1601249619
+      Data4: -1430275161
+    Path: event:/New Event 2
+  masterVolume: 1
+  bgmVolume: 1
+  sfxVolume: 1
 --- !u!1 &1584815789
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,8 +8616,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c26ed4cba1d3344efb585790560e2b5d, type: 2}
   - {fileID: 11400000, guid: 1d7ee3b1cdc474c9ebdb3fa810cae082, type: 2}
   - {fileID: 11400000, guid: 7f9b2c8ce8e174223bef1fddee1f4d37, type: 2}
-  - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
   - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
+  - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5
@@ -10566,4 +10537,3 @@ SceneRoots:
   - {fileID: 999577134}
   - {fileID: 501717760}
   - {fileID: 1584815790}
-  - {fileID: 1566755578}

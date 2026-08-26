@@ -1,17 +1,18 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.InputSystem;
 
 public class SoundControlManager : MonoBehaviour
 {
     [Header("이 오브젝트가 전담할 FMOD 이벤트 주소")]
-    public string testEventPath = "event:/New Event 2"; 
+    public EventReference testEventPath; 
 
     [Header("실시간 수정할 파라미터 값들 (오브젝트마다 다르게 설정 가능)")]
     [Range(0f, 1f)] public float MainVolume = 0.5f;
     [Range(0f, 1f)] public float BackgroundMusicVolume = 0.5f;
     [Range(0f, 1f)] public float VFXVolume = 0.5f;
-    [Range(0f, 1f)] public float Combo = 0.0f;
+    [Range(0f, 100f)] public float Combo = 0.0f;
     [Range(0f, 100f)] public float HZ = 0.0f; 
     [Range(0f, 100f)] public float ShopEnter = 0.0f;
     [Range(0f, 1f)] public float DiscordAlert = 0.0f;
@@ -26,6 +27,7 @@ public class SoundControlManager : MonoBehaviour
 
     void Update()
     {
+        if (Keyboard.current.anyKey.wasPressedThisFrame) PlayTestSound(testEventPath);
         // 이 오브젝트의 인스펙터 창 값이나 외부에서 수정한 값이 매 프레임 독립적으로 반영됩니다.
         if (testInstance.isValid())
         {
@@ -33,9 +35,9 @@ public class SoundControlManager : MonoBehaviour
         }
     }
 
-    public void PlayTestSound(string path)
+    public void PlayTestSound(EventReference path)
     {
-        if (string.IsNullOrEmpty(path)) return;
+        if (string.IsNullOrEmpty(path.ToString())) return;
 
         if (testInstance.isValid())
         {
