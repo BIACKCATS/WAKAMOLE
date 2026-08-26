@@ -50,13 +50,20 @@ namespace Wakamole.Lyeon.Audio
             BgmVolume = 1;
         }
 
+        private void InitInstance(EventInstance instance)
+        {
+            instance.setParameterByName("BackgroundMusicVolume", MasterVolume);
+            instance.setParameterByName("Volume", MasterVolume);
+            instance.setParameterByName("VFXVolume", SfxVolume);
+            instance.setParameterByName("Combo", 0);
+            instance.setParameterByName("ShopEnter", 0);
+            instance.setParameterByName("Hz", 0);
+            instance.setParameterByName("DiscordAlert", 0);
+        }
+
         public void PlayBgm()
         {
-            bgmPlayer.EventInstance.setParameterByName("BackgroundMusicVolume", MasterVolume);
-            bgmPlayer.EventInstance.setParameterByName("Volume", MasterVolume);
-            bgmPlayer.EventInstance.setParameterByName("VFXVolume", SfxVolume);
-            bgmPlayer.EventInstance.setParameterByName("Combo", 0);
-            bgmPlayer.EventInstance.setParameterByName("ShopEnter", 0);
+            InitInstance(bgmPlayer.EventInstance);
             bgmPlayer.EventInstance.start();
         }
 
@@ -73,11 +80,7 @@ namespace Wakamole.Lyeon.Audio
             EventInstance instance = RuntimeManager.CreateInstance(audioData.Sounds[name]);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 
-            instance.setParameterByName("BackgroundMusicVolume", MasterVolume);
-            instance.setParameterByName("Volume", MasterVolume);
-            instance.setParameterByName("VFXVolume", SfxVolume);
-            instance.setParameterByName("Combo", 0);
-            instance.setParameterByName("ShopEnter", 0);
+            InitInstance(instance);
             
             if (paramData.Params.ContainsKey(name))
             {
