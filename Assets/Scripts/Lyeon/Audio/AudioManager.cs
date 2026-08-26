@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
@@ -51,8 +52,15 @@ namespace Wakamole.Lyeon.Audio
 
         public void PlayBgm()
         {
+            bgmPlayer.EventInstance.setParameterByName("BackgroundMusicVolume", MasterVolume);
+            bgmPlayer.EventInstance.setParameterByName("Volume", MasterVolume);
+            bgmPlayer.EventInstance.setParameterByName("VFXVolume", SfxVolume);
+            bgmPlayer.EventInstance.setParameterByName("Combo", 0);
+            bgmPlayer.EventInstance.setParameterByName("ShopEnter", 0);
             bgmPlayer.EventInstance.start();
         }
+
+        public void SetParameter(string name, float value) => bgmPlayer.EventInstance.setParameterByName(name, value);
 
         public void PlaySfx(string name)
         {
@@ -65,20 +73,20 @@ namespace Wakamole.Lyeon.Audio
             EventInstance instance = RuntimeManager.CreateInstance(audioData.Sounds[name]);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 
-            /// 여기다 Param 데이터 지정
-            /// 아래 코드 변형해서 만일 audioParamData에 해당 이름이 존재하는 경우 해당 값으로 덮어씌우기
-            /// 작성하기
-
-            /*if (parameters != null && parameters.Length > 0)
+            instance.setParameterByName("BackgroundMusicVolume", MasterVolume);
+            instance.setParameterByName("Volume", MasterVolume);
+            instance.setParameterByName("VFXVolume", SfxVolume);
+            instance.setParameterByName("Combo", 0);
+            instance.setParameterByName("ShopEnter", 0);
+            
+            if (paramData.Params.ContainsKey(name))
             {
-                for (int i = 0; i < parameters.Length; i++)
+                List<SoundParam> param = paramData.Params[name];
+                foreach (SoundParam soundParam in param)
                 {
-                    if (!string.IsNullOrEmpty(parameters[i].name))
-                    {
-                        instance.setParameterByName(parameters[i].name, parameters[i].value);
-                    }
+                    instance.setParameterByName(soundParam.name, soundParam.value);
                 }
-            } */
+            }
 
             instance.start();
             instance.release();
