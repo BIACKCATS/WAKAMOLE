@@ -27,6 +27,7 @@ namespace Wakamole.Lyeon.UI.Shop
             if (GameManager.Current.Coin < rerollCost) return;
 
             GameManager.Current.Coin -= rerollCost;
+            ShopManager.Current?.UpdateCoin();
             rerollCost *= 2;
             rerollText.text = $"{rerollCost}코인";
             booth.Reroll();

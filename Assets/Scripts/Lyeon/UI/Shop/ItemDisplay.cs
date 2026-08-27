@@ -103,7 +103,11 @@ namespace Wakamole.Lyeon.UI.Shop
                     else if (slot.SlotType.Equals(ItemSlotType.BOOTH) && itemSlot.SlotType.Equals(ItemSlotType.INVENTORY))
                     {
                         GameManager.Current.Coin += itemData.itemCost;
+                        ShopManager.Current?.UpdateCoin();
+                        Destroy(gameObject);
+                        return;
                     }
+                    ShopManager.Current?.UpdateCoin();
                     itemSlot.Item = null;
                     itemSlot = slot;
                     slot.Item = this;
