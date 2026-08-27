@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using FMODUnity;
-using FMOD.Studio; // [수정] EventInstance 사용을 위해 추가
+using Wakamole.Lyeon.Audio;
 using Wakamole.Core.LocalData;
 
 public class PopUpBoard : MonoBehaviour
@@ -15,8 +14,9 @@ public class PopUpBoard : MonoBehaviour
     [SerializeField] private List<TMP_Text> textList;
 
     [Header("Audio Settings")]
-    [SerializeField] private EventReference typeSfxEvent;
-    [SerializeField] private SoundParam[] typeSfxParams; // 인스펙터에서 파라미터 설정
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private string typeSfxName = "Typing";
+    [SerializeField] private SoundParam[] typeSfxParams; // 추가적인 개별 파라미터 덮어쓰기용
 
     [Header("Animation Settings")]
     [SerializeField] private float popUpDuration = 0.6f;
@@ -24,6 +24,14 @@ public class PopUpBoard : MonoBehaviour
     [SerializeField] private float delayBetweenTexts = 0.15f;
 
     private Sequence clearSequence;
+
+    private void Awake()
+    {
+        if (audioManager == null)
+        {
+            audioManager = FindFirstObjectByType<AudioManager>();
+        }
+    }
 
     private void OnEnable()
     {
@@ -40,6 +48,7 @@ public class PopUpBoard : MonoBehaviour
 
         clearSequence?.Kill();
 
+        // 1. 초기 상태 설정
         clearBoard.transform.localScale = Vector3.zero;
 
         foreach (var text in textList)
@@ -47,6 +56,7 @@ public class PopUpBoard : MonoBehaviour
             if (text != null) text.maxVisibleCharacters = 0;
         }
 
+        // 2. 연출 시퀀스 구성
         clearSequence = DOTween.Sequence();
         clearSequence.SetLink(gameObject);
 
@@ -100,34 +110,32 @@ public class PopUpBoard : MonoBehaviour
         .SetLink(targetText.gameObject);
     }
 
-    // [수정] FMOD 인스턴스를 직접 생성하여 인스펙터의 파라미터를 바인딩한 뒤 재생
     private void PlayTypeSound()
     {
-        if (typeSfxEvent.IsNull) return;
+        if (audioManager == null)
+        {
+            Debug.LogWarning($"[{gameObject.name}] AudioManager를 찾을 수 없어 사운드를 재생하지 못했습니다.");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(typeSfxName)) return;
 
         try
         {
-            EventInstance instance = RuntimeManager.CreateInstance(typeSfxEvent);
-            instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
-
-            // 인스펙터에 설정된 SoundParam 항목들을 FMOD 파라미터로 설정
+            // AudioManager 내부에서 paramData의 "Typing" 기본 파라미터가 자동으로 적용되며,
+            // typeSfxParams에 추가 설정이 있을 경우 덮어씌워서 재생합니다.
             if (typeSfxParams != null && typeSfxParams.Length > 0)
             {
-                foreach (var param in typeSfxParams)
-                {
-                    if (!string.IsNullOrEmpty(param.name))
-                    {
-                        instance.setParameterByName(param.name, param.value);
-                    }
-                }
+                audioManager.PlaySfx(typeSfxName, typeSfxParams);
             }
-
-            instance.start();
-            instance.release(); // 재생 완료 후 자동 메모리 해제
+            else
+            {
+                audioManager.PlaySfx(typeSfxName);
+            }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"[{gameObject.name}] 사운드 재생 중 에러 발생: {e.Message}");
+            Debug.LogError($"[{gameObject.name}] 사운드 재생 중 에러 발생 (키 이름: {typeSfxName}): {e.Message}");
         }
     }
 

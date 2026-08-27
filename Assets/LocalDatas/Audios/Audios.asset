@@ -181,3 +181,11 @@ MonoBehaviour:
         Data4: 145385058
       Path: event:/Mole_Sounds
     soundName: Mole_Laugh
+  - soundRef:
+      Guid:
+        Data1: -2034187858
+        Data2: 1267443876
+        Data3: -913761403
+        Data4: 1365524866
+      Path: event:/Typing
+    soundName: Typing
