@@ -14,14 +14,21 @@ namespace Wakamole.Lyeon.Manager.Shop
 
         public ItemTooltip Tooltip => tooltip;
 
+        public void UpdateCoin()
+        {
+            coinText.Coin = GameManager.Current.Coin;
+        }
+
         private void OnEnable()
         {
             Current = this;
             coinText.Coin = GameManager.Current.Coin;
+            GameManager.Current.Audio.SetBgmParameter("ShopEnter", 100);
         }
 
         private void OnDisable()
         {
+            GameManager.Current.Audio.SetBgmParameter("ShopEnter", 0);
             Current = null;
         }
     }

@@ -63,9 +63,9 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지의 키워드(특성) 입니다.")]
         [SerializeField] protected MoleKeyword keyword;
         [Tooltip("두더지의 최대 체력입니다.")]
-        [SerializeField] protected int maxHp = 10;
+        [SerializeField] protected int maxHp = 0;
         [Tooltip("두더지의 현재 체력입니다.")]
-        [SerializeField] protected int currentHp = 10;
+        [SerializeField] protected int currentHp = 0;
         [Tooltip("두더지를 잡을 경우 획득 가능한 점수입니다.")]
         [SerializeField] protected int score = 5;
 
@@ -100,6 +100,7 @@ namespace Wakamole.Lyeon.Entity
                 active = value;
                 if (!active)
                 {
+                    if (currentHp > 0) GameManager.Current.Audio.PlaySfx("Mole_Laugh");
                     anim.PlayExternalState("Dead", true);
                     finishing = StartCoroutine(FinishTime());
                 }
@@ -117,44 +118,47 @@ namespace Wakamole.Lyeon.Entity
         public int Hp
         {
             get => currentHp;
-            set
+            set => SetHp(value);
+        }
+
+        public void SetHp(int value)
+        {
+            if (currentHp > value)
             {
-                if (currentHp > value)
+                if (active) GameManager.Current.Audio.PlaySfx("Mole_Damaged");
+                anim.PlayExternalState("Hit");
+                if ((keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
                 {
-                    anim.PlayExternalState("Hit");
-                    if ((keyword & MoleKeyword.SHIELD) != 0 && shieldCount > 0)
-                    {
-                        shieldCount--;
-                        return;
-                    }
+                    shieldCount--;
+                    return;
+                }
+            }
+
+            currentHp = value;
+            if (currentHp < 0) currentHp = 0;
+
+            hpBar.Value = (float)currentHp / maxHp;
+
+            if (currentHp <= 0)
+            {
+                Active = false;
+
+                if ((keyword & MoleKeyword.SPLIT) != 0)
+                {
+                    manager.ShowMole(MoleKeyword.DEFAULT);
+                    manager.ShowMole(MoleKeyword.DEFAULT);
+                }
+                if ((keyword & MoleKeyword.REVIVE) != 0)
+                    manager.ShowMole(MoleKeyword.REVIVED);
+                if ((keyword & MoleKeyword.RICH) != 0)
+                    StageManager.Current.Coin++;
+
+                if (anim.TryGetComponent(out Animator targetAnimator))
+                {
+                    targetAnimator.SetTrigger("Die");
                 }
 
-                currentHp = value;
-                if (currentHp < 0) currentHp = 0;
-
-                hpBar.Value = (float)currentHp / maxHp;
-
-                if (currentHp <= 0)
-                {
-                    Active = false;
-
-                    if ((keyword & MoleKeyword.SPLIT) != 0)
-                    {
-                        manager.ShowMole(MoleKeyword.DEFAULT);
-                        manager.ShowMole(MoleKeyword.DEFAULT);
-                    }
-                    if ((keyword & MoleKeyword.REVIVE) != 0)
-                        manager.ShowMole(MoleKeyword.REVIVED);
-                    if ((keyword & MoleKeyword.RICH) != 0)
-                        StageManager.Current.Coin++;
-
-                    if (anim.TryGetComponent(out Animator targetAnimator))
-                    {
-                        targetAnimator.SetTrigger("Die");
-                    }
-
-                    StartCoroutine(Co_DisableAfterAnimation());
-                }
+                StartCoroutine(Co_DisableAfterAnimation());
             }
         }
 
@@ -246,6 +250,7 @@ namespace Wakamole.Lyeon.Entity
             else anim.ResetToSpawn();
 
             showedTime = 0;
+            GameManager.Current.Audio.PlaySfx("Mole_Sounds");
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {

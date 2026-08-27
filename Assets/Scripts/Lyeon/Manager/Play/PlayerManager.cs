@@ -102,17 +102,20 @@ namespace Wakamole.Lyeon.Manager.Play
                     {
                         if (handAnim != null) StopCoroutine(handAnim);
                         handAnim = StartCoroutine(HandAnim());
+
                         int beforeHp = mole.Hp;
 
                         // 2번 아이템에 의한 점수 추가
                         if (Charged)
                         {
+                            GameManager.Current.Audio.PlaySfx("Charge_Swing");
                             CameraController.Current.Shake(1.0f);
                             mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
                             Charged = false;
                         }
                         else
                         {
+                            GameManager.Current.Audio.PlaySfx("Swing");
                             CameraController.Current.Shake(0.05f);
                             mole.Hp -= GameManager.Current.Status.Atk;
                         }

@@ -19,6 +19,7 @@ namespace Wakamole.Lyeon.UI.Shop
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            GameManager.Current.Audio.PlaySfx("Button");
             GameManager.Current.StageId++;
             SceneManager.LoadScene(sceneName);
         }

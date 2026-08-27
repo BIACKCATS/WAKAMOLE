@@ -20,6 +20,8 @@ namespace Wakamole.Lyeon.Audio
         [SerializeField] private float bgmVolume = 1.0f;
         [SerializeField] private float sfxVolume = 1.0f;
 
+        private List<string> ignoreParams = new();
+
         private EventInstance bgmPlayer;
 
         public float MasterVolume
@@ -27,7 +29,10 @@ namespace Wakamole.Lyeon.Audio
             get => masterVolume;
             set
             {
-                masterVolume = value;
+                if (value < 0) masterVolume = 0;
+                else if (value > 1) masterVolume = 1;
+                else masterVolume = value;
+
                 if (bgmPlayer.isValid()) bgmPlayer.setParameterByName("Volume", masterVolume);
             }
         }
@@ -37,7 +42,10 @@ namespace Wakamole.Lyeon.Audio
             get => bgmVolume;
             set
             {
-                bgmVolume = value;
+                if (value < 0) bgmVolume = 0;
+                else if (value > 1) bgmVolume = 1;
+                else bgmVolume = value;
+
                 if (bgmPlayer.isValid()) bgmPlayer.setParameterByName("BackgroundMusicVolume", bgmVolume);
             }
         }
@@ -45,7 +53,12 @@ namespace Wakamole.Lyeon.Audio
         public float SfxVolume
         {
             get => sfxVolume;
-            set => sfxVolume = value;
+            set
+            {
+                if (value < 0) sfxVolume = 0;
+                else if (value > 1) sfxVolume = 1;
+                else sfxVolume = value;
+            }
         }
 
         private void Awake()
@@ -53,14 +66,22 @@ namespace Wakamole.Lyeon.Audio
             bgmPlayer = RuntimeManager.CreateInstance(bgm);
             bgmPlayer.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 
-            MasterVolume = 1;
-            BgmVolume = 1;
+            if (masterVolume != 1) MasterVolume = masterVolume;
+            else MasterVolume = 1;
+            if (bgmVolume != 1) BgmVolume = bgmVolume;
+            else BgmVolume = 1;
+            if (sfxVolume != 1) SfxVolume = sfxVolume;
+            else SfxVolume = 1;
+
+            ignoreParams.Add("BackgroundVolume");
+            ignoreParams.Add("Volume");
+            ignoreParams.Add("VFXVolume");
         }
 
         private void InitInstance(EventInstance instance)
         {
-            instance.setParameterByName("BackgroundMusicVolume", MasterVolume);
             instance.setParameterByName("Volume", MasterVolume);
+            instance.setParameterByName("BackgroundMusicVolume", BgmVolume);
             instance.setParameterByName("VFXVolume", SfxVolume);
             instance.setParameterByName("Combo", 0);
             instance.setParameterByName("ShopEnter", 0);
@@ -99,6 +120,7 @@ namespace Wakamole.Lyeon.Audio
                 List<SoundParam> param = paramData.Params[name];
                 foreach (SoundParam soundParam in param)
                 {
+                    if (ignoreParams.Contains(soundParam.name)) continue;
                     instance.setParameterByName(soundParam.name, soundParam.value);
                 }
             }
