@@ -1,4 +1,5 @@
 using UnityEngine;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Play;
 
 namespace Wakamole.Lyeon.UI.Play
@@ -12,7 +13,11 @@ namespace Wakamole.Lyeon.UI.Play
             get => gameObject.activeSelf;
             set
             {
-                if (value) targetPosition = new(Random.Range(-5.0f, 5.0f), Random.Range(1.0f, 4.0f), Random.Range(-4.0f, 2.0f));
+                if (value)
+                {
+                    targetPosition = new(Random.Range(-5.0f, 5.0f), Random.Range(1.0f, 4.0f), Random.Range(-4.0f, 2.0f));
+                    GameManager.Current.Audio.PlaySfx("Mosquitto");
+                }
                 gameObject.SetActive(value);
             }
         }
@@ -33,6 +38,7 @@ namespace Wakamole.Lyeon.UI.Play
         public void DestroyMosquito()
         {
             if (!Active) return;
+            GameManager.Current.Audio.PlaySfx("Mosquitto_Hit");
             StageManager.Current.ActiveDoubleScore = true;
             Active = false;
         }

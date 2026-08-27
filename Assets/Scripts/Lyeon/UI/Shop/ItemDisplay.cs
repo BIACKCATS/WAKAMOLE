@@ -92,7 +92,11 @@ namespace Wakamole.Lyeon.UI.Shop
                     if (slot.SlotType.Equals(ItemSlotType.INVENTORY) && itemSlot.SlotType.Equals(ItemSlotType.BOOTH))
                     {
                         if (slot.Item == null && GameManager.Current.Coin >= itemData.itemCost)
+                        {
                             GameManager.Current.Coin -= itemData.itemCost;
+                            ShopManager.Current?.UpdateCoin();
+                            GameManager.Current.Audio.PlaySfx("Shop_Buy");
+                        }
                         else
                         {
                             targetPosition = initPosition;
@@ -104,10 +108,11 @@ namespace Wakamole.Lyeon.UI.Shop
                     {
                         GameManager.Current.Coin += itemData.itemCost;
                         ShopManager.Current?.UpdateCoin();
+                        GameManager.Current.Audio.PlaySfx("Shop_Sell");
+                        itemSlot.Item = null;
                         Destroy(gameObject);
                         return;
                     }
-                    ShopManager.Current?.UpdateCoin();
                     itemSlot.Item = null;
                     itemSlot = slot;
                     slot.Item = this;
