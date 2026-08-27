@@ -176,10 +176,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639232778806768173
+  lastModified: 639234417252666728
   FileSizes:
   - Name: Desktop
-    Value: 1205376
+    Value: 1226624
   Exists: 1
 --- !u!114 &-7488226166211004482
 MonoBehaviour:
@@ -268,10 +268,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639232778806770266
+  lastModified: 639234417252695458
   FileSizes:
   - Name: Desktop
-    Value: 1616
+    Value: 1652
   Exists: 1
 --- !u!114 &-5480880567245538232
 MonoBehaviour:
@@ -751,13 +751,14 @@ MonoBehaviour:
   - {fileID: 825586169080747513}
   - {fileID: -3780033235381694422}
   - {fileID: -1752954256936183731}
+  - {fileID: 3128687643161099343}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7613851867987114602}
   StringsBanks:
   - {fileID: -6497283144908647834}
   cacheVersion: 131860
-  cacheTime: 639232778806782648
+  cacheTime: 639234417252695458
   SerializableEventsDict:
   - key: event:/New Event 2
     index: 0
@@ -783,6 +784,8 @@ MonoBehaviour:
     index: 10
   - key: event:/UI_Btn_Sounds
     index: 11
+  - key: event:/Typing
+    index: 12
 --- !u!114 &315819339169423231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,7 +861,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/WakaMole/Build/Desktop/basic.bank
   Name: basic
   StudioPath: bank:/basic
-  lastModified: 639232778806782648
+  lastModified: 639232740094226824
   FileSizes:
   - Name: Desktop
     Value: 2393184
@@ -893,6 +896,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 124
+--- !u!114 &1510014021218826751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Typing/VFXVolume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: VFXVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2967121414
+    data2: 1010202002
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &1854357930497963515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1064,59 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &2987666743335015470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Typing/Volume
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: Volume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 895764806
+    data2: 814086012
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3128687643161099343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Typing
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Typing
+  Guid:
+    Data1: -2034187858
+    Data2: 1267443876
+    Data3: -913761403
+    Data4: 1365524866
+  Banks:
+  - {fileID: -7613851867987114602}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2987666743335015470}
+  - {fileID: 1510014021218826751}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 100
 --- !u!114 &3691874841595797235
 MonoBehaviour:
   m_ObjectHideFlags: 0
