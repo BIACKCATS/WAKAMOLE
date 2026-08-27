@@ -50,6 +50,9 @@ TagManager:
   - name: Mosquito
     uniqueID: 221806743
     locked: 0
+  - name: Canvas
+    uniqueID: 3128109777
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
