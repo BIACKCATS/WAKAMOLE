@@ -2416,9 +2416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Status
   coin: 0
-  atk: 0
-  chargeTime: 0
-  chargeRatio: 0
+  atk: 1
+  chargeTime: 2
+  chargeRatio: 2
   moleSpeedPower: 1
 --- !u!114 &501717762
 MonoBehaviour:
@@ -3931,6 +3931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1096a55d820454c94a05ccbbefded66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.GameCamera.CameraController
+  cam: {fileID: 797701137}
   moveSpeed: 8
   mouseMaxDistance: {x: 3, y: 4}
   mouseMinDistance: {x: -6, y: -4}
@@ -4426,6 +4427,7 @@ GameObject:
   - component: {fileID: 968203997}
   - component: {fileID: 968203999}
   - component: {fileID: 968203998}
+  - component: {fileID: 968204000}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -4448,6 +4450,7 @@ RectTransform:
   - {fileID: 135052088}
   - {fileID: 432564533}
   - {fileID: 1596160669}
+  - {fileID: 1078650317}
   m_Father: {fileID: 1519726492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -4493,6 +4496,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968203996}
   m_CullTransparentMesh: 1
+--- !u!114 &968204000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968203996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd33b4b0ead78472dbccd56b1d901996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.PlayerHand
+  rect: {fileID: 968203997}
 --- !u!1 &996807248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,11 +5094,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1175474583}
-  m_Father: {fileID: 1519726492}
+  m_Father: {fileID: 968203997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -620, y: -240}
+  m_AnchoredPosition: {x: -660, y: -61}
   m_SizeDelta: {x: 360, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078650318
@@ -6050,6 +6066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288248567}
   - component: {fileID: 1288248568}
+  - component: {fileID: 1288248569}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -6084,6 +6101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e79d856b2cd4482087451e155fd2562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
+  cursor: {fileID: 1288248569}
   progressBar: {fileID: 1078650320}
   handImage: {fileID: 968203998}
   attackImage: {fileID: 278376560}
@@ -6094,6 +6112,20 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 456
+--- !u!114 &1288248569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288248565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f24fbc51a0c74fe2a41739121ee929a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Component.CursorChange
+  defaultCursor: {fileID: 2800000, guid: 1b504d990032049049e852c17aa35adf, type: 3}
+  specialCursor: {fileID: 2800000, guid: f7ba8fb040ea3422d969ca9ecd9c4fa9, type: 3}
 --- !u!1 &1335820060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6790,7 +6822,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 797701137}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -6801,7 +6833,7 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1166857519
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1519726492
@@ -6817,7 +6849,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 968203997}
-  - {fileID: 1078650317}
   - {fileID: 278376559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

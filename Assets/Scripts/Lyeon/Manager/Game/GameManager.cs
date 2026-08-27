@@ -37,17 +37,6 @@ namespace Wakamole.Lyeon.Manager.Game
 
             Current = this;
             DontDestroyOnLoad(gameObject);
-
-            // check data
-            StatusData data = new()
-            {
-                coin = Coin,
-                atk = 1,
-                chargeTime = 2.0f,
-                chargeRatio = 2.0f,
-                moleSpeedPower = 1.0f
-            };
-            status.Import(data);
         }
 
         private void Start()

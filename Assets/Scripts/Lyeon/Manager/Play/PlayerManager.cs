@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Wakamole.Lyeon.Entity;
-using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.GameCamera;
+using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
@@ -14,6 +15,7 @@ namespace Wakamole.Lyeon.Manager.Play
     public class PlayerManager : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private CursorChange cursor;
         [SerializeField] private ProgressBar progressBar;
         [SerializeField] private Image handImage, attackImage;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
@@ -101,13 +103,19 @@ namespace Wakamole.Lyeon.Manager.Play
                         if (handAnim != null) StopCoroutine(handAnim);
                         handAnim = StartCoroutine(HandAnim());
                         int beforeHp = mole.Hp;
+
                         // 2번 아이템에 의한 점수 추가
                         if (Charged)
                         {
+                            CameraController.Current.Shake(1.0f);
                             mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
                             Charged = false;
                         }
-                        else mole.Hp -= GameManager.Current.Status.Atk;
+                        else
+                        {
+                            CameraController.Current.Shake(0.05f);
+                            mole.Hp -= GameManager.Current.Status.Atk;
+                        }
 
                         if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
 
@@ -144,12 +152,14 @@ namespace Wakamole.Lyeon.Manager.Play
         private IEnumerator HandAnim()
         {
             attackRect.position = mousePosition;
+            cursor.SetCursor(1);
             if (!attackImage.gameObject.activeSelf)
             {
                 handImage.gameObject.SetActive(false);
                 attackImage.gameObject.SetActive(true);
             }
             yield return wait;
+            cursor.SetCursor(0);
             handImage.gameObject.SetActive(true);
             attackImage.gameObject.SetActive(false);
             handAnim = null;

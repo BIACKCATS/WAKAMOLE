@@ -158,9 +158,11 @@ namespace Wakamole.Lyeon.Manager.Play
             {
                 currentCombo = value;
                 combo.Count = currentCombo;
+                if (currentCombo > maxCombo) maxCombo = value;
+
                 comboParam.name = "Hz";
 
-                if (currentCombo < 10)
+                if (currentCombo > 0 && currentCombo < 10)
                 {
                     comboParam.value = 0;
                     GameManager.Current.Audio.PlaySfx("Combo", comboParam);
@@ -176,7 +178,6 @@ namespace Wakamole.Lyeon.Manager.Play
                     GameManager.Current.Audio.PlaySfx("Combo", comboParam);
                 }
 
-                if (currentCombo > maxCombo) maxCombo = value;
             }
         }
 

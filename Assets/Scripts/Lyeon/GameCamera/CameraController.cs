@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Wakamole.Core.Camera;
 
 namespace Wakamole.Lyeon.GameCamera
 {
@@ -8,6 +9,7 @@ namespace Wakamole.Lyeon.GameCamera
         public static CameraController Current { get; private set; }
 
         [Header("Information")]
+        [SerializeField] private Camera cam;
         [Tooltip("카메라의 이동 속도입니다.")]
         [SerializeField] private float moveSpeed = 4.0f;
         [Tooltip("카메라가 움직이지 않는 영역의 최대값입니다.")]
@@ -25,7 +27,8 @@ namespace Wakamole.Lyeon.GameCamera
 
         private Ray mouseRay;
         private Vector2 currentMouse = Vector2.zero; // 화면 상의 마우스 위치
-        private Vector3 mousePosition = Vector3.zero, initPosition = Vector3.zero, targetPosition = Vector3.zero;
+        private Vector3 mousePosition = Vector3.zero, initPosition = Vector3.zero, targetPosition = Vector3.zero, randomPosition = Vector3.zero;
+        private CameraShake shake;
 
         public float MoveSpeed => moveSpeed;
         public bool ExpandMove { get => expandMove; set => expandMove = value; }
@@ -45,6 +48,12 @@ namespace Wakamole.Lyeon.GameCamera
 
             if (Current != null) Current = null;
             Current = this;
+
+            shake = new(cam)
+            {
+                Duartion = 0.2f
+            };
+
         }
 
         private void Update()
@@ -69,13 +78,18 @@ namespace Wakamole.Lyeon.GameCamera
                 else if (mousePosition.z < mouseMinDistance.y) targetPosition.z = moveMinLimit.y;
                 else targetPosition.z = initPosition.z;
             }
-
-            transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition + randomPosition, moveSpeed * Time.deltaTime);
         }
 
         private void OnDisable()
         {
             Current = null;
+        }
+
+        public void Shake(float strength = 0.5f)
+        {
+            shake.Strength = strength;
+            StartCoroutine(shake.Shake());
         }
     }
 }
