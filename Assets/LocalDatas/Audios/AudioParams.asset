@@ -12,4 +12,180 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482c64fdb3b84497bb671f50eaf0162f, type: 3}
   m_Name: AudioParams
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.AudioParamData
-  param: []
+  param:
+  - soundName: BGM
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: Combo
+      value: 1
+    - name: ShopEnter
+      value: 1
+    - name: BackgroundVolume
+      value: 1
+  - soundName: Button
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+  - soundName: Combo
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Combo
+      value: 1
+  - soundName: Mosquitto
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+  - soundName: Mosquitto_Hit
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+  - soundName: Swing
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.55
+  - soundName: Charge_Swing
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.85
+  - soundName: Mole_Sounds
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.85
+  - soundName: Shop_Buy
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0
+  - soundName: Shop_Sell
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.25
+  - soundName: Mole_Appear_Hawl1
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0
+  - soundName: Mole_Appear_Hawl2
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.15
+  - soundName: Mole_Appear_Hawl3
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.25
+  - soundName: Mole_Grass_Bush1
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.1
+    - name: Discord_Alert
+      value: 0
+  - soundName: Mole_Grass_Bush2
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Discord_Alert
+      value: 0
+    - name: Hz
+      value: 0.25
+  - soundName: Discord_Alert
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Discord_Alert
+      value: 0.75
+  - soundName: Mole_Miss
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.15
+  - soundName: Mole_Damaged
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.25
+  - soundName: Mole_Laugh
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.35
+  - soundName: Mole_Laugh
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0.35
+  - soundName: Bubble
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0
+  - soundName: Pop
+    soundParam:
+    - name: Volume
+      value: 1
+    - name: VFXVolume
+      value: 1
+    - name: Hz
+      value: 0

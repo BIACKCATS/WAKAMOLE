@@ -84,7 +84,7 @@ MonoBehaviour:
         Data3: 1427089313
         Data4: 257129424
       Path: event:/Shop
-    soundName: Shop
+    soundName: Shop_Sell
   - soundRef:
       Guid:
         Data1: 53773783
@@ -103,9 +103,81 @@ MonoBehaviour:
     soundName: Pop
   - soundRef:
       Guid:
-        Data1: -2034187858
-        Data2: 1267443876
-        Data3: -913761403
-        Data4: 1365524866
-      Path: event:/Typing
-    soundName: Typing
+        Data1: -1481988403
+        Data2: 1146988708
+        Data3: 574392747
+        Data4: 27580539
+      Path: event:/Weapon_Swing
+    soundName: Charge_Swing
+  - soundRef:
+      Guid:
+        Data1: -916921856
+        Data2: 1167259612
+        Data3: 1427089313
+        Data4: 257129424
+      Path: event:/Shop
+    soundName: Shop_Buy
+  - soundRef:
+      Guid:
+        Data1: -685426309
+        Data2: 1304504532
+        Data3: -739778688
+        Data4: -1268210361
+      Path: event:/MicMic
+    soundName: Mole_Appear_Hawl1
+  - soundRef:
+      Guid:
+        Data1: -685426309
+        Data2: 1304504532
+        Data3: -739778688
+        Data4: -1268210361
+      Path: event:/MicMic
+    soundName: Mole_Appear_Hawl2
+  - soundRef:
+      Guid:
+        Data1: -685426309
+        Data2: 1304504532
+        Data3: -739778688
+        Data4: -1268210361
+      Path: event:/MicMic
+    soundName: Mole_Appear_Hawl3
+  - soundRef:
+      Guid:
+        Data1: 722630827
+        Data2: 1116075071
+        Data3: 1368533181
+        Data4: 797085670
+      Path: event:/Mole_Appear
+    soundName: Mole_Grass_Bush1
+  - soundRef:
+      Guid:
+        Data1: 722630827
+        Data2: 1116075071
+        Data3: 1368533181
+        Data4: 797085670
+      Path: event:/Mole_Appear
+    soundName: Discord_Alert
+  - soundRef:
+      Guid:
+        Data1: -177496285
+        Data2: 1274505443
+        Data3: -1557482578
+        Data4: 145385058
+      Path: event:/Mole_Sounds
+    soundName: Mole_Miss
+  - soundRef:
+      Guid:
+        Data1: -177496285
+        Data2: 1274505443
+        Data3: -1557482578
+        Data4: 145385058
+      Path: event:/Mole_Sounds
+    soundName: Mole_Damaged
+  - soundRef:
+      Guid:
+        Data1: -177496285
+        Data2: 1274505443
+        Data3: -1557482578
+        Data4: 145385058
+      Path: event:/Mole_Sounds
+    soundName: Mole_Laugh
