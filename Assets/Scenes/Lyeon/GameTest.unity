@@ -2416,9 +2416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Status
   coin: 0
-  atk: 0
-  chargeTime: 0
-  chargeRatio: 0
+  atk: 1
+  chargeTime: 2
+  chargeRatio: 2
   moleSpeedPower: 1
 --- !u!114 &501717762
 MonoBehaviour:

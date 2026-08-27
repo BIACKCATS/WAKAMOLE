@@ -25,7 +25,7 @@ namespace Wakamole.Lyeon.GameCamera
 
         private Ray mouseRay;
         private Vector2 currentMouse = Vector2.zero; // 화면 상의 마우스 위치
-        private Vector3 mousePosition = Vector3.zero, initPosition = Vector3.zero, targetPosition = Vector3.zero;
+        private Vector3 mousePosition = Vector3.zero, initPosition = Vector3.zero, targetPosition = Vector3.zero, randomPosition = Vector3.zero;
 
         public float MoveSpeed => moveSpeed;
         public bool ExpandMove { get => expandMove; set => expandMove = value; }
@@ -76,6 +76,11 @@ namespace Wakamole.Lyeon.GameCamera
         private void OnDisable()
         {
             Current = null;
+        }
+
+        public void Shake()
+        {
+            
         }
     }
 }
