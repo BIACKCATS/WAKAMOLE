@@ -46,6 +46,7 @@ public class RerollController : MonoBehaviour
         if (GameManager.Current.Coin < rerollCost) return;
 
         GameManager.Current.Coin -= rerollCost;
+        ShopManager.Current?.UpdateCoin();
 
         // 리롤 시 비용 증가
         rerollCost *= 2;

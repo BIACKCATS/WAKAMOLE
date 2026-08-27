@@ -1,115 +1,105 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Wakamole.Lyeon.Audio;
 
-namespace Wakamole.Lyeon.Audio
+namespace Wakamole.Lyeon.UI
 {
     public class SoundSetting : MonoBehaviour
     {
-        [Header("Audio Manager Reference")]
-        [SerializeField] private AudioManager audioManager;
-
-        [Header("Master Volume UI")]
+        [Header("UI Sliders")]
         [SerializeField] private Slider masterSlider;
-        [SerializeField] private Toggle masterMuteToggle;
-        private float preMasterVolume = 1f;
-
-        [Header("BGM Volume UI")]
         [SerializeField] private Slider bgmSlider;
-        [SerializeField] private Toggle bgmMuteToggle;
-        private float preBgmVolume = 1f;
-
-        [Header("SFX Volume UI")]
         [SerializeField] private Slider sfxSlider;
+
+        [Header("UI Mute Toggles (체크 시 음소거)")]
+        [SerializeField] private Toggle masterMuteToggle;
+        [SerializeField] private Toggle bgmMuteToggle;
         [SerializeField] private Toggle sfxMuteToggle;
-        private float preSfxVolume = 1f;
 
-        private void Start()
+        private float lastMasterVol = 1f;
+        private float lastBgmVol = 1f;
+        private float lastSfxVol = 1f;
+
+        public void RefreshSliders()
         {
-            if (audioManager == null)
-            {
-                Debug.LogError("AudioManager가 할당되지 않았습니다.");
-                return;
-            }
+            AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+            if (audioManager == null) return;
 
-            // 1. 슬라이더 초기값 설정 
-            if (masterSlider != null) masterSlider.value = audioManager.MasterVolume;
-            if (bgmSlider != null) bgmSlider.value = audioManager.BgmVolume;
-            if (sfxSlider != null) sfxSlider.value = audioManager.SfxVolume;
+            RemoveAllListeners();
 
-            // 2. 슬라이더 이벤트 연결
-            if (masterSlider != null)
-                masterSlider.onValueChanged.AddListener(val => audioManager.MasterVolume = val);
+            float mVol = audioManager.MasterVolume;
+            float bVol = audioManager.BgmVolume;
+            float sVol = audioManager.SfxVolume;
 
-            if (bgmSlider != null)
-                bgmSlider.onValueChanged.AddListener(val => audioManager.BgmVolume = val);
+            // 소리가 켜져 있을 때만 복원용 볼륨값 저장
+            if (mVol > 0f) lastMasterVol = mVol;
+            if (bVol > 0f) lastBgmVol = bVol;
+            if (sVol > 0f) lastSfxVol = sVol;
 
-            if (sfxSlider != null)
-                sfxSlider.onValueChanged.AddListener(val => audioManager.SfxVolume = val);
+            // 슬라이더 동기화
+            if (masterSlider != null) masterSlider.value = mVol;
+            if (bgmSlider != null) bgmSlider.value = bVol;
+            if (sfxSlider != null) sfxSlider.value = sVol;
 
-            // 3. 개별 음소거 토글 이벤트 연결
-            if (masterMuteToggle != null)
-                masterMuteToggle.onValueChanged.AddListener(OnMasterMuteToggled);
+            // 음소거 토글 동기화 (볼륨이 0이면 체크 ON)
+            if (masterMuteToggle != null) masterMuteToggle.SetIsOnWithoutNotify(mVol == 0f);
+            if (bgmMuteToggle != null) bgmMuteToggle.SetIsOnWithoutNotify(bVol == 0f);
+            if (sfxMuteToggle != null) sfxMuteToggle.SetIsOnWithoutNotify(sVol == 0f);
 
-            if (bgmMuteToggle != null)
-                bgmMuteToggle.onValueChanged.AddListener(OnBgmMuteToggled);
-
-            if (sfxMuteToggle != null)
-                sfxMuteToggle.onValueChanged.AddListener(OnSfxMuteToggled);
+            BindEvents(audioManager);
         }
 
-        // Master 음소거
-        private void OnMasterMuteToggled(bool isMuted)
+        private void RemoveAllListeners()
         {
-            if (masterSlider == null) return;
+            masterSlider?.onValueChanged.RemoveAllListeners();
+            bgmSlider?.onValueChanged.RemoveAllListeners();
+            sfxSlider?.onValueChanged.RemoveAllListeners();
 
-            if (isMuted)
-            {
-                // 음소거 전 볼륨 기억 
-                if (masterSlider.value > 0.001f) preMasterVolume = masterSlider.value;
-                masterSlider.value = 0f;
-                masterSlider.interactable = false; // 슬라이더 비활성화
-            }
-            else
-            {
-                masterSlider.value = preMasterVolume;
-                masterSlider.interactable = true;  // 슬라이더 다시 활성화
-            }
+            masterMuteToggle?.onValueChanged.RemoveAllListeners();
+            bgmMuteToggle?.onValueChanged.RemoveAllListeners();
+            sfxMuteToggle?.onValueChanged.RemoveAllListeners();
         }
 
-        // BGM 음소거
-        private void OnBgmMuteToggled(bool isMuted)
+        private void BindEvents(AudioManager audioManager)
         {
-            if (bgmSlider == null) return;
+            // Master Slider & Mute Toggle
+            masterSlider?.onValueChanged.AddListener(val => {
+                audioManager.MasterVolume = val;
+                if (val > 0f) lastMasterVol = val;
+                masterMuteToggle?.SetIsOnWithoutNotify(val == 0f);
+            });
 
-            if (isMuted)
-            {
-                if (bgmSlider.value > 0.001f) preBgmVolume = bgmSlider.value;
-                bgmSlider.value = 0f;
-                bgmSlider.interactable = false;
-            }
-            else
-            {
-                bgmSlider.value = preBgmVolume;
-                bgmSlider.interactable = true;
-            }
-        }
+            masterMuteToggle?.onValueChanged.AddListener(isMuted => {
+                float targetVol = isMuted ? 0f : (lastMasterVol > 0f ? lastMasterVol : 1f);
+                audioManager.MasterVolume = targetVol;
+                masterSlider?.SetValueWithoutNotify(targetVol);
+            });
 
-        // SFX 음소거
-        private void OnSfxMuteToggled(bool isMuted)
-        {
-            if (sfxSlider == null) return;
+            // BGM Slider & Mute Toggle
+            bgmSlider?.onValueChanged.AddListener(val => {
+                audioManager.BgmVolume = val;
+                if (val > 0f) lastBgmVol = val;
+                bgmMuteToggle?.SetIsOnWithoutNotify(val == 0f);
+            });
 
-            if (isMuted)
-            {
-                if (sfxSlider.value > 0.001f) preSfxVolume = sfxSlider.value;
-                sfxSlider.value = 0f;
-                sfxSlider.interactable = false;
-            }
-            else
-            {
-                sfxSlider.value = preSfxVolume;
-                sfxSlider.interactable = true;
-            }
+            bgmMuteToggle?.onValueChanged.AddListener(isMuted => {
+                float targetVol = isMuted ? 0f : (lastBgmVol > 0f ? lastBgmVol : 1f);
+                audioManager.BgmVolume = targetVol;
+                bgmSlider?.SetValueWithoutNotify(targetVol);
+            });
+
+            // SFX Slider & Mute Toggle
+            sfxSlider?.onValueChanged.AddListener(val => {
+                audioManager.SfxVolume = val;
+                if (val > 0f) lastSfxVol = val;
+                sfxMuteToggle?.SetIsOnWithoutNotify(val == 0f);
+            });
+
+            sfxMuteToggle?.onValueChanged.AddListener(isMuted => {
+                float targetVol = isMuted ? 0f : (lastSfxVol > 0f ? lastSfxVol : 1f);
+                audioManager.SfxVolume = targetVol;
+                sfxSlider?.SetValueWithoutNotify(targetVol);
+            });
         }
     }
 }
