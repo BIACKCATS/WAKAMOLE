@@ -18,14 +18,14 @@ namespace Wakamole.Core.LocalData
 
         public Dictionary<string, List<SoundParam>> Params { get; private set; }
 
-        public void OnAfterDeserialize() {}
-
-        public void OnBeforeSerialize()
+        public void OnAfterDeserialize()
         {
             Params = new();
             if (param == null || param.Count == 0) return;
             for (int i = 0; i < param.Count; i++)
                 Params.Add(param[i].soundName, param[i].soundParam);
         }
+
+        public void OnBeforeSerialize() {}
     }
 }
