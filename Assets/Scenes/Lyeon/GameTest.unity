@@ -6066,6 +6066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288248567}
   - component: {fileID: 1288248568}
+  - component: {fileID: 1288248569}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -6100,6 +6101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e79d856b2cd4482087451e155fd2562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
+  cursor: {fileID: 1288248569}
   progressBar: {fileID: 1078650320}
   handImage: {fileID: 968203998}
   attackImage: {fileID: 278376560}
@@ -6110,6 +6112,20 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 456
+--- !u!114 &1288248569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288248565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f24fbc51a0c74fe2a41739121ee929a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Component.CursorChange
+  defaultCursor: {fileID: 2800000, guid: 1b504d990032049049e852c17aa35adf, type: 3}
+  specialCursor: {fileID: 2800000, guid: f7ba8fb040ea3422d969ca9ecd9c4fa9, type: 3}
 --- !u!1 &1335820060
 GameObject:
   m_ObjectHideFlags: 0
