@@ -19,14 +19,16 @@ namespace Wakamole.Core.LocalData
 
         public Dictionary<string, EventReference> Sounds { get; private set; }
 
-        public void OnAfterDeserialize() {}
-
-        public void OnBeforeSerialize()
+        public void OnAfterDeserialize()
         {
             Sounds = new();
             if (sounds == null || sounds.Count == 0) return;
             for (int i = 0; i < sounds.Count; i++)
+            {
                 Sounds.Add(sounds[i].soundName, sounds[i].soundRef);
+            }
         }
+
+        public void OnBeforeSerialize() {}
     }
 }
