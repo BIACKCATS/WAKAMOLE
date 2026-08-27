@@ -3199,7 +3199,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 240, y: -240}
-  m_SizeDelta: {x: 360, y: 60}
+  m_SizeDelta: {x: 400, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722226949
 MonoBehaviour:
@@ -3290,8 +3290,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d168802fa9fa4a940b23538a0c7f987a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7914,6 +7914,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1726170812}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Wakamole.Lyeon.UI.SceneButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Start Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438418640262067868, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3395962313854801622, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       propertyPath: m_Name
       value: Win
@@ -7924,7 +7956,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010175994741493384, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       propertyPath: m_text
-      value: "\uB098\uAC00\uAE30"
+      value: "\uBA54\uC778\uC73C\uB85C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114988924109003077, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114988924109003077, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d168802fa9fa4a940b23538a0c7f987a, type: 3}
+    - target: {fileID: 8983240486945143972, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983240486945143972, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8983240486945143972, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7936,7 +7984,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 508721613867437024, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       insertIndex: 3
       addedObject: {fileID: 722226948}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1756575917654437374, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726170812}
   m_SourcePrefab: {fileID: 100100000, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
 --- !u!224 &1726170809 stripped
 RectTransform:
@@ -7948,6 +7999,23 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 7216111197610502098, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
   m_PrefabInstance: {fileID: 1726170808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1726170811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1756575917654437374, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
+  m_PrefabInstance: {fileID: 1726170808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726170812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726170811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca903acd27a2a4ea89a54ccdfb8df410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.SceneButton
 --- !u!1 &1744779229
 GameObject:
   m_ObjectHideFlags: 0
