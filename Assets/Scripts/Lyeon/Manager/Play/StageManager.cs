@@ -278,8 +278,10 @@ namespace Wakamole.Lyeon.Manager.Play
                 if (!GameManager.Current.Inventory.ContainsKey(i)) continue;
                 itemSlots[i].Item = GameManager.Current.Inventory[i];
             }
+        }
 
-            // for test
+        private void OnEnable()
+        {
             StartStage();
         }
 
@@ -303,6 +305,7 @@ namespace Wakamole.Lyeon.Manager.Play
         {
             timer = new(timeLimit);
             Coin = 0;
+            goalScore = (int)(100.0f * Mathf.Pow(1.3f, GameManager.Current.StageId));
             scoreBoard.Goal = goalScore;
             clock.Duration = timeLimit;
             active = true;
