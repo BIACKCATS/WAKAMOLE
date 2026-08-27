@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Entity.Component;
+using Wakamole.Lyeon.GameCamera;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
@@ -104,10 +105,15 @@ namespace Wakamole.Lyeon.Manager.Play
                         // 2번 아이템에 의한 점수 추가
                         if (Charged)
                         {
+                            CameraController.Current.Shake(1.0f);
                             mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
                             Charged = false;
                         }
-                        else mole.Hp -= GameManager.Current.Status.Atk;
+                        else
+                        {
+                            CameraController.Current.Shake(0.02f);
+                            mole.Hp -= GameManager.Current.Status.Atk;
+                        }
 
                         if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
 
