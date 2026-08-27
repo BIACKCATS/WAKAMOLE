@@ -101,3 +101,11 @@ MonoBehaviour:
         Data4: -325969131
       Path: event:/Pop
     soundName: Pop
+  - soundRef:
+      Guid:
+        Data1: -2034187858
+        Data2: 1267443876
+        Data3: -913761403
+        Data4: 1365524866
+      Path: event:/Typing
+    soundName: Typing

@@ -86,5 +86,4 @@ public class PopUpBoard : MonoBehaviour
     {
         clearSequence?.Kill();
     }
-
 }

@@ -15,7 +15,7 @@ TagManager:
   - Backdrop
   - Mosquito
   - HpBar
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Mosquito
     uniqueID: 221806743
+    locked: 0
+  - name: BackGround
+    uniqueID: 1926321761
     locked: 0
   m_RenderingLayers:
   - Default
