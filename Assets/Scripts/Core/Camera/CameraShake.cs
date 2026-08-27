@@ -27,6 +27,8 @@ namespace Wakamole.Core.Camera
         /// <param name="camera">해당 효과를 적용할 Camera입니다.</param>
         public CameraShake(UnityEngine.Camera camera) { this.camera = camera; }
 
+        private WaitForEndOfFrame wait = new();
+
         /// <summary>
         /// MonoBehavior.StartCoroutine() 함수를 통해 해당 함수를 실행해 흔들림 효과가 지정된 값만큼 실행됩니다.
         /// </summary>
@@ -39,11 +41,11 @@ namespace Wakamole.Core.Camera
             while (currentTime < duration)
             {
                 randomPosition.x = Random.Range(-strength, strength);
-                randomPosition.y = Random.Range(-strength, strength);
-                camera.transform.position = initPosition + randomPosition;
+                randomPosition.z = Random.Range(-strength, strength);
+                camera.transform.position = Vector3.Lerp(camera.transform.position, initPosition + randomPosition, 20.0f * Time.deltaTime);
 
-                currentTime += Time.unscaledDeltaTime;
-                yield return null;
+                currentTime += Time.deltaTime;
+                yield return wait;
             }
             camera.transform.position = initPosition;
         }

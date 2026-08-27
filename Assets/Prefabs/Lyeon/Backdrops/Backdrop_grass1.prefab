@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7720388572899172017}
   - component: {fileID: 4962917137620588101}
   - component: {fileID: 4925551660479810383}
+  - component: {fileID: -8766883512614778904}
   m_Layer: 7
   m_Name: Backdrop_grass1
   m_TagString: Untagged
@@ -60,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 62884ffc73fc9324684ee53da959319b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,3 +131,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6, y: 1.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8766883512614778904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375804713857928337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd7801b480da6848b8686728876a7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SyncShadowSprite
+  shadowMaterial: {fileID: 2100000, guid: 2b517ecde6bfe414696ed82850650b30, type: 2}
