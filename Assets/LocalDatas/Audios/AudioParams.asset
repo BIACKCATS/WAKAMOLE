@@ -165,14 +165,6 @@ MonoBehaviour:
       value: 1
     - name: Hz
       value: 0.35
-  - soundName: Mole_Laugh
-    soundParam:
-    - name: Volume
-      value: 1
-    - name: VFXVolume
-      value: 1
-    - name: Hz
-      value: 0.35
   - soundName: Bubble
     soundParam:
     - name: Volume

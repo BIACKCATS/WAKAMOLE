@@ -1,5 +1,5 @@
 using UnityEngine;
-using Wakamole.Lyeon.Manager.Game;
+using UnityEngine.SceneManagement;
 
 namespace Wakamole.Lyeon.UI
 {
@@ -7,7 +7,7 @@ namespace Wakamole.Lyeon.UI
     {
         public void StartScene(string sceneName)
         {
-            LoadingManager.Current.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneName);
         }
 
         public void FinishGame()
