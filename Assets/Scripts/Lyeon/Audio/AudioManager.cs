@@ -80,8 +80,8 @@ namespace Wakamole.Lyeon.Audio
 
         private void InitInstance(EventInstance instance)
         {
-            instance.setParameterByName("BackgroundMusicVolume", MasterVolume);
             instance.setParameterByName("Volume", MasterVolume);
+            instance.setParameterByName("BackgroundMusicVolume", BgmVolume);
             instance.setParameterByName("VFXVolume", SfxVolume);
             instance.setParameterByName("Combo", 0);
             instance.setParameterByName("ShopEnter", 0);
