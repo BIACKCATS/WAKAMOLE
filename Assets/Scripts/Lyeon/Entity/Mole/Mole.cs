@@ -119,10 +119,6 @@ namespace Wakamole.Lyeon.Entity
             get => currentHp;
             set
             {
-                // [핵심 추가] 두더지가 이미 죽는 중이거나 비활성화 상태(active가 false)라면
-                // 더 이상 피격 연산이나 체력 감소, 분열 소환을 하지 않고 즉시 코드를 종료합니다.
-                if (!active) return;
-
                 if (currentHp > value)
                 {
                     anim.PlayExternalState("Hit");
@@ -140,9 +136,7 @@ namespace Wakamole.Lyeon.Entity
 
                 if (currentHp <= 0)
                 {
-                    // 💡 중요: 체력이 0이 되는 '최초의 순간'에 active를 false로 만들어 
-                    // 연타를 하더라도 이 if문 안으로 두 번 다시 들어오지 못하게 잠가버립니다.
-                    active = false;
+                    Active = false;
 
                     if ((keyword & MoleKeyword.SPLIT) != 0)
                     {
@@ -154,8 +148,7 @@ namespace Wakamole.Lyeon.Entity
                     if ((keyword & MoleKeyword.RICH) != 0)
                         StageManager.Current.Coin++;
 
-                    Animator targetAnimator = anim.GetComponent<Animator>();
-                    if (targetAnimator != null)
+                    if (anim.TryGetComponent(out Animator targetAnimator))
                     {
                         targetAnimator.SetTrigger("Die");
                     }
@@ -312,7 +305,7 @@ namespace Wakamole.Lyeon.Entity
                 }
 
                 // 3. 이제 진짜 'Dead' 애니메이션의 실제 재생 시간(초)을 가져오기
-                float deadAnimLength = targetAnimator.GetCurrentAnimatorStateInfo(0).length - 0.9f;
+                float deadAnimLength = targetAnimator.GetCurrentAnimatorStateInfo(0).length;
 
                 // 4. 두더지가 쓰러지는 연출 시간만큼 자로 잰 듯 정확하게 대기.
                 yield return new WaitForSeconds(deadAnimLength);

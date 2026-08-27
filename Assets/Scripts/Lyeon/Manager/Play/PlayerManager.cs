@@ -112,6 +112,9 @@ namespace Wakamole.Lyeon.Manager.Play
                         if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
 
                         stageManager.Combo++;
+                        if (stageManager.Combo < 10) GameManager.Current.Audio.SetBgmParameter("Combo", 0);
+                        else if (stageManager.Combo == 10) GameManager.Current.Audio.SetBgmParameter("Combo", 50);
+                        else if (stageManager.Combo == 20) GameManager.Current.Audio.SetBgmParameter("Combo", 100);
 
                         // 4번 아이템에 의한 콤보점수 추가
                         if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;

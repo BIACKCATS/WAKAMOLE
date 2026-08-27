@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb77479c774d0445a31e6b4a090983d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundControlManager
-  testEventPath: event:/New Event 2
+  testEventPath: event:/Bubble_pop
   MainVolume: 0.5
   BackgroundMusicVolume: 0.5
   VFXVolume: 0.5

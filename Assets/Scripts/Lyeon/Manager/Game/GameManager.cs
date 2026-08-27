@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Audio;
 using Wakamole.Lyeon.Manager.Play;
 using Wakamole.Lyeon.Player;
 
@@ -10,6 +11,7 @@ namespace Wakamole.Lyeon.Manager.Game
     {
         public static GameManager Current { get; private set; }
 
+        [SerializeField] private AudioManager audioManager;
         [SerializeField] private Status status;
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
@@ -19,6 +21,8 @@ namespace Wakamole.Lyeon.Manager.Game
 
         public int StageId { get => stageId; set => stageId = value; }
         public int Coin { get => status.Coin; set => status.Coin = value; }
+
+        public AudioManager Audio => audioManager;
         public Preference Preference => preference;
         public Status Status => status;
         public Dictionary<int, ItemData> Inventory => inventory;
@@ -44,6 +48,11 @@ namespace Wakamole.Lyeon.Manager.Game
                 moleSpeedPower = 1.0f
             };
             status.Import(data);
+        }
+
+        private void Start()
+        {
+            audioManager.PlayBgm();
         }
 
         public void UseItem(int inventoryIndex)
