@@ -111,7 +111,7 @@ namespace Wakamole.Lyeon.Manager.Play
                         }
                         else
                         {
-                            CameraController.Current.Shake(0.02f);
+                            CameraController.Current.Shake(0.05f);
                             mole.Hp -= GameManager.Current.Status.Atk;
                         }
 
