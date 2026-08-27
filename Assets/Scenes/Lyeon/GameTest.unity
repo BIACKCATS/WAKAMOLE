@@ -3933,8 +3933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.GameCamera.CameraController
   cam: {fileID: 797701137}
   moveSpeed: 8
-  mouseMaxDistance: {x: 3, y: 4}
-  mouseMinDistance: {x: -6, y: -4}
+  mouseMaxDistance: {x: 3, y: 2.5}
+  mouseMinDistance: {x: -6, y: -2.5}
   moveMaxLimit: {x: 2, y: -3.5}
   moveMinLimit: {x: -2, y: -5.5}
   groundLayer:
@@ -6910,9 +6910,9 @@ MonoBehaviour:
       Data3: -1601249619
       Data4: -1430275161
     Path: event:/New Event 2
-  masterVolume: 1
-  bgmVolume: 1
-  sfxVolume: 1
+  masterVolume: 0.7
+  bgmVolume: 0.6
+  sfxVolume: 0.4
 --- !u!1 &1584815789
 GameObject:
   m_ObjectHideFlags: 0
