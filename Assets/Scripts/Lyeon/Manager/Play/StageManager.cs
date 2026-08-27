@@ -140,7 +140,8 @@ namespace Wakamole.Lyeon.Manager.Play
         public int Coin
         {
             get => currentCoin;
-            set {
+            set
+            {
                 currentCoin = value;
                 coinText.Coin = currentCoin;
             }
@@ -156,28 +157,29 @@ namespace Wakamole.Lyeon.Manager.Play
             get => currentCombo;
             set
             {
+                if (currentCombo < value)
+                {
+                    comboParam.name = "Hz";
+                    if (currentCombo > 0 && currentCombo < 10)
+                    {
+                        comboParam.value = 0;
+                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                    }
+                    else if (currentCombo < 20)
+                    {
+                        comboParam.value = 0.51f;
+                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                    }
+                    else if (currentCombo >= 20)
+                    {
+                        comboParam.value = 0.91f;
+                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                    }
+                }
+
                 currentCombo = value;
                 combo.Count = currentCombo;
                 if (currentCombo > maxCombo) maxCombo = value;
-
-                comboParam.name = "Hz";
-
-                if (currentCombo > 0 && currentCombo < 10)
-                {
-                    comboParam.value = 0;
-                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                }
-                else if (currentCombo < 20)
-                {
-                    comboParam.value = 0.51f;
-                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                }
-                else if (currentCombo >= 20)
-                {
-                    comboParam.value = 0.91f;
-                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                }
-
             }
         }
 
