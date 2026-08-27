@@ -9169,7 +9169,7 @@ MonoBehaviour:
       Data3: -1601249619
       Data4: -1430275161
     Path: event:/New Event 2
-  masterVolume: 1
+  masterVolume: 0.22
   bgmVolume: 1
   sfxVolume: 1
 --- !u!114 &1566755581
@@ -9212,7 +9212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1584815790
 Transform:
   m_ObjectHideFlags: 0
