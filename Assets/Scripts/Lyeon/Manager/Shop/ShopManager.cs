@@ -32,7 +32,7 @@ namespace Wakamole.Lyeon.Manager.Shop
 
             for (int i = 0; i < 5; i++)
             {
-                if (!GameManager.Current.Inventory.ContainsKey(i)) continue;
+                if (!GameManager.Current.Inventory.ContainsKey(i) || GameManager.Current.Inventory[i] == null) continue;
 
                 GameObject obj = Instantiate(itemDisplayPrefab.gameObject, gameObject.transform);
                 if (obj.TryGetComponent(out ItemDisplay component) &&
