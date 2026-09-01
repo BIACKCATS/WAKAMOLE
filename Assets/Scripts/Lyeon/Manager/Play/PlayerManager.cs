@@ -50,6 +50,12 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        // for hotfix
+        private void OnEnable()
+        {
+            cursor.SetCursor(1);
+        }
+
         private void Start()
         {
             stageManager = StageManager.Current;
@@ -155,14 +161,14 @@ namespace Wakamole.Lyeon.Manager.Play
         private IEnumerator HandAnim()
         {
             attackRect.position = mousePosition;
-            cursor.SetCursor(1);
+            cursor.SetCursor(0);
             if (!attackImage.gameObject.activeSelf)
             {
                 handImage.gameObject.SetActive(false);
                 attackImage.gameObject.SetActive(true);
             }
             yield return wait;
-            cursor.SetCursor(0);
+            cursor.SetCursor(1);
             handImage.gameObject.SetActive(true);
             attackImage.gameObject.SetActive(false);
             handAnim = null;

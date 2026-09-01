@@ -6318,6 +6318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44921efef97284c73ae1ffab3bfa4a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.ShopManager
+  cursor: {fileID: 1288248569}
   tooltip: {fileID: 15154403}
   coinText: {fileID: 340485416}
   itemDisplayPrefab: {fileID: 7797890111925175357, guid: e79d7148083ef41d5b26d1c17917a4b4, type: 3}
@@ -8863,7 +8864,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
   - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
   minPosition: {x: -5, y: -4}
-  maxPosition: {x: 5, y: 3}
+  maxPosition: {x: 5, y: 2.5}
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5
