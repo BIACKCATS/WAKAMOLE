@@ -19,6 +19,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private List<MoleData> moleDatas;
 
         [Header("Information")]
+        [SerializeField] private Vector2 minPosition;
+        [SerializeField] private Vector2 maxPosition;
         [Tooltip("두더지의 기본 체력입니다.")]
         [SerializeField] private int defaultHp = 10;
         [Tooltip("두더지의 기본 등장 시간입니다.")]
@@ -79,7 +81,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 if (keyword == 0) mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
                 mole.Manager = this;
 
-                obj.transform.position = new Vector3(Random.Range(-5.0f, 5.0f), 0.1f, Random.Range(5.0f, -5.0f));
+                obj.transform.position = new Vector3(Random.Range(-minPosition.x, maxPosition.x), 0, Random.Range(minPosition.y, maxPosition.y));
                 obj.SetActive(true);
                 activatedMoles.Add(mole);
             }

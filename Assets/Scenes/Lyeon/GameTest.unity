@@ -3759,7 +3759,7 @@ Transform:
   m_GameObject: {fileID: 797701135}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 6, z: -5}
+  m_LocalPosition: {x: 0, y: 6.5, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3823,6 +3823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.GameCamera.CameraController
   cam: {fileID: 797701137}
   moveSpeed: 8
+  expandMove: 0
   mouseMaxDistance: {x: 3, y: 2.5}
   mouseMinDistance: {x: -6, y: -2.5}
   moveMaxLimit: {x: 2, y: -3.5}
@@ -8854,6 +8855,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f9b2c8ce8e174223bef1fddee1f4d37, type: 2}
   - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
   - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
+  minPosition: {x: -5, y: -4}
+  maxPosition: {x: 5, y: 4}
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5
