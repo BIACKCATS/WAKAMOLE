@@ -225,9 +225,9 @@ namespace Wakamole.Lyeon.Manager.Play
         private IEnumerator Alert()
         {
             WaitForSeconds wait = new(alertTime);
-            while (GameManager.Current.Preference.ActiveAlert && !alert.Active && active)
+            while (GameManager.Current.Preference.ActiveAlert && active)
             {
-                alert.Show();
+                if (!alert.Active) alert.Show();
                 yield return wait;
             }
         }
