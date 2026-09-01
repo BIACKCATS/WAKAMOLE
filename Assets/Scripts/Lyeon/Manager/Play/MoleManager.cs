@@ -81,7 +81,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 if (keyword == 0) mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
                 mole.Manager = this;
 
-                obj.transform.position = new Vector3(Random.Range(-minPosition.x, maxPosition.x), 0, Random.Range(minPosition.y, maxPosition.y));
+                obj.transform.position = new Vector3(Random.Range(minPosition.x, maxPosition.x), 0, Random.Range(minPosition.y, maxPosition.y));
                 obj.SetActive(true);
                 activatedMoles.Add(mole);
             }

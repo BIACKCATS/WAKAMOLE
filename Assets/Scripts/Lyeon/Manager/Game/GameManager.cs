@@ -84,6 +84,7 @@ namespace Wakamole.Lyeon.Manager.Game
                     preference.ActiveBonusScore = true;
                     break;
             }
+            inventory[inventoryIndex] = null;
         }
     }
 }

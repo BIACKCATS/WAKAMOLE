@@ -6320,6 +6320,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.ShopManager
   tooltip: {fileID: 15154403}
   coinText: {fileID: 340485416}
+  itemDisplayPrefab: {fileID: 7797890111925175357, guid: e79d7148083ef41d5b26d1c17917a4b4, type: 3}
+  inventory:
+  - {fileID: 860696490}
+  - {fileID: 767059337}
+  - {fileID: 467152452}
+  - {fileID: 1423511747}
+  - {fileID: 1808708789}
 --- !u!224 &1378870842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8856,7 +8863,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
   - {fileID: 11400000, guid: 71b73f359e1b443b09ba3ee68006a1b5, type: 2}
   minPosition: {x: -5, y: -4}
-  maxPosition: {x: 5, y: 4}
+  maxPosition: {x: 5, y: 3}
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5
