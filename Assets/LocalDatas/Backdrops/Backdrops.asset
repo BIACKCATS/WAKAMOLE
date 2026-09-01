@@ -27,5 +27,5 @@ MonoBehaviour:
   - {fileID: 4738120486128513780, guid: e8ab61dae6c24485cad220039f0bf554, type: 3}
   - {fileID: 8415473323224113717, guid: 90dad4677c296483d8ef990e0abc1aa9, type: 3}
   backdropCount: 25
-  minPoint: {x: -9, y: 0, z: 3}
-  maxPoint: {x: 9, y: 0, z: 5}
+  minPoint: {x: -8, y: 0, z: 3}
+  maxPoint: {x: 8, y: 0, z: 4.5}
