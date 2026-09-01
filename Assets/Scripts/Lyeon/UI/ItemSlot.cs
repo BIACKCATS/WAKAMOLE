@@ -22,7 +22,10 @@ namespace Wakamole.Lyeon.UI
             {
                 data = value;
                 if (slotType.Equals(ItemSlotType.INVENTORY))
-                    GameManager.Current.Inventory[slotId] = value.Item;
+                {
+                    if (data == null) GameManager.Current.Inventory[slotId] = null;
+                    else GameManager.Current.Inventory[slotId] = value.Item;
+                }
             }
         }
         public ItemSlotType SlotType => slotType;

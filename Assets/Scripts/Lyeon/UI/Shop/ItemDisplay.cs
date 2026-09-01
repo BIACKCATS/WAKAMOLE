@@ -109,7 +109,6 @@ namespace Wakamole.Lyeon.UI.Shop
                         GameManager.Current.Coin += itemData.itemCost;
                         ShopManager.Current?.UpdateCoin();
                         GameManager.Current.Audio.PlaySfx("Shop_Sell");
-                        itemSlot.Item = null;
                         Destroy(gameObject);
                         return;
                     }
