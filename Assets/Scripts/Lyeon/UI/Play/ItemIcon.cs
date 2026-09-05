@@ -6,7 +6,7 @@ using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.UI.Play
 {
-    public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler //, IPointerDownHandler
     {
         [SerializeField] private int slotId;
         [SerializeField] private Image image;
@@ -32,12 +32,14 @@ namespace Wakamole.Lyeon.UI.Play
             if (itemData == null) image.sprite = defaultSprite;
         }
 
+        /*
         public void OnPointerDown(PointerEventData eventData)
         {
             // Use Item
             GameManager.Current.UseItem(slotId);
             Item = null;
         }
+        */
 
         public void OnPointerEnter(PointerEventData eventData)
         {
