@@ -5981,6 +5981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.Play.PlayerManager
   cursor: {fileID: 1288248569}
   progressBar: {fileID: 1078650320}
+  playerHand: {fileID: 968204000}
   handImage: {fileID: 968203998}
   attackImage: {fileID: 278376560}
   fires:
