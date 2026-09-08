@@ -12,6 +12,8 @@ namespace Wakamole.Lyeon.GameCamera
         [SerializeField] private Camera cam;
         [Tooltip("카메라의 이동 속도입니다.")]
         [SerializeField] private float moveSpeed = 4.0f;
+        [Tooltip("카메라가 마우스 위치에 따라 움직입니다.")]
+        [SerializeField] private bool expandMove = false;
         [Tooltip("카메라가 움직이지 않는 영역의 최대값입니다.")]
         [SerializeField] private Vector2 mouseMaxDistance;
         [Tooltip("카메라가 움직이지 않는 영역의 최솟값입니다.")]
@@ -22,8 +24,6 @@ namespace Wakamole.Lyeon.GameCamera
         [SerializeField] private Vector2 moveMinLimit;
         [Tooltip("바닥으로 감지할 Layer입니다.")]
         [SerializeField] private LayerMask groundLayer;
-
-        private bool expandMove = true;
 
         private Ray mouseRay;
         private Vector2 currentMouse = Vector2.zero; // 화면 상의 마우스 위치

@@ -227,7 +227,7 @@ namespace Wakamole.Lyeon.Manager.Play
             WaitForSeconds wait = new(alertTime);
             while (GameManager.Current.Preference.ActiveAlert && active)
             {
-                alert.Show();
+                if (!alert.Active) alert.Show();
                 yield return wait;
             }
         }
@@ -310,6 +310,10 @@ namespace Wakamole.Lyeon.Manager.Play
             goalScore = (int)(100.0f * Mathf.Pow(1.3f, GameManager.Current.StageId));
             scoreBoard.Goal = goalScore;
             clock.Duration = timeLimit;
+
+            foreach (KeyValuePair<int, ItemData> item in GameManager.Current.Inventory)
+                GameManager.Current.UseItem(item.Key);
+
             active = true;
             StartCoroutine(CreateBackdrops());
         }

@@ -17,6 +17,7 @@ namespace Wakamole.Lyeon.Manager.Play
         [Header("Components")]
         [SerializeField] private CursorChange cursor;
         [SerializeField] private ProgressBar progressBar;
+        [SerializeField] private PlayerHand playerHand;
         [SerializeField] private Image handImage, attackImage;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private List<ChargeFire> fires;
@@ -50,6 +51,12 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        // for hotfix
+        private void OnEnable()
+        {
+            cursor.SetCursor(1);
+        }
+
         private void Start()
         {
             stageManager = StageManager.Current;
@@ -71,7 +78,7 @@ namespace Wakamole.Lyeon.Manager.Play
             if (chargingTime > GameManager.Current.Status.ChargeTime) chargingTime = GameManager.Current.Status.ChargeTime;
             else if (chargingTime < 0) chargingTime = 0;
 
-            progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
+            playerHand.Charged = progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
             if (progressBar.Value > 0.3f) fires[0].gameObject.SetActive(true);
             else fires[0].gameObject.SetActive(false);
             if (progressBar.Value > 0.6f) fires[1].gameObject.SetActive(true);
@@ -155,14 +162,14 @@ namespace Wakamole.Lyeon.Manager.Play
         private IEnumerator HandAnim()
         {
             attackRect.position = mousePosition;
-            cursor.SetCursor(1);
+            cursor.SetCursor(0);
             if (!attackImage.gameObject.activeSelf)
             {
                 handImage.gameObject.SetActive(false);
                 attackImage.gameObject.SetActive(true);
             }
             yield return wait;
-            cursor.SetCursor(0);
+            cursor.SetCursor(1);
             handImage.gameObject.SetActive(true);
             attackImage.gameObject.SetActive(false);
             handAnim = null;
