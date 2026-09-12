@@ -27,6 +27,8 @@ namespace Wakamole.Lyeon.Manager.Shop
 
         private void OnEnable()
         {
+            if (GameManager.Current == null) return;
+            
             Current = this;
             cursor.SetCursor(0);
 

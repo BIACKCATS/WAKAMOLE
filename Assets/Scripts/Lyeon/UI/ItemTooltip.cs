@@ -7,6 +7,7 @@ namespace Wakamole.Lyeon.UI
 {
     public class ItemTooltip : MonoBehaviour
     {
+        [SerializeField] private RectTransform rect;
         [SerializeField] private TMP_Text text;
         [SerializeField] private Vector2 mouseOffset = new(60.0f, 60.0f);
 
@@ -15,7 +16,7 @@ namespace Wakamole.Lyeon.UI
         public bool Active { get => gameObject.activeSelf; set => gameObject.SetActive(value); }
         public ItemData Item
         {
-            set => text.text = $"{value.itemName}\n\n{value.itemFunc}\n\n<i><color=\"grey\"><size=28>{value.itemDesc}</size></color></i>";
+            set => text.text = $"{value.itemName}\n\n{value.itemFunc}\n\n<i><color=#cccccc><size=28>{value.itemDesc}</size></color></i>";
         }
 
         private void Awake()
@@ -27,13 +28,13 @@ namespace Wakamole.Lyeon.UI
         private void OnEnable()
         {
             SetTargetPosition();
-            transform.position = targetPosition;
+            rect.position = targetPosition;
         }
 
         private void Update()
         {
             SetTargetPosition();
-            transform.position = Vector2.Lerp(transform.position, targetPosition, 50.0f * Time.deltaTime);
+            rect.position = Vector2.Lerp(rect.position, targetPosition, 50.0f * Time.deltaTime);
         }
 
         private void SetTargetPosition()

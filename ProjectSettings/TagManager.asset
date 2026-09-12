@@ -47,6 +47,9 @@ TagManager:
   - name: Backdrop
     uniqueID: 1868592729
     locked: 0
+  - name: Mole
+    uniqueID: 1917881409
+    locked: 0
   - name: Mosquito
     uniqueID: 221806743
     locked: 0
