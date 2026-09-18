@@ -20,6 +20,7 @@ namespace Wakamole.Lyeon.UI.Play
             set
             {
                 charged = value;
+                rect.localRotation = Quaternion.Euler(Vector3.forward * 15.0f * charged);
                 
                 if (charged < 0) charged = 0;
                 else if (charged > 1) charged = 1;
