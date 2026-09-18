@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2867790842959606040}
+  - component: {fileID: 1032915177387891801}
   - component: {fileID: 121733472002780085}
   - component: {fileID: 6921081888897811238}
+  - component: {fileID: 2349927256160273100}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -40,6 +42,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 420, y: 640}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1032915177387891801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971375581557487012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a8d05ad57aa455aa128a0a21a7ac03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Upgrade.UpgradeCard
+  rect: {fileID: 2867790842959606040}
+  group: {fileID: 2349927256160273100}
+  title: {fileID: 8514024482729182453}
+  desc: {fileID: 6788042636256384649}
+  upgrade: {fileID: 0}
+  game: {fileID: 0}
 --- !u!222 &121733472002780085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78,6 +98,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2349927256160273100
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971375581557487012}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5080725738751110985
 GameObject:
   m_ObjectHideFlags: 0
