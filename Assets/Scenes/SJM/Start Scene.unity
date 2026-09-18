@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 46375387}
   - component: {fileID: 46375390}
   - component: {fileID: 46375391}
+  - component: {fileID: 46375392}
   m_Layer: 5
   m_Name: Setting_Btn
   m_TagString: Untagged
@@ -345,6 +346,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 46375392}
+        m_TargetAssemblyTypeName: ButtonClickEffect, Assembly-CSharp
+        m_MethodName: PlayEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &46375388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +424,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.SoundSettingOpen
   soundWindow: {fileID: 800233245}
+--- !u!114 &46375392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46375385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44655cfb3d49e8d41be09ce09891666c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickEffect
+  pressedScale: 0.92
+  pressDuration: 0.06
+  releaseDuration: 0.1
 --- !u!1 &49185678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2429,7 @@ GameObject:
   - component: {fileID: 747782362}
   - component: {fileID: 747782365}
   - component: {fileID: 747782366}
+  - component: {fileID: 747782367}
   m_Layer: 5
   m_Name: Quit_Btn
   m_TagString: Untagged
@@ -2484,6 +2513,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 747782367}
+        m_TargetAssemblyTypeName: ButtonClickEffect, Assembly-CSharp
+        m_MethodName: PlayEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &747782363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2549,6 +2590,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca903acd27a2a4ea89a54ccdfb8df410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.SceneButton
+--- !u!114 &747782367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747782360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44655cfb3d49e8d41be09ce09891666c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickEffect
+  pressedScale: 0.92
+  pressDuration: 0.06
+  releaseDuration: 0.1
 --- !u!1 &800233244
 GameObject:
   m_ObjectHideFlags: 0
@@ -4288,6 +4344,7 @@ GameObject:
   - component: {fileID: 1013560795}
   - component: {fileID: 1013560798}
   - component: {fileID: 1013560799}
+  - component: {fileID: 1013560800}
   m_Layer: 5
   m_Name: Start_Btn
   m_TagString: Untagged
@@ -4371,6 +4428,18 @@ MonoBehaviour:
           m_StringArgument: GameTest
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1013560800}
+        m_TargetAssemblyTypeName: ButtonClickEffect, Assembly-CSharp
+        m_MethodName: PlayEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1013560796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4436,6 +4505,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca903acd27a2a4ea89a54ccdfb8df410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.SceneButton
+--- !u!114 &1013560800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013560793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44655cfb3d49e8d41be09ce09891666c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickEffect
+  pressedScale: 0.92
+  pressDuration: 0.06
+  releaseDuration: 0.1
 --- !u!1 &1037149293
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,6 +6924,7 @@ GameObject:
   - component: {fileID: 1805267283}
   - component: {fileID: 1805267282}
   - component: {fileID: 1805267281}
+  - component: {fileID: 1805267284}
   m_Layer: 5
   m_Name: ESC
   m_TagString: Untagged
@@ -6922,6 +7007,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1805267284}
+        m_TargetAssemblyTypeName: ButtonClickEffect, Assembly-CSharp
+        m_MethodName: PlayEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1805267282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6960,6 +7057,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805267279}
   m_CullTransparentMesh: 1
+--- !u!114 &1805267284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805267279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44655cfb3d49e8d41be09ce09891666c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickEffect
+  pressedScale: 0.92
+  pressDuration: 0.06
+  releaseDuration: 0.1
 --- !u!1 &1889490499
 GameObject:
   m_ObjectHideFlags: 0

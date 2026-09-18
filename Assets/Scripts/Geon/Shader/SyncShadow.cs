@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class SyncShadowSprite : MonoBehaviour
+public class SyncShadow : MonoBehaviour
 {
     [Header("Lit Material 할당")]
     public Material shadowMaterial;
