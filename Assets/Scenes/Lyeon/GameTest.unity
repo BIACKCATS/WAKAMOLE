@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539575394d2e04f79aece8701062844f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Player.Status
-  coin: 100
+  coin: 0
   atk: 1
   chargeTime: 2
   chargeRatio: 2
