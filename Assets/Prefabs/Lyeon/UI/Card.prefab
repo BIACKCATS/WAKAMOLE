@@ -60,6 +60,8 @@ MonoBehaviour:
   desc: {fileID: 6788042636256384649}
   upgrade: {fileID: 0}
   game: {fileID: 0}
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  keyword: 0
 --- !u!222 &121733472002780085
 CanvasRenderer:
   m_ObjectHideFlags: 0

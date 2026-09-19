@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Wakamole.Lyeon.Entity;
@@ -18,14 +19,16 @@ namespace Wakamole.Lyeon.UI.Upgrade
         [SerializeField] private UpgradeManager upgrade;
         [SerializeField] private GameManager game;
 
+        [Header("Variables")]
+        [SerializeField] private Color cardColor;
+        [SerializeField] private MoleKeyword keyword;
+
         private bool init = false; // 화면 표시 상태
         private bool active = false; // 선택 가능 상태
         private bool animate = false; // 애니메이션 진행 중
 
         private float targetAlpha = 0, targetScale = 1.0f;
         private Vector3 initPosition = Vector3.zero, targetPosition = Vector3.zero;
-
-        private MoleKeyword keyword;
 
         public bool Active => gameObject.activeSelf && init;
 
@@ -48,7 +51,8 @@ namespace Wakamole.Lyeon.UI.Upgrade
             // Initialize Keyword
             this.keyword = keyword;
             this.title.text = name;
-            this.desc.text = string.Format(this.desc.text, name, desc);
+            this.desc.text = string.Format("랜덤한 두더지에 <color=#{0}>{1}</color> 키워드가 추가로 붙습니다.\n해당 키워드의 두더지는 {2}", 
+                cardColor.ToHexString(), name, desc);
         }
 
         public void ShowCard()

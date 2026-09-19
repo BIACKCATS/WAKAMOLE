@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &886661222889566919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -497,6 +497,22 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 729259164387998833}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.b
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.g
+      value: 0.58431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.r
+      value: 0.70980394
+      objectReference: {fileID: 0}
     - target: {fileID: 2372277742381524996, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -648,6 +664,22 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 729259164387998833}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.b
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.g
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.r
+      value: 0.6509804
+      objectReference: {fileID: 0}
     - target: {fileID: 2867790842959606040, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -765,6 +797,22 @@ PrefabInstance:
       propertyPath: upgrade
       value: 
       objectReference: {fileID: 729259164387998833}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.b
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.g
+      value: 0.75686276
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032915177387891801, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
+      propertyPath: cardColor.r
+      value: 0.78039217
+      objectReference: {fileID: 0}
     - target: {fileID: 2372277742381524996, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_Sprite
       value: 
