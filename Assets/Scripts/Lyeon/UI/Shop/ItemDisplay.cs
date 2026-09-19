@@ -17,9 +17,6 @@ namespace Wakamole.Lyeon.UI.Shop
         [SerializeField] private TMP_Text costText;
         [SerializeField] private RectTransform rect;
 
-        private bool activeHover = false;
-        private bool activeDrag = false;
-
         private Vector2 initPosition, targetPosition, offset;
         private ItemData itemData;
         private ItemSlot itemSlot;
@@ -57,19 +54,16 @@ namespace Wakamole.Lyeon.UI.Shop
             if (shop == null) return;
             shop.Tooltip.Active = true;
             shop.Tooltip.Item = itemData;
-            activeHover = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (shop == null) return;
             shop.Tooltip.Active = false;
-            activeHover = false;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            activeDrag = true;
             initPosition = rect.position;
             offset = (Vector2)rect.position - Mouse.current.position.ReadValue();
         }
@@ -81,7 +75,6 @@ namespace Wakamole.Lyeon.UI.Shop
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            activeDrag = false;
             EventSystem.current.RaycastAll(eventData, results);
             foreach (RaycastResult result in results)
             {

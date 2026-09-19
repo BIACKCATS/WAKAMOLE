@@ -7,13 +7,13 @@ using Wakamole.Lyeon.Manager.Upgrade;
 
 namespace Wakamole.Lyeon.UI.Upgrade
 {
-    public class UpgradeCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UpgradeCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         [Header("Components")]
         [SerializeField] private RectTransform rect;
         [SerializeField] private CanvasGroup group;
         [SerializeField] private TMP_Text title, desc;
-        
+
         [Header("Managers")]
         [SerializeField] private UpgradeManager upgrade;
         [SerializeField] private GameManager game;
@@ -23,38 +23,11 @@ namespace Wakamole.Lyeon.UI.Upgrade
         private bool animate = false; // 애니메이션 진행 중
 
         private float targetAlpha = 0, targetScale = 1.0f;
-        private Vector3 targetPosition = Vector3.zero;
+        private Vector3 initPosition = Vector3.zero, targetPosition = Vector3.zero;
 
         private MoleKeyword keyword;
 
         public bool Active => gameObject.activeSelf && init;
-        public void SetActive(bool active)
-        {
-            if (active)
-            {
-                // 이미 초기화가 된 상태인 경우 시작 애니메이션을 시작하지 않음 (이미 화면에 표시되어 있음)
-                if (init) return;
-
-                // Initialize variables
-                targetAlpha = 1;
-                targetScale = 1.0f;
-                targetPosition = rect.position;
-
-                // Initialize 
-                Vector3 movePosition = rect.position;
-                movePosition.y -= 640.0f;
-                rect.position = movePosition;
-                group.alpha = 0;
-                animate = true;
-            }
-            else
-            {
-                // 이미 초기화가 되지 않은 상태인 경우 시작 애니메이션을 시작하지 않음 (이미 화면에 표시되지 않음)
-                if (!init) return;
-            }
-
-            this.active = active;
-        }
 
         /// <summary>
         /// 해당 카드가 가질 키워드를 설정합니다. 키워드는 하나만 설정해야합니다.
@@ -92,19 +65,42 @@ namespace Wakamole.Lyeon.UI.Upgrade
             this.keyword = keyword;
         }
 
+        /// <summary>
+        /// Card의 상태를 초기화합니다.
+        /// </summary>
+        public void Init()
+        {
+            init = false;
+            active = false;
+            animate = false;
+
+            // Initialize variables
+            targetAlpha = 1;
+            targetScale = 1.0f;
+            targetPosition = initPosition;
+            rect.position = new Vector3(initPosition.x, -640.0f, initPosition.z);
+        }
+
         public void ShowCard()
         {
-            if (init) return;
+            init = false;
+            group.alpha = 0;
+            animate = true;
         }
 
         public void SelectCard()
         {
-            
+            active = false;
+            targetScale = 1.2f;
+            animate = true;
         }
 
         public void HideCard()
         {
-            
+            active = false;
+            targetAlpha = 0;
+            targetPosition = new Vector3(initPosition.x, -640.0f, initPosition.z);
+            animate = true;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -117,6 +113,17 @@ namespace Wakamole.Lyeon.UI.Upgrade
             if (active) targetScale = 1.0f;
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            upgrade.SelectCard(this);
+            SelectCard();
+        }
+
+        private void Awake()
+        {
+            initPosition = rect.position;
+        }
+
         private void Update()
         {
             // scale의 경우 hover event가 있기에 항상 작동
@@ -125,6 +132,14 @@ namespace Wakamole.Lyeon.UI.Upgrade
             if (!animate) return;
             group.alpha = Mathf.Lerp(group.alpha, targetAlpha, 15.0f * Time.deltaTime);
             rect.position = Vector3.Lerp(rect.position, targetPosition, 15.0f * Time.deltaTime);
+
+            if (group.alpha - targetAlpha < 0.01 && Vector3.Distance(rect.position, targetPosition) < 0.01f)
+            {
+                // 초기화
+                if (!init) active = true;
+                else if (!active) init = false;
+                animate = false;
+            }
         }
     }
 }
