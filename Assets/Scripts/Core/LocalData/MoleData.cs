@@ -20,5 +20,9 @@ namespace Wakamole.Core.LocalData
         [Tooltip("두더지의 획득 가능한 점수입니다.")]
         [SerializeField] public int score;
         [SerializeField] public bool isFixedScore = false;
+
+        [Header("Information")]
+        [SerializeField] public string moleName;
+        [SerializeField, TextArea] public string moleDesc;
     }
 }

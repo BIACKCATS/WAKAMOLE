@@ -30,46 +30,11 @@ namespace Wakamole.Lyeon.UI.Upgrade
         public bool Active => gameObject.activeSelf && init;
 
         /// <summary>
-        /// 해당 카드가 가질 키워드를 설정합니다. 키워드는 하나만 설정해야합니다.
-        /// </summary>
-        /// <param name="keyword">설정할 키워드입니다.</param>
-        public void SetKeyword(MoleKeyword keyword)
-        {
-            string upgradeKeyword = "";
-            switch (keyword)
-            {
-                case MoleKeyword.FAST:
-                    upgradeKeyword = "빠른";
-                    break;
-                case MoleKeyword.POPULAR:
-                    upgradeKeyword = "인싸";
-                    break;
-                case MoleKeyword.REVIVE:
-                    upgradeKeyword = "부활하는";
-                    break;
-                case MoleKeyword.RICH:
-                    upgradeKeyword = "부자";
-                    break;
-                case MoleKeyword.SHIELD:
-                    upgradeKeyword = "방패";
-                    break;
-                case MoleKeyword.SPLIT:
-                    upgradeKeyword = "분열하는";
-                    break;
-                case MoleKeyword.STRONG:
-                    upgradeKeyword = "단단한";
-                    break;
-            }
-            title.text = upgradeKeyword;
-            desc.text = string.Format(desc.text, upgradeKeyword);
-            this.keyword = keyword;
-        }
-
-        /// <summary>
         /// Card의 상태를 초기화합니다.
         /// </summary>
-        public void Init()
+        public void Init(MoleKeyword keyword, string name, string desc)
         {
+            // Initialize Booleans
             init = false;
             active = false;
             animate = false;
@@ -79,6 +44,11 @@ namespace Wakamole.Lyeon.UI.Upgrade
             targetScale = 1.0f;
             targetPosition = initPosition;
             rect.position = new Vector3(initPosition.x, -640.0f, initPosition.z);
+
+            // Initialize Keyword
+            this.keyword = keyword;
+            this.title.text = name;
+            this.desc.text = string.Format(this.desc.text, name, desc);
         }
 
         public void ShowCard()

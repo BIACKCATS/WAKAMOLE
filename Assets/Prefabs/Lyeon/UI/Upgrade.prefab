@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &886661222889566919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -273,6 +273,13 @@ MonoBehaviour:
   - {fileID: 4606326790677372692}
   - {fileID: 2092036097086468967}
   - {fileID: 7673035612392893991}
+  moles:
+  - {fileID: 11400000, guid: 26117ce26418a48c880990ef9ff33052, type: 2}
+  - {fileID: 11400000, guid: 503ad7644036742d688b1eb30fd6d169, type: 2}
+  - {fileID: 11400000, guid: c26ed4cba1d3344efb585790560e2b5d, type: 2}
+  - {fileID: 11400000, guid: 7f9b2c8ce8e174223bef1fddee1f4d37, type: 2}
+  - {fileID: 11400000, guid: 4aa1cd6709eab4ff280816c70b7e1bc7, type: 2}
+  - {fileID: 11400000, guid: 83c68b69dceeb40b0a6a80ee4db9b3d2, type: 2}
 --- !u!223 &4044944122052397573
 Canvas:
   m_ObjectHideFlags: 0
@@ -589,7 +596,8 @@ PrefabInstance:
     - target: {fileID: 6788042636256384649, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_text
       value: "\uB79C\uB364\uD55C \uB450\uB354\uC9C0\uC5D0\uAC8C <color=#B59591>{0}</color>
-        \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4."
+        \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4.\n\uD574\uB2F9
+        \uD0A4\uC6CC\uB4DC\uC758 \uB450\uB354\uC9C0\uB294 {1}"
       objectReference: {fileID: 0}
     - target: {fileID: 6788042636256384649, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_fontAsset
@@ -856,7 +864,8 @@ PrefabInstance:
     - target: {fileID: 6788042636256384649, guid: e29efb4d40998427fbe6491a048d5f20, type: 3}
       propertyPath: m_text
       value: "\uB79C\uB364\uD55C \uB450\uB354\uC9C0\uC5D0\uAC8C <color=#C7C199>{0}</color>
-        \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4."
+        \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4.\n\uD574\uB2F9
+        \uD0A4\uC6CC\uB4DC\uC758 \uB450\uB354\uC9C0\uB294 {1}"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

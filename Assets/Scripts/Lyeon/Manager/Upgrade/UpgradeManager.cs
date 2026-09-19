@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.UI.Upgrade;
 
 namespace Wakamole.Lyeon.Manager.Upgrade
@@ -8,13 +9,17 @@ namespace Wakamole.Lyeon.Manager.Upgrade
     public class UpgradeManager : MonoBehaviour
     {
         [SerializeField] private List<UpgradeCard> cards;
+        [SerializeField] private List<MoleData> moles;
         
         private readonly WaitForSeconds _wait = new(0.25f);
 
         private void OnEnable()
         {
             foreach (UpgradeCard card in cards)
-                card.Init();
+            {
+                MoleData data = moles[Random.Range(0, moles.Count)];
+                card.Init(data.keyword, data.moleName, data.moleDesc);
+            }
             StartCoroutine(Initialize());
         }
 

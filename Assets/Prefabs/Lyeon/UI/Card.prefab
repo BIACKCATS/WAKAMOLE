@@ -176,7 +176,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uB79C\uB364\uD55C \uB450\uB354\uC9C0\uC5D0 <color=#A6AFCA>{0}</color>
-    \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4."
+    \uD0A4\uC6CC\uB4DC\uAC00 \uCD94\uAC00\uB85C \uBD99\uC2B5\uB2C8\uB2E4.\n\uD574\uB2F9
+    \uD0A4\uC6CC\uB4DC\uC758 \uB450\uB354\uC9C0\uB294 {1}"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f82c31e057dc410da2b312d670414d4, type: 2}
   m_sharedMaterial: {fileID: 453441138367890149, guid: 7f82c31e057dc410da2b312d670414d4, type: 2}
