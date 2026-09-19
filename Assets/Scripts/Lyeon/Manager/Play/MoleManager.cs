@@ -4,6 +4,7 @@ using System.Collections;
 using Wakamole.Lyeon.Entity;
 using System.Collections.Generic;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.Manager.Play
 {
@@ -27,6 +28,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private int defaultShowTime = 3;
         [Tooltip("두더지의 기본 점수입니다.")]
         [SerializeField] private int defaultScore = 1;
+        [Tooltip("강화창에서 지정한 키워드의 두더지가 나올 확률입니다.")]
+        [SerializeField, Range(0, 1.0f)] private float keywordChance = 0.1f;
 
         private ObjectPool objectPool;
         private Dictionary<MoleKeyword, MoleData> moles = new();
@@ -58,6 +61,13 @@ namespace Wakamole.Lyeon.Manager.Play
             MoleKeyword keyword = keywords[Random.Range(0, keywords.Count - 1)];
             while ((keyword & MoleKeyword.REVIVED) != 0) 
                 keyword = keywords[Random.Range(0, keywords.Count - 1)];
+            
+            // 지정된 확률로 지정된 키워드를 포함한 두더지를 생성
+            if (Random.Range(0, 1.0f) < keywordChance && GameManager.Current.KeywordCount > 0)
+            {
+                keyword |= GameManager.Current.IncludeKeyword; // 강화창에서 추가한 키워드 추가
+                GameManager.Current.KeywordCount--;
+            }
 
             ShowMole(keyword);
         }

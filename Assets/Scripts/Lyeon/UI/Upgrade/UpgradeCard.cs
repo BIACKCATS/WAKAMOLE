@@ -51,7 +51,7 @@ namespace Wakamole.Lyeon.UI.Upgrade
             // Initialize Keyword
             this.keyword = keyword;
             this.title.text = name;
-            this.desc.text = string.Format("랜덤한 두더지에 <color=#{0}>{1}</color> 키워드가 추가로 붙습니다.\n해당 키워드의 두더지는 {2}", 
+            this.desc.text = string.Format("일정 수의 두더지에 <color=#{0}>{1}</color> 키워드가 추가로 붙습니다.\n해당 키워드의 두더지는 {2}", 
                 cardColor.ToHexString(), name, desc);
         }
 
@@ -66,6 +66,7 @@ namespace Wakamole.Lyeon.UI.Upgrade
         {
             active = false;
             targetScale = 1.2f;
+            GameManager.Current.SetIncludeKeyword(keyword);
             animate = true;
         }
 

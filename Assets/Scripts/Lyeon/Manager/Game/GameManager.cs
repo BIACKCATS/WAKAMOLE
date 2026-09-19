@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Audio;
+using Wakamole.Lyeon.Entity;
 using Wakamole.Lyeon.Manager.Play;
 using Wakamole.Lyeon.Player;
 
@@ -15,12 +16,16 @@ namespace Wakamole.Lyeon.Manager.Game
         [SerializeField] private Status status;
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
+        [SerializeField] private int maxKeywordCount = 10;
 
         private int stageId = 0;
         private Dictionary<int, ItemData> inventory = new(5);
+        private int keywordCount = 0;
 
         public int StageId { get => stageId; set => stageId = value; }
         public int Coin { get => status.Coin; set => status.Coin = value; }
+        public int KeywordCount { get => keywordCount; set => keywordCount = value; }
+        public MoleKeyword IncludeKeyword { get; private set; } = MoleKeyword.DEFAULT;
 
         public AudioManager Audio => audioManager;
         public Preference Preference => preference;
@@ -42,6 +47,12 @@ namespace Wakamole.Lyeon.Manager.Game
         private void Start()
         {
             audioManager.PlayBgm();
+        }
+
+        public void SetIncludeKeyword(MoleKeyword keyword)
+        {
+            keywordCount = Random.Range(1, maxKeywordCount + 1);
+            IncludeKeyword = keyword;
         }
 
         public void UseItem(int inventoryIndex)
