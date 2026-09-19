@@ -10,7 +10,6 @@ namespace Wakamole.Lyeon.Manager.Play
 {
     public class MoleManager : MonoBehaviour
     {
-        // 개발용, 추후 삭제
         private WaitForSecondsRealtime _waitForSecondsRealtime = new(1.0f);
 
         [Header("Components")]

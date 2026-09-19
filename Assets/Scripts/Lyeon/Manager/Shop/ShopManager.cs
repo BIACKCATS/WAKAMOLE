@@ -31,6 +31,8 @@ namespace Wakamole.Lyeon.Manager.Shop
             
             Current = this;
             cursor.SetCursor(0);
+            
+            Canvas.ForceUpdateCanvases();
 
             for (int i = 0; i < 5; i++)
             {

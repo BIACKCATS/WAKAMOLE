@@ -280,6 +280,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f9b2c8ce8e174223bef1fddee1f4d37, type: 2}
   - {fileID: 11400000, guid: 4aa1cd6709eab4ff280816c70b7e1bc7, type: 2}
   - {fileID: 11400000, guid: 83c68b69dceeb40b0a6a80ee4db9b3d2, type: 2}
+  currentCanvas: {fileID: 4044944122052397573}
+  shopCanvas: {fileID: 0}
 --- !u!223 &4044944122052397573
 Canvas:
   m_ObjectHideFlags: 0

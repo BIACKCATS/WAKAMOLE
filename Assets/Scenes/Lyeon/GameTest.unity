@@ -1501,6 +1501,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376301425}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!223 &384585848 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4044944122052397573, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+  m_PrefabInstance: {fileID: 280150926505938901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &397065857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1817,7 @@ MonoBehaviour:
   status: {fileID: 501717761}
   preference: {fileID: 501717762}
   itemDataList: {fileID: 11400000, guid: 0cfcf090a7f324309bb7fd5cd311a8ba, type: 2}
+  maxKeywordCount: 10
 --- !u!4 &501717760
 Transform:
   m_ObjectHideFlags: 0
@@ -5705,7 +5711,7 @@ PrefabInstance:
     - target: {fileID: 2310619658302389800, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1378870840}
+      objectReference: {fileID: 384585848}
     - target: {fileID: 2310619658302389800, guid: 6950562e72088488aa7a37cab9f92df0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -6399,6 +6405,7 @@ MonoBehaviour:
   defaultHp: 2
   defaultShowTime: 3
   defaultScore: 5
+  keywordChance: 0.1
 --- !u!4 &1973914332
 Transform:
   m_ObjectHideFlags: 0
@@ -7417,6 +7424,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 729259164387998833, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+      propertyPath: shopCanvas
+      value: 
+      objectReference: {fileID: 1378870840}
     - target: {fileID: 886661222889566919, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7497,10 +7508,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2092036097086468967, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 501717759}
     - target: {fileID: 2617946904199188409, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
       propertyPath: m_Name
       value: Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 2617946904199188409, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606326790677372692, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 501717759}
+    - target: {fileID: 7673035612392893991, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 501717759}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
