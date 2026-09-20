@@ -14,7 +14,8 @@ namespace Wakamole.Lyeon.Entity.Component
             get => scale.x;
             set
             {
-                if (value < 0) scale.x = 0;
+                if (value <= 0) scale.x = 0;
+                else if (value >= 1) scale.x = 1;
                 else scale.x = value;
             }
         }

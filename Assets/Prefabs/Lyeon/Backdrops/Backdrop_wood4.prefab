@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2690163793828972466}
   - component: {fileID: 1173175896360855533}
   - component: {fileID: 2266758357484131964}
+  - component: {fileID: 231785800656271906}
   - component: {fileID: -487985368880606278}
   m_Layer: 7
   m_Name: Backdrop_wood4
@@ -131,6 +132,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 6, z: 0.2}
   m_Center: {x: -0.06, y: -0.3, z: 0}
+--- !u!65 &231785800656271906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274234367864471504}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3.5, z: 0.2}
+  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!114 &-487985368880606278
 MonoBehaviour:
   m_ObjectHideFlags: 0
