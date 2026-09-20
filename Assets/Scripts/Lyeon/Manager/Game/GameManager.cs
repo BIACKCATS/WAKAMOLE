@@ -16,14 +16,15 @@ namespace Wakamole.Lyeon.Manager.Game
         [SerializeField] private Status status;
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
-        [SerializeField] private int maxKeywordCount = 10;
 
         private int stageId = 0;
         private Dictionary<int, ItemData> inventory = new(5);
+        private int maxKeywordCount = 10;
         private int keywordCount = 0;
 
         public int StageId { get => stageId; set => stageId = value; }
         public int Coin { get => status.Coin; set => status.Coin = value; }
+        public int MaxKeywordCount { get => maxKeywordCount; set => maxKeywordCount = value; }
         public int KeywordCount { get => keywordCount; set => keywordCount = value; }
         public MoleKeyword IncludeKeyword { get; private set; } = MoleKeyword.DEFAULT;
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI.Upgrade;
 
 namespace Wakamole.Lyeon.Manager.Upgrade
@@ -11,8 +12,14 @@ namespace Wakamole.Lyeon.Manager.Upgrade
         [SerializeField] private List<UpgradeCard> cards;
         [SerializeField] private List<MoleData> moles;
         [SerializeField] private Canvas currentCanvas, shopCanvas;
+        [SerializeField] private int maxKeywordCount = 10;
         
         private readonly WaitForSeconds _wait = new(0.25f);
+
+        private void Start()
+        {
+            GameManager.Current.MaxKeywordCount = maxKeywordCount;
+        }
 
         private void OnEnable()
         {
@@ -26,7 +33,7 @@ namespace Wakamole.Lyeon.Manager.Upgrade
             foreach (UpgradeCard card in cards)
             {
                 MoleData data = moles[Random.Range(0, moles.Count)];
-                card.Init(data.keyword, data.moleName, data.moleDesc);
+                card.Init(data);
             }
             StartCoroutine(Initialize());
         }
