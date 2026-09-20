@@ -98,7 +98,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     active = false;
                     //stageFinish.FinishEffect(attackedMole, CameraController.Current, Finish);
-                    Finish();
+                    Finish(true);
                 }
             }
         }
@@ -293,9 +293,8 @@ namespace Wakamole.Lyeon.Manager.Play
             if (timer.Active) timer.Tick(Time.deltaTime);
             else
             {
-                Debug.Log("타임 오버");
                 active = false;
-                Finish();
+                Finish(false);
                 return;
             }
 
@@ -318,8 +317,9 @@ namespace Wakamole.Lyeon.Manager.Play
             StartCoroutine(CreateBackdrops());
         }
 
-        private void Finish()
+        private void Finish(bool isWin)
         {
+            clearBoard.GameClear = isWin;
             clearBoard.gameObject.SetActive(true);
             CameraController.Current.ExpandMove = false;
             CameraController.Current.TargetPosition = CameraController.Current.InitPosition;

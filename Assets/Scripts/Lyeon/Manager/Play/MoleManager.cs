@@ -84,7 +84,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 foreach (MoleKeyword moleKeyword in keywords)
                 {
                     if ((moleKeyword & keyword) != 0)
-                        mole.AddKeyword(keyword, moles[keyword]);
+                        mole.AddKeyword(moleKeyword, moles[keyword]);
                 }
 
                 if (keyword == 0) mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
