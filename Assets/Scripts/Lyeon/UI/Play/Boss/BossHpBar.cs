@@ -30,7 +30,7 @@ namespace Wakamole.Lyeon.UI.Play.Boss
 
         private void OnEnable()
         {
-            amount = 1;   
+            amount = 1;
         }
 
         private void Update()

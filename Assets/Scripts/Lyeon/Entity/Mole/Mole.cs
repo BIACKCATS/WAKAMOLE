@@ -137,7 +137,7 @@ namespace Wakamole.Lyeon.Entity
             currentHp = value;
             if (currentHp < 0) currentHp = 0;
 
-            hpBar.Value = (float)currentHp / maxHp;
+            if (hpBar != null) hpBar.Value = (float)currentHp / maxHp;
 
             if (currentHp <= 0)
             {
