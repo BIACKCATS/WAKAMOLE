@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.ShopManager
   cursor: {fileID: 0}
-  tooltip: {fileID: 2817459809219086846}
+  tooltip: {fileID: 1042953163847463950}
   coinText: {fileID: 4698164612253236886}
   itemDisplayPrefab: {fileID: 7797890111925175357, guid: e79d7148083ef41d5b26d1c17917a4b4, type: 3}
   inventory:
@@ -2364,9 +2364,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d2cd023308c247d09ef5261e526fa14, type: 3}
---- !u!114 &2817459809219086846 stripped
+--- !u!114 &1042953163847463950 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3932284420682796252, guid: 2d2cd023308c247d09ef5261e526fa14, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2302104103206465836, guid: 2d2cd023308c247d09ef5261e526fa14, type: 3}
   m_PrefabInstance: {fileID: 1264358229663040802}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
