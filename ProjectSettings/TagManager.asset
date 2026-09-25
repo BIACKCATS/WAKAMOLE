@@ -14,7 +14,7 @@ TagManager:
   - Mole
   - Backdrop
   - Mosquito
-  - 
+  - HpBar
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Backdrop
     uniqueID: 1868592729
+    locked: 0
+  - name: HpBar
+    uniqueID: 1288588261
     locked: 0
   - name: Mole
     uniqueID: 1917881409
