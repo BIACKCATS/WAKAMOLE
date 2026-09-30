@@ -11,6 +11,7 @@ namespace Wakamole.Lyeon.Entity
 
         protected override void OnEnable()
         {
+            Active = true;
             base.OnEnable();
             bossHpBar.Active = true;
             bossHpBar.Value = 1;
@@ -21,9 +22,16 @@ namespace Wakamole.Lyeon.Entity
             base.OnDisable();
         }
 
+        protected override void Update()
+        {
+            
+        }
+
         public override void SetHp(int value)
         {
-            bossHpBar.Value = value;
+            currentHp = value;
+            if (currentHp < 0) currentHp = 0;
+            if (bossHpBar != null) bossHpBar.Value = (float)currentHp / maxHp;
         }
     }
 }
