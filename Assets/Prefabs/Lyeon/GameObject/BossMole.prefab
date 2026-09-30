@@ -174,8 +174,8 @@ MonoBehaviour:
   anim: {fileID: 5776934628662259056}
   showTime: 3
   keyword: 0
-  maxHp: 2
-  currentHp: 2
+  maxHp: 100
+  currentHp: 100
   score: 5
   shieldCount: 3
   popluarMin: 1
