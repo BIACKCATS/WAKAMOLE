@@ -9,6 +9,12 @@ namespace Wakamole.Lyeon.UI.Play.Boss
 
         private float amount = 0;
 
+        public bool Active
+        {
+            get => gameObject.activeSelf;
+            set => gameObject.SetActive(value);
+        }
+
         /// <summary>
         /// HpBar의 값입니다. 0 ~ 1 사이의 float값을 가집니다.
         /// </summary>

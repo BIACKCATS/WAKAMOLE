@@ -1594,6 +1594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 305036537}
+  - component: {fileID: 305036538}
   - component: {fileID: 305036536}
   - component: {fileID: 305036535}
   - component: {fileID: 305036534}
@@ -1666,7 +1667,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &305036537
 RectTransform:
@@ -1689,6 +1690,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &305036538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305036533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5138261f7cce6452c90f6a8adbcc95f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.Boss.BossHpBar
+  hpBar: {fileID: 241745352}
 --- !u!1 &315852996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1967,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 379337419}
-  - component: {fileID: 379337422}
   - component: {fileID: 379337421}
   - component: {fileID: 379337420}
   m_Layer: 5
@@ -2022,19 +2035,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379337418}
   m_CullTransparentMesh: 1
---- !u!114 &379337422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379337418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5138261f7cce6452c90f6a8adbcc95f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.Boss.BossHpBar
-  hpBar: {fileID: 241745352}
 --- !u!223 &384585848 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4044944122052397573, guid: 0f588f30620704fe49a2621e693be37f, type: 3}
@@ -3312,6 +3312,67 @@ MonoBehaviour:
   coinIcon: {fileID: 1023877545}
   moveDistance: 50
   moveDuration: 0.25
+--- !u!1001 &851971780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1072125046331268439, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_Name
+      value: BossMole
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226163966652083150, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606933091704232739, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
+      propertyPath: bossHpBar
+      value: 
+      objectReference: {fileID: 305036538}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
 --- !u!1 &870565830
 GameObject:
   m_ObjectHideFlags: 0
@@ -9850,3 +9911,4 @@ SceneRoots:
   - {fileID: 501717760}
   - {fileID: 1584815790}
   - {fileID: 894919217}
+  - {fileID: 851971780}
