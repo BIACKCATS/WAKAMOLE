@@ -52,8 +52,8 @@ namespace Wakamole.Lyeon.Entity
     {
         [Header("Components")]
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]
-        [SerializeField] private HpBar hpBar;
-        [SerializeField] private MoleAnim anim;
+        [SerializeField] protected HpBar hpBar;
+        [SerializeField] protected MoleAnim anim;
 
         [Header("Preferences")]
         [Tooltip("두더지가 올라오는 시간입니다.")]
@@ -85,12 +85,12 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지에 추가될 장식 입니다.")]
         [SerializeField] protected List<MoleDeco> decorations = new();
 
-        private bool initialize = false, active = false;
-        private float showedTime = 0;
-        private Coroutine finishing = null;
+        protected bool initialize = false, active = false;
+        protected float showedTime = 0;
+        protected Coroutine finishing = null;
 
-        private static readonly WaitForSeconds waitForFinish = new(0.7f);
-        private MoleManager manager = null;
+        protected static readonly WaitForSeconds waitForFinish = new(0.7f);
+        protected MoleManager manager = null;
 
         public bool Active
         {
@@ -121,7 +121,7 @@ namespace Wakamole.Lyeon.Entity
             set => SetHp(value);
         }
 
-        public void SetHp(int value)
+        public virtual void SetHp(int value)
         {
             if (currentHp > value)
             {
@@ -244,7 +244,7 @@ namespace Wakamole.Lyeon.Entity
             active = true;
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (!initialize) initialize = true;
             else anim.ResetToSpawn();
@@ -260,7 +260,7 @@ namespace Wakamole.Lyeon.Entity
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (!active) return;
 
@@ -268,7 +268,7 @@ namespace Wakamole.Lyeon.Entity
             if (showedTime >= showTime) Active = false;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             if (manager != null) manager.HideMole(this);
             foreach (MoleDeco deco in decorations)
@@ -283,7 +283,7 @@ namespace Wakamole.Lyeon.Entity
             }
         }
 
-        private IEnumerator FinishTime()
+        protected IEnumerator FinishTime()
         {
             // 일정 시간 동안 죽는 애니메이션이 나오기를 기다리게 할거고..
             yield return waitForFinish;
@@ -295,7 +295,7 @@ namespace Wakamole.Lyeon.Entity
             finishing = null;
         }
 
-        private IEnumerator Co_DisableAfterAnimation()
+        protected IEnumerator Co_DisableAfterAnimation()
         {
             if (anim.TryGetComponent(out Animator targetAnimator))
             {
