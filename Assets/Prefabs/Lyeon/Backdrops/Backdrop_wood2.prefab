@@ -107,7 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Entity.Backdrop
   sprite: {fileID: 300610452439154058}
-  boxCollider: {fileID: 5985136386869040595}
+  boxCollider:
+  - {fileID: 5985136386869040595}
   data: {fileID: 11400000, guid: d91dd89b6205547319a015a6c9c4d1bd, type: 2}
   vibrateCount: 4
 --- !u!65 &5985136386869040595
