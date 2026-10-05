@@ -250,8 +250,11 @@ namespace Wakamole.Lyeon.Entity
             else anim.ResetToSpawn();
 
             showedTime = 0;
-            if (GameManager.Current.Preference.ActiveDiscordSound) GameManager.Current.Audio.PlaySfx("Discord_Alert");
-            else GameManager.Current.Audio.PlaySfx("Mole_Sounds");
+            if (GameManager.Current != null)
+            {
+                if (GameManager.Current.Preference.ActiveDiscordSound) GameManager.Current.Audio.PlaySfx("Discord_Alert");
+                else GameManager.Current.Audio.PlaySfx("Mole_Sounds");
+            }
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {

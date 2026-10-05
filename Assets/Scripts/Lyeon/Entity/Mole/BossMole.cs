@@ -29,8 +29,7 @@ namespace Wakamole.Lyeon.Entity
 
         public override void SetHp(int value)
         {
-            currentHp = value;
-            if (currentHp < 0) currentHp = 0;
+            base.SetHp(value);
             if (bossHpBar != null) bossHpBar.Value = (float)currentHp / maxHp;
         }
     }
