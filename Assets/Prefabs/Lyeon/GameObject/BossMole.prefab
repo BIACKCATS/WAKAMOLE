@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3111747743205818572}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Fast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2781593793251551147}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Split
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 3844869929015537229}
   - component: {fileID: 2606933091704232739}
   - component: {fileID: 2385521960289725692}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BossMole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 7996265802280395046}
   - component: {fileID: 5767512651029715120}
   - component: {fileID: 9217893096774621668}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: FastItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 4945827726814220020}
   - component: {fileID: 8926197541499338822}
   - component: {fileID: 2636620836747083622}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: ReviveItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 5776934628662259056}
   - component: {fileID: 906217754615294569}
   - component: {fileID: 3070409405993686881}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: MoleCharactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 6357258904294247434}
   - component: {fileID: 2822351480378829466}
   - component: {fileID: 6899784481904043779}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: PopularItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4154909409263455935}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Revive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 3150178098319291313}
   - component: {fileID: 2292130178547197197}
   - component: {fileID: 6453947789021803305}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: RichItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7703590242158630675}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Rich
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5311113060118276170}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Popular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 8874157743972994853}
   - component: {fileID: 1619311785731127346}
   - component: {fileID: 1749121435437754215}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4020968539981003860}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BulkUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 386798451439685522}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 1408644442191437550}
   - component: {fileID: 4081009765699071181}
   - component: {fileID: 8505865432061499082}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: SplitItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1374,7 @@ GameObject:
   - component: {fileID: 2088085945834182259}
   - component: {fileID: 2770447793860585731}
   - component: {fileID: 4872794934302998050}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BulkUpItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
