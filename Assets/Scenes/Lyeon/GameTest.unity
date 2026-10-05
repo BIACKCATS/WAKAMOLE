@@ -3368,10 +3368,6 @@ PrefabInstance:
       propertyPath: bossHpBar
       value: 
       objectReference: {fileID: 305036538}
-    - target: {fileID: 3844869929015537229, guid: 485fe3f66cab543c4a700884b9844083, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5441,6 +5437,9 @@ MonoBehaviour:
   - {fileID: 135052089}
   - {fileID: 432564534}
   - {fileID: 1596160670}
+  bossLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
   layerMask:
     serializedVersion: 2
     m_Bits: 456

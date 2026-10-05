@@ -113,7 +113,7 @@ namespace Wakamole.Lyeon.Entity
         public MoleManager Manager { set => manager = value; }
 
         /// <summary>
-        /// 두더지의 현재 체력입니다. 만일 Hp Bar가 Inspector에 지정되지 않은 경우 오류가 발생할 수 있습니다.
+        /// 두더지의 현재 체력입니다.
         /// </summary>
         public int Hp
         {
