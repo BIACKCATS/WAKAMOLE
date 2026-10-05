@@ -94,6 +94,13 @@ namespace Wakamole.Lyeon.Manager.Play
                 mousePosition = Mouse.current.position.ReadValue();
                 click = Camera.main.ScreenPointToRay(mousePosition);
 
+                // 9번 아이템에 의한 모기 퇴치
+                if (Physics.Raycast(click, out RaycastHit mosquitoHit, Mathf.Infinity, layerMask))
+                {
+                    if (mosquitoHit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
+                        mosquito.DestroyMosquito();
+                }
+
                 // 2-1. 보스 두더지 공격 감지
                 if (Physics.Raycast(click, out RaycastHit bossHit, Mathf.Infinity, bossLayerMask))
                 {
@@ -107,11 +114,6 @@ namespace Wakamole.Lyeon.Manager.Play
                 // 2-2. 일반 공격 감지
                 if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
-                    {
-                        // 9번 아이템에 의한 모기 퇴치
-                        mosquito.DestroyMosquito();
-                    }
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
                         // 1번 아이템에 의한 점수 추가 (자동 계산)
