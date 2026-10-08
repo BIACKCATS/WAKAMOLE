@@ -1703,6 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.Boss.BossHpBar
   hpBar: {fileID: 241745352}
+  bossName: {fileID: 204611824}
 --- !u!1 &315852996
 GameObject:
   m_ObjectHideFlags: 0

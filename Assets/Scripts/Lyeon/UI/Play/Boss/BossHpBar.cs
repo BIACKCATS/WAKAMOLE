@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +7,13 @@ namespace Wakamole.Lyeon.UI.Play.Boss
     public class BossHpBar : MonoBehaviour
     {
         [SerializeField] private Image hpBar;
+        [SerializeField] private TMP_Text bossName;
 
         private float amount = 0;
 
+        /// <summary>
+        /// BossHpBar의 표시 상태입니다.
+        /// </summary>
         public bool Active
         {
             get => gameObject.activeSelf;
@@ -27,6 +32,14 @@ namespace Wakamole.Lyeon.UI.Play.Boss
                 else if (value >= 1) amount = 1;
                 else amount = value;
             }
+        }
+
+        /// <summary>
+        /// BossHpBar에 보스 이름을 설정합니다.
+        /// </summary>
+        public void SetBossName(string name)
+        {
+            bossName.text = $"{name} 두더지";
         }
 
         private void Awake()

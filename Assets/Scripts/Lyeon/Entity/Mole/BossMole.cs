@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.UI.Play.Boss;
@@ -25,7 +27,20 @@ namespace Wakamole.Lyeon.Entity
         [SerializeField] private BossHpBar bossHpBar;
 
         private BossKeyword bossKeyword;
-        public BossKeyword BossKeyword { get => bossKeyword; set => bossKeyword = value; }
+        public BossKeyword BossKeyword => bossKeyword;
+
+        public void SetBossKeyword(BossKeyword keyword)
+        {
+            bossKeyword = keyword;
+            bossHpBar.SetBossName(bossMoleData.BossMoleName[bossKeyword]);
+        }
+
+        private void Initialize()
+        {
+            List<BossKeyword> keywords = bossMoleData.BossMoleName.Keys.ToList();
+            bossKeyword = keywords[Random.Range(0, keywords.Count)];
+            bossHpBar.SetBossName(bossMoleData.BossMoleName[bossKeyword]);
+        }
 
         protected override void OnEnable()
         {
@@ -33,6 +48,7 @@ namespace Wakamole.Lyeon.Entity
             base.OnEnable();
             bossHpBar.Active = true;
             bossHpBar.Value = 1;
+            Initialize();
         }
 
         protected override void OnDisable()
