@@ -181,6 +181,7 @@ MonoBehaviour:
   popluarMin: 1
   popluarMax: 2
   decorations: []
+  bossMoleData: {fileID: 11400000, guid: addd1f13cea804a2a83784c868857f26, type: 2}
   bossHpBar: {fileID: 0}
 --- !u!65 &2385521960289725692
 BoxCollider:
