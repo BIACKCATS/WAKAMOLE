@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using Wakamole.Core.LocalData;
 
@@ -6,7 +7,7 @@ namespace Wakamole.Lyeon.Entity
     public class Backdrop : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer sprite;
-        [SerializeField] private Collider boxCollider;
+        [SerializeField] private Collider[] boxCollider;
         [SerializeField] private BackdropData data;
         [SerializeField] private int vibrateCount = 6;
 
@@ -49,7 +50,11 @@ namespace Wakamole.Lyeon.Entity
             {
                 sprite.sprite = data.objectFrame[++hit];
                 vibrate = true;
-                if (Hp == 0) boxCollider.enabled = false;
+                if (boxCollider.Length >= 2 && boxCollider.Length > hit) boxCollider[hit].enabled = false;
+                if (Hp == 0)
+                {
+                    foreach (Collider col in boxCollider) col.enabled = false;
+                }
             }
             else sprite.sprite = data.objectFrame[data.objectFrame.Count - 1];
         }

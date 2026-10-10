@@ -23,6 +23,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private List<ChargeFire> fires;
 
         [Header("Informations")]
+        [Tooltip("보스 두더지를 감지할 Layer입니다.")]
+        [SerializeField] private LayerMask bossLayerMask;
         [Tooltip("공격을 감지할 Layer입니다.")]
         [SerializeField] private LayerMask layerMask;
 
@@ -92,13 +94,26 @@ namespace Wakamole.Lyeon.Manager.Play
                 mousePosition = Mouse.current.position.ReadValue();
                 click = Camera.main.ScreenPointToRay(mousePosition);
 
+                // 9번 아이템에 의한 모기 퇴치
+                if (Physics.Raycast(click, out RaycastHit mosquitoHit, Mathf.Infinity, layerMask))
+                {
+                    if (mosquitoHit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
+                        mosquito.DestroyMosquito();
+                }
+
+                // 2-1. 보스 두더지 공격 감지
+                if (Physics.Raycast(click, out RaycastHit bossHit, Mathf.Infinity, bossLayerMask))
+                {
+                    if (bossHit.collider.gameObject.TryGetComponent(out BossMole mole) && mole.Active)
+                    {
+                        AttackMole(mole);
+                        return;
+                    }
+                }
+
+                // 2-2. 일반 공격 감지
                 if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
-                    {
-                        // 9번 아이템에 의한 모기 퇴치
-                        mosquito.DestroyMosquito();
-                    }
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
                         // 1번 아이템에 의한 점수 추가 (자동 계산)
@@ -107,54 +122,58 @@ namespace Wakamole.Lyeon.Manager.Play
                     }
                     else if (hit.collider.gameObject.TryGetComponent(out Mole mole) && mole.Active)
                     {
-                        if (handAnim != null) StopCoroutine(handAnim);
-                        handAnim = StartCoroutine(HandAnim());
-
-                        int beforeHp = mole.Hp;
-
-                        // 2번 아이템에 의한 점수 추가
-                        if (Charged)
-                        {
-                            GameManager.Current.Audio.PlaySfx("Charge_Swing");
-                            CameraController.Current.Shake(1.0f);
-                            mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
-                            Charged = false;
-                        }
-                        else
-                        {
-                            GameManager.Current.Audio.PlaySfx("Swing");
-                            CameraController.Current.Shake(0.05f);
-                            mole.Hp -= GameManager.Current.Status.Atk;
-                        }
-
-                        if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
-
-                        stageManager.Combo++;
-                        if (stageManager.Combo < 10) GameManager.Current.Audio.SetBgmParameter("Combo", 0);
-                        else if (stageManager.Combo == 10) GameManager.Current.Audio.SetBgmParameter("Combo", 50);
-                        else if (stageManager.Combo == 20) GameManager.Current.Audio.SetBgmParameter("Combo", 100);
-
-                        // 4번 아이템에 의한 콤보점수 추가
-                        if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;
-
-                        if (mole.Hp <= 0)
-                        {
-                            // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
-                            stageManager.Score += (stageManager.Combo % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
-                            
-                            stageManager.AttackedMole = mole;
-                            stageManager.Score += stageManager.ActiveDoubleScore ? mole.Score * 2 : mole.Score;
-                            stageManager.Count++;
-
-                            // 6번 아이템에 의한 보너스 시간 추가
-                            if (stageManager.Count % 3 == 0 && GameManager.Current.Preference.ActiveBonusTime)
-                            {
-                                stageManager.TimeLimit += 2.0f;
-                            }
-                        }
+                        AttackMole(mole);
                         return;
                     }
                     else stageManager.Combo = 0;
+                }
+            }
+        }
+
+        private void AttackMole(Mole mole)
+        {
+            if (handAnim != null) StopCoroutine(handAnim);
+            handAnim = StartCoroutine(HandAnim());
+
+            int beforeHp = mole.Hp;
+            // 2번 아이템에 의한 점수 추가
+            if (Charged)
+            {
+                GameManager.Current.Audio.PlaySfx("Charge_Swing");
+                CameraController.Current.Shake(1.0f);
+                mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
+                Charged = false;
+            }
+            else
+            {
+                GameManager.Current.Audio.PlaySfx("Swing");
+                CameraController.Current.Shake(0.05f);
+                mole.Hp -= GameManager.Current.Status.Atk;
+            }
+
+            if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
+
+            stageManager.Combo++;
+            if (stageManager.Combo < 10) GameManager.Current.Audio.SetBgmParameter("Combo", 0);
+            else if (stageManager.Combo == 10) GameManager.Current.Audio.SetBgmParameter("Combo", 50);
+            else if (stageManager.Combo == 20) GameManager.Current.Audio.SetBgmParameter("Combo", 100);
+
+            // 4번 아이템에 의한 콤보점수 추가
+            if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;
+
+            if (mole.Hp <= 0)
+            {
+                // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
+                stageManager.Score += (stageManager.Combo % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
+
+                stageManager.AttackedMole = mole;
+                stageManager.Score += stageManager.ActiveDoubleScore ? mole.Score * 2 : mole.Score;
+                stageManager.Count++;
+
+                // 6번 아이템에 의한 보너스 시간 추가
+                if (stageManager.Count % 3 == 0 && GameManager.Current.Preference.ActiveBonusTime)
+                {
+                    stageManager.TimeLimit += 2.0f;
                 }
             }
         }

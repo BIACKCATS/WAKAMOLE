@@ -113,7 +113,7 @@ namespace Wakamole.Lyeon.Entity
         public MoleManager Manager { set => manager = value; }
 
         /// <summary>
-        /// 두더지의 현재 체력입니다. 만일 Hp Bar가 Inspector에 지정되지 않은 경우 오류가 발생할 수 있습니다.
+        /// 두더지의 현재 체력입니다.
         /// </summary>
         public int Hp
         {
@@ -250,8 +250,11 @@ namespace Wakamole.Lyeon.Entity
             else anim.ResetToSpawn();
 
             showedTime = 0;
-            if (GameManager.Current.Preference.ActiveDiscordSound) GameManager.Current.Audio.PlaySfx("Discord_Alert");
-            else GameManager.Current.Audio.PlaySfx("Mole_Sounds");
+            if (GameManager.Current != null)
+            {
+                if (GameManager.Current.Preference.ActiveDiscordSound) GameManager.Current.Audio.PlaySfx("Discord_Alert");
+                else GameManager.Current.Audio.PlaySfx("Mole_Sounds");
+            }
             if ((keyword & MoleKeyword.SHIELD) != 0) shieldCount = 3;
             if ((keyword & MoleKeyword.POPULAR) != 0)
             {
