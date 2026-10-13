@@ -317,6 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 1615153019}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &243993441
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 1546578579}
+  imageTransform: {fileID: 243993442}
   images:
   - {fileID: 421522471}
 --- !u!1 &248344463
@@ -681,6 +684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &389395761
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 1026677857}
+  imageTransform: {fileID: 389395762}
   images:
   - {fileID: 189798156}
 --- !u!1 &421522471
@@ -837,6 +843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 651429004}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &426441023
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 1031177500}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &456558032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1033,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1133815997, guid: 74b36d13235642849a4b67b6abbbc046, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1142,6 +1152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 456558034}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &510957082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &599349596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 282613244}
+  imageTransform: {fileID: 599349597}
   images:
   - {fileID: 465295863}
 --- !u!1 &600917920
@@ -1527,6 +1542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &651429002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,6 +1742,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 2058261268}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &744758492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 1366259768}
+  imageTransform: {fileID: 744758493}
   images:
   - {fileID: 1874400577}
   - {fileID: 1513420878}
@@ -1916,6 +1936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &840824612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2076,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &913849937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 840824613}
+  imageTransform: {fileID: 913849938}
   images:
   - {fileID: 1829963979}
 --- !u!1 &961117939
@@ -2672,6 +2697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1076104913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 965111558}
+  imageTransform: {fileID: 1149487628}
   images:
   - {fileID: 426441023}
 --- !u!1 &1188213461
@@ -2959,6 +2987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 1698041311}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1513420878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,6 +3096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1546578578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,6 +3358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1698041309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,6 +3589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 510957084}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1776401714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +3765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 1010920373}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &1846503182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,6 +4110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &2058261266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,6 +4310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneImage
   appearDuration: 1
   shadow: {fileID: 0}
+  shadowDelay: 0.3
+  shadowAlpha: 0.4
 --- !u!1 &2097593001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,6 +4390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutscenePanel
   cameraPoint: {fileID: 1605193075}
+  imageTransform: {fileID: 2112021864}
   images:
   - {fileID: 313611698}
   - {fileID: 2073121046}

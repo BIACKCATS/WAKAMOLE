@@ -5,6 +5,7 @@ using System;
 public class CutscenePanel : MonoBehaviour
 {
     public Transform cameraPoint;
+    public Transform imageTransform;
     public GameObject[] images;
 
     public void ShowImages(Action onComplete)
