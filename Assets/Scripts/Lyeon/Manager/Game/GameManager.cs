@@ -17,7 +17,8 @@ namespace Wakamole.Lyeon.Manager.Game
         [SerializeField] private Preference preference;
         [SerializeField] private ItemDataList itemDataList;
 
-        private int stageId = 0;
+        [Header("Debug")]
+        [SerializeField] private int stageId = 0;
         private Dictionary<int, ItemData> inventory = new(5);
         private int maxKeywordCount = 10;
         private int keywordCount = 0;
