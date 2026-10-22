@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Wakamole.Lyeon.Manager.Game;
 
 namespace Wakamole.Lyeon.UI
@@ -9,7 +8,7 @@ namespace Wakamole.Lyeon.UI
         public void StartScene(string sceneName)
         {
             GameManager.Current.Audio.PlaySfx("Button");
-            SceneManager.LoadScene(sceneName);
+            LoadingManager.Current.LoadScene(sceneName);
         }
 
         public void FinishGame()
