@@ -8,7 +8,9 @@ namespace Wakamole.Lyeon.Manager.Game
     {
         public static LoadingManager Current { get; private set; }
         
-        [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private Animator animator;
+
+        private WaitForSeconds _wait = new(0.5f);
         
         /// <summary>
         /// Scene을 로드합니다.
@@ -27,7 +29,8 @@ namespace Wakamole.Lyeon.Manager.Game
         }
 
         private IEnumerator Load(string sceneName) {
-            
+            yield return _wait;
+
             AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
             async.allowSceneActivation = false;
 
@@ -35,7 +38,9 @@ namespace Wakamole.Lyeon.Manager.Game
                 yield return null;
                 if (async.progress >= 0.9f) {
                     async.allowSceneActivation = true;
-
+                    animator.SetTrigger(Animator.StringToHash("Finish"));
+                    yield return _wait;
+                    gameObject.SetActive(false);
                     yield break;
                 }
             }
@@ -51,6 +56,8 @@ namespace Wakamole.Lyeon.Manager.Game
 
             Current = this;
             DontDestroyOnLoad(gameObject);
+
+            gameObject.SetActive(false);
         }
     }
 }

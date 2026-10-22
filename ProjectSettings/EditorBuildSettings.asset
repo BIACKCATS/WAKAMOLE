@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lyeon/GameTest.unity
     guid: a96fb7e218fb3460392b1630b822c45e
   - enabled: 1
-    path: Assets/Scenes/Lyeon/UI/Shop.unity
-    guid: ce4ea23f7f37e4e19b43cae9f6fe624a
+    path: Assets/Scenes/Lyeon/Stages.unity
+    guid: 3603a53a02edf491882d80de49995427
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
