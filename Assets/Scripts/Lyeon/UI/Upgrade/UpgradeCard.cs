@@ -47,7 +47,7 @@ namespace Wakamole.Lyeon.UI.Upgrade
 
             // Initialize variables
             maxCount = Random.Range(1, GameManager.Current.MaxKeywordCount);
-            bonusCoin = (data.score != 0) ? maxCount * data.score : maxCount;
+            bonusCoin = (data.score > 0) ? maxCount * data.score : maxCount;
 
             targetAlpha = 1;
             targetScale = 1.0f;
