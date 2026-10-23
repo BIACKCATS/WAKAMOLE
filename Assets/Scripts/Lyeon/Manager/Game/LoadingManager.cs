@@ -36,13 +36,14 @@ namespace Wakamole.Lyeon.Manager.Game
 
             while (!async.isDone) {
                 yield return null;
-                if (async.progress >= 0.9f) {
-                    async.allowSceneActivation = true;
+                if (async.progress == 1.0f)
+                {
                     animator.SetTrigger(Animator.StringToHash("Finish"));
                     yield return _wait;
                     gameObject.SetActive(false);
                     yield break;
                 }
+                else if (async.progress >= 0.9f) async.allowSceneActivation = true;
             }
         }
 
