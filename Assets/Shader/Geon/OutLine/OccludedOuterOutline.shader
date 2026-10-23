@@ -84,7 +84,8 @@ Shader "Custom/URP_OccludedOuterOutline"
                 }
 
                 // 외곽선 영역(확장 영역 - 원본 영역) 알파 추출
-                half outlineAlpha = saturate(maxAlpha - alpha);
+                // half outlineAlpha = saturate(maxAlpha - alpha);
+                half outlineAlpha = maxAlpha;
 
                 // 빗금 텍스처 UV에 Tiling 및 Offset 적용
                 float2 outlineUV = input.uv * _OutlineTex_ST.xy + _OutlineTex_ST.zw;

@@ -17,6 +17,8 @@ public class CutsceneImage : MonoBehaviour
 
     public Tween PlayAppear()
     {
+        spriteRenderer.DOKill();
+
         Color color = spriteRenderer.color;
         color.a = 0f;
         spriteRenderer.color = color;
@@ -31,6 +33,8 @@ public class CutsceneImage : MonoBehaviour
 
         if (shadow != null)
         {
+            shadow.DOKill();
+
             Color shadowColor = shadow.color;
             shadowColor.a = 0f;
             shadow.color = shadowColor;
