@@ -51,7 +51,7 @@ namespace Wakamole.Lyeon.Manager.Game
         {
             if (Current != null)
             {
-                Destroy(this);
+                Destroy(gameObject);
                 return;
             }
 

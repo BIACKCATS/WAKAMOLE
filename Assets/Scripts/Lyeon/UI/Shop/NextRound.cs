@@ -23,7 +23,7 @@ namespace Wakamole.Lyeon.UI.Shop
             image.color = Color.white;
             GameManager.Current.Audio.PlaySfx("Button");
             GameManager.Current.StageId++;
-            SceneManager.LoadScene(sceneName);
+            LoadingManager.Current.LoadScene(sceneName);
         }
     }
 }

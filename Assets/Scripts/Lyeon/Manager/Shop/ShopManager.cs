@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.Manager.Game;
+using Wakamole.Lyeon.Manager.Play;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
 using Wakamole.Lyeon.UI.Shop;
@@ -18,6 +19,8 @@ namespace Wakamole.Lyeon.Manager.Shop
         [SerializeField] private ItemDisplay itemDisplayPrefab;
         [SerializeField] private List<ItemSlot> inventory;
 
+        private bool initialized = false;
+
         public ItemTooltip Tooltip => tooltip;
 
         public void UpdateCoin()
@@ -25,13 +28,22 @@ namespace Wakamole.Lyeon.Manager.Shop
             coinText.Coin = GameManager.Current.Coin;
         }
 
+        private void Awake()
+        {
+            Current = this;
+            initialized = false;
+        }
+
         private void OnEnable()
         {
-            if (GameManager.Current == null) return;
-            
-            Current = this;
+            if (GameManager.Current == null || !initialized)
+            {
+                initialized = true;
+                gameObject.SetActive(false);
+                return;
+            }
+
             cursor.SetCursor(0);
-            
             Canvas.ForceUpdateCanvases();
 
             for (int i = 0; i < 5; i++)
@@ -51,14 +63,19 @@ namespace Wakamole.Lyeon.Manager.Shop
                 }
             }
 
+            Canvas.ForceUpdateCanvases();
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
             coinText.Coin = GameManager.Current.Coin;
             GameManager.Current.Audio.SetBgmParameter("ShopEnter", 100);
         }
 
         private void OnDisable()
         {
-            GameManager.Current.Audio.SetBgmParameter("ShopEnter", 0);
-            Current = null;
+            if (GameManager.Current != null) GameManager.Current.Audio.SetBgmParameter("ShopEnter", 0);
         }
     }
 }
