@@ -20,6 +20,7 @@ namespace Wakamole.Lyeon.Manager.Shop
         [SerializeField] private List<ItemSlot> inventory;
 
         private bool initialized = false;
+        private bool activated = false;
 
         public ItemTooltip Tooltip => tooltip;
 
@@ -62,8 +63,15 @@ namespace Wakamole.Lyeon.Manager.Shop
                     inventory[i].Item = component;
                 }
             }
+        }
 
-            Canvas.ForceUpdateCanvases();
+        private void Update()
+        {
+            if (!activated)
+            {
+                activated = true;
+                Canvas.ForceUpdateCanvases();
+            }
         }
 
         public void Show()
@@ -76,6 +84,7 @@ namespace Wakamole.Lyeon.Manager.Shop
         private void OnDisable()
         {
             if (GameManager.Current != null) GameManager.Current.Audio.SetBgmParameter("ShopEnter", 0);
+            activated = false;
         }
     }
 }

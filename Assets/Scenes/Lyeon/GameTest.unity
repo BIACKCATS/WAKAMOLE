@@ -9539,6 +9539,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1042953163847463950, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
+      propertyPath: mouseOffset.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042953163847463950, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
+      propertyPath: mouseOffset.y
+      value: -60
+      objectReference: {fileID: 0}
     - target: {fileID: 1651352821407459025, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
       propertyPath: m_IsActive
       value: 1
