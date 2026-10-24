@@ -11,15 +11,18 @@ namespace Wakamole.Lyeon.UI.Play
         public bool Active
         {
             get => gameObject.activeSelf;
-            set
+            [System.Obsolete("SetActive(bool) 함수를 사용해주세요.")]
+            set => SetActive(value);
+        }
+        
+        public void SetActive(bool value)
+        {
+            if (value)
             {
-                if (value)
-                {
-                    targetPosition = new(Random.Range(-5.0f, 5.0f), Random.Range(1.0f, 4.0f), Random.Range(-4.0f, 2.0f));
-                    GameManager.Current.Audio.PlaySfx("Mosquitto");
-                }
-                gameObject.SetActive(value);
+                targetPosition = new(Random.Range(-5.0f, 5.0f), Random.Range(1.0f, 4.0f), Random.Range(-4.0f, 2.0f));
+                GameManager.Current.Audio.PlaySfx("Mosquitto");
             }
+            gameObject.SetActive(value);
         }
 
         private void OnEnable()
@@ -32,7 +35,7 @@ namespace Wakamole.Lyeon.UI.Play
             if (!Active) return;
 
             transform.position = Vector3.Lerp(transform.position, targetPosition, 5.0f * Time.deltaTime);
-            if (Vector3.Distance(transform.position, targetPosition) < 0.01f) Active = true;
+            if (Vector3.Distance(transform.position, targetPosition) < 0.01f) SetActive(true);
         }
 
         public void DestroyMosquito()
@@ -40,7 +43,7 @@ namespace Wakamole.Lyeon.UI.Play
             if (!Active) return;
             GameManager.Current.Audio.PlaySfx("Mosquitto_Hit");
             StageManager.Current.ActiveDoubleScore = true;
-            Active = false;
+            SetActive(false);
         }
     }
 }

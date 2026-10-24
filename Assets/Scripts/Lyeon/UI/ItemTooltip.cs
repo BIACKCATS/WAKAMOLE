@@ -16,7 +16,12 @@ namespace Wakamole.Lyeon.UI
         public bool Active { get => gameObject.activeSelf; set => gameObject.SetActive(value); }
         public ItemData Item
         {
-            set => text.text = $"{value.itemName}\n\n{value.itemFunc}\n\n<i><color=#cccccc><size=28>{value.itemDesc}</size></color></i>";
+            [System.Obsolete("SetItem(ItemData) 함수를 사용해주세요.")]
+            set => SetItem(value);
+        }
+        public void SetItem(ItemData value)
+        {
+            text.text = $"{value.itemName}\n\n{value.itemFunc}\n\n<i><color=#cccccc><size=28>{value.itemDesc}</size></color></i>";
         }
 
         private void Awake()

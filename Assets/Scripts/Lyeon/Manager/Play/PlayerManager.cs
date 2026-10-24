@@ -32,7 +32,6 @@ namespace Wakamole.Lyeon.Manager.Play
         private float chargingTime = 0;
         private bool charging = false;
 
-        private int coin = 0;
 
         private StageManager stageManager = null;
         private Vector2 mousePosition;
@@ -41,20 +40,21 @@ namespace Wakamole.Lyeon.Manager.Play
         private WaitForSeconds wait = new(0.1f);
         private Coroutine handAnim;
 
-        public int Coin { get => coin; set => coin = value; }
-
         public bool Charged
         {
             get => chargingTime >= GameManager.Current.Status.ChargeTime;
-            set
-            {
-                if (value) chargingTime = GameManager.Current.Status.ChargeTime;
-                else chargingTime = 0;
-                foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
+            [System.Obsolete("SetCharged(bool) 함수를 사용해주세요.")]
+            set => SetCharge(value);
+        }
 
-                // playerHand.gameObject.SetActive(!value);
-                // chargedHand.gameObject.SetActive(value);
-            }
+        private void SetCharge(bool value)
+        {
+            if (value) chargingTime = GameManager.Current.Status.ChargeTime;
+            else chargingTime = 0;
+            foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
+        
+            // playerHand.gameObject.SetActive(!value);
+            // chargedHand.gameObject.SetActive(value);
         }
 
         // for hotfix
@@ -149,7 +149,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 GameManager.Current.Audio.PlaySfx("Charge_Swing");
                 CameraController.Current.Shake(1.0f);
                 mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
-                Charged = false;
+                SetCharge(false);
             }
             else
             {

@@ -53,7 +53,7 @@ namespace Wakamole.Lyeon.UI.Shop
         {
             if (shop == null) return;
             shop.Tooltip.Active = true;
-            shop.Tooltip.Item = itemData;
+            shop.Tooltip.SetItem(itemData);
         }
 
         public void OnPointerExit(PointerEventData eventData)

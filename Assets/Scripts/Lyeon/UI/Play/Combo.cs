@@ -14,18 +14,16 @@ namespace Wakamole.Lyeon.UI.Play
         private Vector2 targetScale;
         private int comboCount = 0;
 
-        public int Count
+        public int Count { set => SetCount(value); }
+        public void SetCount(int value)
         {
-            set
+            comboText.text = value.ToString();
+            if (value != 0 && comboCount < value)
             {
-                comboText.text = value.ToString();
-                if (value != 0 && comboCount < value)
-                {
-                    titleRect.localScale = Vector2.one * 2.5f;
-                    comboRect.localScale = Vector2.one * 2.5f;
-                }
-                comboCount = value;
+                titleRect.localScale = Vector2.one * 2.5f;
+                comboRect.localScale = Vector2.one * 2.5f;
             }
+            comboCount = value;
         }
 
         private void Awake()

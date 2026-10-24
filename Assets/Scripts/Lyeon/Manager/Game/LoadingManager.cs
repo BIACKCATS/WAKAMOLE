@@ -10,7 +10,7 @@ namespace Wakamole.Lyeon.Manager.Game
         
         [SerializeField] private Animator animator;
 
-        private WaitForSeconds _wait = new(0.5f);
+        private readonly WaitForSeconds _wait = new(0.5f);
         
         /// <summary>
         /// Scene을 로드합니다.

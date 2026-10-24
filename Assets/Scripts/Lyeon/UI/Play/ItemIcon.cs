@@ -45,7 +45,7 @@ namespace Wakamole.Lyeon.UI.Play
         {
             if (itemData == null) return;
             tooltip.Active = true;
-            tooltip.Item = itemData;
+            tooltip.SetItem(itemData);
         }
 
         public void OnPointerExit(PointerEventData eventData)

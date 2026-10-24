@@ -9,19 +9,19 @@ namespace Wakamole.Lyeon.Manager.Play
         private List<Mosquito> mosquitoes;
         private int activated = 0;
 
-        public int Activated
-        {
-            get
-            {
-                foreach (Mosquito mosquito in mosquitoes)
-                {
-                    if (mosquito.Active) activated++;
-                }
-                return activated;
-            }
-        }
+        [System.Obsolete("GetCurrentCount()를 사용해주세요.")]
+        public int Activated => GetCurrentCount();
 
         private GameObject obj;
+
+        public int GetCurrentCount()
+        {
+            foreach (Mosquito mosquito in mosquitoes)
+            {
+                if (mosquito.Active) activated++;
+            }
+            return activated;
+        }
 
         public MosquitoPool(GameObject obj, int capacity)
         {
@@ -32,7 +32,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 GameObject instance = Object.Instantiate(this.obj);
                 if (instance.TryGetComponent(out Mosquito mosquito))
                 {
-                    mosquito.Active = false;
+                    mosquito.SetActive(false);
                     mosquitoes.Add(mosquito);
                 }
             }
@@ -56,7 +56,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 GameObject instance = Object.Instantiate(obj);
                 if (instance.TryGetComponent(out Mosquito mosquito))
                 {
-                    mosquito.Active = false;
+                    mosquito.SetActive(false);
                     mosquitoes.Add(mosquito);
                     newMosquito = mosquito;
                 }

@@ -155,32 +155,33 @@ namespace Wakamole.Lyeon.Manager.Play
         public int Combo
         {
             get => currentCombo;
-            set
+            set => SetCombo(value);
+        }
+        public void SetCombo(int value)
+        {
+            if (currentCombo < value)
             {
-                if (currentCombo < value)
+                comboParam.name = "Hz";
+                if (currentCombo > 0 && currentCombo < 10)
                 {
-                    comboParam.name = "Hz";
-                    if (currentCombo > 0 && currentCombo < 10)
-                    {
-                        comboParam.value = 0;
-                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                    }
-                    else if (currentCombo < 20)
-                    {
-                        comboParam.value = 0.51f;
-                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                    }
-                    else if (currentCombo >= 20)
-                    {
-                        comboParam.value = 0.91f;
-                        GameManager.Current.Audio.PlaySfx("Combo", comboParam);
-                    }
+                    comboParam.value = 0;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
                 }
-
-                currentCombo = value;
-                combo.Count = currentCombo;
-                if (currentCombo > maxCombo) maxCombo = value;
+                else if (currentCombo < 20)
+                {
+                    comboParam.value = 0.51f;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                }
+                else if (currentCombo >= 20)
+                {
+                    comboParam.value = 0.91f;
+                    GameManager.Current.Audio.PlaySfx("Combo", comboParam);
+                }
             }
+
+            currentCombo = value;
+            combo.Count = currentCombo;
+            if (currentCombo > maxCombo) maxCombo = value;
         }
 
         private bool activeDoubleScore = false;
@@ -191,20 +192,21 @@ namespace Wakamole.Lyeon.Manager.Play
         public bool ActiveDoubleScore
         {
             get => activeDoubleScore;
-            set
+            set => SetDoubleScore(value);
+        }
+        public void SetDoubleScore(bool value)
+        {
+            if (value)
             {
-                if (value)
-                {
-                    if (doubleScore != null) StopCoroutine(doubleScore);
-                    doubleScore = StartCoroutine(DoubleTime());
-                }
-                else if (doubleScore != null)
-                {
-                    StopCoroutine(DoubleTime());
-                    doubleScore = null;
-                }
-                activeDoubleScore = value;
+                if (doubleScore != null) StopCoroutine(doubleScore);
+                doubleScore = StartCoroutine(DoubleTime());
             }
+            else if (doubleScore != null)
+            {
+                StopCoroutine(DoubleTime());
+                doubleScore = null;
+            }
+            activeDoubleScore = value;
         }
 
         private IEnumerator DoubleTime()
@@ -246,7 +248,7 @@ namespace Wakamole.Lyeon.Manager.Play
             WaitForSeconds wait = new(mosquitoTime);
             while (GameManager.Current.Preference.ActiveMosquito && active)
             {
-                mosquitoPool.Get().Active = true;
+                mosquitoPool.Get().SetActive(true);
                 yield return wait;
             }
         }
