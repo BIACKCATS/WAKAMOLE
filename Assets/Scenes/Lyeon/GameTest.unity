@@ -501,6 +501,7 @@ GameObject:
   - component: {fileID: 61371874}
   - component: {fileID: 61371876}
   - component: {fileID: 61371875}
+  - component: {fileID: 61371877}
   m_Layer: 5
   m_Name: Charged
   m_TagString: Untagged
@@ -568,6 +569,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61371873}
   m_CullTransparentMesh: 1
+--- !u!114 &61371877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61371873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db02801f5fe148728c08089314b0490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ChargeHand
+  rect: {fileID: 61371874}
 --- !u!1 &63629273
 GameObject:
   m_ObjectHideFlags: 0
@@ -5699,8 +5713,7 @@ MonoBehaviour:
   cursor: {fileID: 1288248569}
   progressBar: {fileID: 1078650320}
   playerHand: {fileID: 968204000}
-  chargedHand: {fileID: 61371875}
-  handImage: {fileID: 968203998}
+  chargeHand: {fileID: 61371877}
   attackImage: {fileID: 278376560}
   fires:
   - {fileID: 135052089}
@@ -10173,7 +10186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8946849165744782820, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

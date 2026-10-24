@@ -18,8 +18,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private CursorChange cursor;
         [SerializeField] private ProgressBar progressBar;
         [SerializeField] private PlayerHand playerHand;
-        [SerializeField] private Image chargedHand;
-        [SerializeField] private Image handImage, attackImage;
+        [SerializeField] private ChargeHand chargeHand;
+        [SerializeField] private Image attackImage;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private List<ChargeFire> fires;
 
@@ -52,9 +52,9 @@ namespace Wakamole.Lyeon.Manager.Play
             if (value) chargingTime = GameManager.Current.Status.ChargeTime;
             else chargingTime = 0;
             foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
-        
-            // playerHand.gameObject.SetActive(!value);
-            // chargedHand.gameObject.SetActive(value);
+
+            if (value) playerHand.gameObject.SetActive(false);
+            chargeHand.gameObject.SetActive(value);
         }
 
         // for hotfix
@@ -89,7 +89,15 @@ namespace Wakamole.Lyeon.Manager.Play
             else fires[0].gameObject.SetActive(false);
             if (progressBar.Value > 0.6f) fires[1].gameObject.SetActive(true);
             else fires[1].gameObject.SetActive(false);
-            if (Charged) fires[2].gameObject.SetActive(true);
+            if (Charged)
+            {
+                fires[2].gameObject.SetActive(true);
+                if (playerHand.gameObject.activeSelf)
+                {
+                    playerHand.gameObject.SetActive(false);
+                    chargeHand.gameObject.SetActive(true);
+                }
+            }
             else fires[2].gameObject.SetActive(false);
 
             // 2. 일반 공격
@@ -189,14 +197,20 @@ namespace Wakamole.Lyeon.Manager.Play
         {
             attackRect.position = mousePosition;
             cursor.SetCursor(0);
+
             if (!attackImage.gameObject.activeSelf)
             {
-                handImage.gameObject.SetActive(false);
+                if (Charged) chargeHand.gameObject.SetActive(false);
+                else playerHand.gameObject.SetActive(false);
                 attackImage.gameObject.SetActive(true);
             }
+
             yield return wait;
             cursor.SetCursor(1);
-            handImage.gameObject.SetActive(true);
+
+            if (Charged) chargeHand.gameObject.SetActive(true);
+            else playerHand.gameObject.SetActive(true);
+
             attackImage.gameObject.SetActive(false);
             handAnim = null;
         }

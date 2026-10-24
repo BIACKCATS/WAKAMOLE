@@ -12,7 +12,7 @@ namespace Wakamole.Lyeon.UI.Play
         private Vector2 fixedPosition = Vector2.zero;
 
         private float charged = 0;
-
+        
         public float Charged
         {
             get => charged;
@@ -22,7 +22,7 @@ namespace Wakamole.Lyeon.UI.Play
         public void SetCharge(float value)
         {
             charged = value;
-            rect.localRotation = Quaternion.Euler(Vector3.forward * 15.0f * charged);
+            // rect.localRotation = Quaternion.Euler(Vector3.forward * 15.0f * charged);
             
             if (charged < 0) charged = 0;
             else if (charged > 1) charged = 1;
@@ -44,9 +44,9 @@ namespace Wakamole.Lyeon.UI.Play
 
             if (charged > 0)
             {
-                randomPosition.x = Random.Range(-charged * 10.0f, charged * 10.0f);
-                randomPosition.y = Random.Range(-charged * 10.0f, charged * 10.0f);
-                fixedPosition = Vector2.Lerp(rect.position, initPosition + randomPosition, 20.0f * Time.deltaTime);
+                randomPosition.x = Random.Range(-charged * 15.0f, charged * 15.0f);
+                randomPosition.y = Random.Range(-charged * 15.0f, charged * 15.0f);
+                fixedPosition = initPosition + randomPosition;
             }
 
             rect.position = Vector2.Lerp(rect.position, fixedPosition + targetPosition, 15.0f * Time.deltaTime);
