@@ -18,6 +18,7 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private CursorChange cursor;
         [SerializeField] private ProgressBar progressBar;
         [SerializeField] private PlayerHand playerHand;
+        [SerializeField] private Image chargedHand;
         [SerializeField] private Image handImage, attackImage;
         [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private List<ChargeFire> fires;
@@ -50,6 +51,9 @@ namespace Wakamole.Lyeon.Manager.Play
                 if (value) chargingTime = GameManager.Current.Status.ChargeTime;
                 else chargingTime = 0;
                 foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
+
+                // playerHand.gameObject.SetActive(!value);
+                // chargedHand.gameObject.SetActive(value);
             }
         }
 
@@ -118,6 +122,9 @@ namespace Wakamole.Lyeon.Manager.Play
                     {
                         // 1번 아이템에 의한 점수 추가 (자동 계산)
                         stageManager.Score += GameManager.Current.Preference.BackdropScore;
+
+                        if (handAnim != null) StopCoroutine(handAnim);
+                        handAnim = StartCoroutine(HandAnim());
                         backdrop.Hit();
                     }
                     else if (hit.collider.gameObject.TryGetComponent(out Mole mole) && mole.Active)
