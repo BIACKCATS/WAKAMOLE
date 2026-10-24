@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wakamole.Lyeon.Manager.Component;
 using Wakamole.Lyeon.Manager.Game;
-using Wakamole.Lyeon.Manager.Play;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Play;
 using Wakamole.Lyeon.UI.Shop;
@@ -13,7 +12,8 @@ namespace Wakamole.Lyeon.Manager.Shop
     {
         public static ShopManager Current { get; private set; }
 
-        [SerializeField] CursorChange cursor;
+        [SerializeField] private CoinAlert alert;
+        [SerializeField] private CursorChange cursor;
         [SerializeField] private ItemTooltip tooltip;
         [SerializeField] private CoinText coinText;
         [SerializeField] private ItemDisplay itemDisplayPrefab;
@@ -23,6 +23,7 @@ namespace Wakamole.Lyeon.Manager.Shop
         private bool activated = false;
 
         public ItemTooltip Tooltip => tooltip;
+        public CoinAlert Alert => alert;
 
         public void UpdateCoin()
         {

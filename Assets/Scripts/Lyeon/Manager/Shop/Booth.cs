@@ -31,7 +31,7 @@ namespace Wakamole.Lyeon.Manager.Shop
         {
             List<ItemData> tempData = new();
             ItemData selectedItem = null;
-            int index = 0;
+            int index;
             tempData.AddRange(itemDataList.itemDatas);
 
             foreach (ItemSlot slot in itemSlots)

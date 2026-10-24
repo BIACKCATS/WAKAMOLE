@@ -92,6 +92,7 @@ namespace Wakamole.Lyeon.UI.Shop
                         }
                         else
                         {
+                            ShopManager.Current?.Alert.Show();
                             targetPosition = initPosition;
                             return;
                         }
