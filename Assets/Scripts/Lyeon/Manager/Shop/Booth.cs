@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Wakamole.Core.LocalData;
-using Wakamole.Core.Utils;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI;
 using Wakamole.Lyeon.UI.Shop;

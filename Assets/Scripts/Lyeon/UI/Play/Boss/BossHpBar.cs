@@ -37,10 +37,7 @@ namespace Wakamole.Lyeon.UI.Play.Boss
         /// <summary>
         /// BossHpBar에 보스 이름을 설정합니다.
         /// </summary>
-        public void SetBossName(string name)
-        {
-            bossName.text = $"{name} 두더지";
-        }
+        public void SetBossName(string name) => bossName.text = $"{name} 두더지";
 
         private void Awake()
         {

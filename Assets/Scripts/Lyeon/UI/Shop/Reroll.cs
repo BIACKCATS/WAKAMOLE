@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Shop;
-using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.UI.Shop
 {
@@ -14,7 +13,7 @@ namespace Wakamole.Lyeon.UI.Shop
 
         private void Awake()
         {
-            rerollText.text = $"{rerollCost}코인";
+            rerollText.SetText("{0}코인", rerollCost);
         }
 
         private void OnEnable()
@@ -24,12 +23,16 @@ namespace Wakamole.Lyeon.UI.Shop
 
         public void Click()
         {
-            if (GameManager.Current.Coin < rerollCost) return;
+            if (GameManager.Current.Coin < rerollCost)
+            {
+                ShopManager.Current?.Alert.Show();
+                return;
+            }
 
             GameManager.Current.Coin -= rerollCost;
             ShopManager.Current?.UpdateCoin();
             rerollCost *= 2;
-            rerollText.text = $"{rerollCost}코인";
+            rerollText.SetText("{0}코인", rerollCost);
             booth.Reroll();
         }
     }

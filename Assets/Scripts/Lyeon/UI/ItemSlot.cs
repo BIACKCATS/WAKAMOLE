@@ -1,5 +1,4 @@
 using UnityEngine;
-using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.UI.Shop;
 

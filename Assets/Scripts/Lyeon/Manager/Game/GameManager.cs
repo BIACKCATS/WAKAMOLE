@@ -28,6 +28,7 @@ namespace Wakamole.Lyeon.Manager.Game
         public int MaxKeywordCount { get => maxKeywordCount; set => maxKeywordCount = value; }
         public int KeywordCount { get => keywordCount; set => keywordCount = value; }
         public MoleKeyword IncludeKeyword { get; private set; } = MoleKeyword.DEFAULT;
+        public MoleKeyword BossKeyword { get; private set; } = MoleKeyword.DEFAULT;
 
         public AudioManager Audio => audioManager;
         public Preference Preference => preference;
@@ -56,6 +57,8 @@ namespace Wakamole.Lyeon.Manager.Game
             keywordCount = Random.Range(1, maxKeywordCount + 1);
             IncludeKeyword = keyword;
         }
+
+        public void SetBossKeyword(MoleKeyword keyword) => BossKeyword = keyword;
 
         public void UseItem(int inventoryIndex)
         {

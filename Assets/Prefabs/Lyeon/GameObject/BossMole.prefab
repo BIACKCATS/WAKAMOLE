@@ -82,7 +82,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2226163966652083150
 Transform:
   m_ObjectHideFlags: 0
@@ -183,6 +183,15 @@ MonoBehaviour:
   decorations: []
   bossMoleData: {fileID: 11400000, guid: addd1f13cea804a2a83784c868857f26, type: 2}
   bossHpBar: {fileID: 0}
+  bossDecorations:
+  - keyword: 1
+    decorate: {fileID: 143314578038382214}
+  - keyword: 2
+    decorate: {fileID: 6133213059510674298}
+  - keyword: 3
+    decorate: {fileID: 3956179523675033036}
+  - keyword: 4
+    decorate: {fileID: 5477932515209730320}
 --- !u!65 &2385521960289725692
 BoxCollider:
   m_ObjectHideFlags: 0

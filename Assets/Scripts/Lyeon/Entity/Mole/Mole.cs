@@ -82,7 +82,7 @@ namespace Wakamole.Lyeon.Entity
         protected bool fixedHp = false, fixedTime = false, fixedScore = false;
 
         [Header("Decorations")]
-        [Tooltip("두더지에 추가될 장식 입니다.")]
+        [Tooltip("두더지에 추가될 장식 입니다. 만일 보스 두더지인 경우 무시됩니다.")]
         [SerializeField] protected List<MoleDeco> decorations = new();
 
         protected bool initialize = false, active = false;

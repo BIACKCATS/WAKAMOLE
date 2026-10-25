@@ -37,7 +37,7 @@ namespace Wakamole.Lyeon.UI.Play
 
         private void UpdateScore()
         {
-            scoreText.text = $"<color=red>{current}</color>/<color=red>{target}</color>";
+            scoreText.SetText("<color=red>{0}</color>/<color=red>{1}</color>", current, target);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Wakamole.Lyeon.Manager.Play
 {
     public class MoleManager : MonoBehaviour
     {
-        private WaitForSecondsRealtime _waitForSecondsRealtime = new(1.0f);
+        private readonly WaitForSecondsRealtime _waitForSecondsRealtime = new(1.0f);
 
         [Header("Components")]
         [Tooltip("게임에 생성할 두더지 Prefab입니다.")]
@@ -67,6 +67,9 @@ namespace Wakamole.Lyeon.Manager.Play
                 keyword |= GameManager.Current.IncludeKeyword; // 강화창에서 추가한 키워드 추가
                 GameManager.Current.KeywordCount--;
             }
+            
+            // 보스 두더지가 추가하는 키워드
+            if (GameManager.Current.BossKeyword != MoleKeyword.DEFAULT) keyword |= GameManager.Current.BossKeyword;
 
             ShowMole(keyword);
         }
