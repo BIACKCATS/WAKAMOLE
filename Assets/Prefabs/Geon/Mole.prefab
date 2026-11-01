@@ -503,7 +503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ff47c8d77b542a2ae54f7976c597f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.UI.Play.ScoreText
+  objectTransform: {fileID: 4929935463468671253}
   text: {fileID: 2371014722054431069}
+  targetPosition: {x: 0, y: 1.72, z: 1}
 --- !u!1 &1585806563686363063
 GameObject:
   m_ObjectHideFlags: 0

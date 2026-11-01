@@ -144,6 +144,7 @@ namespace Wakamole.Lyeon.Entity
             if (currentHp <= 0)
             {
                 Active = false;
+                scoreText.SetInitialPosition(transform.position);
                 scoreText.ShowScore(score);
 
                 if ((keyword & MoleKeyword.SPLIT) != 0)
