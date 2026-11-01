@@ -6,6 +6,7 @@ using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Play;
+using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Entity
 {
@@ -54,6 +55,7 @@ namespace Wakamole.Lyeon.Entity
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] protected HpBar hpBar;
         [SerializeField] protected MoleAnim anim;
+        [SerializeField] protected ScoreText scoreText;
 
         [Header("Preferences")]
         [Tooltip("두더지가 올라오는 시간입니다.")]
@@ -142,6 +144,7 @@ namespace Wakamole.Lyeon.Entity
             if (currentHp <= 0)
             {
                 Active = false;
+                scoreText.ShowScore(score);
 
                 if ((keyword & MoleKeyword.SPLIT) != 0)
                 {
