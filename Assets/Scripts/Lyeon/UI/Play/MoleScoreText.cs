@@ -3,36 +3,24 @@ using UnityEngine;
 
 namespace Wakamole.Lyeon.UI.Play
 {
-    public class ScoreText : MonoBehaviour
+    public class MoleScoreText : MonoBehaviour
     {
         [Header("Components")]
-        [Tooltip("오브젝트 이동을 위한 Transform입니다.")]
-        [SerializeField] private Transform objectTransform;
         [Tooltip("점수를 표시할 텍스트입니다.")]
         [SerializeField] private TMP_Text text;
         [Tooltip("오브젝트가 이동할 위치입니다.")]
-        [SerializeField] private Vector3 targetPosition = new(0, 1.72f, 1.0f);
-        /// Mole: (0, 1.72, 1.0)
-        /// UI: ???
+        [SerializeField] private Vector3 targetPosition = new(0, 2.0f, 0);
 
         private bool active = false;
         
         private Vector3 initPosition = Vector3.zero;
-        private Vector3 movePosition = Vector3.zero;
 
         private float targetAlpha = 1;
-
-        public void SetInitialPosition(Vector3 position)
-        {
-            initPosition = position;
-            objectTransform.position = position;
-        }
 
         public void ShowScore(int score)
         {
             if (active) Inactive();
             if (!gameObject.activeSelf) gameObject.SetActive(true);
-            movePosition = initPosition + targetPosition;
             text.SetText("+{0}점", score);
             targetAlpha = 1;
             active = true;
@@ -40,7 +28,7 @@ namespace Wakamole.Lyeon.UI.Play
 
         private void Awake()
         {
-            initPosition = objectTransform.position;
+            initPosition = transform.localPosition;
             Inactive();
         }
 
@@ -48,22 +36,17 @@ namespace Wakamole.Lyeon.UI.Play
         {
             if (active)
             {
-                objectTransform.position = Vector3.Lerp(objectTransform.position, movePosition, 2.5f * Time.deltaTime);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, 2.5f * Time.deltaTime);
                 text.alpha = Mathf.Lerp(text.alpha, targetAlpha, 5.0f * Time.deltaTime);
-
                 if (Mathf.Abs(text.alpha - targetAlpha) < 0.01f) targetAlpha = 0;
-                if (Vector3.Distance(objectTransform.position, movePosition) < 0.01f)
-                {
-                    objectTransform.position = movePosition;
-                    Inactive();
-                }
+                if (Vector3.Distance(transform.localPosition, targetPosition) < 0.01f) Inactive();
             }
         }
 
         private void Inactive()
         {
             active = false;
-            objectTransform.position = initPosition;
+            transform.localPosition = initPosition;
             text.alpha = 0;
             gameObject.SetActive(false);
         }
