@@ -20,6 +20,8 @@ namespace Wakamole.Lyeon.Manager.Play
         [Header("Components")]
         [Tooltip("두더지를 관리하는 MoleManager 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private MoleManager moleManager;
+        [Tooltip("점수 표시를 관리하는 ScoreTextArea 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private ScoreTextArea scoreTextArea;
         [Tooltip("클리어 시 게임 결과를 표시할 ClearBoard 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private ClearBoard clearBoard;
         [Tooltip("현재 점수를 표시할 ScoreBoard 스크립트를 포함한 GameObject입니다.")]
@@ -65,6 +67,7 @@ namespace Wakamole.Lyeon.Manager.Play
 
         public bool Active { get => active; set => active = value; }
         public MoleManager MoleManager => moleManager;
+        public ScoreTextArea ScoreTextArea => scoreTextArea;
 
         /// <summary>
         /// 스테이지의 목표 점수입니다.

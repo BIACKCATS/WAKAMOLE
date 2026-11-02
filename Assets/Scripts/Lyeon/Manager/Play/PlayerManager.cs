@@ -178,6 +178,9 @@ namespace Wakamole.Lyeon.Manager.Play
 
             if (mole.Hp <= 0)
             {
+                // 두더지 점수 표시
+                stageManager.ScoreTextArea.Show(new ScoreTextData(){ position = mousePosition, score = mole.Score });
+
                 // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
                 stageManager.Score += (stageManager.Combo % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
 

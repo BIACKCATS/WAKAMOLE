@@ -24,6 +24,7 @@ namespace Wakamole.Lyeon.Manager.Shop
 
         public ItemTooltip Tooltip => tooltip;
         public CoinAlert Alert => alert;
+        public List<ItemSlot> Inventory => inventory;
 
         public void UpdateCoin()
         {

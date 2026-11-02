@@ -14,6 +14,11 @@ namespace Wakamole.Core.Utils
         public int Count => objects.Count;
 
         /// <summary>
+        /// ObjectPool에서 활성화된 GameObject의 수입니다.
+        /// </summary>
+        public int ActivatedCount { get; private set; } = 0;
+
+        /// <summary>
         /// 지정된 GameObject를 관리하는 ObjectPool을 생성합니다.
         /// </summary>
         /// <param name="prefab">ObjectPool에서 관리할 GameObject입니다.</param>
@@ -29,6 +34,18 @@ namespace Wakamole.Core.Utils
                 objects.Enqueue(obj);
             }
         }
+
+        public ObjectPool(GameObject prefab, GameObject parent, int count = 5)
+        {
+            this.prefab = prefab;
+            // 오브젝트 풀에 미리 오브젝트를 저장함
+            for (int i = 0; i < count; i++)
+            {
+                GameObject obj = Object.Instantiate(this.prefab, parent.transform);
+                obj.SetActive(false);
+                objects.Enqueue(obj);
+            }
+        }
         
         /// <summary>
         /// GameObject를 ObjectPool에 반환합니다.
@@ -38,6 +55,7 @@ namespace Wakamole.Core.Utils
         { 
             obj.SetActive(false);
             objects.Enqueue(obj); 
+            ActivatedCount--;
         }
 
         /// <summary>
@@ -49,6 +67,7 @@ namespace Wakamole.Core.Utils
             if (objects.Count > 0) obj = objects.Dequeue();
             else obj = Object.Instantiate(prefab);
             obj.SetActive(true);
+            ActivatedCount++;
             return obj;
         }
     }
