@@ -81,7 +81,6 @@ namespace Wakamole.Lyeon.Manager.Game
                     break;
                 case 4:
                     preference.ActiveAlert = true;
-                    if (StageManager.Current != null) StageManager.Current.StartAlert();
                     break;
                 case 5:
                     preference.ActiveDiscordSound = true;
@@ -94,7 +93,6 @@ namespace Wakamole.Lyeon.Manager.Game
                     break;
                 case 8:
                     preference.ActiveMosquito = true;
-                    if (StageManager.Current != null) StageManager.Current.StartMosquito();
                     break;
                 case 9:
                     preference.ActiveBonusScore = true;

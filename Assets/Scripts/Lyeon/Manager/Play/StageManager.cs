@@ -287,6 +287,9 @@ namespace Wakamole.Lyeon.Manager.Play
         private void OnEnable()
         {
             StartStage();
+
+            if (GameManager.Current.Preference.ActiveAlert) StartAlert();
+            if (GameManager.Current.Preference.ActiveMosquito) StartMosquito();
         }
 
         private void Update()
