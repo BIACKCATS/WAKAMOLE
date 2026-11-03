@@ -6,7 +6,6 @@ using Wakamole.Core.LocalData;
 using Wakamole.Lyeon.Entity.Component;
 using Wakamole.Lyeon.Manager.Game;
 using Wakamole.Lyeon.Manager.Play;
-using Wakamole.Lyeon.UI.Play;
 
 namespace Wakamole.Lyeon.Entity
 {
@@ -49,7 +48,7 @@ namespace Wakamole.Lyeon.Entity
         public GameObject decorate;
     }
 
-    public class Mole : MonoBehaviour
+    public class Mole : MonoBehaviour, IEntity
     {
         [Header("Components")]
         [Tooltip("두더지의 체력을 표시할 HpBar 스크립트를 포함한 GameObject입니다.")]

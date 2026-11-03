@@ -4,7 +4,7 @@ using Wakamole.Core.LocalData;
 
 namespace Wakamole.Lyeon.Entity
 {
-    public class Backdrop : MonoBehaviour
+    public class Backdrop : MonoBehaviour, IEntity
     {
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private Collider[] boxCollider;
