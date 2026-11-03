@@ -39,13 +39,6 @@ namespace Wakamole.Lyeon.Manager.Shop
 
         private void OnEnable()
         {
-            if (GameManager.Current == null || !initialized)
-            {
-                initialized = true;
-                gameObject.SetActive(false);
-                return;
-            }
-
             cursor.SetCursor(0);
             Canvas.ForceUpdateCanvases();
 
@@ -64,6 +57,12 @@ namespace Wakamole.Lyeon.Manager.Shop
                     objRect.position = rect.position;
                     inventory[i].Item = component;
                 }
+            }
+
+            if (!initialized)
+            {
+                initialized = true;
+                gameObject.SetActive(false);
             }
         }
 
