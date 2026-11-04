@@ -1,3 +1,4 @@
+using UnityEngine;
 using Wakamole.Lyeon.Entity;
 
 namespace Wakamole.Lyeon.Item
@@ -16,7 +17,7 @@ namespace Wakamole.Lyeon.Item
 
         public void OnAttack(IEntity entity)
         {
-            
+            Debug.Log(ToString() + " Attack check " + entity.ToString());
         }
     }
 }

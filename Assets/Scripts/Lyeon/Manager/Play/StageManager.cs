@@ -40,8 +40,6 @@ namespace Wakamole.Lyeon.Manager.Play
         [SerializeField] private StageFinish stageFinish;
         [Tooltip("아이템 생성 규칙을 지정할 BackdropPreset SO입니다.")]
         [SerializeField] private BackdropPreset backdropPreset;
-        [Tooltip("아이템 목록을 표시할 ItemIcon 스크립트를 포함한 GameObject의 목록입니다.")]
-        [SerializeField] private List<ItemIcon> itemSlots;
 
         [Header("Informations")]
         [Tooltip("목표 점수입니다.")]
@@ -280,11 +278,6 @@ namespace Wakamole.Lyeon.Manager.Play
             if (timeLimit <= 0) timeLimit = 100;
 
             Current = this;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!GameManager.Current.Inventory.ContainsKey(i)) continue;
-                itemSlots[i].Item = GameManager.Current.Inventory[i];
-            }
         }
 
         private void OnEnable()

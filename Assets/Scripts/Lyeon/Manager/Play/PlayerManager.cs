@@ -15,6 +15,8 @@ namespace Wakamole.Lyeon.Manager.Play
     public class PlayerManager : MonoBehaviour
     {
         [Header("Components")]
+        [Tooltip("인벤토리를 관리하는 InventoryManager 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private InventoryManager inventoryManager;
         [SerializeField] private CursorChange cursor;
         [SerializeField] private ProgressBar progressBar;
         [SerializeField] private PlayerHand playerHand;
@@ -128,8 +130,11 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
-                        // 1번 아이템에 의한 점수 추가 (자동 계산)
+                        // 1번 아이템에 의한 점수 추가 (자동 계산) -> 아래 코드로 대체 예정
                         stageManager.Score += GameManager.Current.Preference.BackdropScore;
+
+                        // Inventory에서 공격 관련 아이템 확인
+                        inventoryManager.OnAttack(backdrop);
 
                         if (handAnim != null) StopCoroutine(handAnim);
                         handAnim = StartCoroutine(HandAnim());
@@ -149,6 +154,9 @@ namespace Wakamole.Lyeon.Manager.Play
         {
             if (handAnim != null) StopCoroutine(handAnim);
             handAnim = StartCoroutine(HandAnim());
+
+            // Inventory에서 공격 관련 아이템 확인
+            inventoryManager.OnAttack(mole);
 
             int beforeHp = mole.Hp;
             // 2번 아이템에 의한 점수 추가
