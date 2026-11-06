@@ -18,6 +18,8 @@ namespace Wakamole.Lyeon.Manager.Play
         public static StageManager Current { get; private set; }
 
         [Header("Components")]
+        [Tooltip("인벤토리를 관리하는 InventoryManager 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private InventoryManager inventoryManager;
         [Tooltip("두더지를 관리하는 MoleManager 스크립트를 포함한 GameObject입니다.")]
         [SerializeField] private MoleManager moleManager;
         [Tooltip("점수 표시를 관리하는 ScoreTextArea 스크립트를 포함한 GameObject입니다.")]
@@ -57,6 +59,8 @@ namespace Wakamole.Lyeon.Manager.Play
         private int currentScore = 0;
         private int maxCombo = 0;
         private int currentCombo = 0;
+
+        private Coroutine alertCoroutine = null;
 
         private Timer timer = new();
         private Mole attackedMole = null;
@@ -222,7 +226,12 @@ namespace Wakamole.Lyeon.Manager.Play
         /// </summary>
         public void StartAlert()
         {
-            StartCoroutine(Alert());
+            alertCoroutine = StartCoroutine(Alert());
+        }
+
+        public void StopAlert()
+        {
+            StopCoroutine(alertCoroutine);
         }
 
         private IEnumerator Alert()
@@ -284,7 +293,6 @@ namespace Wakamole.Lyeon.Manager.Play
         {
             StartStage();
 
-            if (GameManager.Current.Preference.ActiveAlert) StartAlert();
             if (GameManager.Current.Preference.ActiveMosquito) StartMosquito();
         }
 
@@ -324,7 +332,7 @@ namespace Wakamole.Lyeon.Manager.Play
             clearBoard.gameObject.SetActive(true);
             CameraController.Current.ExpandMove = false;
             CameraController.Current.TargetPosition = CameraController.Current.InitPosition;
-
+            inventoryManager.DisableItem();         
             currentCoin += (int)(timer.Current / 10);
             clearBoard.Coin = currentCoin;
             clearBoard.Mole = moleCount;

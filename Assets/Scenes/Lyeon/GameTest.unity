@@ -4405,6 +4405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf742e8c67d743cabd412108903ca93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Lyeon.Manager.StageManager
+  inventoryManager: {fileID: 140449411}
   moleManager: {fileID: 1973914331}
   scoreTextArea: {fileID: 1916438595}
   clearBoard: {fileID: 1018493271}

@@ -1,5 +1,6 @@
-using UnityEngine;
 using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.Manager.Game;
+using Wakamole.Lyeon.Manager.Play;
 
 namespace Wakamole.Lyeon.Item
 {
@@ -17,7 +18,8 @@ namespace Wakamole.Lyeon.Item
 
         public void OnAttack(IEntity entity)
         {
-            Debug.Log(ToString() + " Attack check " + entity.ToString());
+            if (entity is Backdrop && ((Backdrop)entity).Hp == 0)
+                StageManager.Current.Score += GameManager.Current.Preference.BackdropScore;
         }
     }
 }

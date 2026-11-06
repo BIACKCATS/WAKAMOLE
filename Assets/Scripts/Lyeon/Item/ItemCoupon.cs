@@ -1,4 +1,5 @@
 using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.Manager.Play;
 
 namespace Wakamole.Lyeon.Item
 {
@@ -16,7 +17,7 @@ namespace Wakamole.Lyeon.Item
 
         public void OnAttack(IEntity entity)
         {
-            
+            if (entity is Mole) StageManager.Current.Score += StageManager.Current.Combo;
         }
     }
 }

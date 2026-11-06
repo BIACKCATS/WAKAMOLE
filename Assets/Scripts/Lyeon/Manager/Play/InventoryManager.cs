@@ -40,6 +40,12 @@ namespace Wakamole.Lyeon.Manager.Play
             }
         }
 
+        public void DisableItem()
+        {
+            foreach (IItem item in items) item.Disable();
+            items.Clear();
+        }
+
         private void AddItem(int itemId)
         {
             IItem item = null;

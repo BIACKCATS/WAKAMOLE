@@ -130,15 +130,11 @@ namespace Wakamole.Lyeon.Manager.Play
                 {
                     if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
                     {
-                        // 1번 아이템에 의한 점수 추가 (자동 계산) -> 아래 코드로 대체 예정
-                        stageManager.Score += GameManager.Current.Preference.BackdropScore;
-
-                        // Inventory에서 공격 관련 아이템 확인
-                        inventoryManager.OnAttack(backdrop);
-
                         if (handAnim != null) StopCoroutine(handAnim);
                         handAnim = StartCoroutine(HandAnim());
                         backdrop.Hit();
+                        // Inventory에서 공격 관련 아이템 확인
+                        inventoryManager.OnAttack(backdrop);
                     }
                     else if (hit.collider.gameObject.TryGetComponent(out Mole mole) && mole.Active)
                     {
@@ -155,11 +151,6 @@ namespace Wakamole.Lyeon.Manager.Play
             if (handAnim != null) StopCoroutine(handAnim);
             handAnim = StartCoroutine(HandAnim());
 
-            // Inventory에서 공격 관련 아이템 확인
-            inventoryManager.OnAttack(mole);
-
-            int beforeHp = mole.Hp;
-            // 2번 아이템에 의한 점수 추가
             if (Charged)
             {
                 GameManager.Current.Audio.PlaySfx("Charge_Swing");
@@ -174,23 +165,18 @@ namespace Wakamole.Lyeon.Manager.Play
                 mole.Hp -= GameManager.Current.Status.Atk;
             }
 
-            if (mole.Hp < beforeHp) stageManager.Score += GameManager.Current.Preference.HitScore;
-
             stageManager.Combo++;
             if (stageManager.Combo < 10) GameManager.Current.Audio.SetBgmParameter("Combo", 0);
             else if (stageManager.Combo == 10) GameManager.Current.Audio.SetBgmParameter("Combo", 50);
             else if (stageManager.Combo == 20) GameManager.Current.Audio.SetBgmParameter("Combo", 100);
-
-            // 4번 아이템에 의한 콤보점수 추가
-            if (GameManager.Current.Preference.ActiveComboScore) stageManager.Score += stageManager.Combo;
 
             if (mole.Hp <= 0)
             {
                 // 두더지 점수 표시
                 stageManager.ScoreTextArea.Show(new ScoreTextData(){ position = mousePosition, score = mole.Score });
 
-                // 3번/10번 아이템에 의한 점수 추가 (자동 계산)
-                stageManager.Score += (stageManager.Combo % 5) * (int)GameManager.Current.Preference.MolePower + GameManager.Current.Preference.BonusScore;
+                // 10번 아이템에 의한 점수 추가 (자동 계산)
+                stageManager.Score += GameManager.Current.Preference.BonusScore;
 
                 stageManager.AttackedMole = mole;
                 stageManager.Score += stageManager.ActiveDoubleScore ? mole.Score * 2 : mole.Score;
@@ -202,6 +188,9 @@ namespace Wakamole.Lyeon.Manager.Play
                     stageManager.TimeLimit += 2.0f;
                 }
             }
+
+            // Inventory에서 공격 관련 아이템 확인
+            inventoryManager.OnAttack(mole);
         }
 
         private IEnumerator HandAnim()
