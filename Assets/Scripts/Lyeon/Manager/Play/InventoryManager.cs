@@ -15,8 +15,14 @@ namespace Wakamole.Lyeon.Manager.Play
 
         private List<IItem> items = new();
         private bool active = false;
+        private bool init = false;
 
-        private void OnEnable()
+        private void Update()
+        {
+            if (!init) Init();
+        }
+
+        public void Init()
         {
             if (GameManager.Current == null) return;
             
@@ -29,6 +35,7 @@ namespace Wakamole.Lyeon.Manager.Play
                 itemSlots[i].Item = temp;
             }
             active = items.Count > 0;
+            init = true;
         }
 
         public void OnAttack(IEntity entity)
@@ -36,7 +43,7 @@ namespace Wakamole.Lyeon.Manager.Play
             if (!active) return;
             foreach (IItem item in items)
             {
-                if (item is IAttackItem attackItem) attackItem.OnAttack(entity);
+                if (item is IAttackItem attackItem && entity != null) attackItem.OnAttack(entity);
             }
         }
 
