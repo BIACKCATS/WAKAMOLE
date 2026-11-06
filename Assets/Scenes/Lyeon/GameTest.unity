@@ -10584,6 +10584,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2910668184405820169, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
+      propertyPath: sceneName
+      value: Stages
+      objectReference: {fileID: 0}
     - target: {fileID: 4418764839629200526, guid: 55f060ef65fa4446a8379a8ce8a0669a, type: 3}
       propertyPath: m_IsActive
       value: 0
