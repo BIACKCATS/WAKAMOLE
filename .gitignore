@@ -61,3 +61,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# macOS
+.DS_Store
+
+# Other
+UserSettings/Layouts/default-6000.dwlt
+fmod_editor.log

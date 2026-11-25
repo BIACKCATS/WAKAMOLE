@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fc34ffe86ca45569e3917f833d40c7, type: 3}
+  m_Name: BossMoleData
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.BossMoleData
+  bossMoles:
+  - keyword: 0
+    moleName: "\uD3C9\uBC94\uD55C"
+  - keyword: 2
+    moleName: "\uCC54\uD53C\uC5B8"
+  - keyword: 1
+    moleName: "\uD3ED\uC8FC\uC871"
+  - keyword: 3
+    moleName: "\uBBF8\uB77C"
+  - keyword: 4
+    moleName: "\uD30C\uD2F0"
+  - keyword: 5
+    moleName: "\uC2DC\uACC4\uACF5"
+  - keyword: 6
+    moleName: "\uBD88\uD0C0\uB294"
+  - keyword: 7
+    moleName: "\uAD34\uB3C4"
+  - keyword: 8
+    moleName: "\uB178\uB3D9\uC870\uD569"
+  - keyword: 9
+    moleName: "\uB9AC\uBCF8"
+  - keyword: 10
+    moleName: "\uB299\uC740"
+  - keyword: 11
+    moleName: "\uC870\uCEE4"
+  - keyword: 12
+    moleName: "\uBE44\uC11C"
+  - keyword: 13
+    moleName: "\uB18D\uC0AC\uAFBC"
+  - keyword: 14
+    moleName: "\uC560\uC644"
+  - keyword: 15
+    moleName: "\uAC80\uB4E0"
+  - keyword: 16
+    moleName: "\uC758\uC0AC"

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7891ed4945a5434d803c8c5e7c0e22f, type: 3}
+  m_Name: Split
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.MoleData
+  keyword: 8
+  hp: 1
+  isFixedHp: 1
+  showTime: 3
+  isFixedTime: 0
+  score: 0
+  isFixedScore: 0
+  moleName: "\uBD84\uC5F4\uD558\uB294"
+  moleDesc: "\uCCB4\uB825\uC774 0\uC774 \uB420 \uACBD\uC6B0 2\uB9C8\uB9AC\uC758 \uC77C\uBC18
+    \uB450\uB354\uC9C0\uB97C \uB2E4\uB978 \uC790\uB9AC\uC5D0 \uC18C\uD658\uD569\uB2C8\uB2E4."

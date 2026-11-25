@@ -2,20 +2,20 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mole
+  - Backdrop
+  - Mosquito
+  - HpBar
+  - BossMole
   - 
   - 
   - 
@@ -41,6 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 3934929035
+    locked: 0
+  - name: Backdrop
+    uniqueID: 1868592729
+    locked: 0
+  - name: HpBar
+    uniqueID: 1288588261
+    locked: 0
+  - name: Mole
+    uniqueID: 1917881409
+    locked: 0
+  - name: Mosquito
+    uniqueID: 221806743
+    locked: 0
+  - name: Canvas
+    uniqueID: 3128109777
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
@@ -50,27 +68,4 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  m_MigratedRenderPipelines: []

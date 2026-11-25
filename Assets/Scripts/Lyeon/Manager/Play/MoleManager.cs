@@ -1,0 +1,118 @@
+using UnityEngine;
+using Wakamole.Core.Utils;
+using System.Collections;
+using Wakamole.Lyeon.Entity;
+using System.Collections.Generic;
+using Wakamole.Core.LocalData;
+using Wakamole.Lyeon.Manager.Game;
+
+namespace Wakamole.Lyeon.Manager.Play
+{
+    public class MoleManager : MonoBehaviour
+    {
+        private readonly WaitForSecondsRealtime _waitForSecondsRealtime = new(1.0f);
+
+        [Header("Components")]
+        [Tooltip("게임에 생성할 두더지 Prefab입니다.")]
+        [SerializeField] private Mole molePrefab;
+        [Tooltip("생성할 두더지의 특성입니다.")]
+        [SerializeField] private List<MoleData> moleDatas;
+
+        [Header("Information")]
+        [SerializeField] private Vector2 minPosition;
+        [SerializeField] private Vector2 maxPosition;
+        [Tooltip("두더지의 기본 체력입니다.")]
+        [SerializeField] private int defaultHp = 10;
+        [Tooltip("두더지의 기본 등장 시간입니다.")]
+        [SerializeField] private int defaultShowTime = 3;
+        [Tooltip("두더지의 기본 점수입니다.")]
+        [SerializeField] private int defaultScore = 1;
+        [Tooltip("강화창에서 지정한 키워드의 두더지가 나올 확률입니다.")]
+        [SerializeField, Range(0, 1.0f)] private float keywordChance = 0.1f;
+
+        private ObjectPool objectPool;
+        private Dictionary<MoleKeyword, MoleData> moles = new();
+        private List<MoleKeyword> keywords = new();
+        private List<Mole> activatedMoles = new();
+
+        public List<Mole> ActivatedMoles => activatedMoles;
+
+        private void Awake()
+        {
+            foreach (MoleData moleData in moleDatas)
+            {
+                moles.Add(moleData.keyword, moleData);
+                keywords.Add(moleData.keyword);
+            }
+        }
+
+        private void Start()
+        {
+            objectPool = new(molePrefab.gameObject, 10);
+            StartCoroutine(RandomMole());
+        }
+
+        /// <summary>
+        /// 랜덤한 키워드의 두더지를 생성합니다.
+        /// </summary>
+        public void ShowMole()
+        {
+            MoleKeyword keyword = keywords[Random.Range(0, keywords.Count - 1)];
+            while ((keyword & MoleKeyword.REVIVED) != 0) 
+                keyword = keywords[Random.Range(0, keywords.Count - 1)];
+            
+            // 지정된 확률로 지정된 키워드를 포함한 두더지를 생성
+            if (Random.Range(0, 1.0f) < keywordChance && GameManager.Current.KeywordCount > 0)
+            {
+                keyword |= GameManager.Current.IncludeKeyword; // 강화창에서 추가한 키워드 추가
+                GameManager.Current.KeywordCount--;
+            }
+            
+            // 보스 두더지가 추가하는 키워드
+            if (GameManager.Current.BossKeyword != MoleKeyword.DEFAULT) keyword |= GameManager.Current.BossKeyword;
+
+            ShowMole(keyword);
+        }
+
+        /// <summary>
+        /// 지정된 키워드를 가진 두더지를 생성합니다.
+        /// </summary>
+        /// <param name="keyword">두더지에게 할당될 키워드입니다.</param>
+        public void ShowMole(MoleKeyword keyword)
+        {
+            GameObject obj = objectPool.Get();
+            if (obj.TryGetComponent(out Mole mole))
+            {
+                mole.Init(defaultHp, defaultScore, defaultShowTime);
+                foreach (MoleKeyword moleKeyword in keywords)
+                {
+                    if ((moleKeyword & keyword) != 0)
+                        mole.AddKeyword(moleKeyword, moles[moleKeyword]);
+                }
+
+                if (keyword == 0) mole.AddKeyword(MoleKeyword.DEFAULT, moles[MoleKeyword.DEFAULT]);
+                mole.Manager = this;
+
+                obj.transform.position = new Vector3(Random.Range(minPosition.x, maxPosition.x), 0, Random.Range(minPosition.y, maxPosition.y));
+                obj.SetActive(true);
+                activatedMoles.Add(mole);
+            }
+        }
+
+        public void HideMole(Mole mole)
+        {
+            activatedMoles.Remove(mole);
+            objectPool.Return(mole.gameObject);
+        }
+
+        private IEnumerator RandomMole()
+        {
+            // 테스트용
+            while (StageManager.Current.Active)
+            {
+                yield return _waitForSecondsRealtime;
+                ShowMole();
+            }
+        }
+    }
+}

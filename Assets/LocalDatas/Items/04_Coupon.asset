@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
+  m_Name: 04_Coupon
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
+  itemSprite: {fileID: 21300000, guid: c813c8b3ea5ce4c179679c1729b35ce1, type: 3}
+  itemId: 3
+  itemCost: 10
+  itemName: "\uCE58\uD0A8 \uCFE0\uD3F0"
+  itemDesc: "\uC2AC\uC2AC \uBC30\uACE0\uD508\uAC70 \uAC19\uC9C0 \uC54A\uC544? \uBB34\uB824
+    10\uAC1C \uBAA8\uC558\uB2E4\uACE0?"
+  itemFunc: "\uB450\uB354\uC9C0 \uC7A1\uC744 \uB54C \uB9C8\uB2E4 \uCF64\uBCF4 \uC218
+    \uB9CC\uD07C \uC810\uC218\uB97C \uB354\uD569\uB2C8\uB2E4."

@@ -1,0 +1,218 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Wakamole.Lyeon.Entity;
+using Wakamole.Lyeon.GameCamera;
+using Wakamole.Lyeon.Manager.Component;
+using Wakamole.Lyeon.Manager.Game;
+using Wakamole.Lyeon.UI;
+using Wakamole.Lyeon.UI.Play;
+
+namespace Wakamole.Lyeon.Manager.Play
+{
+    public class PlayerManager : MonoBehaviour
+    {
+        [Header("Components")]
+        [Tooltip("인벤토리를 관리하는 InventoryManager 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private InventoryManager inventoryManager;
+        [SerializeField] private CursorChange cursor;
+        [SerializeField] private ProgressBar progressBar;
+        [SerializeField] private PlayerHand playerHand;
+        [SerializeField] private ChargeHand chargeHand;
+        [SerializeField] private Image attackImage;
+        [Tooltip("차지 공격 상태를 표시할 ProgressBar 스크립트를 포함한 GameObject입니다.")]
+        [SerializeField] private List<ChargeFire> fires;
+
+        [Header("Informations")]
+        [Tooltip("보스 두더지를 감지할 Layer입니다.")]
+        [SerializeField] private LayerMask bossLayerMask;
+        [Tooltip("공격을 감지할 Layer입니다.")]
+        [SerializeField] private LayerMask layerMask;
+
+        private float chargingTime = 0;
+        private bool charging = false;
+
+
+        private StageManager stageManager = null;
+        private Vector2 mousePosition;
+        private Ray click;
+        private RectTransform attackRect;
+        private WaitForSeconds wait = new(0.1f);
+        private Coroutine handAnim;
+
+        public bool Charged
+        {
+            get => chargingTime >= GameManager.Current.Status.ChargeTime;
+            [System.Obsolete("SetCharged(bool) 함수를 사용해주세요.")]
+            set => SetCharge(value);
+        }
+
+        private void SetCharge(bool value)
+        {
+            if (value) chargingTime = GameManager.Current.Status.ChargeTime;
+            else chargingTime = 0;
+            foreach (ChargeFire fire in fires) fire.gameObject.SetActive(value);
+
+            if (value) playerHand.gameObject.SetActive(false);
+            chargeHand.gameObject.SetActive(value);
+        }
+
+        // for hotfix
+        private void OnEnable()
+        {
+            cursor.SetCursor(1);
+        }
+
+        private void Start()
+        {
+            stageManager = StageManager.Current;
+            attackImage.gameObject.SetActive(false);
+            if (attackImage.TryGetComponent(out RectTransform rect)) attackRect = rect;
+        }
+
+        private void Update()
+        {
+            if (!stageManager.Active) return;
+
+            // 1. 차지 공격
+            if (Mouse.current.rightButton.wasPressedThisFrame) charging = true;
+            else if (Mouse.current.rightButton.wasReleasedThisFrame) charging = false;
+
+            if (charging && chargingTime < GameManager.Current.Status.ChargeTime) chargingTime += Time.deltaTime;
+            else if (chargingTime < GameManager.Current.Status.ChargeTime && chargingTime > 0) chargingTime -= Time.deltaTime / 2;
+
+            if (chargingTime > GameManager.Current.Status.ChargeTime) chargingTime = GameManager.Current.Status.ChargeTime;
+            else if (chargingTime < 0) chargingTime = 0;
+
+            playerHand.Charged = progressBar.Value = chargingTime / GameManager.Current.Status.ChargeTime;
+            if (progressBar.Value > 0.3f) fires[0].gameObject.SetActive(true);
+            else fires[0].gameObject.SetActive(false);
+            if (progressBar.Value > 0.6f) fires[1].gameObject.SetActive(true);
+            else fires[1].gameObject.SetActive(false);
+            if (Charged)
+            {
+                fires[2].gameObject.SetActive(true);
+                if (playerHand.gameObject.activeSelf)
+                {
+                    playerHand.gameObject.SetActive(false);
+                    chargeHand.gameObject.SetActive(true);
+                }
+            }
+            else fires[2].gameObject.SetActive(false);
+
+            // 2. 일반 공격
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                mousePosition = Mouse.current.position.ReadValue();
+                click = Camera.main.ScreenPointToRay(mousePosition);
+
+                // 9번 아이템에 의한 모기 퇴치
+                if (Physics.Raycast(click, out RaycastHit mosquitoHit, Mathf.Infinity, layerMask))
+                {
+                    if (mosquitoHit.collider.gameObject.TryGetComponent(out Mosquito mosquito))
+                        mosquito.DestroyMosquito();
+                }
+
+                // 2-1. 보스 두더지 공격 감지
+                if (Physics.Raycast(click, out RaycastHit bossHit, Mathf.Infinity, bossLayerMask))
+                {
+                    if (bossHit.collider.gameObject.TryGetComponent(out BossMole mole) && mole.Active)
+                    {
+                        AttackMole(mole);
+                        return;
+                    }
+                }
+
+                // 2-2. 일반 공격 감지
+                if (Physics.Raycast(click, out RaycastHit hit, Mathf.Infinity, layerMask))
+                {
+                    if (hit.collider.gameObject.TryGetComponent(out Backdrop backdrop))
+                    {
+                        if (handAnim != null) StopCoroutine(handAnim);
+                        handAnim = StartCoroutine(HandAnim());
+                        backdrop.Hit();
+                        // Inventory에서 공격 관련 아이템 확인
+                        inventoryManager.OnAttack(backdrop);
+                    }
+                    else if (hit.collider.gameObject.TryGetComponent(out Mole mole) && mole.Active)
+                    {
+                        AttackMole(mole);
+                        return;
+                    }
+                    else stageManager.Combo = 0;
+                }
+            }
+        }
+
+        private void AttackMole(Mole mole)
+        {
+            if (handAnim != null) StopCoroutine(handAnim);
+            handAnim = StartCoroutine(HandAnim());
+
+            if (Charged)
+            {
+                GameManager.Current.Audio.PlaySfx("Charge_Swing");
+                CameraController.Current.Shake(1.0f);
+                mole.Hp -= GameManager.Current.Status.Atk * (int)GameManager.Current.Status.ChargeRatio;
+                SetCharge(false);
+            }
+            else
+            {
+                GameManager.Current.Audio.PlaySfx("Swing");
+                CameraController.Current.Shake(0.05f);
+                mole.Hp -= GameManager.Current.Status.Atk;
+            }
+
+            stageManager.Combo++;
+            if (stageManager.Combo < 10) GameManager.Current.Audio.SetBgmParameter("Combo", 0);
+            else if (stageManager.Combo == 10) GameManager.Current.Audio.SetBgmParameter("Combo", 50);
+            else if (stageManager.Combo == 20) GameManager.Current.Audio.SetBgmParameter("Combo", 100);
+
+            if (mole.Hp <= 0)
+            {
+                // 두더지 점수 표시
+                stageManager.ScoreTextArea.Show(new ScoreTextData(){ position = mousePosition, score = mole.Score });
+
+                // 10번 아이템에 의한 점수 추가 (자동 계산)
+                stageManager.Score += GameManager.Current.Preference.BonusScore;
+
+                stageManager.AttackedMole = mole;
+                stageManager.Score += stageManager.ActiveDoubleScore ? mole.Score * 2 : mole.Score;
+                stageManager.Count++;
+
+                // 6번 아이템에 의한 보너스 시간 추가
+                if (stageManager.Count % 3 == 0 && GameManager.Current.Preference.ActiveBonusTime)
+                {
+                    stageManager.TimeLimit += 2.0f;
+                }
+            }
+
+            // Inventory에서 공격 관련 아이템 확인
+            inventoryManager.OnAttack(mole);
+        }
+
+        private IEnumerator HandAnim()
+        {
+            attackRect.position = mousePosition;
+            cursor.SetCursor(0);
+
+            if (!attackImage.gameObject.activeSelf)
+            {
+                if (Charged) chargeHand.gameObject.SetActive(false);
+                else playerHand.gameObject.SetActive(false);
+                attackImage.gameObject.SetActive(true);
+            }
+
+            yield return wait;
+            cursor.SetCursor(1);
+
+            if (Charged) chargeHand.gameObject.SetActive(true);
+            else playerHand.gameObject.SetActive(true);
+
+            attackImage.gameObject.SetActive(false);
+            handAnim = null;
+        }
+    }
+}

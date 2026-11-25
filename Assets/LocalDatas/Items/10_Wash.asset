@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635d12259d9ab49e6a697cdeb8aac983, type: 3}
+  m_Name: 10_Wash
+  m_EditorClassIdentifier: Assembly-CSharp::Wakamole.Core.LocalData.ItemData
+  itemSprite: {fileID: 21300000, guid: e87c96377a44c419093f3d04af2a6182, type: 3}
+  itemId: 9
+  itemCost: 10
+  itemName: "\uBE68\uB798 \uB354\uBBF8"
+  itemDesc: "\uC637\uC5D0\uC11C \uCFF0\uCFF0\uD55C \uB0C4\uC0C8\uAC00 \uB098\uB294
+    \uAE30\uBD84\uC774 \uB4E0\uB2E4."
+  itemFunc: "\uB450\uB354\uC9C0\uB97C \uD55C \uBC88 \uB54C\uB9B4 \uB54C\uB9C8\uB2E4
+    \uCD94\uAC00 \uC810\uC218 +1"

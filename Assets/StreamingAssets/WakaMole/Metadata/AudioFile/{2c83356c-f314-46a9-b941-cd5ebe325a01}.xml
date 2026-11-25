@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{2c83356c-f314-46a9-b941-cd5ebe325a01}">
+		<property name="assetPath">
+			<value>Mosquitto.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>31.71265306122449</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5add5d1-3993-48da-9643-d365520df7b8}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{27966508-53a4-4153-9d53-f0daa6bba4f0}">
+		<property name="assetPath">
+			<value>Paper Lantern Loop (Lively Fairytale Mix).mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>88.200000000000003</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5add5d1-3993-48da-9643-d365520df7b8}</destination>
+		</relationship>
+	</object>
+</objects>
